@@ -1,7 +1,8 @@
 // MoltMail Contract Configuration
 // Deployed on Base Sepolia (Chain ID: 84532)
 
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3001/api/v1';
+// Production backend URL
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://moltmail-backend-b5k778fbm-howardtherekts-projects.vercel.app/api/v1';
 
 export const CONTRACTS = {
   mmailToken: '0x3Ecafc7551ece9D82Bb8145B37CEe2CDD949BeD9',
