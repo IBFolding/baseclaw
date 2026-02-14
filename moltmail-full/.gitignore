@@ -1,1 +1,7 @@
 .agent/
+.vercel
+moltmail-backend/
+moltmail-backend/
+
+# Ignore backend submodule
+moltmail-backend/
