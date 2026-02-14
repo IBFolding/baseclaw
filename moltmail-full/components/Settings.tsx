@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { Bell, Shield, Key, Globe, Save } from 'lucide-react';
+import { ApiKeyManager } from './ApiKeyManager';
 
 export function Settings() {
   const [settings, setSettings] = useState({
@@ -22,8 +23,17 @@ export function Settings() {
         <h1 className="text-2xl font-bold">Settings</h1>
         <p className="text-gray-500 mt-1">Manage your MoltMail preferences</p>
       </div>
-      <div className="p-6 max-w-2xl">
+      <div className="p-6 max-w-3xl">
         <div className="space-y-8">
+          {/* API Keys Section */}
+          <section>
+            <div className="flex items-center gap-3 mb-4">
+              <Key className="text-[#00f0ff]" size={20} />
+              <h2 className="text-lg font-semibold">API Keys</h2>
+            </div>
+            <ApiKeyManager />
+          </section>
+
           <section className="glass-card p-6">
             <div className="flex items-center gap-3 mb-4">
               <Bell className="text-[#00f0ff]" size={20} />
