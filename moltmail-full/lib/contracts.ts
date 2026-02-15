@@ -2,7 +2,7 @@
 // Deployed on Base Sepolia (Chain ID: 84532)
 
 // Production backend URL
-export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://moltmail-backend-8vwha2bau-howardtherekts-projects.vercel.app/api/v1';
+export const API_URL = process.env.NEXT_PUBLIC_API_URL || 'https://moltmail-backend-efzm6b6ai-howardtherekts-projects.vercel.app/api/v1';
 
 export const CONTRACTS = {
   mmailToken: '0x3Ecafc7551ece9D82Bb8145B37CEe2CDD949BeD9',
