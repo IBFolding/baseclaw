@@ -1,0 +1,1082 @@
+🦷 PAUL'S WORLD - LEARNING ENABLED (trading)
+============================================================
+📚 Found 2 documents in knowledge directory
+   ✓ Ai Jobs → 121 researchers
+   ✓ Bitcoin Overview → 121 researchers
+🏆 Competition started! Ends: 2026-04-09
+✅ 10,133 Pauls | Domain: trading
+🧠 Learning system active
+💰 Trading with memory-enhanced LLM...
+
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Eta Lynx.\\n\\nAnalyze SOL at $79.27:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sigma Explorer.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Black Master.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pi Snake.\\n\\nAnalyze LINK at $8.65:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Black Creator.\\n\\nAnalyze COMP at $16.75:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Upsilon Joker.\\n\\nAnalyze SOL at $79.10:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zane Colonel.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Kai Reason.\\n\\nAnalyze AAPL at $0.21:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Grey Doctor.\\n\\nAnalyze BTC at $66,529.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Tank Investor.\\n\\nAnalyze COMP at $16.75:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Magenta Tiger.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Steel Voyager.\\n\\nAnalyze LINK at $8.65:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Theta Ace.\\n\\nAnalyze COMP at $16.71:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel Skipper.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Paul-ebb2.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch Guide.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blaze Creator.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sol Panther.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nexus Puma.\\n\\nAnalyze UNI at $3.18:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sharp Degen.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gamma Paul.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Frost Fox.\\n\\nAnalyze BTC at $66,558.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sol Pilot.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Mouse Pawn.\\n\\nAnalyze BTC at $66,558.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Tau Master.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Black Pawn.\\n\\nAnalyze BTC at $66,558.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nu X.\\n\\nAnalyze ETH at $2,054.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Eta Pavel.\\n\\nAnalyze AAVE at $95.17:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apex Idea.\\n\\nAnalyze BTC at $66,582.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omicron Ape.\\n\\nAnalyze SOL at $79.28:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nexus Theory.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Psi Skipper.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Dozer Falcon.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel Driver.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Satoshi Lord.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are North Chad.\\n\\nAnalyze LINK at $8.68:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Silver Boss.\\n\\nAnalyze SOL at $79.29:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Grey Pavel.\\n\\nAnalyze COMP at $16.78:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Luna Palmer.\\n\\nAnalyze LINK at $15.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gamma Wizard.\\n\\nAnalyze ETH at $2,053.40:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Oracle Whale.\\n\\nAnalyze AAVE at $95.27:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nick Chief.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sigma Perry.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gold Idea.\\n\\nAnalyze COMP at $16.80:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Tau Paul.\\n\\nAnalyze LINK at $15.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zenith Crow.\\n\\nAnalyze LINK at $8.67:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Stella Raven.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chain Thought.\\n\\nAnalyze LINK at $8.67:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gold Voyager.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Orange Perry.\\n\\nAnalyze AAVE at $95.23:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Stone Rider.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Quantum Joker.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nadir X.\\n\\nAnalyze UNI at $3.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Yellow Paul.\\n\\nAnalyze COMP at $16.84:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Cypher AI.\\n\\nAnalyze SOL at $79.16:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zeta Lion.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gamma Zero.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Python Raven.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Storm Prime.\\n\\nAnalyze LINK at $8.65:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are C Knight.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Stone Rook.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Kappa Professor.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Grey Chief.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Psi Pathfinder.\\n\\nAnalyze COMP at $16.89:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Neo Bear.\\n\\nAnalyze COMP at $16.89:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Copper V.\\n\\nAnalyze COMP at $16.89:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Upsilon Eagle.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gamma Bot.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Yellow Fox.\\n\\nAnalyze COMP at $16.84:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Storm Pilot.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Dozer King.\\n\\nAnalyze BTC at $66,524.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Rho Pro.\\n\\nAnalyze LINK at $8.69:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sol Skipper.\\n\\nAnalyze ETH at $2,056.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Satoshi Lion.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Kai Lord.\\n\\nAnalyze COMP at $16.80:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Eta Whale.\\n\\nAnalyze COMP at $65.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Paul-4019.\\n\\nAnalyze BTC at $66,572.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Luna One.\\n\\nAnalyze COMP at $16.79:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Platinum One.\\n\\nAnalyze BTC at $66,534.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Iron Reason.\\n\\nAnalyze SOL at $79.17:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Mouse Snake.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Block King.\\n\\nAnalyze SOL at $79.17:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chain Investor.\\n\\nAnalyze ETH at $3,500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Quantum Chad.\\n\\nAnalyze UNI at $3.23:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omicron Bishop.\\n\\nAnalyze LINK at $8.68:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Mouse Idea.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Swift Colonel.\\n\\nAnalyze LINK at $8.68:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Orange Crow.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Storm Pablo.\\n\\nAnalyze COMP at $16.81:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Storm Reason.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apex Commander.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Oracle Falcon.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apoc Rook.\\n\\nAnalyze AAPL at $0.21:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch Pathfinder.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Lambda Pathfinder.\\n\\nAnalyze SOL at $79.26:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Solidity Rider.\\n\\nAnalyze BTC at $66,612.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sharp Navigator.\\n\\nAnalyze AAVE at $95.05:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Stone AI.\\n\\nAnalyze LINK at $8.68:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apoc Professor.\\n\\nAnalyze SOL at $79.25:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Silver Explorer.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Titanium Bear.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vertex Admiral.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Flint Ape.\\n\\nAnalyze BTC at $66,581.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Black Cougar.\\n\\nAnalyze ETH at $2,058.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Rust Perry.\\n\\nAnalyze LINK at $8.68:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Mu Ape.\\n\\nAnalyze ETH at $2,058.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vertex Investor.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Morpheus Prime.\\n\\nAnalyze AAVE at $95.14:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel One.\\n\\nAnalyze LINK at $8.71:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Java Bull.\\n\\nAnalyze COMP at $16.81:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Hal Theory.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Prime One.\\n\\nAnalyze COMP at $16.81:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Paul-2ea1.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch Degen.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Epsilon Perry.\\n\\nAnalyze COMP at $16.82:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Kai Pilot.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Aurora Crow.\\n\\nAnalyze UNI at $3.25:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pi Ultra.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chi Idea.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blue Puma.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Paul-8c7c.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Platinum Bull.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Trinity Admiral.\\n\\nAnalyze AAVE at $95.48:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Bronze Bull.\\n\\nAnalyze AAVE at $95.28:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Prime Driver.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chrome Pilot.\\n\\nAnalyze ETH at $2,063.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apex Pascal.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch Pioneer.\\n\\nAnalyze LINK at $8.71:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vitalik Captain.\\n\\nAnalyze LINK at $8.71:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zeta Pavel.\\n\\nAnalyze AAVE at $95.08:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are South Chad.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Go Zero.\\n\\nAnalyze SOL at $79.47:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Neo Cougar.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Iota Max.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pi Pavel.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zane Builder.\\n\\nAnalyze AAPL at $0.21:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gavin One.\\n\\nAnalyze AAVE at $95.11:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are South Concept.\\n\\nAnalyze SOL at $79.53:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Core Concept.\\n\\nAnalyze UNI at $3.23:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Silver Pawn.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Lambda Chief.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apoc Elite.\\n\\nAnalyze SOL at $79.93:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zenith Navigator.\\n\\nAnalyze LINK at $8.73:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Stone Boss.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Paul-cba5.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are C Professor.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Max Builder.\\n\\nAnalyze UNI at $3.24:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Stone Jack.\\n\\nAnalyze AAVE at $95.28:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sigma Chief.\\n\\nAnalyze ETH at $2,065.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Kai Bear.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Rust Major.\\n\\nAnalyze SOL at $79.93:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are David Falcon.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pearl Owl.\\n\\nAnalyze COMP at $16.69:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nu Pro.\\n\\nAnalyze SOL at $80.06:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Iota Bear.\\n\\nAnalyze UNI at $3.24:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Eta Rider.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are South Ape.\\n\\nAnalyze UNI at $3.24:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are West King.\\n\\nAnalyze ETH at $2,070.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gavin Hacker.\\n\\nAnalyze AAVE at $95.59:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel Explorer.\\n\\nAnalyze SOL at $80.02:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Green Cougar.\\n\\nAnalyze BTC at $67,166.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Green Fox.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blue Builder.\\n\\nAnalyze COMP at $16.72:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Quantum Cheetah.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Flint King.\\n\\nAnalyze SOL at $79.98:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are East Bear.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zane Panther.\\n\\nAnalyze ETH at $2,067.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Ruby Whale.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vertex Pro.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Black Colonel.\\n\\nAnalyze AAVE at $95.48:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Aurora King.\\n\\nAnalyze COMP at $16.77:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Steel Lynx.\\n\\nAnalyze AAVE at $95.48:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Mu Parker.\\n\\nAnalyze BTC at $67,049.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Paul-faa6.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pi Investor.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch Z.\\n\\nAnalyze SOL at $79.86:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Core Snake.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Core Concept.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Dozer Lord.\\n\\nAnalyze AAVE at $95.68:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Tau Driver.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blaze Ape.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Flint Captain.\\n\\nAnalyze LINK at $8.71:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Mu Doctor.\\n\\nAnalyze SOL at $79.71:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Upsilon Commander.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Crypto Master.\\n\\nAnalyze COMP at $16.77:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Kappa Paul.\\n\\nAnalyze BTC at $66,897.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Dozer Tiger.\\n\\nAnalyze ETH at $2,059.10:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Lambda Owl.\\n\\nAnalyze AAVE at $95.43:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vitalik Guide.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Oracle Guide.\\n\\nAnalyze UNI at $3.23:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Python Falcon.\\n\\nAnalyze ETH at $2,060.30:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blaze Idea.\\n\\nAnalyze UNI at $3.23:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Yellow Professor.\\n\\nAnalyze SOL at $79.75:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Red Parker.\\n\\nAnalyze SOL at $79.75:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chrome Palmer.\\n\\nAnalyze ETH at $2,060.30:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omicron Analyst.\\n\\nAnalyze COMP at $16.83:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Mouse Lion.\\n\\nAnalyze AAVE at $120.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Grey Lord.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Ruby Pascal.\\n\\nAnalyze COMP at $16.88:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sigma Prime.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Red Queen.\\n\\nAnalyze UNI at $3.22:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Xi Cougar.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chain Founder.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Ruby Mind.\\n\\nAnalyze UNI at $3.22:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Java Zero.\\n\\nAnalyze ETH at $2,060.30:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Titanium Idea.\\n\\nAnalyze COMP at $16.88:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chi Captain.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chrome Raven.\\n\\nAnalyze BTC at $66,832.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Trinity Pavel.\\n\\nAnalyze AAVE at $95.51:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Neo Wolf.\\n\\nAnalyze COMP at $16.86:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Platinum Theory.\\n\\nAnalyze LINK at $8.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nick Pawn.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Rho Jaguar.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are C Fox.\\n\\nAnalyze BTC at $66,753.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Ruby General.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch King.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apoc Paul.\\n\\nAnalyze AAVE at $95.48:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are White Chief.\\n\\nAnalyze COMP at $16.83:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel Parker.\\n\\nAnalyze SOL at $79.80:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Mu Maker.\\n\\nAnalyze LINK at $15.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Frost Jack.\\n\\nAnalyze BTC at $66,654.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch Pavel.\\n\\nAnalyze SOL at $79.68:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Java Trader.\\n\\nAnalyze AAVE at $95.04:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Prime Voyager.\\n\\nAnalyze AAVE at $95.06:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Jett Lynx.\\n\\nAnalyze ETH at $3,500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel Driver.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Stella Founder.\\n\\nAnalyze BTC at $66,771.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vitalik Cheetah.\\n\\nAnalyze COMP at $65.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zane Falcon.\\n\\nAnalyze COMP at $65.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Yellow Pablo.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Cyan One.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sharp Z.\\n\\nAnalyze AAVE at $120.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Core Sailor.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vertex Perry.\\n\\nAnalyze BTC at $66,971.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Theta Skipper.\\n\\nAnalyze AAPL at $0.21:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Core Wolf.\\n\\nAnalyze COMP at $16.88:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Green Pavel.\\n\\nAnalyze COMP at $16.88:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pearl Theory.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Ruby Investor.\\n\\nAnalyze AAVE at $95.30:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Copper Falcon.\\n\\nAnalyze DOGE at $0.15:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Frost Maker.\\n\\nAnalyze AAVE at $95.28:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch Ace.\\n\\nAnalyze COMP at $16.82:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are White Raven.\\n\\nAnalyze SOL at $80.19:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zenith Runner.\\n\\nAnalyze UNI at $8.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are North Master.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Python Ape.\\n\\nAnalyze LINK at $8.72:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pearl Colonel.\\n\\nAnalyze UNI at $3.21:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omega Pioneer.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Max Skipper.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Epsilon Ace.\\n\\nAnalyze ETH at $2,057.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Cyan Bot.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Satoshi Chief.\\n\\nAnalyze ETH at $2,048.10:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Delta Paul.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sharp Prime.\\n\\nAnalyze COMP at $16.72:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Dozer Rider.\\n\\nAnalyze UNI at $3.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Prime Cougar.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Copper Lord.\\n\\nAnalyze LINK at $8.69:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Eta Queen.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chi Pascal.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Flint Bull.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Quantum Racer.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Lambda Concept.\\n\\nAnalyze SOL at $79.31:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Orange Jaguar.\\n\\nAnalyze BTC at $66,667.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Delta Bear.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Paul-7877.\\n\\nAnalyze COMP at $16.74:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel Pilot.\\n\\nAnalyze COMP at $16.74:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nu Cheetah.\\n\\nAnalyze UNI at $3.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Cypher Coder.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Tank Navigator.\\n\\nAnalyze BTC at $66,678.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Luna Master.\\n\\nAnalyze ETH at $2,047.40:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Lambda Coder.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nexus Pierce.\\n\\nAnalyze BTC at $66,557.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Max Leopard.\\n\\nAnalyze ETH at $2,045.80:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Oracle Parker.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Neo Ape.\\n\\nAnalyze BTC at $65,000.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Dozer Rider.\\n\\nAnalyze SOL at $79.47:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apoc Founder.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are North Chad.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Titanium Driver.\\n\\nAnalyze UNI at $3.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Luna Bull.\\n\\nAnalyze UNI at $3.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sigma Wolf.\\n\\nAnalyze UNI at $3.21:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chain Explorer.\\n\\nAnalyze ETH at $2,050.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Hal Parker.\\n\\nAnalyze ETH at $2,050.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apoc Chad.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Iron Jack.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nick Panther.\\n\\nAnalyze ETH at $2,054.80:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vertex Pawn.\\n\\nAnalyze BTC at $66,930.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Platinum Eagle.\\n\\nAnalyze SOL at $79.98:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Eta X.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are David Elite.\\n\\nAnalyze BTC at $66,889.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Alpha Palmer.\\n\\nAnalyze AAVE at $95.14:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gold Panther.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Switch Captain.\\n\\nAnalyze ETH at $2,051.80:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Titanium One.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Alpha Ultra.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Vitalik Mind.\\n\\nAnalyze COMP at $16.76:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Alpha Navigator.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Java Creator.\\n\\nAnalyze COMP at $16.76:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omega Hawk.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Ruby Colonel.\\n\\nAnalyze LINK at $8.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Iron Leopard.\\n\\nAnalyze UNI at $3.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Chi Fox.\\n\\nAnalyze COMP at $16.75:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omicron Driver.\\n\\nAnalyze LINK at $8.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Satoshi Pawn.\\n\\nAnalyze BTC at $66,800.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omicron Parker.\\n\\nAnalyze AAVE at $94.99:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gold Boss.\\n\\nAnalyze UNI at $3.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gavin Tiger.\\n\\nAnalyze LINK at $8.71:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Steel Ape.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Tau Queen.\\n\\nAnalyze COMP at $65.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Epsilon Ape.\\n\\nAnalyze BTC at $66,869.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zane Pierce.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Yellow Guide.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Block Falcon.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Green Elite.\\n\\nAnalyze AAVE at $95.28:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Platinum Perry.\\n\\nAnalyze SOL at $80.20:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Morpheus Degen.\\n\\nAnalyze ETH at $2,053.10:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Morpheus Paul.\\n\\nAnalyze AAVE at $95.28:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Rust Wizard.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nick Professor.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blaze Lynx.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Tank Eagle.\\n\\nAnalyze COMP at $16.78:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Magenta Pavel.\\n\\nAnalyze LINK at $8.73:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Max Jaguar.\\n\\nAnalyze BTC at $65,000.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zenith Analyst.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Delta Porter.\\n\\nAnalyze ETH at $2,055.50:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Dozer Porter.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Xi Knight.\\n\\nAnalyze AAPL at $0.21:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Java Bot.\\n\\nAnalyze SOL at $80.30:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Luna Knight.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apoc Founder.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Kappa Pablo.\\n\\nAnalyze UNI at $3.19:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Platinum Eagle.\\n\\nAnalyze SOL at $80.30:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Morpheus Parker.\\n\\nAnalyze BTC at $66,834.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Jett One.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Ruby Max.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omega Wolf.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Beta Fox.\\n\\nAnalyze UNI at $3.18:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blue Bishop.\\n\\nAnalyze AAVE at $95.24:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sigma Bot.\\n\\nAnalyze UNI at $3.18:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blaze Voyager.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are South Prime.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Luna Zero.\\n\\nAnalyze COMP at $16.77:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omicron Explorer.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Yellow Doctor.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Steel Racer.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sharp Idea.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Steel Jack.\\n\\nAnalyze LINK at $8.71:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are South Bear.\\n\\nAnalyze SOL at $80.33:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Delta Colonel.\\n\\nAnalyze ETH at $2,049.90:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blue Whale.\\n\\nAnalyze UNI at $3.17:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are C Perry.\\n\\nAnalyze SOL at $80.33:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Titanium Chief.\\n\\nAnalyze BTC at $66,864.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Black Major.\\n\\nAnalyze SOL at $80.42:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are South Ace.\\n\\nAnalyze COMP at $16.72:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Sharp Parker.\\n\\nAnalyze UNI at $3.16:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Frost Sailor.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Morpheus Commander.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel Chief.\\n\\nAnalyze ETH at $3,500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Ruby Paul.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Tank Reason.\\n\\nAnalyze TSLA at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gamma Bot.\\n\\nAnalyze ETH at $3,500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Orange Pablo.\\n\\nAnalyze SOL at $80.44:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Java Navigator.\\n\\nAnalyze AAVE at $94.86:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Magenta Thought.\\n\\nAnalyze SOL at $80.45:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Magenta Degen.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Iota Boss.\\n\\nAnalyze COMP at $16.73:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Axel Pro.\\n\\nAnalyze LINK at $8.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Upsilon Major.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pearl Colonel.\\n\\nAnalyze BTC at $66,829.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Morpheus Coder.\\n\\nAnalyze ETH at $2,050.90:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Base Eagle.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Zenith Zero.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nick Rook.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Lambda Prime.\\n\\nAnalyze UNI at $3.17:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Neo Analyst.\\n\\nAnalyze COMP at $16.64:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are West Thought.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Block Pascal.\\n\\nAnalyze COMP at $65.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are C Brain.\\n\\nAnalyze ETH at $2,051.10:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Apoc Hawk.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Rust Chief.\\n\\nAnalyze BTC at $66,886.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Omicron Commander.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Dozer Lion.\\n\\nAnalyze LINK at $8.70:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Nick Thought.\\n\\nAnalyze SPY at $500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Xi Maker.\\n\\nAnalyze DOGE at $0.09:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Stone Analyst.\\n\\nAnalyze ETH at $3,500.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Xi Builder.\\n\\nAnalyze UNI at $3.17:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Blue Professor.\\n\\nAnalyze SOL at $80.39:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 2 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Bronze Cougar.\\n\\nAnalyze NVDA at $900.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Pearl Rider.\\n\\nAnalyze AAPL at $180.00:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading
+  ⚠️  LLM error: Command '['curl', '-s', '-X', 'POST', 'http://localhost:11434/api/generate', '-H', 'Content-Type: application/json', '-d', '{"model": "qwen2.5:14b", "prompt": "You are Gavin Reason.\\n\\nAnalyze ETH at $2,053.10:\\nRespond: SENTIMENT: [bullish/bearish/neutral] | CONFIDENCE: [0-100] | REASONING: [brief]", "stream": false, "options": {"temperature": 0.7, "num_predict": 60}}']' timed out after 45 seconds
+
+📊 Trades: 0 | LLM calls: 1 | Domain: trading

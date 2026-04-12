@@ -7,6 +7,7 @@ import os
 import sys
 import json
 import subprocess
+import random
 from typing import Dict, List, Optional, Any
 from dataclasses import dataclass
 
@@ -20,6 +21,349 @@ class SkillTool:
     examples: List[str]
     
 
+@dataclass
+class PaulPrediction:
+    """Structured prediction from a Paul"""
+    paul_name: str
+    sentiment: str  # bullish/bearish/neutral
+    confidence: float  # 0-1
+    reasoning: str
+    specialty: str = ""
+    trading_style: str = ""
+
+
+class BatchPredictionEngine:
+    """
+    Batch prediction engine that routes Paul predictions through OpenClaw (Kimi).
+    Generates all Paul responses in a single API call for efficiency.
+    """
+    
+    def __init__(self):
+        self.model = "kimi/kimi-k2-thinking"
+        
+    def batch_predict(self, question: str, pauls: List[Dict[str, Any]]) -> List[PaulPrediction]:
+        """
+        Generate predictions for all Pauls in a single batch API call.
+        
+        Args:
+            question: The prediction question
+            pauls: List of Paul persona dictionaries
+            
+        Returns:
+            List of PaulPrediction objects
+        """
+        # Build the batch prompt with all Pauls
+        batch_prompt = self._build_batch_prompt(question, pauls)
+        
+        # Call OpenClaw/Kimi API
+        response = self._call_openclaw_api(batch_prompt)
+        
+        # Parse the structured response
+        predictions = self._parse_predictions(response, pauls)
+        
+        return predictions
+    
+    def _build_batch_prompt(self, question: str, pauls: List[Dict[str, Any]]) -> str:
+        """Build a prompt that includes all Pauls and their unique traits."""
+        
+        # Limit Pauls in prompt to avoid token limits
+        # For large pools, sample representative Pauls
+        if len(pauls) > 100:
+            # Sample 100 Pauls evenly distributed
+            step = len(pauls) // 100
+            sampled_pauls = [pauls[i] for i in range(0, len(pauls), step)][:100]
+        else:
+            sampled_pauls = pauls
+        
+        prompt = f"""You are orchestrating a multi-agent prediction market simulation called "Swimming Pauls".
+
+QUESTION: {question}
+
+You need to generate predictions from {len(pauls)} different agents (Pauls), each with unique personalities, specialties, and biases.
+
+## PAUL PERSONAS (showing {len(sampled_pauls)} representative examples):
+
+"""
+        
+        for i, paul in enumerate(sampled_pauls):
+            prompt += f"""
+### PAUL {i+1}: {paul.get('name', f'Paul-{i}')}
+- Trading Style: {paul.get('trading_style', 'Unknown')}
+- Risk Profile: {paul.get('risk_profile', 'Unknown')}
+- Confidence Base: {paul.get('confidence_base', 0.5):.2f}
+- Specialties: {', '.join(paul.get('specialties', [])[:3])}
+- Backstory: {paul.get('backstory', 'No backstory')[:100]}...
+"""
+        
+        if len(pauls) > len(sampled_pauls):
+            prompt += f"\n... and {len(pauls) - len(sampled_pauls)} more Pauls with similar diverse traits.\n"
+        
+        prompt += """
+
+## YOUR TASK:
+
+Generate a prediction for EACH of the """ + str(len(pauls)) + """ Pauls based on their unique personality, risk profile, and cognitive strengths. Each Paul should respond differently based on their traits.
+
+IMPORTANT: Respond ONLY with a valid JSON array. No markdown, no explanations outside the JSON.
+
+Each prediction must include:
+- paul_name: The exact name of the Paul
+- sentiment: One of "bullish", "bearish", or "neutral"
+- confidence: A float between 0.0 and 1.0 (based on their confidence_base and personality)
+- reasoning: A brief explanation (1-2 sentences) in the voice of that Paul, reflecting their personality
+
+The JSON format should be:
+[
+  {"paul_name": "Alpha Trader", "sentiment": "bullish", "confidence": 0.85, "reasoning": "The momentum is undeniable. I'm seeing breakout patterns everywhere."},
+  {"paul_name": "Beta Analyst", "sentiment": "neutral", "confidence": 0.6, "reasoning": "Data is mixed. Waiting for clearer signals before taking a position."},
+  ...
+]
+
+Generate predictions for ALL """ + str(len(pauls)) + """ Pauls now."""
+        
+        return prompt
+    
+    def _call_openclaw_api(self, prompt: str) -> str:
+        """Call OpenClaw API to get batch predictions."""
+        try:
+            # Try to use openclaw CLI if available
+            import subprocess
+            import tempfile
+            
+            # Write prompt to temp file
+            with tempfile.NamedTemporaryFile(mode='w', suffix='.txt', delete=False) as f:
+                f.write(prompt)
+                temp_path = f.name
+            
+            # Try using openclaw ask or similar command
+            # First, let's try the openclaw CLI
+            result = subprocess.run(
+                ['openclaw', 'ask', prompt],
+                capture_output=True,
+                text=True,
+                timeout=120
+            )
+            
+            if result.returncode == 0 and result.stdout.strip():
+                return result.stdout.strip()
+            
+            # Fallback: try to use the model directly via HTTP API
+            return self._call_kimi_api(prompt)
+            
+        except Exception as e:
+            print(f"OpenClaw API call failed: {e}")
+            return self._call_kimi_api(prompt)
+    
+    def _call_kimi_api(self, prompt: str) -> str:
+        """Call Kimi API directly as fallback."""
+        try:
+            import urllib.request
+            import urllib.error
+            import os
+            
+            # Check for API key
+            api_key = os.environ.get('OPENROUTER_API_KEY') or os.environ.get('KIMI_API_KEY')
+            
+            if not api_key:
+                # Return mock data for testing
+                return self._generate_mock_response(prompt)
+            
+            # OpenRouter API endpoint for Kimi
+            url = "https://openrouter.ai/api/v1/chat/completions"
+            
+            headers = {
+                "Authorization": f"Bearer {api_key}",
+                "Content-Type": "application/json",
+                "HTTP-Referer": "https://swimming-pauls.local",
+                "X-Title": "Swimming Pauls Batch Predictions"
+            }
+            
+            data = {
+                "model": "kimi/kimi-k2-thinking",
+                "messages": [
+                    {"role": "system", "content": "You are a multi-agent prediction system. Respond only with valid JSON arrays."},
+                    {"role": "user", "content": prompt}
+                ],
+                "temperature": 0.7,
+                "max_tokens": 8000
+            }
+            
+            req = urllib.request.Request(
+                url,
+                data=json.dumps(data).encode('utf-8'),
+                headers=headers,
+                method='POST'
+            )
+            
+            with urllib.request.urlopen(req, timeout=120) as response:
+                result = json.loads(response.read().decode('utf-8'))
+                return result['choices'][0]['message']['content']
+                
+        except Exception as e:
+            print(f"Kimi API call failed: {e}")
+            return self._generate_mock_response(prompt)
+    
+    def _generate_mock_response(self, prompt: str) -> str:
+        """Generate mock predictions for testing when API is unavailable."""
+        # Extract Paul count from prompt
+        import re
+        match = re.search(r'Generate predictions for ALL (\d+) Pauls', prompt)
+        count = int(match.group(1)) if match else 50
+        
+        # Extract Paul names from prompt
+        names = re.findall(r'### PAUL \d+: ([^\n]+)', prompt)
+        if not names:
+            names = [f"Paul-{i}" for i in range(count)]
+        
+        predictions = []
+        sentiments = ["bullish", "bearish", "neutral"]
+        
+        for name in names[:count]:
+            # Generate somewhat realistic prediction based on name hash
+            name_hash = sum(ord(c) for c in name) % 100
+            
+            if name_hash < 40:
+                sentiment = "bullish"
+            elif name_hash < 70:
+                sentiment = "bearish"
+            else:
+                sentiment = "neutral"
+            
+            confidence = 0.4 + (name_hash % 50) / 100
+            
+            reasonings = {
+                "bullish": [
+                    "The momentum is building. Technicals look strong.",
+                    "Smart money is accumulating. I'm following the whales.",
+                    "Fundamentals are solid. This is a no-brainer.",
+                    "Breaking resistance levels. Time to ride the wave."
+                ],
+                "bearish": [
+                    "Seeing distribution patterns. Time to be cautious.",
+                    "Overbought conditions suggest a pullback is coming.",
+                    "Risk-off sentiment is growing. Protect your capital.",
+                    "The narrative is shifting. Don't fight the trend."
+                ],
+                "neutral": [
+                    "Mixed signals. Waiting for clearer direction.",
+                    "Consolidation phase. Patience is key here.",
+                    "Data is inconclusive. Sitting this one out.",
+                    "Too much uncertainty. Better to wait and see."
+                ]
+            }
+            
+            reasoning = random.choice(reasonings[sentiment])
+            
+            predictions.append({
+                "paul_name": name,
+                "sentiment": sentiment,
+                "confidence": round(confidence, 2),
+                "reasoning": reasoning
+            })
+        
+        return json.dumps(predictions)
+    
+    def _parse_predictions(self, response: str, pauls: List[Dict[str, Any]]) -> List[PaulPrediction]:
+        """Parse the JSON response into PaulPrediction objects."""
+        predictions = []
+        
+        try:
+            # Clean up response - remove markdown code blocks if present
+            response = response.strip()
+            if response.startswith('```json'):
+                response = response[7:]
+            if response.startswith('```'):
+                response = response[3:]
+            if response.endswith('```'):
+                response = response[:-3]
+            response = response.strip()
+            
+            # Parse JSON
+            data = json.loads(response)
+            
+            if isinstance(data, list):
+                for item in data:
+                    pred = PaulPrediction(
+                        paul_name=item.get('paul_name', 'Unknown'),
+                        sentiment=item.get('sentiment', 'neutral').lower(),
+                        confidence=float(item.get('confidence', 0.5)),
+                        reasoning=item.get('reasoning', 'No reasoning provided'),
+                        specialty=item.get('specialty', ''),
+                        trading_style=item.get('trading_style', '')
+                    )
+                    predictions.append(pred)
+            elif isinstance(data, dict) and 'predictions' in data:
+                for item in data['predictions']:
+                    pred = PaulPrediction(
+                        paul_name=item.get('paul_name', 'Unknown'),
+                        sentiment=item.get('sentiment', 'neutral').lower(),
+                        confidence=float(item.get('confidence', 0.5)),
+                        reasoning=item.get('reasoning', 'No reasoning provided'),
+                        specialty=item.get('specialty', ''),
+                        trading_style=item.get('trading_style', '')
+                    )
+                    predictions.append(pred)
+                    
+        except json.JSONDecodeError as e:
+            print(f"Failed to parse predictions JSON: {e}")
+            # Fallback: generate predictions based on Pauls
+            predictions = self._generate_fallback_predictions(pauls)
+        except Exception as e:
+            print(f"Error parsing predictions: {e}")
+            predictions = self._generate_fallback_predictions(pauls)
+        
+        return predictions
+    
+    def _generate_fallback_predictions(self, pauls: List[Dict[str, Any]]) -> List[PaulPrediction]:
+        """Generate fallback predictions when parsing fails."""
+        predictions = []
+        
+        for paul in pauls:
+            # Determine sentiment based on risk profile and randomness
+            risk = paul.get('risk_profile', 'MODERATE')
+            confidence = paul.get('confidence_base', 0.5)
+            
+            # Risk profile affects sentiment distribution
+            if risk == 'ULTRA_AGGRESSIVE' or risk == 'DEGEN':
+                weights = [0.5, 0.3, 0.2]  # More bullish
+            elif risk == 'AGGRESSIVE':
+                weights = [0.4, 0.35, 0.25]
+            elif risk == 'CONSERVATIVE' or risk == 'ULTRA_CONSERVATIVE':
+                weights = [0.2, 0.4, 0.4]  # More bearish/neutral
+            else:
+                weights = [0.33, 0.33, 0.34]
+            
+            sentiments = ['bullish', 'bearish', 'neutral']
+            sentiment = random.choices(sentiments, weights=weights)[0]
+            
+            # Generate reasoning based on trading style
+            style = paul.get('trading_style', 'SWING_TRADER')
+            reasonings = {
+                'SCALPER': ["Quick momentum play.", "Scalping the volatility."],
+                'SWING_TRADER': ["Swing setup looks good.", "Technical pattern forming."],
+                'POSITION_TRADER': ["Long-term trend intact.", "Fundamentals support this."],
+                'ALGORITHMIC': ["Signal strength is high.", "Model says go."],
+                'QUANTITATIVE': ["Statistical edge detected.", "Quant model triggered."],
+                'EVENT_DRIVEN': ["Catalyst incoming.", "Event setup is compelling."],
+                'MOMENTUM': ["Momentum is accelerating.", "Trend is your friend."],
+                'CONTRARIAN': ["Crowd is wrong here.", "Contrarian opportunity."],
+                'VALUE': ["Undervalued opportunity.", "Value play emerging."],
+            }
+            
+            reasoning = random.choice(reasonings.get(style, ["Analysis complete.", "Decision made."]))
+            
+            predictions.append(PaulPrediction(
+                paul_name=paul.get('name', 'Unknown'),
+                sentiment=sentiment,
+                confidence=round(confidence, 2),
+                reasoning=reasoning,
+                specialty=', '.join(paul.get('specialties', [])[:2]),
+                trading_style=style
+            ))
+        
+        return predictions
+
+
 class OpenClawSkillBridge:
     """
     Bridge between Swimming Pauls and OpenClaw skills.
@@ -29,6 +373,20 @@ class OpenClawSkillBridge:
     def __init__(self):
         self.available_skills = self._discover_skills()
         self.tool_registry = self._build_tool_registry()
+        self.batch_engine = BatchPredictionEngine()
+        
+    def batch_predict(self, question: str, pauls: List[Dict[str, Any]]) -> List[PaulPrediction]:
+        """
+        Generate predictions for all Pauls in a single batch call.
+        
+        Args:
+            question: The prediction question
+            pauls: List of Paul persona dictionaries
+            
+        Returns:
+            List of PaulPrediction objects with sentiment, confidence, and reasoning
+        """
+        return self.batch_engine.batch_predict(question, pauls)
         
     def _discover_skills(self) -> Dict[str, Any]:
         """Discover available OpenClaw skills"""
@@ -256,14 +614,32 @@ def get_skill_bridge() -> OpenClawSkillBridge:
     return _skill_bridge
 
 
-if __name__ == "__main__":
-    # Test the skill bridge
-    bridge = get_skill_bridge()
-    print("🛠️ Available Skills:")
-    for name, skill in bridge.available_skills.items():
-        print(f"  {skill['emoji']} {name}: {skill['description']}")
+    def get_diary_entries(self, paul_name: str, days: int = 7, entry_types: list = None) -> list:
+        """Get diary entries for a Paul from the REM backfill system."""
+        try:
+            from rem_backfill import REMBackfillEngine
+            engine = REMBackfillEngine()
+            entries = engine.get_diary_timeline(paul_name, days, entry_types)
+            return [e.to_dict() for e in entries]
+        except Exception as e:
+            return [{"error": str(e)}]
     
-    print("\n🔧 Tools for Trader Paul:")
-    tools = bridge.get_tools_for_paul("Trader Paul", "Market Timing")
-    for tool in tools:
-        print(f"  {tool.emoji} {tool.name}")
+    def get_world_timeline(self, days: int = 1, entry_types: list = None) -> list:
+        """Get world timeline with all Pauls' activities."""
+        try:
+            from rem_backfill import REMBackfillEngine
+            engine = REMBackfillEngine()
+            return engine.get_world_timeline(days, entry_types)
+        except Exception as e:
+            return [{"error": str(e)}]
+    
+    def get_pauls_with_diaries(self) -> list:
+        """Get list of Pauls who have diary entries."""
+        try:
+            from rem_backfill import REMBackfillEngine
+            engine = REMBackfillEngine()
+            return engine.get_pauls_with_entries()
+        except Exception as e:
+            return [{"error": str(e)}]
+
+

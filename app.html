@@ -147,6 +147,55 @@
             flex-shrink: 0;
         }
 
+        /* Glass card style (matches demo pages) */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 24px;
+        }
+        .glass-card-sm {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            padding: 16px;
+        }
+        /* Paul perspective cards with colored left borders */
+        .paul-perspective { border-radius: 12px; padding: 16px; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); }
+        .paul-perspective.paul-bullish { border-left: 3px solid #22c55e; }
+        .paul-perspective.paul-bearish { border-left: 3px solid #ef4444; }
+        .paul-perspective.paul-neutral { border-left: 3px solid #eab308; }
+        .paul-perspective .paul-dir-badge {
+            font-size: 10px; padding: 2px 8px; border-radius: 4px; font-weight: 600;
+        }
+        .paul-dir-badge.dir-bullish { color: #22c55e; background: rgba(34,197,94,0.1); }
+        .paul-dir-badge.dir-bearish { color: #ef4444; background: rgba(239,68,68,0.1); }
+        .paul-dir-badge.dir-neutral { color: #eab308; background: rgba(234,179,8,0.1); }
+        /* Vote matrix boxes */
+        .vote-box { border-radius: 12px; padding: 16px; text-align: center; }
+        .vote-box.vote-bullish { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); }
+        .vote-box.vote-bearish { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.2); }
+        .vote-box.vote-neutral { background: rgba(234,179,8,0.1); border: 1px solid rgba(234,179,8,0.2); }
+        .vote-box .vote-count { font-size: 32px; font-weight: 800; }
+        .vote-box .vote-label { font-size: 13px; margin-top: 4px; }
+        /* Monte Carlo bars */
+        .mc-bar-track { height: 8px; background: rgba(255,255,255,0.05); border-radius: 9999px; overflow: hidden; }
+        .mc-bar-fill { height: 100%; border-radius: 9999px; transition: width 0.6s; }
+        /* D3 node glow effects */
+        .glow-green { filter: drop-shadow(0 0 8px rgba(34, 197, 94, 0.6)); }
+        .glow-yellow { filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.6)); }
+        .glow-red { filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6)); }
+        @keyframes pulse-glow { 0%, 100% { opacity: 0.6; transform: scale(1); } 50% { opacity: 1; transform: scale(1.1); } }
+        .pulse-glow { animation: pulse-glow 2s infinite; }
+        /* Activity log entry */
+        .activity-entry { display: flex; align-items: center; gap: 8px; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 8px; font-size: 13px; }
+
         .sidebar-footer {
             padding: 12px 18px;
             border-top: 1px solid var(--border);
@@ -920,23 +969,10 @@
             align-self: center;
         }
 
-        /* ===========================
-           CREATIVE TAB
-           =========================== */
-        .creative-score {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            font-weight: 800;
-            border: 3px solid;
-        }
-        .severity-high { background: rgba(255, 71, 87, 0.15); color: var(--danger); border: 1px solid rgba(255, 71, 87, 0.3); }
-        .severity-medium { background: rgba(255, 165, 2, 0.15); color: var(--warning); border: 1px solid rgba(255, 165, 2, 0.3); }
-        .severity-low { background: rgba(0, 212, 170, 0.15); color: var(--success); border: 1px solid rgba(0, 212, 170, 0.3); }
+        /* Standalone sentiment border classes (matches explorer.html) */
+        .bullish { border-left: 3px solid #22c55e; }
+        .bearish { border-left: 3px solid #ef4444; }
+        .neutral { border-left: 3px solid #eab308; }
 
         /* ===========================
            WORLD TAB
@@ -1123,10 +1159,7 @@
             <span class="item-emoji">💰</span>
             <span>Trading</span>
         </div>
-        <div class="sidebar-item" data-tab="creative" onclick="switchTab('creative')">
-            <span class="item-emoji">🎬</span>
-            <span>Creative</span>
-        </div>
+
     </div>
 
     <!-- Sidebar footer: connection status -->
@@ -1261,32 +1294,39 @@
 
                 <!-- Result Content (hidden until results) -->
                 <div id="results-content" style="display:none;">
-                    <!-- Consensus Header -->
-                    <div class="card-lg mb-6" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);">
-                        <div class="flex items-center justify-between" style="flex-wrap: wrap; gap: 16px;">
-                            <div>
-                                <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px;">Question</div>
-                                <h2 id="res-question" style="font-size: 18px; font-weight: 700;">—</h2>
-                            </div>
-                            <div class="text-center" style="text-align: right;">
-                                <div id="res-direction-badge" style="font-size: 32px; font-weight: 800; margin-bottom: 4px;">—</div>
-                                <div id="res-confidence" style="font-size: 14px; color: var(--text-muted);">—</div>
-                            </div>
-                        </div>
+                    <!-- Question -->
+                    <div class="glass-card" style="margin-bottom: 24px;">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Question</div>
+                        <h2 id="res-question" style="font-size: 20px; font-weight: 700;">—</h2>
                     </div>
 
-                    <!-- Sentiment Breakdown -->
-                    <div class="card-lg mb-6">
-                        <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;">Sentiment Breakdown</div>
-                        <div id="res-sentiment-bars"></div>
+                    <!-- Consensus -->
+                    <div class="glass-card text-center" style="margin-bottom: 24px;">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Consensus</div>
+                        <div id="res-direction-badge" style="font-size: 40px; font-weight: 800; margin-bottom: 6px;">—</div>
+                        <div id="res-confidence" style="font-size: 14px; color: var(--text-muted);">—</div>
                     </div>
 
-                    <!-- Paul Cards Grid -->
-                    <div class="flex items-center justify-between mb-4">
-                        <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px;">Individual Pauls</div>
-                        <span id="res-paul-count" style="font-size: 12px; color: var(--text-muted);">0 pauls</span>
+                    <!-- Stats Grid -->
+                    <div id="res-stats-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;"></div>
+
+                    <!-- Paul Vote Matrix -->
+                    <div class="glass-card" style="margin-bottom: 24px;">
+                        <h3 style="font-weight: 700; margin-bottom: 16px;">Paul Vote Matrix</h3>
+                        <div id="res-vote-matrix" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;"></div>
                     </div>
-                    <div id="res-paul-grid" class="grid grid-auto-2 gap-4 mb-6"></div>
+
+                    <!-- Paul Perspectives -->
+                    <div class="glass-card" style="margin-bottom: 24px;">
+                        <h3 style="font-weight: 700; margin-bottom: 16px;">Sample Paul Perspectives</h3>
+                        <div id="res-paul-perspectives" style="display: flex; flex-direction: column; gap: 12px;"></div>
+                    </div>
+
+                    <!-- Monte Carlo Simulation -->
+                    <div class="glass-card" style="margin-bottom: 24px;">
+                        <h3 style="font-weight: 700; margin-bottom: 16px;">Monte Carlo Simulation</h3>
+                        <div id="res-monte-carlo"></div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1495,18 +1535,49 @@
             <button onclick="switchTab('home')" class="btn-teal">← Go to Home</button>
         </div>
         <div id="debate-content" style="display:none;">
-            <div class="flex gap-4" style="min-height: calc(100vh - 56px);">
-                <div class="flex-1 min-w-0">
-                    <div class="card mb-4">
-                        <h2 class="gradient-text" style="font-size: 20px; font-weight: 700;">🕸️ Debate Network</h2>
-                        <p style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Nodes = Pauls · Edges = Agreement/Disagreement · Drag to rearrange</p>
+            <!-- Stats Bar -->
+            <div id="debate-stats-bar" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px;"></div>
+
+            <!-- Graph Container -->
+            <div class="glass-card" style="padding: 16px; margin-bottom: 24px;">
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+                    <div style="display: flex; align-items: center; gap: 16px;">
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 13px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #22c55e; display: inline-block;"></span> Bullish</span>
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 13px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #eab308; display: inline-block;"></span> Neutral</span>
+                        <span style="display: flex; align-items: center; gap: 6px; font-size: 13px;"><span style="width: 10px; height: 10px; border-radius: 50%; background: #ef4444; display: inline-block;"></span> Bearish</span>
                     </div>
-                    <div id="debate-graph" class="card-lg" style="height: calc(100vh - 200px); position: relative; overflow: hidden; padding: 0;"></div>
+                    <div style="display: flex; gap: 8px;">
+                        <button id="debate-pause-btn" onclick="toggleDebatePause()" style="padding: 6px 14px; background: rgba(255,255,255,0.1); border: none; color: var(--text); border-radius: 8px; font-size: 13px; cursor: pointer;">⏸️ Pause</button>
+                        <button onclick="resetDebateGraph()" style="padding: 6px 14px; background: rgba(255,255,255,0.1); border: none; color: var(--text); border-radius: 8px; font-size: 13px; cursor: pointer;">🔄 Reset</button>
+                    </div>
                 </div>
-                <div style="width: 260px;" class="flex-shrink-0">
-                    <div class="card sticky">
-                        <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;">Top Influencers</div>
-                        <div id="debate-influencers"></div>
+                <div id="debate-graph" style="height: 60vh; min-height: 400px; position: relative; overflow: hidden;"></div>
+            </div>
+
+            <!-- Activity Log -->
+            <div class="glass-card" style="margin-bottom: 24px;">
+                <h3 style="font-weight: 700; margin-bottom: 16px;">Recent Activity</h3>
+                <div id="debate-activity-log" style="max-height: 200px; overflow-y: auto; display: flex; flex-direction: column; gap: 8px;"></div>
+            </div>
+
+            <!-- How It Works -->
+            <div class="glass-card" style="margin-bottom: 24px;">
+                <h3 style="font-weight: 700; margin-bottom: 16px;">How the Visualization Works</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px;">
+                    <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">🕸️</div>
+                        <div style="font-weight: 700; margin-bottom: 4px;">Force-Directed Graph</div>
+                        <p style="font-size: 13px; color: var(--text-muted);">Pauls attract to others with similar opinions and repel from opposing views</p>
+                    </div>
+                    <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">⚡</div>
+                        <div style="font-weight: 700; margin-bottom: 4px;">Live Connections</div>
+                        <p style="font-size: 13px; color: var(--text-muted);">Lines show active debates between Pauls. Thicker lines = stronger influence</p>
+                    </div>
+                    <div style="padding: 16px; background: rgba(255,255,255,0.03); border-radius: 12px;">
+                        <div style="font-size: 24px; margin-bottom: 8px;">🎯</div>
+                        <div style="font-weight: 700; margin-bottom: 4px;">Consensus Forming</div>
+                        <p style="font-size: 13px; color: var(--text-muted);">Watch clusters merge as Pauls convince each other and reach agreement</p>
                     </div>
                 </div>
             </div>
@@ -1524,15 +1595,15 @@
         </div>
         <div id="viz-content" style="display:none;">
             <h1 class="gradient-text mb-6" style="font-size: 24px; font-weight: 700;">📈 Visualize</h1>
-            <div class="card-lg mb-6">
+            <div class="glass-card" style="margin-bottom: 24px;">
                 <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;">Consensus Convergence</div>
                 <div id="viz-convergence" style="height: 220px; position: relative;"></div>
             </div>
-            <div class="card-lg mb-6">
+            <div class="glass-card" style="margin-bottom: 24px;">
                 <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;">Belief Distribution</div>
                 <div id="viz-beliefs"></div>
             </div>
-            <div class="card-lg mb-6">
+            <div class="glass-card" style="margin-bottom: 24px;">
                 <div style="font-size: 12px; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 16px;">Specialty Breakdown</div>
                 <div id="viz-specialties" class="grid grid-auto-2 gap-4"></div>
             </div>
@@ -1757,46 +1828,6 @@
         </div>
     </div>
 
-    <!-- ============ TAB: CREATIVE ============ -->
-    <div class="tab-panel" id="tab-creative">
-        <div style="max-width: 900px; margin: 0 auto;">
-            <h1 class="gradient-text mb-2" style="font-size: 24px; font-weight: 700;">🎬 Script Doctor</h1>
-            <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 24px;">Paste a script or write a prompt — the Pauls will analyze it for dialogue, pacing, character, and plot issues.</p>
-
-            <div class="card-lg mb-6">
-                <textarea id="creative-input" class="sp-input" rows="12" style="font-family: 'SF Mono', Monaco, monospace;" placeholder="Paste your script here...&#10;&#10;INT. COFFEE SHOP - DAY&#10;&#10;SARAH sits alone at a corner table. She stirs her coffee without drinking it.&#10;&#10;SARAH&#10;(muttering)&#10;This can't be happening..."></textarea>
-                <div class="flex items-center justify-between mt-4">
-                    <span style="font-size: 12px; color: var(--text-muted);" id="creative-charcount">0 characters</span>
-                    <button onclick="analyzeScript()" id="creative-btn-analyze" class="btn-primary">🎬 Analyze Script</button>
-                </div>
-            </div>
-
-            <div id="creative-results" style="display:none;"></div>
-
-            <div id="creative-empty" class="card-lg text-center" style="padding: 32px;">
-                <div style="font-size: 48px; margin-bottom: 16px;">📝</div>
-                <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 16px;">What Script Doctor Does</h3>
-                <div class="grid grid-2 gap-4" style="text-align: left; max-width: 600px; margin: 0 auto;">
-                    <div class="card">
-                        <div style="font-size: 13px; font-weight: 600; color: var(--accent-teal); margin-bottom: 4px;">💬 Dialogue</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">Checks for naturalistic speech, character voice consistency, and subtext.</div>
-                    </div>
-                    <div class="card">
-                        <div style="font-size: 13px; font-weight: 600; color: var(--accent-pink); margin-bottom: 4px;">⏱️ Pacing</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">Analyzes scene length, tension arcs, and narrative momentum.</div>
-                    </div>
-                    <div class="card">
-                        <div style="font-size: 13px; font-weight: 600; color: var(--accent-gold); margin-bottom: 4px;">👤 Character</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">Evaluates character development, motivation, and arc progression.</div>
-                    </div>
-                    <div class="card">
-                        <div style="font-size: 13px; font-weight: 600; color: var(--accent-teal); margin-bottom: 4px;">📖 Plot</div>
-                        <div style="font-size: 12px; color: var(--text-muted);">Reviews structure, conflict, stakes, and resolution quality.</div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- ==================== JAVASCRIPT ==================== -->
@@ -1829,11 +1860,14 @@
         socialPlatformFilter: null,
         leaderboardData: [],
         tradingData: null,
-        creativeAnalysis: null,
-        creativeAnalyzing: false,
     };
 
-    const TABS = ['home','results','settings','debate','visualize','world','social','leaderboard','trading','creative'];
+    const TABS = ['home','results','settings','debate','visualize','world','social','leaderboard','trading'];
+
+    // Debate tab state
+    let debateSimulation = null;
+    let debatePaused = false;
+    let debateActivityInterval = null;
 
     // ===========================
     // TAB ROUTING
@@ -1859,7 +1893,6 @@
         if (tab === 'social') initSocialTab();
         if (tab === 'leaderboard') initLeaderboardTab();
         if (tab === 'trading') initTradingTab();
-        if (tab === 'creative') initCreativeTab();
     };
 
     function initRouter() {
@@ -2081,15 +2114,6 @@
                 updateTradingIndicator(false);
                 refreshTradingStatus();
                 break;
-            case 'creative.analyze':
-                state.creativeAnalyzing = false;
-                if (msg.error) {
-                    renderCreativeError(msg.error);
-                } else {
-                    state.creativeAnalysis = payload;
-                    renderCreativeResults(payload);
-                }
-                break;
             default:
                 console.log('WS msg:', type, payload);
         }
@@ -2227,56 +2251,67 @@
         const dir = extractDirection(result);
         const conf = extractConfidence(result);
         const dirBadge = document.getElementById('res-direction-badge');
-        const dirColor = dir === 'BULLISH' ? 'var(--success)' : dir === 'BEARISH' ? 'var(--danger)' : 'var(--warning)';
+        const dirColor = dir === 'BULLISH' ? '#22c55e' : dir === 'BEARISH' ? '#ef4444' : '#eab308';
         dirBadge.style.color = dirColor;
         dirBadge.textContent = dir;
         document.getElementById('res-confidence').textContent = conf + '% confidence';
 
-        const sentBars = document.getElementById('res-sentiment-bars');
         const sentiments = extractSentiments(result);
-        const total = sentiments.bullish + sentiments.bearish + sentiments.neutral || 1;
-        sentBars.innerHTML = [
-            { label: 'Bullish', count: sentiments.bullish, color: 'var(--success)', bg: 'rgba(0, 212, 170, 0.2)' },
-            { label: 'Bearish', count: sentiments.bearish, color: 'var(--danger)', bg: 'rgba(255, 71, 87, 0.2)' },
-            { label: 'Neutral', count: sentiments.neutral, color: 'var(--warning)', bg: 'rgba(255, 165, 2, 0.2)' },
-        ].map(it => {
-            const pct = (it.count / total * 100).toFixed(1);
-            return '<div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">'
-                + '<span style="font-size:12px;color:var(--text-muted);width:60px;text-align:right;">' + it.label + '</span>'
-                + '<div style="flex:1;background:var(--bg);border-radius:6px;overflow:hidden;height:28px;">'
-                + '<div style="width:' + pct + '%;background:' + it.bg + ';height:100%;border-radius:6px;display:flex;align-items:center;padding:0 10px;transition:width 0.6s;">'
-                + '<span style="color:' + it.color + ';font-size:12px;font-weight:600;">' + it.count + '</span></div></div>'
-                + '<span style="font-size:12px;color:var(--text-muted);width:48px;">' + pct + '%</span></div>';
-        }).join('');
-
         const pauls = extractPauls(result);
-        document.getElementById('res-paul-count').textContent = pauls.length + ' pauls';
-        const grid = document.getElementById('res-paul-grid');
+        const totalRounds = result.rounds || result.rounds_completed || 10;
+
+        // Stats Grid
+        document.getElementById('res-stats-grid').innerHTML = [
+            { value: totalRounds, label: 'Rounds' },
+            { value: pauls.length || (sentiments.bullish + sentiments.bearish + sentiments.neutral), label: 'Pauls' },
+            { value: (dir === 'BULLISH' ? '+' : dir === 'BEARISH' ? '-' : '') + (conf / 100).toFixed(2), label: 'Sentiment', color: dirColor },
+            { value: '1K', label: 'MC Runs' },
+        ].map(s => '<div class="glass-card-sm text-center"><div style="font-size:24px;font-weight:800;' + (s.color ? 'color:' + s.color + ';' : '') + '">' + s.value + '</div><div style="font-size:11px;color:var(--text-muted);">' + s.label + '</div></div>').join('');
+
+        // Vote Matrix
+        const total = sentiments.bullish + sentiments.bearish + sentiments.neutral || 1;
+        document.getElementById('res-vote-matrix').innerHTML =
+            '<div class="vote-box vote-bullish"><div class="vote-count" style="color:#22c55e;">' + sentiments.bullish + '</div><div class="vote-label" style="color:#22c55e;">Bullish</div></div>'
+            + '<div class="vote-box vote-neutral"><div class="vote-count" style="color:#eab308;">' + sentiments.neutral + '</div><div class="vote-label" style="color:#eab308;">Neutral</div></div>'
+            + '<div class="vote-box vote-bearish"><div class="vote-count" style="color:#ef4444;">' + sentiments.bearish + '</div><div class="vote-label" style="color:#ef4444;">Bearish</div></div>';
+
+        // Paul Perspectives
+        const perspectives = document.getElementById('res-paul-perspectives');
         if (pauls.length === 0) {
-            grid.innerHTML = '<div style="grid-column:1/-1;text-align:center;color:var(--text-muted);padding:32px 0;">No individual Paul data available</div>';
+            perspectives.innerHTML = '<div style="text-align:center;color:var(--text-muted);padding:24px 0;">No individual Paul data available</div>';
         } else {
-            grid.innerHTML = pauls.map((p, i) => {
+            perspectives.innerHTML = pauls.map((p, i) => {
                 const pDir = extractDirection(p);
-                const borderColor = pDir === 'BULLISH' ? 'rgba(0, 212, 170, 0.3)' : pDir === 'BEARISH' ? 'rgba(255, 71, 87, 0.3)' : 'rgba(255, 165, 2, 0.3)';
-                const pBadge = pDir === 'BULLISH' ? 'badge-bullish' : pDir === 'BEARISH' ? 'badge-bearish' : 'badge-neutral';
+                const dirCls = pDir === 'BULLISH' ? 'paul-bullish' : pDir === 'BEARISH' ? 'paul-bearish' : 'paul-neutral';
+                const badgeCls = pDir === 'BULLISH' ? 'dir-bullish' : pDir === 'BEARISH' ? 'dir-bearish' : 'dir-neutral';
                 const emoji = p.emoji || p.specialty_emoji || '🐟';
-                const name = p.name || 'Paul #' + (i+1);
-                const snippet = (p.reasoning || p.analysis || '').slice(0, 120);
-                const full = p.reasoning || p.analysis || '';
-                return '<div class="paul-card" style="border-color:' + borderColor + ';" onclick="this.classList.toggle(\'expanded\')">'
-                    + '<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">'
-                    + '<div style="display:flex;align-items:center;gap:8px;">'
+                const name = p.name || 'Paul #' + (i + 1);
+                const reasoning = p.reasoning || p.analysis || '';
+                return '<div class="paul-perspective ' + dirCls + '">'
+                    + '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
                     + '<span style="font-size:18px;">' + escHtml(emoji) + '</span>'
-                    + '<span style="font-size:13px;font-weight:600;">' + escHtml(name) + '</span>'
+                    + '<span style="font-weight:700;color:' + (pDir === 'BULLISH' ? '#22c55e' : pDir === 'BEARISH' ? '#ef4444' : '#eab308') + ';">' + escHtml(name) + '</span>'
+                    + '<span class="paul-dir-badge ' + badgeCls + '">' + pDir + '</span>'
                     + '</div>'
-                    + '<span class="badge ' + pBadge + '" style="font-size:10px;padding:3px 8px;">' + escHtml(pDir) + '</span>'
-                    + '</div>'
-                    + (p.confidence ? '<div style="font-size:11px;color:var(--text-muted);margin-bottom:4px;">' + p.confidence + '% confidence</div>' : '')
-                    + '<div style="font-size:12px;color:var(--text-muted);line-height:1.5;">' + escHtml(snippet) + (full.length > 120 ? '...' : '') + '</div>'
-                    + '<div class="reasoning-full" style="margin-top:8px;font-size:12px;color:var(--text-muted);line-height:1.5;border-top:1px solid var(--border);padding-top:8px;">' + escHtml(full) + '</div>'
+                    + '<p style="font-size:13px;color:var(--text-muted);line-height:1.6;">"' + escHtml(reasoning.slice(0, 200)) + (reasoning.length > 200 ? '…' : '') + '"</p>'
                     + '</div>';
             }).join('');
         }
+
+        // Monte Carlo Simulation
+        const bullishPct = (sentiments.bullish / total * 100).toFixed(0);
+        const neutralPct = (sentiments.neutral / total * 100).toFixed(0);
+        const bearishPct = (sentiments.bearish / total * 100).toFixed(0);
+        document.getElementById('res-monte-carlo').innerHTML = [
+            { label: 'Bullish Outcome', pct: bullishPct, color: '#22c55e' },
+            { label: 'Neutral Outcome', pct: neutralPct, color: '#eab308' },
+            { label: 'Bearish Outcome', pct: bearishPct, color: '#ef4444' },
+        ].map(m => '<div style="margin-bottom:16px;">'
+            + '<div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px;"><span>' + m.label + '</span><span style="color:' + m.color + ';">' + m.pct + '%</span></div>'
+            + '<div class="mc-bar-track"><div class="mc-bar-fill" style="width:' + m.pct + '%;background:' + m.color + ';"></div></div></div>'
+        ).join('')
+        + '<div style="margin-top:16px;padding-top:16px;border-top:1px solid rgba(255,255,255,0.1);font-size:13px;color:var(--text-muted);">'
+        + 'Expected sentiment: <span style="color:' + dirColor + ';font-weight:700;">+' + (conf / 100).toFixed(2) + '</span> (' + dir + ')</div>';
     }
 
     function renderHistorySidebar() {
@@ -2601,8 +2636,70 @@
         }
         document.getElementById('debate-empty').style.display = 'none';
         document.getElementById('debate-content').style.display = 'block';
-        setTimeout(renderDebateNetwork, 50);
+
+        // Stats Bar
+        const sentiments = extractSentiments(result);
+        const totalRounds = result.rounds || result.rounds_completed || 10;
+        document.getElementById('debate-stats-bar').innerHTML = [
+            { value: sentiments.bullish, label: 'Bullish', color: '#22c55e' },
+            { value: sentiments.neutral, label: 'Neutral', color: '#eab308' },
+            { value: sentiments.bearish, label: 'Bearish', color: '#ef4444' },
+            { value: totalRounds, label: 'Rounds', color: 'var(--text)' },
+        ].map(s => '<div class="glass-card-sm text-center"><div style="font-size:24px;font-weight:800;color:' + s.color + ';">' + s.value + '</div><div style="font-size:11px;color:var(--text-muted);">' + s.label + '</div></div>').join('');
+
+        // Seed activity log
+        const logContainer = document.getElementById('debate-activity-log');
+        logContainer.innerHTML = '';
+        generateDebateActivity(pauls, logContainer);
+
+        setTimeout(() => renderDebateNetwork(), 50);
     }
+
+    function generateDebateActivity(pauls, container) {
+        if (debateActivityInterval) clearInterval(debateActivityInterval);
+        const actions = ['convinced', 'questioned', 'argued with', 'debated', 'challenged', 'agreed with', 'persuaded'];
+        function addEntry() {
+            if (pauls.length < 2) return;
+            const a = pauls[Math.floor(Math.random() * pauls.length)];
+            const b = pauls[Math.floor(Math.random() * pauls.length)];
+            if (a === b) return;
+            const action = actions[Math.floor(Math.random() * actions.length)];
+            const entry = document.createElement('div');
+            entry.className = 'activity-entry';
+            entry.innerHTML = '<span>' + escHtml(a.emoji || '🐟') + '</span><span style="font-weight:600;">' + escHtml(a.name || 'Paul') + '</span><span style="color:var(--text-muted);">' + action + '</span><span style="font-weight:600;">' + escHtml(b.name || 'Paul') + '</span>';
+            container.insertBefore(entry, container.firstChild);
+            if (container.children.length > 20) container.removeChild(container.lastChild);
+        }
+        for (let i = 0; i < 5; i++) addEntry();
+        debateActivityInterval = setInterval(addEntry, 2000);
+    }
+
+    window.toggleDebatePause = function() {
+        debatePaused = !debatePaused;
+        const btn = document.getElementById('debate-pause-btn');
+        if (debatePaused) {
+            if (debateSimulation) debateSimulation.stop();
+            if (debateActivityInterval) clearInterval(debateActivityInterval);
+            btn.textContent = '▶️ Resume';
+        } else {
+            if (debateSimulation) debateSimulation.restart();
+            const pauls = extractPauls(state.currentResult);
+            const logContainer = document.getElementById('debate-activity-log');
+            generateDebateActivity(pauls, logContainer);
+            btn.textContent = '⏸️ Pause';
+        }
+    };
+
+    window.resetDebateGraph = function() {
+        debatePaused = false;
+        document.getElementById('debate-pause-btn').textContent = '⏸️ Pause';
+        if (debateActivityInterval) clearInterval(debateActivityInterval);
+        renderDebateNetwork();
+        const pauls = extractPauls(state.currentResult);
+        const logContainer = document.getElementById('debate-activity-log');
+        logContainer.innerHTML = '';
+        generateDebateActivity(pauls, logContainer);
+    };
 
     function renderDebateNetwork() {
         if (typeof d3 === 'undefined') {
@@ -2619,7 +2716,9 @@
         const height = container.clientHeight || 500;
         const tooltip = document.getElementById('debate-tooltip');
 
-        const nodes = pauls.slice(0, 50).map((p, i) => {
+        // Build nodes — use all pauls up to 100 for the force graph
+        const nodeCount = Math.min(pauls.length, 100);
+        const nodes = pauls.slice(0, nodeCount).map((p, i) => {
             const dir = extractDirection(p);
             return {
                 id: i, name: p.name || 'Paul #' + (i + 1),
@@ -2627,59 +2726,76 @@
                 confidence: p.confidence || (Math.random() * 40 + 30),
                 reasoning: p.reasoning || p.analysis || 'No reasoning recorded',
                 emoji: p.emoji || '🐟',
-                radius: Math.max(14, (p.confidence || 50) / 3.5 + 8),
+                group: dir === 'BULLISH' ? 1 : dir === 'NEUTRAL' ? 2 : 3,
+                radius: Math.random() * 4 + 3,
             };
         });
 
+        // Build links
         const links = [];
-        const maxLinks = Math.min(nodes.length * 2, 120);
-        let lc = 0;
-        for (let i = 0; i < nodes.length && lc < maxLinks; i++) {
-            for (let j = i + 1; j < nodes.length && lc < maxLinks; j++) {
-                if (nodes.length > 8 && Math.random() > 0.5) continue;
-                links.push({
-                    source: i, target: j,
-                    agree: nodes[i].direction === nodes[j].direction,
-                    strength: Math.random() * 0.5 + 0.5,
-                });
-                lc++;
+        for (let i = 0; i < nodes.length; i++) {
+            const numConn = Math.floor(Math.random() * 3) + 1;
+            for (let j = 0; j < numConn; j++) {
+                const target = Math.floor(Math.random() * nodes.length);
+                if (target !== i) {
+                    const sameGroup = nodes[i].group === nodes[target].group;
+                    links.push({ source: i, target: target, strength: sameGroup ? 0.5 : 0.1 });
+                }
             }
         }
 
-        const svg = d3.select('#debate-graph').append('svg')
-            .attr('width', width).attr('height', height);
+        const colorMap = { 1: '#22c55e', 2: '#eab308', 3: '#ef4444' };
 
-        const simulation = d3.forceSimulation(nodes)
-            .force('link', d3.forceLink(links).id(d => d.id).distance(70))
-            .force('charge', d3.forceManyBody().strength(-180))
+        const svg = d3.select('#debate-graph').append('svg')
+            .attr('width', width).attr('height', height)
+            .attr('viewBox', [0, 0, width, height]);
+
+        debateSimulation = d3.forceSimulation(nodes)
+            .force('link', d3.forceLink(links).id(d => d.id).strength(d => d.strength))
+            .force('charge', d3.forceManyBody().strength(-20))
             .force('center', d3.forceCenter(width / 2, height / 2))
-            .force('collision', d3.forceCollide().radius(d => d.radius + 5));
+            .force('collision', d3.forceCollide().radius(d => d.radius + 2));
+
+        // Cluster force
+        function clusterForce() {
+            for (let i = 0; i < nodes.length; i++) {
+                const node = nodes[i];
+                let tx = width / 2, ty = height / 2;
+                if (node.group === 1) { tx = width * 0.3; ty = height * 0.3; }
+                else if (node.group === 2) { tx = width * 0.5; ty = height * 0.7; }
+                else { tx = width * 0.7; ty = height * 0.3; }
+                node.vx = (node.vx || 0) + (tx - node.x) * 0.001;
+                node.vy = (node.vy || 0) + (ty - node.y) * 0.001;
+            }
+        }
+        debateSimulation.force('cluster', clusterForce);
 
         const link = svg.append('g').selectAll('line').data(links).join('line')
-            .attr('stroke', d => d.agree ? 'rgba(0, 212, 170, 0.25)' : 'rgba(255, 71, 87, 0.18)')
-            .attr('stroke-width', d => d.strength * 2.5);
+            .attr('stroke', '#6366f1').attr('stroke-opacity', 0.4)
+            .attr('stroke-width', d => Math.sqrt(d.strength) * 2);
 
-        const nodeG = svg.append('g').selectAll('g').data(nodes).join('g')
-            .style('cursor', 'grab')
+        const node = svg.append('g').selectAll('circle').data(nodes).join('circle')
+            .attr('r', d => d.radius)
+            .attr('fill', d => colorMap[d.group])
+            .attr('class', d => d.group === 1 ? 'glow-green' : d.group === 2 ? 'glow-yellow' : 'glow-red')
+            .style('cursor', 'pointer')
             .call(d3.drag()
-                .on('start', (ev, d) => { if (!ev.active) simulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
+                .on('start', (ev, d) => { if (!ev.active) debateSimulation.alphaTarget(0.3).restart(); d.fx = d.x; d.fy = d.y; })
                 .on('drag', (ev, d) => { d.fx = ev.x; d.fy = ev.y; })
-                .on('end', (ev, d) => { if (!ev.active) simulation.alphaTarget(0); d.fx = null; d.fy = null; })
+                .on('end', (ev, d) => { if (!ev.active) debateSimulation.alphaTarget(0); d.fx = null; d.fy = null; })
             );
 
-        nodeG.append('circle')
-            .attr('r', d => d.radius)
-            .attr('fill', d => d.direction === 'BULLISH' ? 'rgba(0, 212, 170, 0.6)' : d.direction === 'BEARISH' ? 'rgba(255, 71, 87, 0.6)' : 'rgba(255, 165, 2, 0.6)')
-            .attr('stroke', d => d.direction === 'BULLISH' ? '#00d4aa' : d.direction === 'BEARISH' ? '#ff4757' : '#ffa502')
-            .attr('stroke-width', 2);
+        // Pulse random nodes
+        setInterval(() => {
+            const rn = nodes[Math.floor(Math.random() * nodes.length)];
+            const circle = node.filter(d => d.id === rn.id);
+            circle.classed('pulse-glow', true);
+            setTimeout(() => circle.classed('pulse-glow', false), 2000);
+        }, 500);
 
-        nodeG.append('text')
-            .text(d => d.emoji).attr('text-anchor', 'middle').attr('dy', '0.35em')
-            .style('font-size', d => Math.max(10, d.radius * 0.8) + 'px').style('pointer-events', 'none');
-
-        nodeG.on('mouseover', (ev, d) => {
+        node.on('mouseover', (ev, d) => {
             tooltip.style.display = 'block';
-            const dirCol = d.direction === 'BULLISH' ? 'var(--success)' : d.direction === 'BEARISH' ? 'var(--danger)' : 'var(--warning)';
+            const dirCol = d.direction === 'BULLISH' ? '#22c55e' : d.direction === 'BEARISH' ? '#ef4444' : '#eab308';
             tooltip.innerHTML = '<div style="font-weight:600;margin-bottom:4px;">' + escHtml(d.emoji) + ' ' + escHtml(d.name) + '</div>'
                 + '<div style="color:var(--text-muted);margin-bottom:4px;">' + escHtml(d.specialty) + ' · <span style="color:' + dirCol + '">' + d.direction + '</span> · ' + Math.round(d.confidence) + '%</div>'
                 + '<div style="color:var(--text-muted)">' + escHtml(d.reasoning.slice(0, 180)) + (d.reasoning.length > 180 ? '…' : '') + '</div>';
@@ -2688,23 +2804,11 @@
             tooltip.style.top = (ev.clientY - 8) + 'px';
         }).on('mouseout', () => { tooltip.style.display = 'none'; });
 
-        simulation.on('tick', () => {
+        debateSimulation.on('tick', () => {
             link.attr('x1', d => d.source.x).attr('y1', d => d.source.y)
                 .attr('x2', d => d.target.x).attr('y2', d => d.target.y);
-            nodeG.attr('transform', d => 'translate(' + d.x + ',' + d.y + ')');
+            node.attr('cx', d => d.x).attr('cy', d => d.y);
         });
-
-        // Influencers sidebar
-        const sorted = [...nodes].sort((a, b) => b.confidence - a.confidence);
-        document.getElementById('debate-influencers').innerHTML = sorted.slice(0, 10).map((p, i) => {
-            const col = p.direction === 'BULLISH' ? 'var(--success)' : p.direction === 'BEARISH' ? 'var(--danger)' : 'var(--warning)';
-            return '<div style="display:flex;align-items:center;gap:8px;padding:8px;border-radius:8px;transition:background 0.15s;" onmouseover="this.style.background=\'var(--bg-hover)\'" onmouseout="this.style.background=\'transparent\'">'
-                + '<span style="font-size:11px;color:var(--text-muted);width:16px;">' + (i + 1) + '</span>'
-                + '<span>' + escHtml(p.emoji) + '</span>'
-                + '<div style="flex:1;min-width:0;"><div style="font-size:12px;font-weight:500;" class="truncate">' + escHtml(p.name) + '</div>'
-                + '<div style="font-size:10px;color:var(--text-muted);">' + escHtml(p.specialty) + '</div></div>'
-                + '<span style="font-size:12px;font-weight:700;color:' + col + ';">' + Math.round(p.confidence) + '%</span></div>';
-        }).join('');
     }
 
     // ===========================
@@ -3310,127 +3414,6 @@
                 + '<span style="font-size:18px;font-weight:700;color:' + color + ';">' + s.count + '</span>'
                 + '<span style="font-size:10px;color:var(--text-muted);">' + s.name + '</span></div>';
         }).join('');
-    }
-
-    // ===========================
-    // TAB: CREATIVE
-    // ===========================
-    function initCreativeTab() {
-        const input = document.getElementById('creative-input');
-        const counter = document.getElementById('creative-charcount');
-        input.oninput = function() {
-            counter.textContent = input.value.length + ' characters';
-        };
-    }
-
-    window.analyzeScript = function() {
-        const text = document.getElementById('creative-input').value.trim();
-        if (!text) {
-            shakeElement(document.getElementById('creative-input'));
-            return;
-        }
-        state.creativeAnalyzing = true;
-        const btn = document.getElementById('creative-btn-analyze');
-        btn.disabled = true;
-        btn.textContent = '⏳ Analyzing...';
-        document.getElementById('creative-empty').style.display = 'none';
-        document.getElementById('creative-results').style.display = 'block';
-        document.getElementById('creative-results').innerHTML = '<div style="text-align:center;padding:48px 0;"><div style="font-size:48px;margin-bottom:12px;" class="pulse">🎬</div><div style="color:var(--text-muted);">Analyzing your script...</div></div>';
-        wsSend('creative.analyze', { text: text });
-    };
-
-    function renderCreativeError(error) {
-        const btn = document.getElementById('creative-btn-analyze');
-        btn.disabled = false;
-        btn.textContent = '🎬 Analyze Script';
-        document.getElementById('creative-results').innerHTML = '<div class="card-lg" style="text-align:center;">'
-            + '<div style="font-size:36px;margin-bottom:12px;">❌</div>'
-            + '<div style="color:var(--danger);font-size:13px;">' + escHtml(error) + '</div></div>';
-    }
-
-    function renderCreativeResults(data) {
-        const btn = document.getElementById('creative-btn-analyze');
-        btn.disabled = false;
-        btn.textContent = '🎬 Analyze Script';
-
-        const analysis = data.analysis || data;
-        const container = document.getElementById('creative-results');
-        document.getElementById('creative-empty').style.display = 'none';
-        container.style.display = 'block';
-
-        let html = '';
-        const summary = analysis.summary || {};
-        const notes = analysis.notes || [];
-        const issues = analysis.issues || [];
-
-        const score = analysis.score || analysis.overall_score;
-        if (score !== undefined) {
-            const scoreColor = score >= 7 ? 'var(--success)' : score >= 5 ? 'var(--warning)' : 'var(--danger)';
-            html += '<div class="card-lg mb-6" style="display:flex;align-items:center;gap:24px;">'
-                + '<div class="creative-score" style="border-color:' + scoreColor + ';color:' + scoreColor + ';">' + (typeof score === 'number' ? score.toFixed(1) : score) + '</div>'
-                + '<div><div style="font-size:18px;font-weight:700;">Overall Score</div>'
-                + '<div style="font-size:13px;color:var(--text-muted);">Based on dialogue, pacing, character, and plot analysis</div></div></div>';
-        }
-
-        if (summary.words || summary.scenes_detected || summary.lines) {
-            html += '<div class="card-lg mb-6">'
-                + '<div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;">Script Stats</div>'
-                + '<div class="stats-grid">';
-            if (summary.words) html += '<div class="stat-card text-center"><div class="stat-value text-teal">' + summary.words + '</div><div class="stat-label">Words</div></div>';
-            if (summary.lines) html += '<div class="stat-card text-center"><div class="stat-value text-success">' + summary.lines + '</div><div class="stat-label">Lines</div></div>';
-            if (summary.scenes_detected !== undefined) html += '<div class="stat-card text-center"><div class="stat-value text-gold">' + summary.scenes_detected + '</div><div class="stat-label">Scenes</div></div>';
-            if (summary.dialogue_cues !== undefined) html += '<div class="stat-card text-center"><div class="stat-value text-pink">' + summary.dialogue_cues + '</div><div class="stat-label">Dialogue Cues</div></div>';
-            html += '</div></div>';
-        }
-
-        if (notes.length > 0) {
-            html += '<div class="card-lg mb-6">'
-                + '<div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;">Analysis Notes</div>'
-                + '<div style="display:flex;flex-direction:column;gap:8px;">';
-            notes.forEach(note => {
-                html += '<div style="display:flex;align-items:flex-start;gap:8px;font-size:13px;color:var(--text-muted);"><span style="color:var(--accent-teal);">📝</span><span>' + escHtml(note) + '</span></div>';
-            });
-            html += '</div></div>';
-        }
-
-        if (issues.length > 0) {
-            const grouped = {};
-            issues.forEach(issue => {
-                const cat = issue.category || issue.type || 'general';
-                if (!grouped[cat]) grouped[cat] = [];
-                grouped[cat].push(issue);
-            });
-            const catIcons = { dialogue: '💬', pacing: '⏱️', character: '👤', plot: '📖', general: '📋', structure: '🏗️' };
-
-            html += '<div style="display:flex;flex-direction:column;gap:16px;">';
-            Object.entries(grouped).forEach(([cat, catIssues]) => {
-                html += '<div class="card-lg">'
-                    + '<div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;">' + (catIcons[cat] || '📋') + ' ' + escHtml(cat) + '</div>'
-                    + '<div style="display:flex;flex-direction:column;gap:12px;">';
-                catIssues.forEach(issue => {
-                    const sev = (issue.severity || 'medium').toLowerCase();
-                    const sevCls = sev === 'high' ? 'severity-high' : sev === 'low' ? 'severity-low' : 'severity-medium';
-                    html += '<div class="card">'
-                        + '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">'
-                        + '<span class="badge ' + sevCls + '" style="font-size:10px;padding:2px 8px;">' + escHtml(sev) + '</span>'
-                        + (issue.paul ? '<span style="font-size:11px;color:var(--text-muted);">by ' + escHtml(issue.paul) + '</span>' : '')
-                        + '</div>'
-                        + '<div style="font-size:13px;margin-bottom:4px;">' + escHtml(issue.description || issue.message || '') + '</div>'
-                        + (issue.suggestion ? '<div style="font-size:12px;color:var(--accent-teal);">💡 ' + escHtml(issue.suggestion) + '</div>' : '')
-                        + '</div>';
-                });
-                html += '</div></div>';
-            });
-            html += '</div>';
-        }
-
-        if (!score && notes.length === 0 && issues.length === 0 && (!summary.words)) {
-            html += '<div class="card-lg">'
-                + '<div style="font-size:12px;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:12px;">Analysis Result</div>'
-                + '<pre style="font-size:12px;color:var(--text-muted);white-space:pre-wrap;overflow:auto;max-height:384px;">' + escHtml(JSON.stringify(analysis, null, 2)) + '</pre></div>';
-        }
-
-        container.innerHTML = html;
     }
 
     // ===========================

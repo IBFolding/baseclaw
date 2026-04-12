@@ -5,7 +5,7 @@
 Single-page local web app (`app.html`) that serves as the control center for everything
 Swimming Pauls does. Opens when user runs `python start.py`.
 
-## 10 Tabs (Left sidebar navigation)
+## 9 Tabs (Left sidebar navigation)
 
 ### 1. 🏠 Home - "Cast the Pool" (default)
 - Question textarea
@@ -69,14 +69,7 @@ Swimming Pauls does. Opens when user runs `python start.py`.
 - Auto-trader controls (Start/Stop, model, interval)
 - PnL equity curve chart
 
-### 9. 🎬 Creative
-- Script input / prompt
-- Script Doctor analysis
-- Collaborative write mode
-- Formatted screenplay output
-- History
-
-### 10. ⚙️ Settings
+### 9. ⚙️ Settings
 - LLM: Ollama URL, model selector (auto-detect), test connection, model download
 - Simulation: default Pauls, rounds, timeout, domain
 - Server: WS port, UI port, host

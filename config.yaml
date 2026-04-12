@@ -1,0 +1,38 @@
+defaults:
+  pauls: 50
+  rounds: 20
+  timeout_seconds: 120
+
+server:
+  websocket_port: 8765
+  ui_port: 3005
+  host: localhost
+
+auto_resolver:
+  enabled: true
+  interval_minutes: 60
+  symbols: ['BTC', 'ETH', 'SOL', 'DOGE', 'LINK']
+
+price_tracker:
+  enabled: true
+  interval_minutes: 30
+  symbols: ['BTC', 'ETH', 'SOL', 'DOGE', 'LINK', 'AVAX', 'BNB', 'ADA', 'DOT']
+
+notifications:
+  enabled: false
+
+learning:
+  track_accuracy: true
+  min_predictions_for_leaderboard: 1
+  weight_recent_predictions: true
+
+paper_trading:
+  enabled: true
+  update_interval_seconds: 30
+  max_positions: 10000
+
+ollama:
+  url: http://localhost:11434
+  model: qwen2.5:14b
+
+domain: trading

@@ -163,10 +163,10 @@ class MessageType(Enum):
     SOCIAL_TRENDING = "social.trending"
     HISTORY_LIST = "history.list"
     HISTORY_GET = "history.get"
-    CREATIVE_ANALYZE = "creative.analyze"
-
-    # Generic response wrapper for new API calls
-    RESPONSE = "response"
+    DIARY_GET = "diary.get"
+    DIARY_WORLD = "diary.world"
+    DIARY_PAULS = "diary.pauls"
+    DIARY_BACKFILL = "diary.backfill"
 
 
 @dataclass
@@ -326,6 +326,14 @@ class LocalAgentServer:
                 await self.handle_history_get(websocket, payload)
             elif msg_type == MessageType.CREATIVE_ANALYZE.value:
                 await self.handle_creative_analyze(websocket, payload)
+            elif msg_type == MessageType.DIARY_GET.value:
+                await self.handle_diary_get(websocket, payload)
+            elif msg_type == MessageType.DIARY_WORLD.value:
+                await self.handle_diary_world(websocket, payload)
+            elif msg_type == MessageType.DIARY_PAULS.value:
+                await self.handle_diary_pauls(websocket, payload)
+            elif msg_type == MessageType.DIARY_BACKFILL.value:
+                await self.handle_diary_backfill(websocket, payload)
             else:
                 await self.send_error(websocket, f"Unknown type: {msg_type}")
 
@@ -418,7 +426,9 @@ class LocalAgentServer:
         await self.run_simulation(websocket, question, pauls, rounds)
 
     async def run_simulation(self, websocket, question: str, pauls: int, rounds: int):
-        """Run the actual simulation with given parameters"""
+        """Run the actual simulation with given parameters using batch prediction"""
+        import time
+        start_time = time.time()
 
         await websocket.send(json.dumps(create_message(
             MessageType.INFO,
@@ -435,41 +445,95 @@ class LocalAgentServer:
                 {"message": f"🎭 Generating {pauls} unique personas..."}
             )))
 
-            agents = generate_swimming_pauls_pool(n=pauls)
+            # Generate Paul personas
+            paul_personas = generate_swimming_pauls_pool(count=pauls)
 
+            await websocket.send(json.dumps(create_message(
+                MessageType.INFO,
+                {"message": f"🧠 Running batch prediction via OpenClaw (Kimi) for {pauls} Pauls..."}
+            )))
+
+            # Use batch prediction for all Pauls in a single API call
+            batch_predictions = []
+            if skill_bridge:
+                try:
+                    batch_predictions = await asyncio.get_event_loop().run_in_executor(
+                        None,
+                        lambda: skill_bridge.batch_predict(question, paul_personas)
+                    )
+                    await websocket.send(json.dumps(create_message(
+                        MessageType.INFO,
+                        {"message": f"✅ Batch prediction complete. Got {len(batch_predictions)} predictions."}
+                    )))
+                except Exception as e:
+                    print(f"⚠️ Batch prediction failed: {e}")
+                    await websocket.send(json.dumps(create_message(
+                        MessageType.INFO,
+                        {"message": f"⚠️ Batch prediction failed, using fallback: {e}"}
+                    )))
+
+            # Simulate rounds with progress updates
             for i in range(min(rounds, 20)):
-                await asyncio.sleep(0.2)
+                await asyncio.sleep(0.1)
                 await websocket.send(json.dumps(create_message(
                     MessageType.STREAM,
                     {
                         "round": i + 1,
                         "total": rounds,
                         "progress": (i + 1) / rounds,
-                        "status": f"Round {i+1}: {pauls} Pauls deliberating..."
+                        "status": f"Round {i+1}: Analyzing batch predictions..."
                     }
                 )))
 
-            result = await asyncio.get_event_loop().run_in_executor(
-                None,
-                lambda: quick_simulate(rounds=rounds, agents=agents, question=question)
-            )
+            # Calculate consensus from batch predictions
+            if batch_predictions:
+                consensus = self._calculate_consensus_from_batch(batch_predictions)
+                sentiment = self._calculate_sentiment_from_batch(batch_predictions)
+            else:
+                # Fallback to simulation if batch failed
+                result = await asyncio.get_event_loop().run_in_executor(
+                    None,
+                    lambda: quick_simulate(rounds=rounds, agents=paul_personas, question=question)
+                )
+                final = result.rounds[-1] if result.rounds else None
+                consensus = final.consensus if final else {"direction": "NEUTRAL", "confidence": 0.5}
+                sentiment = final.sentiment if final else 0
 
-            final = result.rounds[-1] if result.rounds else None
+            duration_ms = int((time.time() - start_time) * 1000)
 
             response_data = {
-                "consensus": final.consensus if final else {"direction": "NEUTRAL", "confidence": 0.5},
-                "sentiment": final.sentiment if final else 0,
-                "rounds_completed": len(result.rounds),
+                "consensus": consensus,
+                "sentiment": sentiment,
+                "rounds_completed": rounds,
                 "pauls_count": pauls,
                 "rounds": rounds,
                 "question": question,
-                "message": f"✅ Simulation complete. {pauls} Pauls reached consensus after {rounds} rounds.",
+                "message": f"✅ Simulation complete. {pauls} Pauls reached consensus via batch prediction.",
                 "system_limits": get_system_limits(),
-                "agents": [{"name": a.name, "specialty": getattr(a, 'specialty', 'General'),
-                           "reasoning": getattr(a, 'last_reasoning', 'No reasoning recorded')[:200]}
-                          for a in agents[:10]]
+                "batch_prediction": True,
+                "duration_ms": duration_ms,
+                "agents": [
+                    {
+                        "name": pred.paul_name,
+                        "specialty": pred.specialty or "General",
+                        "sentiment": pred.sentiment,
+                        "confidence": pred.confidence,
+                        "reasoning": pred.reasoning[:200]
+                    }
+                    for pred in (batch_predictions[:10] if batch_predictions else [])
+                ],
+                "all_predictions": [
+                    {
+                        "paul_name": pred.paul_name,
+                        "sentiment": pred.sentiment,
+                        "confidence": pred.confidence,
+                        "reasoning": pred.reasoning
+                    }
+                    for pred in (batch_predictions if batch_predictions else [])
+                ]
             }
 
+            # Save result to database
             if SIMULATION_AVAILABLE:
                 try:
                     chat_interface = ChatInterface()
@@ -489,7 +553,7 @@ class LocalAgentServer:
                         sentiment_score=response_data["sentiment"],
                         pauls_count=pauls,
                         rounds=rounds,
-                        duration_ms=0
+                        duration_ms=duration_ms
                     )
                 except Exception as e:
                     print(f"⚠️  Could not save result: {e}")
@@ -499,6 +563,7 @@ class LocalAgentServer:
                 response_data
             )))
         else:
+            # Demo mode fallback
             await asyncio.sleep(2)
 
             import random
@@ -515,6 +580,7 @@ class LocalAgentServer:
                 "message": f"🎯 Demo result: {pauls} Pauls are {direction} ({confidence:.0%} confidence)",
                 "system_limits": get_system_limits(),
                 "demo": True,
+                "batch_prediction": False,
                 "agents": [
                     {"name": "Visionary Paul", "specialty": "Long-term", "reasoning": "Based on pattern recognition..."},
                     {"name": "Skeptic Paul", "specialty": "Risk", "reasoning": "Counter-argument..."},
@@ -538,6 +604,70 @@ class LocalAgentServer:
                 MessageType.RESULTS,
                 demo_result
             )))
+
+    def _calculate_consensus_from_batch(self, predictions: List[Any]) -> Dict[str, Any]:
+        """Calculate consensus from batch predictions."""
+        if not predictions:
+            return {"direction": "NEUTRAL", "confidence": 0.5, "strength": "weak"}
+        
+        # Count directions weighted by confidence
+        direction_weights = {"bullish": 0.0, "bearish": 0.0, "neutral": 0.0}
+        total_confidence = 0.0
+        
+        for pred in predictions:
+            direction_weights[pred.sentiment] += pred.confidence
+            total_confidence += pred.confidence
+        
+        # Normalize
+        if total_confidence > 0:
+            direction_weights = {
+                k: v / total_confidence for k, v in direction_weights.items()
+            }
+        
+        # Determine consensus direction
+        max_direction = max(direction_weights, key=direction_weights.get)
+        max_weight = direction_weights[max_direction]
+        
+        # Calculate overall confidence
+        avg_confidence = total_confidence / len(predictions)
+        
+        # Determine strength
+        if max_weight >= 0.6:
+            strength = "strong"
+        elif max_weight >= 0.5:
+            strength = "moderate"
+        else:
+            strength = "weak"
+        
+        return {
+            "direction": max_direction.upper(),
+            "confidence": round(avg_confidence, 2),
+            "direction_weights": direction_weights,
+            "strength": strength,
+            "agreement_ratio": round(max_weight, 2),
+        }
+    
+    def _calculate_sentiment_from_batch(self, predictions: List[Any]) -> float:
+        """Calculate sentiment score from batch predictions (-1.0 to 1.0)."""
+        if not predictions:
+            return 0.0
+        
+        sentiment_sum = 0.0
+        total_weight = 0.0
+        
+        for pred in predictions:
+            weight = pred.confidence
+            if pred.sentiment == "bullish":
+                sentiment_sum += weight
+            elif pred.sentiment == "bearish":
+                sentiment_sum -= weight
+            # neutral adds 0
+            total_weight += weight
+        
+        if total_weight == 0:
+            return 0.0
+        
+        return round(sentiment_sum / total_weight, 2)
 
     async def handle_status(self, websocket):
         await websocket.send(json.dumps(create_message(
@@ -1601,6 +1731,124 @@ class LocalAgentServer:
             ],
             "issues": [],
         }
+
+    # ──────────────────────────────────────────────
+    # DIARY
+    # ──────────────────────────────────────────────
+
+    async def handle_diary_get(self, websocket, payload: dict):
+        """Get diary entries for a specific Paul."""
+        try:
+            from rem_backfill import REMBackfillEngine
+            
+            paul_name = payload.get("paul_name")
+            days = payload.get("days", 7)
+            entry_types = payload.get("types", None)
+            
+            engine = REMBackfillEngine()
+            entries = engine.get_diary_timeline(
+                paul_name=paul_name,
+                days=days,
+                entry_types=entry_types
+            )
+            
+            await websocket.send(json.dumps(create_response(
+                "diary.get",
+                {
+                    "entries": [e.to_dict() for e in entries],
+                    "count": len(entries),
+                    "paul_name": paul_name,
+                    "days": days,
+                    "types": entry_types
+                }
+            )))
+        except Exception as e:
+            await websocket.send(json.dumps(create_response(
+                "diary.get", error=str(e)
+            )))
+
+    async def handle_diary_world(self, websocket, payload: dict):
+        """Get world timeline with all Pauls' activities."""
+        try:
+            from rem_backfill import REMBackfillEngine
+            
+            days = payload.get("days", 1)
+            entry_types = payload.get("types", None)
+            
+            engine = REMBackfillEngine()
+            entries = engine.get_world_timeline(days, entry_types)
+            
+            await websocket.send(json.dumps(create_response(
+                "diary.world",
+                {
+                    "entries": entries,
+                    "count": len(entries),
+                    "days": days,
+                    "types": entry_types
+                }
+            )))
+        except Exception as e:
+            await websocket.send(json.dumps(create_response(
+                "diary.world", error=str(e)
+            )))
+
+    async def handle_diary_pauls(self, websocket, payload: dict):
+        """Get list of Pauls with diary entries."""
+        try:
+            from rem_backfill import REMBackfillEngine
+            
+            engine = REMBackfillEngine()
+            pauls = engine.get_pauls_with_entries()
+            
+            await websocket.send(json.dumps(create_response(
+                "diary.pauls",
+                {
+                    "pauls": pauls,
+                    "count": len(pauls)
+                }
+            )))
+        except Exception as e:
+            await websocket.send(json.dumps(create_response(
+                "diary.pauls", error=str(e)
+            )))
+
+    async def handle_diary_backfill(self, websocket, payload: dict):
+        """Trigger a backfill operation."""
+        try:
+            from rem_backfill import REMBackfillEngine
+            
+            operation = payload.get("operation", "dreams")
+            pauls = payload.get("pauls", [])
+            
+            engine = REMBackfillEngine()
+            
+            if operation == "dreams":
+                days = payload.get("days", 30)
+                result = engine.backfill_dreams(pauls, days)
+            elif operation == "thoughts":
+                count = payload.get("count", 5)
+                result = engine.backfill_thoughts(pauls, count)
+            elif operation == "predictions":
+                source = payload.get("source", "data/predictions.db")
+                result = engine.import_from_prediction_history(source)
+            else:
+                await websocket.send(json.dumps(create_response(
+                    "diary.backfill", error=f"Unknown operation: {operation}"
+                )))
+                return
+            
+            await websocket.send(json.dumps(create_response(
+                "diary.backfill",
+                {
+                    "success": True,
+                    "operation": operation,
+                    "result": result
+                }
+            )))
+        except Exception as e:
+            await websocket.send(json.dumps(create_response(
+                "diary.backfill", error=str(e)
+            )))
 
     # ──────────────────────────────────────────────
     # SERVER LIFECYCLE

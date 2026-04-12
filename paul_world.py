@@ -43,6 +43,14 @@ except ImportError:
     PAPER_TRADING_AVAILABLE = False
     print("⚠️  Paper trading system not available")
 
+# Import REM backfill system
+try:
+    from rem_backfill import REMBackfillEngine
+    REM_AVAILABLE = True
+except ImportError:
+    REM_AVAILABLE = False
+    print("⚠️  REM backfill system not available")
+
 
 class Activity(Enum):
     """What a Paul can be doing."""
@@ -381,6 +389,11 @@ class PaulWorld:
         self.paper_trading = None
         if PAPER_TRADING_AVAILABLE:
             self.paper_trading = PaperTradingManager("data/paper_trading.db", mode=PaperTradingMode.OFF)
+        
+        # REM backfill system
+        self.rem_engine = None
+        if REM_AVAILABLE:
+            self.rem_engine = REMBackfillEngine("data/paul_world.db")
     
     async def initialize(self):
         """Initialize or load existing world."""
@@ -840,6 +853,19 @@ class PaulWorld:
         if paul.energy < 20 or paul.hunger > 80:
             paul.activity = Activity.RESTING
             paul.location = Location.HOME
+            
+            # REM backfill during rest
+            if REM_AVAILABLE and self.rem_engine and paul.memories:
+                try:
+                    rem_result = await self.rem_engine.process_rem_cycle(
+                        paul, 
+                        {'world_time': self.world_time.isoformat()}
+                    )
+                    if rem_result['insights_generated'] > 0:
+                        print(f"  🌙 {paul.name} processed {rem_result['memories_processed']} memories, generated {rem_result['insights_generated']} insights")
+                except Exception as e:
+                    pass  # Silent fail for REM
+            
             paul.energy = min(100, paul.energy + 20)
             paul.hunger = max(0, paul.hunger - 30)
         elif paul.social < 20:
@@ -1268,6 +1294,8 @@ async def main():
         print("  run                 - Start simulation")
         print("  ask 'Q'             - Ask the world a question")
         print("  export              - Export world state")
+        print("  diary <paul>        - View Paul's diary timeline")
+        print("  insights <paul>     - View Paul's REM insights")
         print("  social setup        - Auto-create social accounts for all Pauls")
         print("  social feed         - Show social media feeds")
         print("  social paul <name>  - Show Paul's social stats")
@@ -1344,6 +1372,50 @@ async def main():
         with open("paul_world_export.json", "w") as f:
             json.dump(snapshot, f, indent=2, default=str)
         print("✅ Exported to paul_world_export.json")
+    
+    elif command == "diary" and len(sys.argv) > 2:
+        paul_name = sys.argv[2]
+        if not REM_AVAILABLE or not world.rem_engine:
+            print("❌ REM backfill system not available")
+            sys.exit(1)
+        
+        entries = world.rem_engine.get_diary_timeline(paul_name, days=7)
+        print(f"\n📖 {paul_name}'s Diary (Last 7 Days)\n")
+        
+        if not entries:
+            print("  No diary entries yet.")
+        else:
+            for entry in entries[:20]:
+                time = entry.timestamp.strftime('%Y-%m-%d %H:%M')
+                emoji = {'activity': '⚡', 'thought': '💭', 'prediction': '🔮', 
+                        'trade': '💰', 'dream': '🌙', 'interaction': '👥'}.get(entry.entry_type, '📝')
+                print(f"  {time} {emoji} [{entry.entry_type.upper()}]")
+                print(f"     {entry.content}")
+                if entry.location:
+                    print(f"     📍 {entry.location}")
+                print()
+    
+    elif command == "insights" and len(sys.argv) > 2:
+        paul_name = sys.argv[2]
+        if not REM_AVAILABLE or not world.rem_engine:
+            print("❌ REM backfill system not available")
+            sys.exit(1)
+        
+        insights = world.rem_engine.get_insights(paul_name)
+        stats = world.rem_engine.get_rem_stats(paul_name)
+        
+        print(f"\n💡 {paul_name}'s REM Insights\n")
+        print(f"Total Sessions: {stats['total_sessions']}")
+        print(f"Avg Sleep Quality: {stats['avg_quality']:.0%}")
+        print(f"Total Insights: {stats['total_insights']}")
+        print(f"Total Dreams: {stats['total_dreams']}")
+        
+        if insights:
+            print(f"\nRecent Insights:")
+            for insight in insights[:10]:
+                print(f"  [{insight.insight_type.upper()}] {insight.content}")
+        else:
+            print("\n  No insights generated yet. Paul needs more rest!")
     
     elif command == "social":
         if not SOCIAL_MEDIA_AVAILABLE or not world.social_manager:
