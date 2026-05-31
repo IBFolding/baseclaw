@@ -1,0 +1,8 @@
+{
+  "api_key": "cc_live_fcf0613eddc7e5ba4ef385f3d559bd2498947984",
+  "server": "https://clawdtalk.com",
+  "owner_name": "Patrick",
+  "agent_name": "Howard",
+  "greeting": "Hey Patrick, what's up?",
+  "max_conversation_turns": 20
+}

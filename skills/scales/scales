@@ -1,0 +1,149 @@
+#!/usr/bin/env python3
+"""
+Scales Skill Wrapper for OpenClaw
+Translates skill calls to Scales engine
+"""
+
+import sys
+import os
+import subprocess
+import json
+import argparse
+
+# Path to scales installation
+SCALES_DIR = os.path.expanduser("~/.openclaw/workspace/scales")
+
+def run_scales(args):
+    """Run scales with given arguments"""
+    cmd = [sys.executable, os.path.join(SCALES_DIR, "main.py")] + args
+    result = subprocess.run(cmd, capture_output=True, text=True, cwd=SCALES_DIR)
+    return result.stdout, result.stderr, result.returncode
+
+def predict(args):
+    """Handle predict command"""
+    scales_args = []
+    
+    if args.get("file"):
+        scales_args.extend(["--file", args["file"]])
+    elif args.get("topic"):
+        scales_args.extend(["--topic", args["topic"]])
+    
+    if args.get("question"):
+        scales_args.extend(["--question", args["question"]])
+    
+    scales_args.extend(["--rounds", str(args.get("rounds", 20))])
+    scales_args.extend(["--agents", str(args.get("agents", 5))])
+    scales_args.extend(["--output", args.get("output", "text")])
+    
+    if args.get("personas"):
+        scales_args.extend(["--personas", args["personas"]])
+    
+    stdout, stderr, rc = run_scales(scales_args)
+    
+    if rc != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        return 1
+    
+    print(stdout)
+    return 0
+
+def simulate(args):
+    """Handle simulate command"""
+    scales_args = ["--simulate"]
+    
+    if args.get("scenario"):
+        scales_args.extend(["--scenario", args["scenario"]])
+    if args.get("topic"):
+        scales_args.extend(["--topic", args["topic"]])
+    
+    scales_args.extend(["--rounds", str(args.get("rounds", 20))])
+    scales_args.extend(["--agents", str(args.get("agents", 5))])
+    
+    if args.get("adaptive"):
+        scales_args.append("--adaptive")
+    if args.get("consensus"):
+        scales_args.extend(["--consensus", str(args["consensus"])])
+    
+    stdout, stderr, rc = run_scales(scales_args)
+    
+    if rc != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        return 1
+    
+    print(stdout)
+    return 0
+
+def trends(args):
+    """Handle trends command"""
+    scales_args = ["--trends"]
+    
+    if args.get("topic"):
+        scales_args.extend(["--topic", args["topic"]])
+    if args.get("file"):
+        scales_args.extend(["--file", args["file"]])
+    
+    scales_args.extend(["--days", str(args.get("days", 30))])
+    
+    if args.get("metric"):
+        scales_args.extend(["--metric", args["metric"]])
+    
+    stdout, stderr, rc = run_scales(scales_args)
+    
+    if rc != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        return 1
+    
+    print(stdout)
+    return 0
+
+def main():
+    parser = argparse.ArgumentParser(description="Scales - Multi-Agent Prediction Engine")
+    subparsers = parser.add_subparsers(dest="command", help="Commands")
+    
+    # Predict command
+    predict_parser = subparsers.add_parser("predict", help="Run prediction simulation")
+    predict_parser.add_argument("--file", help="Seed data file")
+    predict_parser.add_argument("--topic", help="Topic string")
+    predict_parser.add_argument("--question", help="Question to answer")
+    predict_parser.add_argument("--rounds", type=int, default=20)
+    predict_parser.add_argument("--agents", type=int, default=5)
+    predict_parser.add_argument("--output", choices=["text", "json", "csv"], default="text")
+    predict_parser.add_argument("--personas", choices=["balanced", "bullish", "bearish", "random"])
+    
+    # Simulate command
+    simulate_parser = subparsers.add_parser("simulate", help="Run scenario simulation")
+    simulate_parser.add_argument("--scenario", help="Scenario name")
+    simulate_parser.add_argument("--topic", help="Topic")
+    simulate_parser.add_argument("--rounds", type=int, default=20)
+    simulate_parser.add_argument("--agents", type=int, default=5)
+    simulate_parser.add_argument("--adaptive", action="store_true")
+    simulate_parser.add_argument("--consensus", type=float)
+    
+    # Trends command
+    trends_parser = subparsers.add_parser("trends", help="Analyze trends")
+    trends_parser.add_argument("--topic", help="Trend topic")
+    trends_parser.add_argument("--file", help="Historical data")
+    trends_parser.add_argument("--days", type=int, default=30)
+    trends_parser.add_argument("--metric", help="Metric to track")
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return 1
+    
+    # Convert to dict for easier handling
+    args_dict = vars(args)
+    command = args_dict.pop("command")
+    
+    if command == "predict":
+        return predict(args_dict)
+    elif command == "simulate":
+        return simulate(args_dict)
+    elif command == "trends":
+        return trends(args_dict)
+    
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

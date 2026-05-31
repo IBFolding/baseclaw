@@ -1,0 +1,34 @@
+{
+  "name": "@moltmail/skill-trading",
+  "version": "1.0.0",
+  "description": "MoltMail Bankr Trading skill for OpenClaw - Execute crypto trades via email commands",
+  "main": "index.js",
+  "keywords": [
+    "openclaw",
+    "skill",
+    "moltmail",
+    "trading",
+    "bankr",
+    "crypto",
+    "base"
+  ],
+  "author": "MoltMail Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moltmail/openclaw-skills.git"
+  },
+  "files": [
+    "SKILL.md",
+    "scripts/",
+    "references/"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "openclaw": {
+    "skillName": "moltmail-trading",
+    "category": "trading",
+    "pricing": "free"
+  }
+}

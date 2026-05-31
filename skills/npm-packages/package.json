@@ -1,0 +1,22 @@
+{
+  "name": "@moltmail/openclaw-skills",
+  "version": "1.0.0",
+  "description": "MoltMail skills for OpenClaw agents",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "scripts": {
+    "publish:core": "cd packages/moltmail-core && npm publish --access public",
+    "publish:trading": "cd packages/moltmail-trading && npm publish --access public",
+    "publish:all": "npm run publish:core && npm run publish:trading"
+  },
+  "keywords": [
+    "openclaw",
+    "skills",
+    "moltmail",
+    "agents"
+  ],
+  "author": "MoltMail Team",
+  "license": "MIT"
+}

@@ -1,0 +1,39 @@
+{
+  "name": "@moltmail/skill-core",
+  "version": "1.0.0",
+  "description": "MoltMail email protocol skill for OpenClaw - Send emails, earn points, stake MMAIL",
+  "main": "index.js",
+  "keywords": [
+    "openclaw",
+    "skill",
+    "moltmail",
+    "email",
+    "agents",
+    "web3",
+    "base"
+  ],
+  "author": "MoltMail Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/moltmail/openclaw-skills.git"
+  },
+  "bugs": {
+    "url": "https://github.com/moltmail/openclaw-skills/issues"
+  },
+  "homepage": "https://moltmail.com",
+  "files": [
+    "SKILL.md",
+    "scripts/",
+    "references/",
+    "assets/"
+  ],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "openclaw": {
+    "skillName": "moltmail-core",
+    "category": "communication",
+    "pricing": "free"
+  }
+}

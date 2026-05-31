@@ -1,0 +1,214 @@
+#!/usr/bin/env python3
+"""
+Swimming Pauls Skill Wrapper for OpenClaw
+Cast the Pauls and let them swim through predictions
+"""
+
+import sys
+import os
+import subprocess
+import argparse
+
+# Path to swimming_pauls installation
+PAULS_DIR = os.path.expanduser("~/.openclaw/workspace/swimming_pauls")
+
+def run_pauls(args):
+    """Run swimming_pauls with given arguments"""
+    cmd = [sys.executable, os.path.join(PAULS_DIR, "main.py")] + args
+    result = subprocess.run(cmd, capture_output=True, text=True, cwd=PAULS_DIR)
+    return result.stdout, result.stderr, result.returncode
+
+def predict(args):
+    """Cast the Pauls for a prediction"""
+    pauls_args = []
+    
+    if args.get("file"):
+        pauls_args.extend(["--file", args["file"]])
+    elif args.get("topic"):
+        pauls_args.extend(["--topic", args["topic"]])
+    
+    if args.get("question"):
+        pauls_args.extend(["--question", args["question"]])
+    
+    pauls_args.extend(["--rounds", str(args.get("rounds", 20))])
+    pauls_args.extend(["--agents", str(args.get("agents", 5))])
+    pauls_args.extend(["--output", args.get("output", "text")])
+    
+    if args.get("personas"):
+        pauls_args.extend(["--personas", args["personas"]])
+    
+    if args.get("monte_carlo"):
+        pauls_args.append("--monte-carlo")
+        if args.get("runs"):
+            pauls_args.extend(["--runs", str(args["runs"])])
+    
+    stdout, stderr, rc = run_pauls(pauls_args)
+    
+    if rc != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        return 1
+    
+    print(stdout)
+    return 0
+
+def simulate(args):
+    """Run Pauls through scenario simulation"""
+    pauls_args = ["--simulate"]
+    
+    if args.get("scenario"):
+        pauls_args.extend(["--scenario", args["scenario"]])
+    if args.get("topic"):
+        pauls_args.extend(["--topic", args["topic"]])
+    
+    pauls_args.extend(["--rounds", str(args.get("rounds", 20))])
+    pauls_args.extend(["--agents", str(args.get("agents", 5))])
+    
+    if args.get("adaptive"):
+        pauls_args.append("--adaptive")
+    if args.get("consensus"):
+        pauls_args.extend(["--consensus", str(args["consensus"])])
+    
+    stdout, stderr, rc = run_pauls(pauls_args)
+    
+    if rc != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        return 1
+    
+    print(stdout)
+    return 0
+
+def trends(args):
+    """Have Pauls analyze trends"""
+    pauls_args = ["--trends"]
+    
+    if args.get("topic"):
+        pauls_args.extend(["--topic", args["topic"]])
+    if args.get("file"):
+        pauls_args.extend(["--file", args["file"]])
+    
+    pauls_args.extend(["--days", str(args.get("days", 30))])
+    
+    if args.get("metric"):
+        pauls_args.extend(["--metric", args["metric"]])
+    
+    stdout, stderr, rc = run_pauls(pauls_args)
+    
+    if rc != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        return 1
+    
+    print(stdout)
+    return 0
+
+def sensitivity(args):
+    """Run sensitivity analysis"""
+    pauls_args = ["--sensitivity"]
+    
+    if args.get("file"):
+        pauls_args.extend(["--file", args["file"]])
+    if args.get("target"):
+        pauls_args.extend(["--target", args["target"]])
+    
+    stdout, stderr, rc = run_pauls(pauls_args)
+    
+    if rc != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        return 1
+    
+    print(stdout)
+    return 0
+
+def compare(args):
+    """Compare scenarios"""
+    pauls_args = ["--compare"]
+    
+    if args.get("scenario_a"):
+        pauls_args.extend(["--scenario-a", args["scenario_a"]])
+    if args.get("scenario_b"):
+        pauls_args.extend(["--scenario-b", args["scenario_b"]])
+    
+    stdout, stderr, rc = run_pauls(pauls_args)
+    
+    if rc != 0:
+        print(f"Error: {stderr}", file=sys.stderr)
+        return 1
+    
+    print(stdout)
+    return 0
+
+def main():
+    parser = argparse.ArgumentParser(
+        description="Swimming Pauls - Multi-Agent Prediction Pool",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  swimming_pauls predict --topic "Netflix price hike"
+  swimming_pauls simulate --scenario recession --rounds 100
+  swimming_pauls trends --topic "AI stocks" --days 90
+  swimming_pauls sensitivity --file data.csv --target revenue
+        """
+    )
+    subparsers = parser.add_subparsers(dest="command", help="Commands")
+    
+    # Predict command
+    predict_parser = subparsers.add_parser("predict", help="Cast the Pauls for prediction")
+    predict_parser.add_argument("--file", help="Seed data file")
+    predict_parser.add_argument("--topic", help="Topic string")
+    predict_parser.add_argument("--question", help="Question to answer")
+    predict_parser.add_argument("--rounds", type=int, default=20)
+    predict_parser.add_argument("--agents", type=int, default=5)
+    predict_parser.add_argument("--output", choices=["text", "json", "csv"], default="text")
+    predict_parser.add_argument("--personas", choices=["balanced", "bullish", "bearish", "random"])
+    predict_parser.add_argument("--monte-carlo", action="store_true", help="Run Monte Carlo simulation")
+    predict_parser.add_argument("--runs", type=int, help="Number of Monte Carlo runs")
+    
+    # Simulate command
+    simulate_parser = subparsers.add_parser("simulate", help="Run scenario simulation")
+    simulate_parser.add_argument("--scenario", help="Scenario name")
+    simulate_parser.add_argument("--topic", help="Topic")
+    simulate_parser.add_argument("--rounds", type=int, default=20)
+    simulate_parser.add_argument("--agents", type=int, default=5)
+    simulate_parser.add_argument("--adaptive", action="store_true")
+    simulate_parser.add_argument("--consensus", type=float)
+    
+    # Trends command
+    trends_parser = subparsers.add_parser("trends", help="Analyze trends")
+    trends_parser.add_argument("--topic", help="Trend topic")
+    trends_parser.add_argument("--file", help="Historical data")
+    trends_parser.add_argument("--days", type=int, default=30)
+    trends_parser.add_argument("--metric", help="Metric to track")
+    
+    # Sensitivity command
+    sensitivity_parser = subparsers.add_parser("sensitivity", help="Sensitivity analysis")
+    sensitivity_parser.add_argument("--file", required=True, help="Data file")
+    sensitivity_parser.add_argument("--target", required=True, help="Target variable")
+    
+    # Compare command
+    compare_parser = subparsers.add_parser("compare", help="Compare scenarios")
+    compare_parser.add_argument("--scenario-a", required=True, help="First scenario")
+    compare_parser.add_argument("--scenario-b", required=True, help="Second scenario")
+    
+    args = parser.parse_args()
+    
+    if not args.command:
+        parser.print_help()
+        return 1
+    
+    args_dict = vars(args)
+    command = args_dict.pop("command")
+    
+    if command == "predict":
+        return predict(args_dict)
+    elif command == "simulate":
+        return simulate(args_dict)
+    elif command == "trends":
+        return trends(args_dict)
+    elif command == "sensitivity":
+        return sensitivity(args_dict)
+    elif command == "compare":
+        return compare(args_dict)
+    
+    return 0
+
+if __name__ == "__main__":
+    sys.exit(main())

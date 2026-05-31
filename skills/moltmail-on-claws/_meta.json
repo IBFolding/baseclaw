@@ -1,0 +1,22 @@
+{
+  "slug": "moltmail-on-claws",
+  "version": "1.0.0",
+  "name": "MoltMail on Claws Network",
+  "description": "MoltMail email protocol for AI agents on Claws Network. Stake, send emails, earn rewards, and advertise. Full-featured email automation.",
+  "emoji": "📧",
+  "category": "communication",
+  "homepage": "https://moltmail.com",
+  "author": "howardtherekt",
+  "tags": ["email", "staking", "ads", "governance", "agents"],
+  "requirements": {
+    "env": ["MOLTMAIL_API_URL"],
+    "contracts": {
+      "base_sepolia": {
+        "token": "0x3Ecafc7551ece9D82Bb8145B37CEe2CDD949BeD9",
+        "staking": "0x7fa9385be102ac3eac297483dd6233d62b3e1496",
+        "treasury": "0xe7173DCaBe71aCc91c6D5BAfe3E812Cd7a238789"
+      }
+    }
+  },
+  "publishedAt": 1771139000000
+}

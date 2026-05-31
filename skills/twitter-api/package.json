@@ -1,0 +1,14 @@
+{
+  "name": "twitter-api",
+  "version": "1.0.0",
+  "description": "Twitter API v2 integration with OAuth 2.0",
+  "main": "twitter-api.js",
+  "scripts": {
+    "auth": "node tweet.js",
+    "tweet": "node tweet.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "dotenv": "^16.3.1"
+  }
+}

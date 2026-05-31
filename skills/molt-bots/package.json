@@ -1,0 +1,28 @@
+{
+  "name": "molt-bots",
+  "version": "1.0.0",
+  "description": "Comprehensive MoltMail agent skill - Stake, send, earn, govern, advertise",
+  "main": "molt.js",
+  "bin": {
+    "molt": "./molt.js"
+  },
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "moltmail",
+    "email",
+    "agent",
+    "blockchain",
+    "staking",
+    "base"
+  ],
+  "dependencies": {
+    "axios": "^1.6.0",
+    "viem": "^2.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "license": "MIT"
+}

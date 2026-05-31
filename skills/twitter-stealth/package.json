@@ -1,0 +1,19 @@
+{
+  "name": "twitter-stealth",
+  "version": "1.0.0",
+  "description": "Advanced Twitter automation with anti-detection",
+  "main": "stealth-bot.js",
+  "scripts": {
+    "auth": "node auth-helper.js",
+    "tweet": "node stealth-tweet.js",
+    "setup": "node setup.js"
+  },
+  "dependencies": {
+    "playwright": "^1.40.0",
+    "playwright-extra": "^4.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "proxy-chain": "^2.4.0",
+    "user-agents": "^1.1.137",
+    "dotenv": "^16.3.1"
+  }
+}
