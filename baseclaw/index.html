@@ -349,6 +349,18 @@
                     <span class="status-indicator status-offline"></span>
                     <span id="connection-text">Disconnected</span>
                 </div>
+                <!-- Quick Actions for Beginners -->
+                <div style="margin-bottom: 16px;">
+                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
+                        Quick Start
+                    </div>
+                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.startTutorial()">📖 Tutorial</button>
+                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.openWizard()">🎯 Wizard</button>
+                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.toggleDemoMode()">🔒 Demo</button>
+                    </div>
+                </div>
+                
                 <div class="project-list" id="project-list">
                     <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
                         No projects yet
@@ -436,6 +448,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Help Button -->
+    <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: var(--base-blue); color: white; border: none; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 0 4px 12px rgba(0, 82, 255, 0.3);" onclick="app.showHelp()">?</button>
 
     <script>
         class BaseClawUI {
@@ -847,8 +862,6 @@
                 const price = document.getElementById('sub-price').value;
                 
                 this.addMessage('system', `✅ Subscription plan "${name}" created! ${price} USDC per month.`);
-            },
-
             },
 
             // NFT Generator
