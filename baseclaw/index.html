@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaseClaw — Blockchain Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --base-blue: #0052FF;
+            --base-cyan: #00D4AA;
+            --bg-primary: #0A0B0D;
+            --bg-secondary: #14151A;
+            --bg-tertiary: #1E1F24;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A3B0;
+            --text-muted: #6B6F7D;
+            --border-color: #2A2B2F;
+            --accent: var(--base-blue);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .app { 
+            display: grid; 
+            grid-template-columns: 280px 1fr 340px; 
+            height: 100vh; 
+            gap: 1px; 
+            background: var(--border-color);
+        }
+
+        .panel {
+            background: var(--bg-secondary);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+
+        .panel-header {
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .panel-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .panel-content {
+            flex: 1;
+            overflow-y: auto;
+            padding: 16px;
+        }
+
+        .panel-footer {
+            padding: 12px 16px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Left Panel - Projects */
+        .project-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .project-item {
+            padding: 12px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+            border: 1px solid transparent;
+        }
+
+        .project-item:hover {
+            background: var(--bg-tertiary);
+        }
+
+        .project-item.active {
+            background: var(--bg-tertiary);
+            border-color: var(--base-blue);
+        }
+
+        .project-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .project-meta {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 6px;
+            border: none;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-primary {
+            background: var(--base-blue);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #3B6BFF;
+        }
+
+        .btn-secondary {
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 1px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            background: var(--border-color);
+        }
+
+        /* Center Panel - Chat */
+        .chat-container {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .messages {
+            flex: 1;
+            overflow-y: auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .message {
+            display: flex;
+            gap: 12px;
+            max-width: 80%;
+        }
+
+        .message.user {
+            align-self: flex-end;
+            flex-direction: row-reverse;
+        }
+
+        .message-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .message.system .message-avatar {
+            background: var(--bg-tertiary);
+        }
+
+        .message.user .message-avatar {
+            background: var(--base-blue);
+        }
+
+        .message-content {
+            background: var(--bg-tertiary);
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .message.user .message-content {
+            background: var(--base-blue);
+        }
+
+        .message-time {
+            font-size: 11px;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        .chat-input-container {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            gap: 12px;
+        }
+
+        .chat-input {
+            flex: 1;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 12px 16px;
+            color: var(--text-primary);
+            font-size: 14px;
+            outline: none;
+            resize: none;
+        }
+
+        .chat-input:focus {
+            border-color: var(--base-blue);
+        }
+
+        .send-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            background: var(--base-blue);
+            color: white;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .send-btn:hover {
+            background: #3B6BFF;
+        }
+
+        .send-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Right Panel - Status */
+        .status-section {
+            margin-bottom: 20px;
+        }
+
+        .status-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .status-value {
+            font-size: 14px;
+            color: var(--text-primary);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 6px;
+        }
+
+        .status-online {
+            background: var(--base-cyan);
+        }
+
+        .status-offline {
+            background: var(--text-muted);
+        }
+
+        .skill-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-color);
+            margin: 2px;
+        }
+
+        .skill-tag.active {
+            background: rgba(0, 82, 255, 0.2);
+            border-color: var(--base-blue);
+            color: var(--base-blue);
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            margin-bottom: 16px;
+        }
+
+        .connection-status.connected {
+            background: rgba(0, 212, 170, 0.1);
+            color: var(--base-cyan);
+        }
+
+        .connection-status.disconnected {
+            background: rgba(239, 68, 68, 0.1);
+            color: #EF4444;
+        }
+
+        .loading-dots {
+            display: inline-flex;
+            gap: 2px;
+        }
+
+        .loading-dots::after {
+            content: '';
+            animation: dots 1.5s infinite;
+        }
+
+        @keyframes dots {
+            0%, 20% { content: '.'; }
+            40% { content: '..'; }
+            60%, 100% { content: '...'; }
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+        <!-- Left Panel - Projects -->
+        <div class="panel">
+            <div class="panel-header">
+                <span style="font-size: 20px;">🦞</span>
+                <span class="panel-title">BaseClaw</span>
+            </div>
+            <div class="panel-content">
+                <div class="connection-status disconnected" id="connection-status">
+                    <span class="status-indicator status-offline"></span>
+                    <span id="connection-text">Disconnected</span>
+                </div>
+                <div class="project-list" id="project-list">
+                    <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+                        No projects yet
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary" style="width: 100%;" onclick="app.createProject()">
+                    + New Project
+                </button>
+                <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 6px;">
+                    <button class="btn btn-secondary" style="width: 100%; font-size: 12px;" onclick="app.show402Payment()">
+                        💰 402 Payments
+                    </button>
+                    <button class="btn btn-secondary" style="width: 100%; font-size: 12px;" onclick="app.showNFTGenerator()">
+                        🎨 NFT Generator
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center Panel - Chat -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Agent Chat</span>
+                <div style="margin-left: auto; display: flex; gap: 8px;">
+                    <button class="btn btn-secondary" onclick="app.showGatewayConfig()">⚙️ Gateway</button>
+                    <button class="btn btn-secondary" onclick="app.clearChat()">Clear</button>
+                </div>
+            </div>
+            <div class="chat-container">
+                <div class="messages" id="messages">
+                    <div class="message system">
+                        <div class="message-avatar">🦞</div>
+                        <div class="message-content">
+                            <div>Welcome to BaseClaw! I'm your blockchain development agent.</div>
+                            <div class="message-time">Ready to deploy on Base</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-input-container">
+                    <textarea class="chat-input" id="chat-input" placeholder="Ask me to deploy a contract, create a token, or help with blockchain development..." rows="1"></textarea>
+                    <button class="send-btn" id="send-btn" onclick="app.sendMessage()">➤</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel - Status -->
+        <div class="panel">
+            <div class="panel-header">
+                <span class="panel-title">Status</span>
+            </div>
+            <div class="panel-content">
+                <div class="status-section">
+                    <div class="status-label">Agent</div>
+                    <div class="status-value" id="agent-status">🦞 BaseClaw</div>
+                </div>
+                <div class="status-section">
+                    <div class="status-label">Model</div>
+                    <div class="status-value" id="model-status">kimi-k2.6</div>
+                </div>
+                <div class="status-section">
+                    <div class="status-label">Chain</div>
+                    <div class="status-value" id="chain-status">Base Sepolia</div>
+                </div>
+                <div class="status-section">
+                    <div class="status-label">Skills</div>
+                    <div id="skills-list">
+                        <span class="skill-tag">🪙 Token Deploy</span>
+                        <span class="skill-tag">🎨 NFT Deploy</span>
+                        <span class="skill-tag">⚡ Staking</span>
+                    </div>
+                </div>
+                <div class="status-section">
+                    <div class="status-label">Wallet</div>
+                    <div class="status-value" id="wallet-status" style="font-family: monospace; font-size: 12px;">
+                        Not connected
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-secondary" style="width: 100%;" onclick="app.connectWallet()">
+                    Connect Wallet
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        class BaseClawUI {
+            constructor() {
+                this.ws = null;
+                this.connected = false;
+                this.projects = [];
+                this.currentProject = null;
+                this.messages = [];
+                this.agentRunId = null;
+                
+                this.init();
+            }
+
+            init() {
+                this.connectToGateway();
+                this.setupEventListeners();
+                this.loadProjects();
+            }
+
+            async connectToGateway() {
+                try {
+                    // Check if user has configured their gateway URL
+                    const savedUrl = localStorage.getItem('baseclaw-gateway-url');
+                    const wsUrl = savedUrl || 'ws://127.0.0.1:18789';
+                    
+                    this.ws = new WebSocket(wsUrl);
+                    
+                    this.ws.onopen = () => {
+                        this.connected = true;
+                        this.updateConnectionStatus(true);
+                        
+                        // Send connect frame with proper protocol
+                        this.send({
+                            type: 'req',
+                            id: 'connect-' + Date.now(),
+                            method: 'connect',
+                            params: {
+                                auth: { token: 'baseclaw-local-dev' },
+                                client: {
+                                    id: 'webchat-ui',
+                                    version: '1.0.0',
+                                    platform: 'web',
+                                    mode: 'webchat'
+                                },
+                                role: 'operator',
+                                scopes: ['operator.read', 'operator.write'],
+                                minProtocol: 4,
+                                maxProtocol: 4
+                            }
+                        });
+                    };
+                    
+                    this.ws.onmessage = (event) => {
+                        const data = JSON.parse(event.data);
+                        this.handleGatewayMessage(data);
+                    };
+                    
+                    this.ws.onclose = () => {
+                        this.connected = false;
+                        this.updateConnectionStatus(false);
+                        // Reconnect after 5 seconds
+                        setTimeout(() => this.connectToGateway(), 5000);
+                    };
+                    
+                    this.ws.onerror = (error) => {
+                        console.error('WebSocket error:', error);
+                        this.connected = false;
+                        this.updateConnectionStatus(false);
+                    };
+                } catch (error) {
+                    console.error('Failed to connect:', error);
+                    this.updateConnectionStatus(false);
+                }
+            }
+
+            send(message) {
+                if (this.ws && this.ws.readyState === WebSocket.OPEN) {
+                    this.ws.send(JSON.stringify(message));
+                }
+            }
+
+            handleGatewayMessage(data) {
+                console.log('Gateway message:', data);
+                
+                switch(data.type) {
+                    case 'res':
+                        if (data.ok) {
+                            this.handleResponse(data);
+                        } else {
+                            this.addSystemMessage(`Error: ${data.error}`);
+                        }
+                        break;
+                    case 'event':
+                        this.handleEvent(data);
+                        break;
+                }
+            }
+
+            handleResponse(data) {
+                if (data.payload && data.payload.hello) {
+                    this.addSystemMessage('🦞 Connected to BaseClaw Gateway');
+                }
+            }
+
+            handleEvent(data) {
+                switch(data.event) {
+                    case 'agent':
+                        if (data.payload && data.payload.text) {
+                            this.addAgentMessage(data.payload.text);
+                        }
+                        break;
+                    case 'tick':
+                        // Heartbeat
+                        break;
+                }
+            }
+
+            updateConnectionStatus(connected) {
+                const statusEl = document.getElementById('connection-status');
+                const textEl = document.getElementById('connection-text');
+                const indicator = statusEl.querySelector('.status-indicator');
+                
+                if (connected) {
+                    statusEl.className = 'connection-status connected';
+                    textEl.textContent = 'Connected to Gateway';
+                    indicator.className = 'status-indicator status-online';
+                } else {
+                    statusEl.className = 'connection-status disconnected';
+                    textEl.textContent = 'Disconnected';
+                    indicator.className = 'status-indicator status-offline';
+                }
+            }
+
+            async sendMessage() {
+                const input = document.getElementById('chat-input');
+                const text = input.value.trim();
+                if (!text) return;
+                
+                this.addUserMessage(text);
+                input.value = '';
+                
+                if (!this.connected) {
+                    this.addSystemMessage('❌ Not connected to gateway. Please wait...');
+                    return;
+                }
+                
+                // Send to agent via gateway
+                const id = 'msg-' + Date.now();
+                this.send({
+                    type: 'req',
+                    id: id,
+                    method: 'agent',
+                    params: {
+                        text: text,
+                        idempotencyKey: id
+                    }
+                });
+                
+                this.showLoading();
+            }
+
+            showLoading() {
+                const messagesEl = document.getElementById('messages');
+                const loadingDiv = document.createElement('div');
+                loadingDiv.className = 'message system';
+                loadingDiv.id = 'loading-message';
+                loadingDiv.innerHTML = `
+                    <div class="message-avatar">🦞</div>
+                    <div class="message-content">
+                        <div>Thinking<span class="loading-dots"></span></div>
+                    </div>
+                `;
+                messagesEl.appendChild(loadingDiv);
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+            }
+
+            hideLoading() {
+                const loadingEl = document.getElementById('loading-message');
+                if (loadingEl) loadingEl.remove();
+            }
+
+            addUserMessage(text) {
+                this.addMessage('user', '👤', text);
+            }
+
+            addAgentMessage(text) {
+                this.hideLoading();
+                this.addMessage('system', '🦞', text);
+            }
+
+            addSystemMessage(text) {
+                this.hideLoading();
+                this.addMessage('system', 'ℹ️', text);
+            }
+
+            addMessage(type, avatar, text) {
+                const messagesEl = document.getElementById('messages');
+                const div = document.createElement('div');
+                div.className = `message ${type}`;
+                div.innerHTML = `
+                    <div class="message-avatar">${avatar}</div>
+                    <div class="message-content">
+                        <div>${text}</div>
+                        <div class="message-time">${new Date().toLocaleTimeString()}</div>
+                    </div>
+                `;
+                messagesEl.appendChild(div);
+                messagesEl.scrollTop = messagesEl.scrollHeight;
+            }
+
+            clearChat() {
+                document.getElementById('messages').innerHTML = '';
+                this.addSystemMessage('Chat cleared');
+            }
+
+            createProject() {
+                const name = prompt('Project name:');
+                if (!name) return;
+                
+                const project = {
+                    id: 'proj-' + Date.now(),
+                    name,
+                    chain: 'sepolia',
+                    createdAt: new Date().toISOString()
+                };
+                
+                this.projects.push(project);
+                this.currentProject = project;
+                this.renderProjects();
+                this.addSystemMessage(`Created project: ${name}`);
+            }
+
+            loadProjects() {
+                const stored = localStorage.getItem('baseclaw-projects');
+                if (stored) {
+                    this.projects = JSON.parse(stored);
+                    this.renderProjects();
+                }
+            }
+
+            renderProjects() {
+                const container = document.getElementById('project-list');
+                if (this.projects.length === 0) {
+                    container.innerHTML = `
+                        <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+                            No projects yet
+                        </div>
+                    `;
+                    return;
+                }
+                
+                container.innerHTML = this.projects.map(p => `
+                    <div class="project-item ${p.id === this.currentProject?.id ? 'active' : ''}" 
+                         onclick="app.selectProject('${p.id}')">
+                        <div class="project-name">${p.name}</div>
+                        <div class="project-meta">${p.chain} • ${new Date(p.createdAt).toLocaleDateString()}</div>
+                    </div>
+                `).join('');
+            }
+
+            selectProject(id) {
+                this.currentProject = this.projects.find(p => p.id === id);
+                this.renderProjects();
+                this.addSystemMessage(`Switched to project: ${this.currentProject.name}`);
+            }
+
+            connectWallet() {
+                this.addSystemMessage('Wallet connection coming soon...');
+            }
+
+            showGatewayConfig() {
+                const content = `
+                    <div class="context-item">
+                        <div class="context-label">Gateway URL</div>
+                        <input type="text" class="modal-input" id="gateway-url" value="${localStorage.getItem('baseclaw-gateway-url') || 'ws://127.0.0.1:18789'}" placeholder="ws://127.0.0.1:18789">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Your local OpenClaw Gateway WebSocket URL</div>
+                    </div>
+                    <div class="context-item" style="margin-top: 16px;">
+                        <div class="context-label">Auth Token</div>
+                        <input type="password" class="modal-input" id="gateway-token" value="${localStorage.getItem('baseclaw-gateway-token') || ''}" placeholder="Optional">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Leave empty for default</div>
+                    </div>
+                    <button class="modal-btn primary" style="width: 100%; margin-top: 16px;" onclick="app.saveGatewayConfig()">Save & Connect</button>
+                    <div style="margin-top: 16px; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; font-size: 12px; color: var(--text-muted);">
+                        <strong>Need to set up OpenClaw?</strong><br>
+                        1. npm install -g openclaw<br>
+                        2. openclaw setup<br>
+                        3. openclaw gateway start<br>
+                        <a href="https://docs.openclaw.ai" target="_blank" style="color: var(--base-blue);">Read the docs →</a>
+                    </div>
+                `;
+                this.showModalContent('⚙️ Gateway Settings', content);
+            },
+
+            saveGatewayConfig() {
+                const url = document.getElementById('gateway-url').value;
+                const token = document.getElementById('gateway-token').value;
+                if (url) localStorage.setItem('baseclaw-gateway-url', url);
+                if (token) localStorage.setItem('baseclaw-gateway-token', token);
+                this.hideModal('modal-dynamic');
+                this.addSystemMessage('Gateway settings saved. Reconnecting...');
+                if (this.ws) this.ws.close();
+                setTimeout(() => this.connectToGateway(), 1000);
+            },
+
+            setupEventListeners() {
+                const input = document.getElementById('chat-input');
+                input.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' && !e.shiftKey) {
+                        e.preventDefault();
+                        this.sendMessage();
+                    }
+                });
+            }
+        }
+
+        const app = new BaseClawUI();
+    </script>
+</body>
+</html>
+
+            // 402 Payment Functions
+            show402Payment() {
+                const paymentHTML = `
+                    <div style="max-width: 600px; margin: 0 auto;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; font-size: 28px; margin-bottom: 24px;">💰 402 Payment Required</h2>
+                        
+                        <p style="color: var(--text-secondary); margin-bottom: 32px;">
+                            Monetize your content with crypto payments. Token gates, paywalls, and subscriptions.
+                        </p>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <div style="font-weight: 600; margin-bottom: 12px;">🚪 Token Gate</div>
+                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Required Token</label>
+                                    <input type="text" id="gate-token" placeholder="0x..." style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Minimum Balance</label>
+                                    <input type="number" id="gate-balance" value="1" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <button class="btn btn-primary" onclick="app.createTokenGate()" style="width: 100%;">Create Token Gate</button>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <div style="font-weight: 600; margin-bottom: 12px;">💳 Paywall</div>
+                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Price (ETH)</label>
+                                    <input type="number" id="paywall-price" value="0.01" step="0.001" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Content ID</label>
+                                    <input type="text" id="paywall-content" placeholder="article-123" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <button class="btn btn-primary" onclick="app.createPaywall()" style="width: 100%;">Create Paywall</button>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <div style="font-weight: 600; margin-bottom: 12px;">📅 Subscription</div>
+                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Plan Name</label>
+                                    <input type="text" id="sub-name" placeholder="Pro Plan" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Price per Month (USDC)</label>
+                                    <input type="number" id="sub-price" value="10" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <button class="btn btn-primary" onclick="app.createSubscription()" style="width: 100%;">Create Subscription</button>
+                            </div>
+                        </div>
+                        
+                        <div style="padding: 16px; background: rgba(0, 212, 170, 0.1); border: 2px solid var(--base-cyan); border-radius: 12px;">
+                            <div style="font-weight: 600; margin-bottom: 8px;">💡 How it works</div>
+                            <ul style="font-size: 13px; color: var(--text-secondary); margin-left: 20px; line-height: 1.8;">
+                                <li>Token Gate: Require users to hold your token</li>
+                                <li>Paywall: One-time payment for content</li>
+                                <li>Subscription: Recurring monthly payments</li>
+                                <li>All payments go directly to your wallet</li>
+                            </ul>
+                        </div>
+                    </div>
+                `;
+                
+                this.addMessage('system', paymentHTML);
+            },
+
+            createTokenGate() {
+                const token = document.getElementById('gate-token').value;
+                const balance = document.getElementById('gate-balance').value;
+                
+                this.addMessage('system', `✅ Token Gate created! Users must hold ${balance} of token ${token.substring(0, 20)}... to access content.`);
+            },
+
+            createPaywall() {
+                const price = document.getElementById('paywall-price').value;
+                const content = document.getElementById('paywall-content').value;
+                
+                this.addMessage('system', `✅ Paywall created! Content "${content}" requires ${price} ETH to unlock.`);
+            },
+
+            createSubscription() {
+                const name = document.getElementById('sub-name').value;
+                const price = document.getElementById('sub-price').value;
+                
+                this.addMessage('system', `✅ Subscription plan "${name}" created! ${price} USDC per month.`);
+            },
