@@ -848,3 +848,128 @@
                 
                 this.addMessage('system', `✅ Subscription plan "${name}" created! ${price} USDC per month.`);
             },
+
+            },
+
+            // NFT Generator
+            showNFTGenerator() {
+                this.addSystemMessage('🎨 NFT Generator: Create NFT collections with AI-generated art and rarity system.');
+            },
+
+            // Tutorial
+            startTutorial() {
+                this.addSystemMessage(`
+                    <div style="max-width: 600px;">
+                        <h2 style="color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
+                        <p>I'm your AI blockchain agent. Here's how to get started:</p>
+                        <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
+                            <li><strong>Connect Wallet</strong> — Click "Connect Wallet" in the right panel</li>
+                            <li><strong>Choose Network</strong> — Start with Base Sepolia (it's free!)</li>
+                            <li><strong>Chat with me</strong> — Tell me what you want to build</li>
+                            <li><strong>Review & Deploy</strong> — I'll show you the code before deploying</li>
+                        </ol>
+                        <p><strong>Example:</strong> Try typing "Create a token called MoonCoin"</p>
+                    </div>
+                `);
+            },
+
+            // Wizard
+            openWizard() {
+                this.addSystemMessage(`
+                    <div style="max-width: 600px;">
+                        <h2 style="color: var(--base-blue); margin-bottom: 16px;">🎯 Template Wizard</h2>
+                        <p>Choose what you want to build:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
+                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.runWizard('token')">🪙 Token</button>
+                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.runWizard('nft')">🎨 NFT</button>
+                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.runWizard('staking')">⚡ Staking</button>
+                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.runWizard('dao')">🏛️ DAO</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            runWizard(type) {
+                const prompts = {
+                    token: 'What should I name your token? (e.g., "MoonCoin" with symbol "MOON")',
+                    nft: 'What should I name your NFT collection? (e.g., "Space Explorers")',
+                    staking: 'What token should users stake? (paste the contract address)',
+                    dao: 'What should I name your DAO? (e.g., "MoonCoin Governance")'
+                };
+                this.addSystemMessage(`🎯 Wizard: ${prompts[type]}`);
+                document.getElementById('chat-input').placeholder = 'Type your answer here...';
+                document.getElementById('chat-input').focus();
+            },
+
+            // Demo Mode
+            toggleDemoMode() {
+                const isDemo = !localStorage.getItem('baseclaw-demo');
+                if (isDemo) {
+                    localStorage.setItem('baseclaw-demo', 'true');
+                    this.addSystemMessage('🔒 Demo Mode activated! All transactions are simulated.');
+                } else {
+                    localStorage.removeItem('baseclaw-demo');
+                    this.addSystemMessage('🔓 Demo Mode deactivated. Real transactions will require wallet confirmation.');
+                }
+            },
+
+            // Examples
+            showExamples() {
+                this.addSystemMessage(`
+                    <div style="max-width: 600px;">
+                        <h3 style="color: var(--base-blue); margin-bottom: 12px;">💡 Example Commands</h3>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="app.fillInput('Create a token called MoonCoin with symbol MOON and 1 million supply')">🪙 Create Token</button>
+                            <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="app.fillInput('Create an NFT collection of 100 space aliens')">🎨 Create NFT Collection</button>
+                            <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="app.fillInput('Build a staking contract with 10% APY')">⚡ Create Staking</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            fillInput(text) {
+                document.getElementById('chat-input').value = text;
+                document.getElementById('chat-input').focus();
+            },
+
+            // FAQ
+            showFAQ() {
+                this.addSystemMessage(`
+                    <div style="max-width: 600px;">
+                        <h3 style="color: var(--base-blue); margin-bottom: 16px;">❓ Frequently Asked Questions</h3>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; font-weight: 600;">Do I need to know coding?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">No! Just describe what you want in plain English. I'll handle all the code.</div>
+                        </details>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; font-weight: 600;">Is it free?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">Testing on Base Sepolia is completely free. Mainnet deployment costs gas fees (usually $5-20).</div>
+                        </details>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; font-weight: 600;">Is it safe?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">Always test on Sepolia first. I include security checks and recommend audits for mainnet.</div>
+                        </details>
+                    </div>
+                `);
+            },
+
+            // Help
+            showHelp() {
+                this.addSystemMessage(`
+                    <div style="max-width: 600px;">
+                        <h3 style="color: var(--base-blue); margin-bottom: 16px;">📚 Help Center</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.startTutorial()">📖 Start Tutorial</button>
+                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.showExamples()">💡 Examples</button>
+                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.showFAQ()">❓ FAQ</button>
+                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.openWizard()">🎯 Wizard</button>
+                        </div>
+                    </div>
+                `);
+            }
+        }
+
+        const app = new BaseClawUI();
+    </script>
+</body>
+</html>
