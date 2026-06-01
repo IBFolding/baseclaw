@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BaseClaw Docs — Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --base-blue: #0052FF;
+            --base-cyan: #00D4AA;
+            --bg-primary: #F5F0EB;
+            --bg-secondary: #EDE8E1;
+            --bg-paper: #FAF8F5;
+            --text-primary: #2D2926;
+            --text-secondary: #6B6560;
+            --text-muted: #9B9590;
+            --border-color: #C8C0B8;
+            --sketch-color: #4A4540;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1E1C1A;
+            --bg-secondary: #2A2724;
+            --bg-paper: #252320;
+            --text-primary: #E8E4E0;
+            --text-secondary: #B0AAA4;
+            --text-muted: #8A847E;
+            --border-color: #4A4540;
+            --sketch-color: #C8C0B8;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .logo {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--base-blue);
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--base-blue), var(--base-cyan));
+            border-radius: 50% 40% 45% 55%;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--sketch-color);
+            box-shadow: 3px 3px 0 rgba(0,82,255,0.2);
+        }
+
+        .subtitle {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 18px;
+            color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Patrick Hand', cursive;
+            color: var(--base-blue);
+            margin: 32px 0 16px;
+        }
+
+        h1 { font-size: 36px; }
+        h2 { font-size: 28px; border-bottom: 2px dashed var(--border-color); padding-bottom: 8px; }
+        h3 { font-size: 22px; }
+
+        p { margin-bottom: 16px; color: var(--text-secondary); }
+
+        .card {
+            background: var(--bg-paper);
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            padding: 24px;
+            margin: 20px 0;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        /* Search Styles */
+        .search-box {
+            position: relative;
+            margin-bottom: 32px;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px 14px 48px;
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            background: var(--bg-paper);
+            color: var(--text-primary);
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--base-blue);
+            box-shadow: 0 0 0 3px rgba(0,82,255,0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            color: var(--text-muted);
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--bg-paper);
+            border: 2px solid var(--sketch-color);
+            border-radius: 12px;
+            margin-top: 8px;
+            max-height: 400px;
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+            box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .search-result-item:hover {
+            background: var(--bg-secondary);
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-title {
+            font-family: 'Patrick Hand', cursive;
+            font-weight: 700;
+            color: var(--base-blue);
+            font-size: 16px;
+        }
+
+        .search-result-preview {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 4px;
+        }
+
+        .no-results {
+            padding: 16px;
+            text-align: center;
+            color: var(--text-muted);
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .highlight {
+            background: rgba(0,212,170,0.3);
+            padding: 0 2px;
+            border-radius: 2px;
+        }
+
+        code {
+            background: var(--bg-secondary);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: var(--base-blue);
+        }
+
+        pre {
+            background: var(--bg-secondary);
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            border: 2px solid var(--sketch-color);
+            margin: 16px 0;
+        }
+
+        pre code {
+            background: none;
+            padding: 0;
+        }
+
+        ul, ol {
+            margin: 16px 0;
+            padding-left: 24px;
+        }
+
+        li {
+            margin: 8px 0;
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            background: var(--bg-paper);
+            color: var(--text-primary);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 16px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.2s;
+            margin: 4px;
+        }
+
+        .btn:hover {
+            background: var(--base-blue);
+            color: white;
+            border-color: var(--base-blue);
+            transform: translate(-2px, -2px);
+            box-shadow: 3px 3px 0 rgba(0,82,255,0.2);
+        }
+
+        .nav {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin: 20px 0;
+        }
+
+        .feature-item {
+            background: var(--bg-secondary);
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .feature-icon {
+            font-size: 24px;
+        }
+
+        .feature-text {
+            font-family: 'Patrick Hand', cursive;
+            font-weight: 700;
+        }
+
+        footer {
+            margin-top: 60px;
+            padding-top: 24px;
+            border-top: 2px dashed var(--border-color);
+            text-align: center;
+            color: var(--text-muted);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 14px;
+        }
+
+        footer a {
+            color: var(--base-blue);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 600px) {
+            .feature-grid { grid-template-columns: 1fr; }
+            .container { padding: 20px 16px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <div class="logo-icon">🦞</div>
+            BaseClaw Docs
+        </div>
+        <div class="subtitle">Documentation for the AI Blockchain Agent</div>
+
+        <div class="search-box">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" id="searchInput" placeholder="Search docs... (try 'token', 'wallet', 'deploy')">
+            <div class="search-results" id="searchResults"></div>
+        </div>
+
+        <div class="nav">
+            <a href="index.html" class="btn">🏠 App</a>
+            <a href="landing.html" class="btn">🚀 Landing</a>
+            <a href="#quickstart" class="btn">⚡ Quick Start</a>
+            <a href="#skills" class="btn">🛠️ Skills</a>
+            <a href="#templates" class="btn">📋 Templates</a>
+        </div>
+
+        <h1 id="quickstart">Quick Start Guide</h1>
+        
+        <div class="card">
+            <h3>🎯 For Beginners</h3>
+            <ol>
+                <li><strong>Open the app</strong> — Go to <a href="index.html">BaseClaw App</a></li>
+                <li><strong>Click Tutorial</strong> — The "📖 Tutorial" button in the sidebar walks you through everything</li>
+                <li><strong>Try Demo Mode</strong> — Toggle "🔒 Demo" to practice without spending real money</li>
+                <li><strong>Use the Wizard</strong> — Click "🎯 Wizard" and pick Token, NFT, Staking, or DAO</li>
+                <li><strong>Ask in chat</strong> — Just type what you want, like "Create a token called MoonCoin"</li>
+            </ol>
+        </div>
+
+        <div class="card">
+            <h3>💰 Is it free?</h3>
+            <p><strong>Testing on Base Sepolia:</strong> Completely free. You get test ETH from a faucet.</p>
+            <p><strong>Mainnet deployment:</strong> Costs gas fees (usually $5-20 depending on network congestion).</p>
+            <p><strong>Always test on Sepolia first!</strong></p>
+        </div>
+
+        <h1 id="skills">Skills System</h1>
+        <p>Skills are modular capabilities you can load per project. Think of them as plugins.</p>
+
+        <div class="feature-grid">
+            <div class="feature-item">
+                <span class="feature-icon">🔨</span>
+                <span class="feature-text">Foundry — Compile, test, deploy</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">⛓️</span>
+                <span class="feature-text">Base Deploy — Chain deployment</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🔍</span>
+                <span class="feature-text">Etherscan Verify — Contract verification</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🚀</span>
+                <span class="feature-text">Vercel Deploy — Frontend hosting</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🏦</span>
+                <span class="feature-text">ClawReserve — DeFi protocol</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📈</span>
+                <span class="feature-text">Bankr Trading — Spot trading</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">⚡</span>
+                <span class="feature-text">Hyperliquid — Perp trading</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🎯</span>
+                <span class="feature-text">Polymarket — Prediction markets</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🎨</span>
+                <span class="feature-text">NFT Generator — AI art + rarity</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">💰</span>
+                <span class="feature-text">402 Payment — Token gates, paywalls</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">🏊</span>
+                <span class="feature-text">Swimming Pauls — Predictions</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-icon">📧</span>
+                <span class="feature-text">MoltMail — On-chain email</span>
+            </div>
+        </div>
+
+        <h1 id="templates">Contract Templates</h1>
+        <p>Pre-built smart contract templates you can deploy with one click:</p>
+
+        <div class="card">
+            <h3>🪙 ERC20 Token</h3>
+            <p>Standard fungible token with mint/burn capabilities.</p>
+            <pre><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract MyToken is ERC20 {
+    constructor() ERC20("MyToken", "MTK") {
+        _mint(msg.sender, 1000000 * 10 ** decimals());
+    }
+}</code></pre>
+        </div>
+
+        <div class="card">
+            <h3>🖼️ ERC721 NFT</h3>
+            <p>Non-fungible token collection with metadata support.</p>
+            <pre><code>// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+contract MyNFT is ERC721 {
+    uint256 private _tokenIdCounter;
+    
+    constructor() ERC721("MyNFT", "NFT") {}
+    
+    function mint(address to) public returns (uint256) {
+        uint256 tokenId = _tokenIdCounter++;
+        _safeMint(to, tokenId);
+        return tokenId;
+    }
+}</code></pre>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Staking Pool</h3>
+            <p>Reward distribution staking contract.</p>
+            <pre><code>// Users stake tokens and earn rewards over time
+// Configurable APY, lock periods, and reward tokens</code></pre>
+        </div>
+
+        <h1 id="security">Security</h1>
+        
+        <div class="card">
+            <h3>🔐 Built-in Protections</h3>
+            <ul>
+                <li><strong>Path traversal fix</strong> — Prevents directory escape attacks</li>
+                <li><strong>Shell injection fix</strong> — Sanitizes all command inputs</li>
+                <li><strong>24h approval expiry</strong> — Admin actions time out</li>
+                <li><strong>Wallet file permissions</strong> — 0o600 restricted access</li>
+                <li><strong>Mainnet code-level block</strong> — Requires explicit approval</li>
+                <li><strong>Social autopost block</strong> — No accidental tweets</li>
+                <li><strong>Prompt injection filter</strong> — Blocks malicious inputs</li>
+                <li><strong>Project count limit</strong> — Max 50 projects</li>
+                <li><strong>Template overwrite guard</strong> — Prevents accidental overwrites</li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <h3>⚠️ Best Practices</h3>
+            <ol>
+                <li><strong>Always test on Sepolia first</strong></li>
+                <li><strong>Get an audit for mainnet</strong> — Use Auto Code Review skill first</li>
+                <li><strong>Use multi-sig for admin functions</strong></li>
+                <li><strong>Start with small amounts</strong></li>
+                <li><strong>Verify contracts on BaseScan</strong></li>
+            </ol>
+        </div>
+
+        <h1 id="faq">FAQ</h1>
+
+        <div class="card">
+            <h3>❓ Do I need to know coding?</h3>
+            <p><strong>No!</strong> Just describe what you want in plain English. BaseClaw handles all the Solidity code, testing, and deployment.</p>
+        </div>
+
+        <div class="card">
+            <h3>❓ What chains are supported?</h3>
+            <p>Currently <strong>Base</strong> (Coinbase L2) with Sepolia testnet and mainnet. More chains coming: Optimism, Arbitrum, Polygon.</p>
+        </div>
+
+        <div class="card">
+            <h3>❓ Can I make money?</h3>
+            <p>Yes! Create tokens, NFTs, paywalls, subscriptions, trading bots, DeFi yield strategies, and more.</p>
+        </div>
+
+        <div class="card">
+            <h3>❓ Is my wallet safe?</h3>
+            <p>BaseClaw never stores private keys. We use read-only wallet connections and require explicit approval for every transaction. Set spending limits in Wallet Policy skill.</p>
+        </div>
+
+        <footer>
+            <p>Built by HOWARD (H.O.W.A.R.D) — Heuristic Operations, Workflow Automation, Resource Director</p>
+            <p style="margin-top: 8px;">
+                <a href="https://github.com/IBFolding/baseclaw">🐙 GitHub</a> • 
+                <a href="index.html">🦞 App</a> • 
+                <a href="landing.html">🚀 Landing</a>
+            </p>
+            <p style="margin-top: 8px; font-size: 12px;">© 2026 BaseClaw. All systems operational.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Search functionality
+        const searchIndex = [
+            { title: 'Quick Start', section: 'quickstart', content: 'Get started with BaseClaw. Connect wallet, choose Base Sepolia, chat with AI, deploy contracts.' },
+            { title: 'For Beginners', section: 'quickstart', content: 'Tutorial, Demo Mode, Wizard, Example Commands. No coding required.' },
+            { title: 'Wallet Setup', section: 'quickstart', content: 'Connect MetaMask or Coinbase Wallet. Fund with test ETH from faucet.' },
+            { title: 'Is it free?', section: 'quickstart', content: 'Base Sepolia testnet is free. Mainnet costs $5-20 in gas fees.' },
+            { title: 'Skills System', section: 'skills', content: 'Modular capabilities: Foundry, Base Deploy, Etherscan Verify, Vercel Deploy, ClawReserve, Trading.' },
+            { title: 'Foundry', section: 'skills', content: 'Compile, test, and deploy Solidity contracts.' },
+            { title: 'Base Deploy', section: 'skills', content: 'Deploy contracts to Base chain (Sepolia or Mainnet).' },
+            { title: 'Etherscan Verify', section: 'skills', content: 'Verify contracts on BaseScan for transparency.' },
+            { title: 'Vercel Deploy', section: 'skills', content: 'Deploy frontend apps to Vercel hosting.' },
+            { title: 'ClawReserve', section: 'skills', content: 'DeFi protocol for staking and yield farming.' },
+            { title: 'Bankr Trading', section: 'skills', content: 'Spot trading on Base chain.' },
+            { title: 'Hyperliquid', section: 'skills', content: 'Perpetual futures trading.' },
+            { title: 'Polymarket', section: 'skills', content: 'Prediction markets and betting.' },
+            { title: 'NFT Generator', section: 'skills', content: 'AI-generated art with rarity system.' },
+            { title: '402 Payment', section: 'skills', content: 'Token gates, paywalls, and subscriptions.' },
+            { title: 'Swimming Pauls', section: 'skills', content: 'Prediction consensus from multiple AI agents.' },
+            { title: 'MoltMail', section: 'skills', content: 'On-chain email system.' },
+            { title: 'Social Bot', section: 'skills', content: 'Automated social media posting.' },
+            { title: 'News Summarizer', section: 'skills', content: 'AI news aggregation and summarization.' },
+            { title: 'Canvas Studio', section: 'skills', content: 'Visual content creation.' },
+            { title: 'Remotion', section: 'skills', content: 'Programmatic video generation.' },
+            { title: 'Game Theory', section: 'skills', content: 'Strategic analysis tools.' },
+            { title: 'DeFi Scanner', section: 'skills', content: 'Yield farming and DeFi opportunity finder.' },
+            { title: 'Wallet Policy', section: 'skills', content: 'Spending limits and security rules.' },
+            { title: 'Auto Code Review', section: 'skills', content: 'Automated smart contract auditing.' },
+            { title: 'Security Audit', section: 'skills', content: 'Comprehensive security analysis.' },
+            { title: 'Gas Optimizer', section: 'skills', content: 'Reduce transaction costs.' },
+            { title: 'Portfolio Tracker', section: 'skills', content: 'Monitor your crypto holdings.' },
+            { title: 'ERC20 Token', section: 'templates', content: 'Standard fungible token with mint and burn capabilities.' },
+            { title: 'ERC721 NFT', section: 'templates', content: 'Non-fungible token collection with metadata support.' },
+            { title: 'Staking Pool', section: 'templates', content: 'Reward distribution staking contract with configurable APY.' },
+            { title: 'Security', section: 'security', content: 'Built-in protections: path traversal fix, shell injection fix, approval expiry, wallet permissions.' },
+            { title: 'Best Practices', section: 'security', content: 'Always test on Sepolia first. Get audits for mainnet. Use multi-sig. Start small.' },
+            { title: 'FAQ', section: 'faq', content: 'Do I need coding? No! Is it free? Testnet yes. Is it safe? Test first. What chains? Base, Optimism, Arbitrum.' },
+            { title: 'Coding Required', section: 'faq', content: 'No coding needed. Describe what you want in plain English.' },
+            { title: 'Supported Chains', section: 'faq', content: 'Base (Coinbase L2), Optimism, Arbitrum, Polygon coming soon.' },
+            { title: 'Make Money', section: 'faq', content: 'Create tokens, NFTs, paywalls, subscriptions, trading bots, DeFi strategies.' },
+            { title: 'Wallet Safety', section: 'faq', content: 'Never stores private keys. Read-only connections. Explicit approval required.' }
+        ];
+
+        const searchInput = document.getElementById('searchInput');
+        const searchResults = document.getElementById('searchResults');
+
+        searchInput.addEventListener('input', (e) => {
+            const query = e.target.value.toLowerCase().trim();
+            
+            if (query.length < 2) {
+                searchResults.classList.remove('active');
+                return;
+            }
+
+            const results = searchIndex.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.content.toLowerCase().includes(query)
+            );
+
+            if (results.length === 0) {
+                searchResults.innerHTML = '<div class="no-results">No results found. Try "token", "wallet", or "deploy"</div>';
+            } else {
+                searchResults.innerHTML = results.map(item => {
+                    const highlightedTitle = highlightText(item.title, query);
+                    const highlightedContent = highlightText(item.content, query);
+                    return `
+                        <div class="search-result-item" onclick="scrollToSection('${item.section}')">
+                            <div class="search-result-title">${highlightedTitle}</div>
+                            <div class="search-result-preview">${highlightedContent}</div>
+                        </div>
+                    `;
+                }).join('');
+            }
+            
+            searchResults.classList.add('active');
+        });
+
+        function highlightText(text, query) {
+            const regex = new RegExp(`(${query})`, 'gi');
+            return text.replace(regex, '<span class="highlight">$1</span>');
+        }
+
+        function scrollToSection(sectionId) {
+            const element = document.getElementById(sectionId);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                searchResults.classList.remove('active');
+                searchInput.value = '';
+            }
+        }
+
+        // Close search results when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.search-box')) {
+                searchResults.classList.remove('active');
+            }
+        });
+
+        // Keyboard shortcut: / to focus search
+        document.addEventListener('keydown', (e) => {
+            if (e.key === '/' && !e.target.matches('input, textarea')) {
+                e.preventDefault();
+                searchInput.focus();
+            }
+            if (e.key === 'Escape') {
+                searchResults.classList.remove('active');
+                searchInput.blur();
+            }
+        });
+    </script>
+</body>
+</html>
