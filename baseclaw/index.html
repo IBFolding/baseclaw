@@ -3,20 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BaseClaw — Blockchain Agent</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>BaseClaw — Project-Oriented AI for Base</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --base-blue: #0052FF;
+            --base-blue-light: #3B82F6;
             --base-cyan: #00D4AA;
-            --bg-primary: #0A0B0D;
-            --bg-secondary: #14151A;
-            --bg-tertiary: #1E1F24;
-            --text-primary: #FFFFFF;
-            --text-secondary: #A0A3B0;
-            --text-muted: #6B6F7D;
-            --border-color: #2A2B2F;
+            --base-green: #10B981;
+            --base-red: #EF4444;
+            --bg-primary: #F5F0EB;
+            --bg-secondary: #EDE8E1;
+            --bg-tertiary: #E5DFD6;
+            --bg-paper: #FAF8F5;
+            --text-primary: #2D2926;
+            --text-secondary: #6B6560;
+            --text-muted: #9B9590;
+            --border-color: #C8C0B8;
             --accent: var(--base-blue);
+            --sketch-color: #4A4540;
+        }
+
+        [data-theme="dark"] {
+            --bg-primary: #1E1C1A;
+            --bg-secondary: #2A2724;
+            --bg-tertiary: #36322E;
+            --bg-paper: #252320;
+            --text-primary: #E8E4E0;
+            --text-secondary: #B0AAA4;
+            --text-muted: #8A847E;
+            --border-color: #4A4540;
+            --sketch-color: #C8C0B8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -29,984 +46,2619 @@
             overflow: hidden;
         }
 
-        .app { 
-            display: grid; 
-            grid-template-columns: 280px 1fr 340px; 
-            height: 100vh; 
-            gap: 1px; 
-            background: var(--border-color);
+        .app { display: grid; grid-template-columns: 280px 1fr 340px; height: 100vh; gap: 16px; padding: 16px; }
+
+        [data-theme="dark"] body {
+            background: var(--bg-primary);
         }
 
-        .panel {
-            background: var(--bg-secondary);
-            display: flex;
-            flex-direction: column;
-            overflow: hidden;
-        }
-
-        .panel-header {
-            padding: 16px 20px;
-            border-bottom: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .panel-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: var(--text-primary);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .panel-content {
-            flex: 1;
+        /* Sidebar */
+        .sidebar {
+            background: var(--bg-paper);
+            display: flex; flex-direction: column;
+            padding: 20px;
+            position: relative;
             overflow-y: auto;
-            padding: 16px;
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
         }
 
-        .panel-footer {
-            padding: 12px 16px;
-            border-top: 1px solid var(--border-color);
+        .logo { 
+            display: flex; align-items: center; gap: 12px; 
+            font-family: 'Patrick Hand', cursive;
+            font-size: 28px; font-weight: 700; color: var(--accent);
+            margin-bottom: 20px;
+            cursor: pointer;
+        }
+        
+        .theme-toggle {
+            margin-left: auto;
+            width: 36px; height: 36px;
+            border-radius: 50% 40% 45% 55%;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--sketch-color);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.2s;
+        }
+        
+        .theme-toggle:hover {
+            transform: rotate(15deg);
+            background: var(--accent);
+            color: white;
+        }
+        
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--base-blue), var(--base-cyan));
+            border-radius: 50% 40% 45% 55%;
+            display: flex; align-items: center; justify-content: center;
+            border: 2px solid var(--sketch-color);
+            box-shadow: 3px 3px 0 rgba(0,82,255,0.2);
         }
 
-        /* Left Panel - Projects */
-        .project-list {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
+        .section-title {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 14px; font-weight: 700;
+            color: var(--text-muted);
+            margin: 16px 0 8px;
+            padding-left: 8px;
+            border-bottom: 2px dashed var(--border-color);
+            padding-bottom: 6px;
         }
 
         .project-item {
-            padding: 12px;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background 0.2s;
-            border: 1px solid transparent;
+            display: flex; align-items: center; gap: 12px;
+            padding: 10px; margin-bottom: 6px;
+            cursor: pointer; transition: all 0.2s;
+            border: 2px solid transparent;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
         }
-
+        
         .project-item:hover {
-            background: var(--bg-tertiary);
+            background: var(--bg-secondary);
+            border-color: var(--border-color);
         }
-
+        
         .project-item.active {
+            background: linear-gradient(135deg, rgba(0,82,255,0.1), rgba(0,212,170,0.1));
+            border-color: var(--accent);
+            box-shadow: 3px 3px 0 rgba(0,82,255,0.15);
+        }
+
+        .project-icon {
+            width: 32px; height: 32px;
             background: var(--bg-tertiary);
-            border-color: var(--base-blue);
-        }
-
-        .project-name {
-            font-weight: 600;
-            font-size: 14px;
-        }
-
-        .project-meta {
-            font-size: 12px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        .btn {
-            padding: 8px 16px;
-            border-radius: 6px;
-            border: none;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .btn-primary {
-            background: var(--base-blue);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #3B6BFF;
-        }
-
-        .btn-secondary {
-            background: var(--bg-tertiary);
-            color: var(--text-secondary);
-            border: 1px solid var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            background: var(--border-color);
-        }
-
-        /* Center Panel - Chat */
-        .chat-container {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .messages {
-            flex: 1;
-            overflow-y: auto;
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .message {
-            display: flex;
-            gap: 12px;
-            max-width: 80%;
-        }
-
-        .message.user {
-            align-self: flex-end;
-            flex-direction: row-reverse;
-        }
-
-        .message-avatar {
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            border-radius: 50% 40% 45% 55%;
+            display: flex; align-items: center; justify-content: center;
             font-size: 16px;
-            flex-shrink: 0;
+            border: 2px solid var(--sketch-color);
         }
-
-        .message.system .message-avatar {
-            background: var(--bg-tertiary);
-        }
-
-        .message.user .message-avatar {
-            background: var(--base-blue);
-        }
-
-        .message-content {
-            background: var(--bg-tertiary);
-            padding: 12px 16px;
-            border-radius: 12px;
-            font-size: 14px;
-            line-height: 1.5;
-        }
-
-        .message.user .message-content {
-            background: var(--base-blue);
-        }
-
-        .message-time {
-            font-size: 11px;
-            color: var(--text-muted);
-            margin-top: 4px;
-        }
-
-        .chat-input-container {
-            padding: 16px 20px;
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            gap: 12px;
-        }
-
-        .chat-input {
-            flex: 1;
-            background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            padding: 12px 16px;
-            color: var(--text-primary);
-            font-size: 14px;
-            outline: none;
-            resize: none;
-        }
-
-        .chat-input:focus {
+        
+        .project-item.active .project-icon {
+            background: var(--accent);
+            color: white;
             border-color: var(--base-blue);
         }
 
-        .send-btn {
-            width: 40px;
-            height: 40px;
-            border-radius: 8px;
-            background: var(--base-blue);
-            color: white;
-            border: none;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .send-btn:hover {
-            background: #3B6BFF;
-        }
-
-        .send-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Right Panel - Status */
-        .status-section {
-            margin-bottom: 20px;
-        }
-
-        .status-label {
-            font-size: 11px;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .status-value {
-            font-size: 14px;
-            color: var(--text-primary);
-        }
-
-        .status-indicator {
-            display: inline-block;
-            width: 8px;
-            height: 8px;
+        .project-name { font-size: 13px; font-weight: 600; }
+        .project-meta { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+        
+        .chat-count {
+            margin-left: auto;
+            background: var(--bg-tertiary);
+            padding: 3px 8px;
             border-radius: 50%;
-            margin-right: 6px;
+            font-size: 10px; font-weight: 700;
+            border: 2px solid var(--sketch-color);
+            font-family: 'Patrick Hand', cursive;
         }
 
-        .status-online {
-            background: var(--base-cyan);
+        .new-project-btn {
+            margin-top: 12px; padding: 12px;
+            background: transparent;
+            border: 2px dashed var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            color: var(--text-secondary);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 16px; font-weight: 700;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: all 0.2s;
+        }
+        
+        .new-project-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0,82,255,0.05);
         }
 
-        .status-offline {
-            background: var(--text-muted);
+        /* Project Skills Area */
+        .project-skills-area {
+            margin-top: 12px;
+            padding: 12px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--sketch-color);
+            border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+            display: none;
         }
-
-        .skill-tag {
+        
+        .project-skills-area.active {
+            display: block;
+        }
+        
+        .project-skills-area .section-title {
+            margin-top: 0;
+            font-size: 12px;
+        }
+        
+        .skill-tag-small {
             display: inline-flex;
             align-items: center;
             gap: 4px;
             padding: 4px 10px;
-            border-radius: 4px;
-            font-size: 12px;
             background: var(--bg-tertiary);
-            border: 1px solid var(--border-color);
-            margin: 2px;
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            font-size: 11px; font-weight: 600;
+            margin: 3px;
+            font-family: 'Patrick Hand', cursive;
+            cursor: pointer;
+            transition: all 0.2s;
         }
-
-        .skill-tag.active {
-            background: rgba(0, 82, 255, 0.2);
+        
+        .skill-tag-small:hover {
+            background: var(--accent);
+            color: white;
             border-color: var(--base-blue);
-            color: var(--base-blue);
+        }
+        
+        .skill-tag-small.loaded {
+            background: var(--accent);
+            color: white;
+            border-color: var(--base-blue);
         }
 
-        .connection-status {
+        /* Quick Actions Picker */
+        .picker-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 12px;
+            padding: 10px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+        }
+        
+        .picker-btn {
+            padding: 6px 12px;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 2px solid var(--border-color);
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 12px; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
             display: flex;
             align-items: center;
-            gap: 8px;
-            padding: 8px 12px;
-            border-radius: 6px;
-            font-size: 12px;
+            gap: 4px;
+        }
+        
+        .picker-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        .picker-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--base-blue);
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+        }
+
+        /* Main Chat */
+        .main {
+            display: flex; flex-direction: column;
+            background: var(--bg-paper);
+            position: relative;
+            padding: 20px;
+            overflow-y: auto;
+            border: 2px solid var(--sketch-color);
+            border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+        }
+
+        .chat-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding-bottom: 16px;
+            border-bottom: 2px dashed var(--border-color);
             margin-bottom: 16px;
         }
-
-        .connection-status.connected {
-            background: rgba(0, 212, 170, 0.1);
-            color: var(--base-cyan);
+        
+        .chat-title {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 24px; font-weight: 700;
+        }
+        
+        .chat-subtitle {
+            font-size: 13px; color: var(--text-muted);
+            display: flex; align-items: center; gap: 8px;
+            margin-top: 4px;
         }
 
-        .connection-status.disconnected {
-            background: rgba(239, 68, 68, 0.1);
-            color: #EF4444;
+        .network-switcher {
+            display: flex; align-items: center; gap: 8px;
+            background: var(--bg-secondary);
+            padding: 6px;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 2px solid var(--sketch-color);
+        }
+        
+        .network-btn {
+            padding: 8px 16px;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 2px solid transparent;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 14px; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex; align-items: center; gap: 6px;
+        }
+        
+        .network-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--base-blue);
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+        }
+        
+        .network-btn:hover:not(.active) {
+            border-color: var(--border-color);
+            color: var(--text-primary);
+        }
+        
+        .network-dot {
+            width: 10px; height: 10px;
+            border-radius: 50%;
+            border: 2px solid var(--sketch-color);
+        }
+        
+        .network-dot.sepolia { background: var(--base-red); }
+        .network-dot.mainnet { background: var(--base-green); }
+
+        .chain-display {
+            padding: 6px 12px;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 2px solid var(--sketch-color);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 12px; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .chain-display:hover {
+            border-color: var(--accent);
+            color: var(--accent);
         }
 
-        .loading-dots {
-            display: inline-flex;
-            gap: 2px;
+        .messages {
+            flex: 1; overflow-y: auto;
+            display: flex; flex-direction: column; gap: 20px;
+            padding: 10px 0;
+            max-height: calc(100vh - 280px);
+        }
+        
+        .message { display: flex; gap: 14px; max-width: 88%; }
+        .message.user { align-self: flex-end; flex-direction: row-reverse; }
+        
+        .message-avatar {
+            width: 44px; height: 44px;
+            border-radius: 50% 40% 45% 55%;
+            background: var(--bg-tertiary);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 20px;
+            border: 2px solid var(--sketch-color);
+            flex-shrink: 0;
+        }
+        
+        .message.user .message-avatar {
+            background: var(--accent);
+            color: white;
+        }
+        
+        .message-content {
+            background: var(--bg-secondary);
+            padding: 16px 20px;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 2px solid var(--sketch-color);
+            font-size: 14px; line-height: 1.7;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+        }
+        
+        .message.user .message-content {
+            background: linear-gradient(135deg, var(--base-blue), var(--base-blue-light));
+            color: white;
+            border-color: var(--base-blue);
+        }
+        
+        .message-time {
+            font-size: 12px; color: var(--text-muted);
+            margin-top: 6px; font-family: 'Patrick Hand', cursive;
         }
 
-        .loading-dots::after {
-            content: '';
-            animation: dots 1.5s infinite;
+        .input-area {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 2px dashed var(--border-color);
+        }
+        
+        .input-wrapper {
+            display: flex; gap: 12px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            padding: 8px;
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+        }
+        
+        .input-wrapper:focus-within {
+            border-color: var(--accent);
+            box-shadow: 4px 4px 0 rgba(0,82,255,0.15);
+        }
+        
+        .chat-input {
+            flex: 1; background: transparent; border: none;
+            padding: 12px 16px; color: var(--text-primary);
+            font-size: 15px; outline: none; resize: none;
+            max-height: 120px; font-family: inherit;
+        }
+        
+        .chat-input::placeholder { color: var(--text-muted); }
+        
+        .send-btn {
+            width: 44px; height: 44px;
+            border-radius: 50% 40% 45% 55%;
+            background: var(--accent);
+            color: white; border: 2px solid var(--base-blue);
+            cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+        }
+        
+        .attach-btn {
+            width: 44px; height: 44px;
+            border-radius: 50% 40% 45% 55%;
+            background: var(--bg-tertiary);
+            color: var(--text-secondary);
+            border: 2px solid var(--sketch-color);
+            cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+            font-size: 18px;
+            transition: all 0.2s;
+            flex-shrink: 0;
+        }
+        
+        .attach-btn:hover {
+            background: var(--accent);
+            color: white;
+            border-color: var(--base-blue);
+            transform: rotate(-10deg) scale(1.1);
         }
 
-        @keyframes dots {
-            0%, 20% { content: '.'; }
-            40% { content: '..'; }
-            60%, 100% { content: '...'; }
+        /* Right Panel */
+        .context-panel {
+            background: var(--bg-paper);
+            display: flex; flex-direction: column;
+            padding: 20px;
+            position: relative;
+            overflow-y: auto;
+            border: 2px solid var(--sketch-color);
+            border-radius: 15px 225px 15px 255px / 225px 15px 255px 15px;
+        }
+
+        .panel-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+        
+        .panel-tab {
+            flex: 1; padding: 10px;
+            text-align: center;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 16px; font-weight: 700;
+            color: var(--text-muted);
+            cursor: pointer;
+            border: 2px solid transparent;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            transition: all 0.2s;
+        }
+        
+        .panel-tab:hover { color: var(--text-primary); border-color: var(--border-color); }
+        
+        .panel-tab.active {
+            color: var(--accent);
+            border-color: var(--accent);
+            background: rgba(0,82,255,0.05);
+        }
+
+        .panel-content { display: none; }
+        .panel-content.active { display: block; }
+
+        .context-item {
+            padding: 14px 0;
+            border-bottom: 2px dashed var(--border-color);
+        }
+        
+        .context-label {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 14px; font-weight: 700;
+            color: var(--text-muted);
+            margin-bottom: 6px;
+        }
+        
+        .context-value {
+            font-size: 14px; color: var(--text-primary); font-weight: 500;
+        }
+
+        .wallet-card {
+            background: var(--bg-secondary);
+            border: 2px solid var(--sketch-color);
+            border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+            padding: 16px; margin-bottom: 16px;
+        }
+        
+        .wallet-header {
+            display: flex; align-items: center; gap: 10px; margin-bottom: 10px;
+        }
+        
+        .wallet-icon {
+            width: 32px; height: 32px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50% 40% 45% 55%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+            border: 2px solid var(--sketch-color);
+        }
+        
+        .wallet-name { font-weight: 700; font-size: 14px; }
+        
+        .wallet-address {
+            font-family: monospace; font-size: 11px;
+            color: var(--text-muted);
+            word-break: break-all;
+            background: var(--bg-primary);
+            padding: 6px 10px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .add-wallet-btn {
+            width: 100%; padding: 12px;
+            background: transparent;
+            border: 2px dashed var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            color: var(--text-secondary);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 16px; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin-top: 12px;
+        }
+        
+        .add-wallet-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            background: rgba(0,82,255,0.05);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            display: none;
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            align-items: center; justify-content: center;
+        }
+        
+        .modal-overlay.active { display: flex; }
+        
+        .modal {
+            background: var(--bg-paper);
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            padding: 32px;
+            width: 480px;
+            max-width: 90vw;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
+        }
+        
+        .modal-title {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 24px; font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+        
+        .modal-input {
+            width: 100%; padding: 12px 16px;
+            background: var(--bg-secondary);
+            border: 2px solid var(--sketch-color);
+            border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+            color: var(--text-primary);
+            font-size: 15px; margin-bottom: 16px;
+            font-family: inherit;
+        }
+        
+        .modal-input:focus {
+            outline: none;
+            border-color: var(--accent);
+        }
+        
+        .modal-buttons {
+            display: flex; gap: 12px; justify-content: flex-end;
+        }
+        
+        .modal-btn {
+            padding: 10px 24px;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 2px solid var(--sketch-color);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 16px; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .modal-btn.primary {
+            background: var(--accent);
+            color: white;
+            border-color: var(--base-blue);
+        }
+        
+        .modal-btn.secondary {
+            background: transparent;
+            color: var(--text-secondary);
+        }
+        
+        .modal-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 3px 3px 0 rgba(0,0,0,0.1);
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 18px;
+        }
+
+        .model-selector {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+        }
+        
+        .model-btn {
+            padding: 8px 16px;
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 2px solid var(--sketch-color);
+            background: var(--bg-secondary);
+            color: var(--text-secondary);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 14px; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .model-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+        
+        .model-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--base-blue);
+            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
         }
     </style>
 </head>
 <body>
     <div class="app">
-        <!-- Left Panel - Projects -->
-        <div class="panel">
-            <div class="panel-header">
-                <span style="font-size: 20px;">🦞</span>
-                <span class="panel-title">BaseClaw</span>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo" onclick="app.goHome()">
+                <div class="logo-icon">
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2z" fill="url(#logo-gradient)" stroke="white" stroke-width="1.5"/>
+                        <path d="M8 14c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                        <circle cx="14" cy="14" r="2" fill="white"/>
+                        <defs>
+                            <linearGradient id="logo-gradient" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                                <stop stop-color="#0052FF"/>
+                                <stop offset="1" stop-color="#00D4AA"/>
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+                BaseClaw
+                <div class="theme-toggle" onclick="app.toggleTheme()" id="theme-toggle">🌙</div>
             </div>
-            <div class="panel-content">
-                <div class="connection-status disconnected" id="connection-status">
-                    <span class="status-indicator status-offline"></span>
-                    <span id="connection-text">Disconnected</span>
-                </div>
-                <!-- Quick Actions for Beginners -->
-                <div style="margin-bottom: 16px;">
-                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-                        Quick Start
-                    </div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.startTutorial()">📖 Tutorial</button>
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.openWizard()">🎯 Wizard</button>
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.toggleDemoMode()">🔒 Demo</button>
-                    </div>
-                </div>
-                
-                <!-- Quick Actions for Beginners -->
-                <div style="margin-bottom: 16px;">
-                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-                        Quick Start
-                    </div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.startTutorial()">📖 Tutorial</button>
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.openWizard()">🎯 Wizard</button>
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.toggleDemoMode()">🔒 Demo</button>
-                    </div>
-                </div>
-                
-                <!-- Quick Actions for Beginners -->
-                <div style="margin-bottom: 16px;">
-                    <div style="font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;">
-                        Quick Start
-                    </div>
-                    <div style="display: flex; gap: 8px; flex-wrap: wrap;">
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.startTutorial()">📖 Tutorial</button>
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.openWizard()">🎯 Wizard</button>
-                        <button class="btn btn-secondary" style="font-size: 12px; padding: 6px 12px;" onclick="app.toggleDemoMode()">🔒 Demo</button>
-                    </div>
-                </div>
-                
-                <div class="project-list" id="project-list">
-                    <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
-                        No projects yet
-                    </div>
-                </div>
-            </div>
-            <div class="panel-footer">
-                <button class="btn btn-primary" style="width: 100%;" onclick="app.createProject()">
-                    + New Project
+            
+            <div class="section-title">Projects</div>
+            <div id="project-list"></div>
+            
+            <button class="new-project-btn" onclick="app.showNewProjectModal()">
+                <span>+</span> New Project
+            </button>
+            
+            <!-- Skills Section -->
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <div class="section-title" style="flex: 1; margin: 0;">Skills</div>
+                <button class="picker-btn" onclick="app.showSkillsModal()" title="Select skills">
+                    +
                 </button>
-                <div style="margin-top: 8px; display: flex; flex-direction: column; gap: 6px;">
-                    <button class="btn btn-secondary" style="width: 100%; font-size: 12px;" onclick="app.show402Payment()">
-                        💰 402 Payments
-                    </button>
-                    <button class="btn btn-secondary" style="width: 100%; font-size: 12px;" onclick="app.showNFTGenerator()">
-                        🎨 NFT Generator
-                    </button>
+            </div>
+            <div id="skills-list" style="margin-bottom: 16px;">
+                <div style="font-size: 12px; color: var(--text-muted); padding: 8px;">No skills loaded</div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                <div class="section-title" style="flex: 1; margin: 0;">Quick Actions</div>
+                <button class="picker-btn" onclick="app.showPickerModal()" title="Configure quick actions">
+                    ✓
+                </button>
+            </div>
+            <div id="quick-actions-list"></div>
+            
+            <!-- Deploy -->
+            <div style="margin-top: 12px; padding-top: 12px; border-top: 2px dashed var(--border-color);">
+                <div class="project-item" onclick="app.showVercelModal()">
+                    <div class="project-icon">▲</div>
+                    <div>
+                        <div class="project-name">Deploy to Vercel</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Fund / Trade -->
+            <div style="margin-top: 12px; padding-top: 12px; border-top: 2px dashed var(--border-color);">
+                <div class="project-item" onclick="app.fundWallet()">
+                    <div class="project-icon">💰</div>
+                    <div>
+                        <div class="project-name">Fund Wallet</div>
+                    </div>
+                </div>
+                <div class="project-item" onclick="app.tradeTokens()">
+                    <div class="project-icon">💱</div>
+                    <div>
+                        <div class="project-name">Trade Tokens</div>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- Center Panel - Chat -->
-        <div class="panel">
-            <div class="panel-header">
-                <span class="panel-title">Agent Chat</span>
-                <div style="margin-left: auto; display: flex; gap: 8px;">
-                    <button class="btn btn-secondary" onclick="app.showGatewayConfig()">⚙️ Gateway</button>
-                    <button class="btn btn-secondary" onclick="app.clearChat()">Clear</button>
-                </div>
-            </div>
-            <div class="chat-container">
-                <div class="messages" id="messages">
-                    <div class="message system">
-                        <div class="message-avatar">🦞</div>
-                        <div class="message-content">
-                            <div>Welcome to BaseClaw! I'm your blockchain development agent.</div>
-                            <div class="message-time">Ready to deploy on Base</div>
-                        </div>
+        <!-- Main Chat -->
+        <div class="main">
+            <div class="chat-header">
+                <div>
+                    <div class="chat-title" id="chat-title">Welcome to BaseClaw</div>
+                    <div class="chat-subtitle" id="chat-subtitle">
+                        <span class="network-dot sepolia"></span>
+                        Base Sepolia
                     </div>
                 </div>
-                <div class="chat-input-container">
-                    <textarea class="chat-input" id="chat-input" placeholder="Ask me to deploy a contract, create a token, or help with blockchain development..." rows="1"></textarea>
-                    <button class="send-btn" id="send-btn" onclick="app.sendMessage()">➤</button>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <button class="chain-display" onclick="app.newChat()" id="new-chat-btn" title="Start new chat" style="display: none;">
+                        + Chat
+                    </button>
+                    <button class="chain-display" onclick="app.showPreview()" id="preview-btn" title="Preview project">
+                        👁️ Preview
+                    </button>
+                    <button class="chain-display" onclick="app.showChainModal()" id="chain-display">
+                        <span class="network-dot sepolia"></span> Sepolia
+                    </button>
+                    <div class="network-switcher">
+                        <button class="network-btn active" onclick="app.switchNetwork('sepolia')">
+                            <span class="network-dot sepolia"></span> Sepolia
+                        </button>
+                        <button class="network-btn" onclick="app.switchNetwork('mainnet')">
+                            <span class="network-dot mainnet"></span> Mainnet
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="messages" id="messages">
+                <div class="message">
+                    <div class="message-avatar">
+                        <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                            <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2z" fill="url(#msg-gradient)" stroke="white" stroke-width="1.5"/>
+                            <path d="M8 14c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                            <circle cx="14" cy="14" r="2" fill="white"/>
+                            <defs>
+                                <linearGradient id="msg-gradient" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                                    <stop stop-color="#0052FF"/>
+                                    <stop offset="1" stop-color="#00D4AA"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                    <div class="message-content">
+                        Welcome to BaseClaw! Select a project to get started.
+                        <div class="message-time">Just now</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="input-area">
+                <div class="input-wrapper">
+                    <button class="attach-btn" onclick="app.attachFile()" title="Attach file">📎</button>
+                    <textarea class="chat-input" id="chat-input" placeholder="Ask BaseClaw anything..." rows="1"></textarea>
+                    <button class="send-btn" onclick="app.sendMessage()">➤</button>
                 </div>
             </div>
         </div>
 
-        <!-- Right Panel - Status -->
-        <div class="panel">
-            <div class="panel-header">
-                <span class="panel-title">Status</span>
+        <!-- Right Panel -->
+        <div class="context-panel">
+            <div class="panel-tabs">
+                <div class="panel-tab active" onclick="app.switchPanel('context')" id="tab-context">Context</div>
+                <div class="panel-tab" onclick="app.switchPanel('wallet')" id="tab-wallet">Wallet</div>
+                <div class="panel-tab" onclick="app.switchPanel('model')" id="tab-model">AI Model</div>
+                <div class="panel-tab" onclick="app.switchPanel('secrets')" id="tab-secrets">Secrets</div>
             </div>
-            <div class="panel-content">
-                <div class="status-section">
-                    <div class="status-label">Agent</div>
-                    <div class="status-value" id="agent-status">🦞 BaseClaw</div>
-                </div>
-                <div class="status-section">
-                    <div class="status-label">Model</div>
-                    <div class="status-value" id="model-status">kimi-k2.6</div>
-                </div>
-                <div class="status-section">
-                    <div class="status-label">Chain</div>
-                    <div class="status-value" id="chain-status">Base Sepolia</div>
-                </div>
-                <div class="status-section">
-                    <div class="status-label">Skills</div>
-                    <div id="skills-list">
-                        <span class="skill-tag">🪙 Token Deploy</span>
-                        <span class="skill-tag">🎨 NFT Deploy</span>
-                        <span class="skill-tag">⚡ Staking</span>
+            
+            <div class="panel-content active" id="panel-context">
+                <div class="empty-state">Select a project to see context</div>
+            </div>
+            
+            <div class="panel-content" id="panel-wallet">
+                <div class="empty-state">No wallet connected</div>
+            </div>
+            
+            <div class="panel-content" id="panel-model">
+                <div class="context-item">
+                    <div class="context-label">Active Model</div>
+                    <div class="model-selector">
+                        <button class="model-btn active" onclick="app.selectModel('kimi')" id="model-kimi">Kimi</button>
+                        <button class="model-btn" onclick="app.selectModel('codex')" id="model-codex">Codex</button>
+                        <button class="model-btn" onclick="app.selectModel('xai')" id="model-xai">xAI</button>
+                        <button class="model-btn" onclick="app.selectModel('claude')" id="model-claude">Claude</button>
+                        <button class="model-btn" onclick="app.selectModel('gemini')" id="model-gemini">Gemini</button>
+                        <button class="model-btn" onclick="app.selectModel('minimax')" id="model-minimax">MiniMax</button>
                     </div>
                 </div>
-                <div class="status-section">
-                    <div class="status-label">Wallet</div>
-                    <div class="status-value" id="wallet-status" style="font-family: monospace; font-size: 12px;">
-                        Not connected
+                <div class="context-item">
+                    <div class="context-label">API Keys</div>
+                    <div id="api-keys-list">
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 8px;">No keys configured</div>
                     </div>
+                    <button class="add-wallet-btn" onclick="app.showAddKeyModal()">+ Add API Key</button>
                 </div>
             </div>
-            <div class="panel-footer">
-                <button class="btn btn-secondary" style="width: 100%;" onclick="app.connectWallet()">
-                    Connect Wallet
-                </button>
+            
+            <div class="panel-content" id="panel-secrets">
+                <div class="empty-state">Select a project to manage secrets</div>
             </div>
         </div>
     </div>
 
-    <!-- Help Button -->
-    <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50%; background: var(--base-blue); color: white; border: none; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 0 4px 12px rgba(0, 82, 255, 0.3);" onclick="app.showHelp()">?</button>
+    <!-- New Project Modal -->
+    <div class="modal-overlay" id="modal-new-project">
+        <div class="modal">
+            <div class="modal-title">New Project</div>
+            <input type="text" class="modal-input" id="new-project-name" placeholder="Project name (e.g., MyToken)">
+            <select class="modal-input" id="new-project-chain">
+                <option value="base-sepolia">Base Sepolia (Testnet)</option>
+                <option value="base-mainnet">Base Mainnet (Production)</option>
+            </select>
+            <select class="modal-input" id="new-project-template">
+                <option value="">No template</option>
+                <option value="ERC20">ERC20 Token</option>
+                <option value="ERC721">ERC721 NFT</option>
+                <option value="ERC1155">ERC1155 Multi-Token</option>
+                <option value="Staking">Staking Pool</option>
+                <option value="DAO">DAO / Governance</option>
+                <option value="Timelock">Timelock Controller</option>
+                <option value="Multisig">Multisig Wallet</option>
+                <option value="Vesting">Token Vesting</option>
+                <option value="Airdrop">Airdrop Distributor</option>
+                <option value="Marketplace">NFT Marketplace</option>
+                <option value="DEX">DEX / AMM</option>
+                <option value="Bridge">Cross-Chain Bridge</option>
+                <option value="Escrow">Escrow Contract</option>
+                <option value="Lending">Lending Pool</option>
+                <option value="Yield">Yield Aggregator</option>
+                <option value="Launchpad">Token Launchpad</option>
+                <option value="Oracle">Price Oracle</option>
+                <option value="Random">VRF Randomness</option>
+                <option value="Upgradeable">Upgradeable Proxy</option>
+            </select>
+            <div class="modal-buttons">
+                <button class="modal-btn secondary" onclick="app.hideModal('modal-new-project')">Cancel</button>
+                <button class="modal-btn primary" onclick="app.createProject()">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chain Modal -->
+    <div class="modal-overlay" id="modal-chain">
+        <div class="modal">
+            <div class="modal-title">Switch Chain</div>
+            <div class="project-item" onclick="app.switchChain('base-sepolia')" style="cursor: pointer;">
+                <div class="project-icon"><span class="network-dot sepolia"></span></div>
+                <div>
+                    <div class="project-name">Base Sepolia</div>
+                    <div class="project-meta">Testnet — Safe for development</div>
+                </div>
+            </div>
+            <div class="project-item" onclick="app.switchChain('base-mainnet')" style="cursor: pointer;">
+                <div class="project-icon"><span class="network-dot mainnet"></span></div>
+                <div>
+                    <div class="project-name">Base Mainnet</div>
+                    <div class="project-meta">Production — Requires approval</div>
+                </div>
+            </div>
+            <div class="project-item" onclick="app.switchChain('other')" style="cursor: pointer;">
+                <div class="project-icon">⚙️</div>
+                <div>
+                    <div class="project-name">Other Chain</div>
+                    <div class="project-meta">Custom EVM chain</div>
+                </div>
+            </div>
+            <div class="modal-buttons" style="margin-top: 16px">
+                <button class="modal-btn secondary" onclick="app.hideModal('modal-chain')">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Wallet Modal -->
+    <div class="modal-overlay" id="modal-wallet">
+        <div class="modal">
+            <div class="modal-title">Wallet Management</div>
+            <div id="wallet-list-modal"></div>
+            <button class="add-wallet-btn" onclick="app.addWallet()">+ Add Wallet</button>
+            <div class="modal-buttons" style="margin-top: 16px">
+                <button class="modal-btn secondary" onclick="app.hideModal('modal-wallet')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Template Modal -->
+    <div class="modal-overlay" id="modal-template">
+        <div class="modal">
+            <div class="modal-title">Contract Templates</div>
+            <div id="template-list-modal"></div>
+            <div class="modal-buttons" style="margin-top: 16px">
+                <button class="modal-btn secondary" onclick="app.hideModal('modal-template')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div class="modal-overlay" id="modal-settings">
+        <div class="modal">
+            <div class="modal-title">Project Settings</div>
+            <div class="context-item">
+                <div class="context-label">Project Name</div>
+                <input type="text" class="modal-input" id="setting-project-name" placeholder="Project name">
+            </div>
+            <div class="context-item">
+                <div class="context-label">Chain</div>
+                <select class="modal-input" id="setting-project-chain">
+                    <option value="base-sepolia">Base Sepolia</option>
+                    <option value="base-mainnet">Base Mainnet</option>
+                </select>
+            </div>
+            <div class="context-item">
+                <div class="context-label">Autonomy Level</div>
+                <select class="modal-input" id="setting-autonomy">
+                    <option value="assisted">Assisted (safe)</option>
+                    <option value="semi">Semi-autonomous</option>
+                    <option value="full">Full (dangerous)</option>
+                </select>
+            </div>
+            <div class="context-item">
+                <div class="context-label">Trading</div>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" id="setting-trading"> Enable trading
+                </label>
+            </div>
+            <div class="context-item">
+                <div class="context-label">Signing</div>
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                    <input type="checkbox" id="setting-signing"> Enable transaction signing
+                </label>
+            </div>
+            <div class="modal-buttons" style="margin-top: 16px">
+                <button class="modal-btn secondary" onclick="app.hideModal('modal-settings')">Cancel</button>
+                <button class="modal-btn primary" onclick="app.saveSettings()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Secrets Modal -->
+    <div class="modal-overlay" id="modal-secrets">
+        <div class="modal">
+            <div class="modal-title">Secrets Manager</div>
+            <div id="secrets-list"></div>
+            <div class="context-item" style="margin-top: 16px;">
+                <div class="context-label">Add Secret</div>
+                <input type="text" class="modal-input" id="secret-name" placeholder="Secret name (e.g., API_KEY)">
+                <input type="password" class="modal-input" id="secret-value" placeholder="Secret value" style="margin-top: 8px;">
+                <button class="modal-btn primary" style="margin-top: 8px;" onclick="app.addSecret()">Add Secret</button>
+            </div>
+            <div class="modal-buttons" style="margin-top: 16px">
+                <button class="modal-btn secondary" onclick="app.hideModal('modal-secrets')">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add API Key Modal -->
+    <div class="modal-overlay" id="modal-api-key">
+        <div class="modal">
+            <div class="modal-title">Add API Key</div>
+            <select class="modal-input" id="key-provider">
+                <option value="kimi">Kimi (Moonshot)</option>
+                <option value="codex">Codex (OpenAI)</option>
+                <option value="xai">xAI (Grok)</option>
+                <option value="claude">Claude (Anthropic)</option>
+                <option value="gemini">Gemini (Google)</option>
+                <option value="minimax">MiniMax</option>
+            </select>
+            <input type="text" class="modal-input" id="key-name" placeholder="Key name (e.g., Production)">
+            <input type="password" class="modal-input" id="key-value" placeholder="API key">
+            <div class="modal-buttons">
+                <button class="modal-btn secondary" onclick="app.hideModal('modal-api-key')">Cancel</button>
+                <button class="modal-btn primary" onclick="app.saveApiKey()">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vercel Deploy Modal -->
+    <div class="modal-overlay" id="modal-vercel">
+        <div class="modal">
+            <div class="modal-title">🚀 Deploy to Vercel</div>
+            <div class="context-item">
+                <div class="context-label">Vercel API Token</div>
+                <input type="password" class="modal-input" id="vercel-token" placeholder="vercel_...">
+                <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">
+                    Get token from <a href="https://vercel.com/account/tokens" target="_blank" style="color: var(--accent);">vercel.com/account/tokens</a>
+                </div>
+            </div>
+            <div class="context-item">
+                <div class="context-label">Project Name</div>
+                <input type="text" class="modal-input" id="vercel-project" placeholder="my-baseclaw-project">
+            </div>
+            <div class="context-item">
+                <div class="context-label">Team (optional)</div>
+                <input type="text" class="modal-input" id="vercel-team" placeholder="personal">
+            </div>
+            <button class="modal-btn primary" style="width: 100%; margin-top: 16px;" onclick="app.deployToVercel()">
+                Deploy to Vercel
+            </button>
+            <div class="modal-buttons" style="margin-top: 16px">
+                <button class="modal-btn secondary" onclick="app.hideModal('modal-vercel')">Close</button>
+            </div>
+        </div>
+    </div>
 
     <script>
-        class BaseClawUI {
-            constructor() {
-                this.ws = null;
-                this.connected = false;
-                this.projects = [];
-                this.currentProject = null;
-                this.messages = [];
-                this.agentRunId = null;
-                
-                this.init();
-            }
+        const app = {
+            projects: [],
+            currentProject: null,
+            currentNetwork: 'sepolia',
+            currentModel: 'kimi',
+            tradingMode: 'bankr',
+            apiKeys: {},
+            
+            skills: [
+                { name: 'Bankr', icon: '🏦', description: 'Trading and DeFi', loaded: false },
+                { name: 'Foundry', icon: '🔨', description: 'Compile, test, deploy', loaded: false },
+                { name: 'AgentKit', icon: '🤖', description: 'Coinbase onchain tools', loaded: false },
+                { name: 'NFT', icon: '🖼️', description: 'Generate NFT collections', loaded: false },
+                { name: 'MiniApp', icon: '📱', description: 'Build mini apps', loaded: false },
+                { name: 'Launchpad', icon: '🚀', description: 'Launch tokens', loaded: false },
+                { name: 'BaseScan', icon: '🔍', description: 'Contract verification', loaded: false },
+                { name: 'OpenClaw', icon: '⚡', description: 'Gateway integration', loaded: false },
+                { name: 'Secrets', icon: '🔐', description: 'Secrets manager', loaded: false },
+                { name: 'Fund', icon: '💰', description: 'Fund wallet', loaded: false },
+                { name: 'Trade', icon: '💱', description: 'Trade tokens', loaded: false },
+                { name: 'AI Model Manager', icon: '🧠', description: 'Manage AI models', loaded: false },
+                { name: 'Token Launchpad', icon: '🎯', description: 'Launch tokens', loaded: false },
+                { name: 'ClawReserve', icon: '🏛️', description: 'Monetary protocol', loaded: false },
+                { name: 'MoltMail', icon: '📧', description: 'Email automation', loaded: false },
+                { name: 'Swimming Pauls', icon: '🏊', description: 'Prediction markets', loaded: false },
+                { name: 'Base Deploy', icon: '⛓️', description: 'Base chain deployer', loaded: false },
+                { name: 'Web3 Auth', icon: '🔑', description: 'SIWE authentication', loaded: false },
+                { name: 'Gas Tracker', icon: '⛽', description: 'Gas price monitor', loaded: false },
+                { name: 'Block Explorer', icon: '🔎', description: 'Block analysis', loaded: false },
+                { name: 'Trading', icon: '📈', description: 'Advanced trading', loaded: false },
+                { name: 'DeFi Strategies', icon: '🌾', description: 'Yield farming & vaults', loaded: false },
+                { name: 'Yield Scanner', icon: '🔍', description: 'Scan yields across protocols', loaded: false },
+                { name: 'Liquidity', icon: '💧', description: 'LP management', loaded: false },
+                { name: 'Perps', icon: '📊', description: 'Perpetual futures', loaded: false },
+            ],
+            
+            pickerState: {
+                skills: true, wallet: true, templates: true, preview: true,
+                ai: true, build: true, test: true, deploy: true, chain: true, settings: true
+            },
+
+            toggleTheme() {
+                const html = document.documentElement;
+                const current = html.getAttribute('data-theme');
+                const next = current === 'dark' ? 'light' : 'dark';
+                html.setAttribute('data-theme', next);
+                document.getElementById('theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
+                localStorage.setItem('baseclaw-theme', next);
+            },
 
             init() {
-                this.connectToGateway();
-                this.setupEventListeners();
+                const saved = localStorage.getItem('baseclaw-theme');
+                if (saved) {
+                    document.documentElement.setAttribute('data-theme', saved);
+                    document.getElementById('theme-toggle').textContent = saved === 'dark' ? '☀️' : '🌙';
+                }
+                this.loadPickerState();
                 this.loadProjects();
-            }
-
-            async connectToGateway() {
-                try {
-                    // Check if user has configured their gateway URL
-                    const savedUrl = localStorage.getItem('baseclaw-gateway-url');
-                    const wsUrl = savedUrl || 'ws://127.0.0.1:18789';
-                    
-                    this.ws = new WebSocket(wsUrl);
-                    
-                    this.ws.onopen = () => {
-                        this.connected = true;
-                        this.updateConnectionStatus(true);
-                        
-                        // Send connect frame with proper protocol
-                        this.send({
-                            type: 'req',
-                            id: 'connect-' + Date.now(),
-                            method: 'connect',
-                            params: {
-                                auth: { token: 'baseclaw-local-dev' },
-                                client: {
-                                    id: 'webchat-ui',
-                                    version: '1.0.0',
-                                    platform: 'web',
-                                    mode: 'webchat'
-                                },
-                                role: 'operator',
-                                scopes: ['operator.read', 'operator.write'],
-                                minProtocol: 4,
-                                maxProtocol: 4
-                            }
-                        });
-                    };
-                    
-                    this.ws.onmessage = (event) => {
-                        const data = JSON.parse(event.data);
-                        this.handleGatewayMessage(data);
-                    };
-                    
-                    this.ws.onclose = () => {
-                        this.connected = false;
-                        this.updateConnectionStatus(false);
-                        // Reconnect after 5 seconds
-                        setTimeout(() => this.connectToGateway(), 5000);
-                    };
-                    
-                    this.ws.onerror = (error) => {
-                        console.error('WebSocket error:', error);
-                        this.connected = false;
-                        this.updateConnectionStatus(false);
-                    };
-                } catch (error) {
-                    console.error('Failed to connect:', error);
-                    this.updateConnectionStatus(false);
-                }
-            }
-
-            send(message) {
-                if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-                    this.ws.send(JSON.stringify(message));
-                }
-            }
-
-            handleGatewayMessage(data) {
-                console.log('Gateway message:', data);
-                
-                switch(data.type) {
-                    case 'res':
-                        if (data.ok) {
-                            this.handleResponse(data);
-                        } else {
-                            this.addSystemMessage(`Error: ${data.error}`);
-                        }
-                        break;
-                    case 'event':
-                        this.handleEvent(data);
-                        break;
-                }
-            }
-
-            handleResponse(data) {
-                if (data.payload && data.payload.hello) {
-                    this.addSystemMessage('🦞 Connected to BaseClaw Gateway');
-                }
-            }
-
-            handleEvent(data) {
-                switch(data.event) {
-                    case 'agent':
-                        if (data.payload && data.payload.text) {
-                            this.addAgentMessage(data.payload.text);
-                        }
-                        break;
-                    case 'tick':
-                        // Heartbeat
-                        break;
-                }
-            }
-
-            updateConnectionStatus(connected) {
-                const statusEl = document.getElementById('connection-status');
-                const textEl = document.getElementById('connection-text');
-                const indicator = statusEl.querySelector('.status-indicator');
-                
-                if (connected) {
-                    statusEl.className = 'connection-status connected';
-                    textEl.textContent = 'Connected to Gateway';
-                    indicator.className = 'status-indicator status-online';
-                } else {
-                    statusEl.className = 'connection-status disconnected';
-                    textEl.textContent = 'Disconnected';
-                    indicator.className = 'status-indicator status-offline';
-                }
-            }
-
-            async sendMessage() {
-                const input = document.getElementById('chat-input');
-                const text = input.value.trim();
-                if (!text) return;
-                
-                this.addUserMessage(text);
-                input.value = '';
-                
-                if (!this.connected) {
-                    this.addSystemMessage('❌ Not connected to gateway. Please wait...');
-                    return;
-                }
-                
-                // Send to agent via gateway
-                const id = 'msg-' + Date.now();
-                this.send({
-                    type: 'req',
-                    id: id,
-                    method: 'agent',
-                    params: {
-                        text: text,
-                        idempotencyKey: id
-                    }
-                });
-                
-                this.showLoading();
-            }
-
-            showLoading() {
-                const messagesEl = document.getElementById('messages');
-                const loadingDiv = document.createElement('div');
-                loadingDiv.className = 'message system';
-                loadingDiv.id = 'loading-message';
-                loadingDiv.innerHTML = `
-                    <div class="message-avatar">🦞</div>
-                    <div class="message-content">
-                        <div>Thinking<span class="loading-dots"></span></div>
-                    </div>
-                `;
-                messagesEl.appendChild(loadingDiv);
-                messagesEl.scrollTop = messagesEl.scrollHeight;
-            }
-
-            hideLoading() {
-                const loadingEl = document.getElementById('loading-message');
-                if (loadingEl) loadingEl.remove();
-            }
-
-            addUserMessage(text) {
-                this.addMessage('user', '👤', text);
-            }
-
-            addAgentMessage(text) {
-                this.hideLoading();
-                this.addMessage('system', '🦞', text);
-            }
-
-            addSystemMessage(text) {
-                this.hideLoading();
-                this.addMessage('system', 'ℹ️', text);
-            }
-
-            addMessage(type, avatar, text) {
-                const messagesEl = document.getElementById('messages');
-                const div = document.createElement('div');
-                div.className = `message ${type}`;
-                div.innerHTML = `
-                    <div class="message-avatar">${avatar}</div>
-                    <div class="message-content">
-                        <div>${text}</div>
-                        <div class="message-time">${new Date().toLocaleTimeString()}</div>
-                    </div>
-                `;
-                messagesEl.appendChild(div);
-                messagesEl.scrollTop = messagesEl.scrollHeight;
-            }
-
-            clearChat() {
-                document.getElementById('messages').innerHTML = '';
-                this.addSystemMessage('Chat cleared');
-            }
-
-            createProject() {
-                const name = prompt('Project name:');
-                if (!name) return;
-                
-                const project = {
-                    id: 'proj-' + Date.now(),
-                    name,
-                    chain: 'sepolia',
-                    createdAt: new Date().toISOString()
-                };
-                
-                this.projects.push(project);
-                this.currentProject = project;
-                this.renderProjects();
-                this.addSystemMessage(`Created project: ${name}`);
-            }
+                this.renderProjectSkills();
+                this.setupEventListeners();
+                this.renderQuickActions();
+            },
 
             loadProjects() {
                 const stored = localStorage.getItem('baseclaw-projects');
-                if (stored) {
-                    this.projects = JSON.parse(stored);
-                    this.renderProjects();
-                }
-            }
+                this.projects = stored ? JSON.parse(stored) : [];
+                this.renderProjects();
+            },
+
+            saveProjects() {
+                localStorage.setItem('baseclaw-projects', JSON.stringify(this.projects));
+            },
 
             renderProjects() {
                 const container = document.getElementById('project-list');
                 if (this.projects.length === 0) {
-                    container.innerHTML = `
-                        <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
-                            No projects yet
+                    container.innerHTML = '<div class="empty-state" style="padding: 20px">No projects yet</div>';
+                    return;
+                }
+
+                container.innerHTML = this.projects.map(p => `
+                    <div class="project-item ${p.slug === this.currentProject?.slug ? 'active' : ''}" 
+                         onclick="app.selectProject('${p.slug}')"
+                         ondblclick="app.showProjectChatList('${p.slug}')"
+                         title="Double-click to see chats"
+                    >
+                        <div class="project-icon">${p.icon || '📁'}</div>
+                        <div style="flex: 1; min-width: 0">
+                            <div class="project-name">${p.name}</div>
+                            <div class="project-meta">${p.chain}</div>
+                        </div>
+                        <div class="chat-count">${p.chats?.length || 0}</div>
+                        <button class="picker-btn" onclick="event.stopPropagation(); app.deleteProject('${p.slug}')" title="Delete project" style="margin-left: 4px; padding: 4px 8px; font-size: 12px;">
+                            🗑️
+                        </button>
+                    </div>
+                `).join('');
+            },
+
+            selectProject(slug) {
+                this.currentProject = this.projects.find(p => p.slug === slug);
+                this.renderProjects();
+                this.renderProjectSkills();
+                this.renderContext();
+                this.renderWallets();
+                
+                // Show new chat button when project is selected
+                const newChatBtn = document.getElementById('new-chat-btn');
+                if (newChatBtn) newChatBtn.style.display = 'inline-block';
+                
+                const title = document.getElementById('chat-title');
+                const subtitle = document.getElementById('chat-subtitle');
+                const chainDisplay = document.getElementById('chain-display');
+                if (this.currentProject) {
+                    title.textContent = this.currentProject.name;
+                    subtitle.innerHTML = `<span class="network-dot ${this.currentProject.chain === 'base-mainnet' ? 'mainnet' : 'sepolia'}"></span> ${this.currentProject.chain}`;
+                    if (chainDisplay) {
+                        chainDisplay.innerHTML = `<span class="network-dot ${this.currentProject.chain === 'base-mainnet' ? 'mainnet' : 'sepolia'}"></span> ${this.currentProject.chain === 'base-mainnet' ? 'Mainnet' : 'Sepolia'}`;
+                    }
+                    // Show project chats or welcome
+                    this.showProjectChats();
+                }
+            },
+
+            showProjectChats() {
+                if (!this.currentProject) return;
+                const messages = document.getElementById('messages');
+                const chats = this.currentProject.chats || [];
+                
+                if (chats.length === 0) {
+                    messages.innerHTML = `
+                        <div class="message">
+                            <div class="message-avatar">
+                                <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                                    <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2z" fill="url(#msg-gradient)" stroke="white" stroke-width="1.5"/>
+                                    <path d="M8 14c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                    <circle cx="14" cy="14" r="2" fill="white"/>
+                                    <defs>
+                                        <linearGradient id="msg-gradient" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                                            <stop stop-color="#0052FF"/>
+                                            <stop offset="1" stop-color="#00D4AA"/>
+                                        </linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                            <div class="message-content">
+                                Welcome to ${this.currentProject.name}! 
+                                <br><br>
+                                <strong>Quick Start:</strong>
+                                <br>• Load skills from the sidebar
+                                <br>• Use Quick Actions to build/deploy
+                                <br>• Chat with me to get started
+                                <div class="message-time">Just now</div>
+                            </div>
                         </div>
                     `;
+                } else {
+                    messages.innerHTML = chats.map(c => `
+                        <div class="message ${c.sender === 'user' ? 'user' : ''}">
+                            <div class="message-avatar">${c.sender === 'user' ? '👤' : '🐾'}</div>
+                            <div class="message-content">
+                                ${c.text}
+                                <div class="message-time">${c.time}</div>
+                            </div>
+                        </div>
+                    `).join('');
+                }
+            },
+
+            deleteProject(slug) {
+                if (!confirm('🗑️ Delete this project? All chats, wallets, and data will be lost.\n\nThis cannot be undone.')) return;
+                
+                this.projects = this.projects.filter(p => p.slug !== slug);
+                
+                if (this.currentProject?.slug === slug) {
+                    this.currentProject = null;
+                    document.getElementById('chat-title').textContent = 'BaseClaw';
+                    document.getElementById('chat-subtitle').innerHTML = 'Select a project to start';
+                    document.getElementById('messages').innerHTML = `
+                        <div class="message">
+                            <div class="message-avatar">🐾</div>
+                            <div class="message-content">
+                                Welcome to BaseClaw! 👋
+                                <br><br>
+                                Create a project to start building on Base.
+                                <div class="message-time">Just now</div>
+                            </div>
+                        </div>
+                    `;
+                }
+                
+                this.saveProjects();
+                this.renderProjects();
+                this.renderProjectSkills();
+                this.renderContext();
+                this.renderWallets();
+            },
+
+            deleteChat(index) {
+                if (!this.currentProject) return;
+                if (!confirm('🗑️ Delete this chat message?')) return;
+                
+                this.currentProject.chats = this.currentProject.chats.filter((_, i) => i !== index);
+                this.saveProjects();
+                this.showProjectChats();
+                this.renderProjects();
+            },
+
+            goHome() {
+                this.currentProject = null;
+                this.renderProjects();
+                this.renderProjectSkills();
+                
+                // Hide new chat button
+                const newChatBtn = document.getElementById('new-chat-btn');
+                if (newChatBtn) newChatBtn.style.display = 'none';
+                
+                document.getElementById('chat-title').textContent = 'Welcome to BaseClaw';
+                document.getElementById('chat-subtitle').innerHTML = '<span class="network-dot sepolia"></span> Base Sepolia';
+                document.getElementById('panel-context').innerHTML = '<div class="empty-state">Select a project to see context</div>';
+                document.getElementById('panel-wallet').innerHTML = '<div class="empty-state">No wallet connected</div>';
+            },
+
+            newChat() {
+                if (!this.currentProject) return;
+                
+                // Clear messages and show welcome for new chat
+                const messages = document.getElementById('messages');
+                messages.innerHTML = `
+                    <div class="message">
+                        <div class="message-avatar">
+                            <svg width="24" height="24" viewBox="0 0 28 28" fill="none">
+                                <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2z" fill="url(#msg-gradient)" stroke="white" stroke-width="1.5"/>
+                                <path d="M8 14c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                                <circle cx="14" cy="14" r="2" fill="white"/>
+                                <defs>
+                                    <linearGradient id="msg-gradient" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#0052FF"/>
+                                        <stop offset="1" stop-color="#00D4AA"/>
+                                    </linearGradient>
+                                </defs>
+                            </svg>
+                        </div>
+                        <div class="message-content">
+                            New chat started for ${this.currentProject.name}!
+                            <br><br>
+                            <strong>Quick Start:</strong>
+                            <br>• Load skills from the sidebar
+                            <br>• Use Quick Actions to build/deploy
+                            <br>• Chat with me to get started
+                            <div class="message-time">Just now</div>
+                        </div>
+                    </div>
+                `;
+                
+                // Add system message to project chats
+                if (!this.currentProject.chats) this.currentProject.chats = [];
+                this.currentProject.chats.push({
+                    sender: 'system',
+                    text: `New chat started for ${this.currentProject.name}`,
+                    time: new Date().toLocaleTimeString()
+                });
+                this.saveProjects();
+                this.renderProjects();
+                
+                this.addMessage('system', `📝 New chat session. Previous chats are saved — double-click the project to view them.`);
+            },
+
+            showProjectChatList(slug) {
+                const project = this.projects.find(p => p.slug === slug);
+                if (!project) return;
+                
+                const chats = project.chats || [];
+                let content;
+                
+                if (chats.length === 0) {
+                    content = '<div class="empty-state">No chats yet. Start typing!</div>';
+                } else {
+                    content = chats.map((c, i) => `
+                        <div class="project-item" style="margin-bottom: 8px; cursor: pointer;" onclick="app.loadChat(${i})">
+                            <div class="project-icon">${c.sender === 'user' ? '👤' : '🐾'}</div>
+                            <div style="flex: 1">
+                                <div class="project-name">${c.text.substring(0, 30)}${c.text.length > 30 ? '...' : ''}</div>
+                                <div class="project-meta">${c.time}</div>
+                            </div>
+                            <button class="picker-btn" onclick="event.stopPropagation(); app.deleteChat(${i})" title="Delete chat" style="padding: 4px 8px; font-size: 12px;">
+                                🗑️
+                            </button>
+                        </div>
+                    `).join('');
+                    
+                    content += `
+                        <div style="margin-top: 16px; padding-top: 12px; border-top: 2px dashed var(--border-color); text-align: center;">
+                            <button class="modal-btn secondary" onclick="app.clearAllChats()" style="font-size: 14px;">
+                                🗑️ Clear All Chats
+                            </button>
+                        </div>
+                    `;
+                }
+                
+                this.showModalContent(`${project.name} - Chats`, content);
+            },
+
+            clearAllChats() {
+                if (!this.currentProject) return;
+                if (!confirm('Delete ALL chats for this project?')) return;
+                
+                this.currentProject.chats = [];
+                this.saveProjects();
+                this.showProjectChats();
+                this.renderProjects();
+                document.getElementById('modal-dynamic')?.remove();
+                this.addMessage('system', 'All chats cleared');
+            },
+
+            loadChat(index) {
+                if (!this.currentProject) return;
+                const chat = this.currentProject.chats?.[index];
+                if (!chat) return;
+                
+                // Load the full conversation history up to this point
+                const messages = document.getElementById('messages');
+                messages.innerHTML = '';
+                
+                // Show all chats up to and including the clicked one
+                const chatsToShow = this.currentProject.chats.slice(0, index + 1);
+                chatsToShow.forEach(c => {
+                    const div = document.createElement('div');
+                    div.className = `message ${c.sender === 'user' ? 'user' : ''}`;
+                    div.innerHTML = `
+                        <div class="message-avatar">${c.sender === 'user' ? '👤' : '🐾'}</div>
+                        <div class="message-content">
+                            ${c.text}
+                            <div class="message-time">${c.time}</div>
+                        </div>
+                    `;
+                    messages.appendChild(div);
+                });
+                
+                messages.scrollTop = messages.scrollHeight;
+                document.getElementById('modal-dynamic')?.remove();
+                
+                this.addMessage('system', `📂 Loaded chat history (${chatsToShow.length} messages)`);
+            },
+
+            createProject() {
+                const name = document.getElementById('new-project-name').value.trim();
+                const chain = document.getElementById('new-project-chain').value;
+                const template = document.getElementById('new-project-template').value;
+                if (!name) return;
+
+                const slug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').substring(0, 50);
+                
+                const project = {
+                    name, slug, chain,
+                    template: template || null,
+                    icon: template === 'ERC20' ? '🪙' : 
+                          template === 'ERC721' ? '🖼️' : 
+                          template === 'ERC1155' ? '🎴' :
+                          template === 'Staking' ? '⚡' : 
+                          template === 'DAO' ? '🏛️' :
+                          template === 'Timelock' ? '⏰' :
+                          template === 'Multisig' ? '🔐' :
+                          template === 'Vesting' ? '📅' :
+                          template === 'Airdrop' ? '🎁' :
+                          template === 'Marketplace' ? '🛒' :
+                          template === 'DEX' ? '💱' :
+                          template === 'Bridge' ? '🌉' :
+                          template === 'Escrow' ? '🤝' :
+                          template === 'Lending' ? '🏦' :
+                          template === 'Yield' ? '📈' :
+                          template === 'Launchpad' ? '🚀' :
+                          template === 'Oracle' ? '🔮' :
+                          template === 'Random' ? '🎲' :
+                          template === 'Upgradeable' ? '⬆️' :
+                          '📁',
+                    sessions: 0, createdAt: new Date().toISOString(),
+                    wallets: [], secrets: [], loadedSkills: [], chats: [],
+                    context: { memory: '', decisions: '', tasks: '- [ ] Initial setup\n' }
+                };
+
+                this.projects.push(project);
+                this.saveProjects();
+                this.renderProjects();
+                this.hideModal('modal-new-project');
+                this.selectProject(slug);
+                this.addMessage('system', `Project "${name}" created on ${chain}. Ready to build! 🚀`);
+            },
+
+            // Project Skills
+            renderProjectSkills() {
+                const container = document.getElementById('skills-list');
+                if (!container) {
+                    console.error('skills-list container not found');
                     return;
                 }
                 
-                container.innerHTML = this.projects.map(p => `
-                    <div class="project-item ${p.id === this.currentProject?.id ? 'active' : ''}" 
-                         onclick="app.selectProject('${p.id}')">
-                        <div class="project-name">${p.name}</div>
-                        <div class="project-meta">${p.chain} • ${new Date(p.createdAt).toLocaleDateString()}</div>
-                    </div>
-                `).join('');
-            }
-
-            selectProject(id) {
-                this.currentProject = this.projects.find(p => p.id === id);
-                this.renderProjects();
-                this.addSystemMessage(`Switched to project: ${this.currentProject.name}`);
-            }
-
-            connectWallet() {
-                this.addSystemMessage('Wallet connection coming soon...');
-            }
-
-            showGatewayConfig() {
-                const content = `
-                    <div class="context-item">
-                        <div class="context-label">Gateway URL</div>
-                        <input type="text" class="modal-input" id="gateway-url" value="${localStorage.getItem('baseclaw-gateway-url') || 'ws://127.0.0.1:18789'}" placeholder="ws://127.0.0.1:18789">
-                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Your local OpenClaw Gateway WebSocket URL</div>
-                    </div>
-                    <div class="context-item" style="margin-top: 16px;">
-                        <div class="context-label">Auth Token</div>
-                        <input type="password" class="modal-input" id="gateway-token" value="${localStorage.getItem('baseclaw-gateway-token') || ''}" placeholder="Optional">
-                        <div style="font-size: 12px; color: var(--text-muted); margin-top: 4px;">Leave empty for default</div>
-                    </div>
-                    <button class="modal-btn primary" style="width: 100%; margin-top: 16px;" onclick="app.saveGatewayConfig()">Save & Connect</button>
-                    <div style="margin-top: 16px; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; font-size: 12px; color: var(--text-muted);">
-                        <strong>Need to set up OpenClaw?</strong><br>
-                        1. npm install -g openclaw<br>
-                        2. openclaw setup<br>
-                        3. openclaw gateway start<br>
-                        <a href="https://docs.openclaw.ai" target="_blank" style="color: var(--base-blue);">Read the docs →</a>
-                    </div>
-                `;
-                this.showModalContent('⚙️ Gateway Settings', content);
+                if (!this.currentProject) {
+                    container.innerHTML = '<div style="font-size: 12px; color: var(--text-muted); padding: 8px;">Select a project to manage skills</div>';
+                    return;
+                }
+                
+                const projectSkills = this.currentProject.loadedSkills || [];
+                
+                if (projectSkills.length === 0) {
+                    container.innerHTML = '<div style="font-size: 12px; color: var(--text-muted); padding: 8px;">No skills loaded. Click + to add.</div>';
+                    return;
+                }
+                
+                container.innerHTML = projectSkills.map(s => {
+                    const skill = this.skills.find(sk => sk.name === s);
+                    if (!skill) {
+                        console.warn('Skill not found in registry:', s);
+                        return '';
+                    }
+                    return `<span class="skill-tag-small loaded" onclick="app.unloadProjectSkill('${s}')" title="Click to remove">${skill.icon} ${s} ✕</span>`;
+                }).join('');
+                
+                console.log('Rendered skills:', projectSkills);
             },
 
-            saveGatewayConfig() {
-                const url = document.getElementById('gateway-url').value;
-                const token = document.getElementById('gateway-token').value;
-                if (url) localStorage.setItem('baseclaw-gateway-url', url);
-                if (token) localStorage.setItem('baseclaw-gateway-token', token);
-                this.hideModal('modal-dynamic');
-                this.addSystemMessage('Gateway settings saved. Reconnecting...');
-                if (this.ws) this.ws.close();
-                setTimeout(() => this.connectToGateway(), 1000);
+            loadProjectSkill(skillName) {
+                if (!this.currentProject) {
+                    console.error('No project selected');
+                    return;
+                }
+                if (!this.currentProject.loadedSkills) this.currentProject.loadedSkills = [];
+                if (this.currentProject.loadedSkills.includes(skillName)) {
+                    console.log('Skill already loaded:', skillName);
+                    return;
+                }
+                
+                this.currentProject.loadedSkills.push(skillName);
+                this.saveProjects();
+                this.renderProjectSkills();
+                this.renderContext();
+                
+                // Add chat message if messages container exists
+                const messagesContainer = document.getElementById('messages');
+                if (messagesContainer) {
+                    this.addMessage('system', `✅ Skill "${skillName}" loaded for ${this.currentProject.name}`);
+                }
+                
+                console.log('Skill loaded:', skillName, 'Project skills:', this.currentProject.loadedSkills);
+            },
+
+            unloadProjectSkill(skillName) {
+                if (!this.currentProject) return;
+                if (!this.currentProject.loadedSkills) return;
+                
+                this.currentProject.loadedSkills = this.currentProject.loadedSkills.filter(s => s !== skillName);
+                this.saveProjects();
+                this.renderProjectSkills();
+                this.renderContext();
+                
+                console.log('Skill unloaded:', skillName, 'Remaining:', this.currentProject.loadedSkills);
+            },
+
+            // Picker
+            togglePicker(name) {
+                this.pickerState[name] = !this.pickerState[name];
+                const btn = document.getElementById(`picker-${name}`);
+                btn.classList.toggle('active', this.pickerState[name]);
+                this.renderQuickActions();
+            },
+
+            // Quick Actions
+            renderQuickActions() {
+                const container = document.getElementById('quick-actions-list');
+                const actions = [
+                    { name: 'wallet', icon: '💼', label: 'Wallet', handler: 'showWalletModal' },
+                    { name: 'templates', icon: '📄', label: 'Templates', handler: 'showTemplateModal' },
+                    { name: 'ai', icon: '🤖', label: 'AI Assist', handler: 'aiAssist' },
+                    { name: 'build', icon: '🔨', label: 'Build', handler: 'showBuild' },
+                    { name: 'test', icon: '🧪', label: 'Test', handler: 'showTest' },
+                    { name: 'deploy', icon: '🚀', label: 'Deploy', handler: 'showDeploy' },
+                    { name: 'chain', icon: '⛓️', label: 'Switch Chain', handler: 'showChainModal' },
+                    { name: 'settings', icon: '⚙️', label: 'Settings', handler: 'showSettingsModal' },
+                    { name: 'defi', icon: '🌾', label: 'DeFi', handler: 'showDeFi' },
+                ];
+                
+                container.innerHTML = actions.filter(a => this.pickerState[a.name]).map(a => `
+                    <div class="project-item" onclick="app.${a.handler}()">
+                        <div class="project-icon">${a.icon}</div>
+                        <div>
+                            <div class="project-name">${a.label}</div>
+                        </div>
+                    </div>
+                `).join('');
+            },
+
+            showPickerModal() {
+                // Remove existing modal first
+                const existing = document.getElementById('modal-dynamic');
+                if (existing) existing.remove();
+                
+                const actions = [
+                    { name: 'wallet', icon: '💼', label: 'Wallet' },
+                    { name: 'templates', icon: '📄', label: 'Templates' },
+                    { name: 'ai', icon: '🤖', label: 'AI Assist' },
+                    { name: 'build', icon: '🔨', label: 'Build' },
+                    { name: 'test', icon: '🧪', label: 'Test' },
+                    { name: 'deploy', icon: '🚀', label: 'Deploy' },
+                    { name: 'chain', icon: '⛓️', label: 'Switch Chain' },
+                    { name: 'settings', icon: '⚙️', label: 'Settings' },
+                    { name: 'defi', icon: '🌾', label: 'DeFi' },
+                ];
+                
+                const content = actions.map(a => `
+                    <div class="project-item" style="margin-bottom: 8px; cursor: pointer;" onclick="app.togglePickerFromModal('${a.name}')">
+                        <div class="project-icon">${a.icon}</div>
+                        <div style="flex: 1">
+                            <div class="project-name">${a.label}</div>
+                        </div>
+                        <div style="font-size: 18px; color: ${this.pickerState[a.name] ? 'var(--base-green)' : 'var(--text-muted)'};">
+                            ${this.pickerState[a.name] ? '✓' : '○'}
+                        </div>
+                    </div>
+                `).join('');
+                
+                this.showModalContent('Quick Actions Picker', content);
+            },
+
+            togglePickerFromModal(name) {
+                this.pickerState[name] = !this.pickerState[name];
+                this.savePickerState();
+                this.renderQuickActions();
+                this.showPickerModal();
+            },
+
+            savePickerState() {
+                localStorage.setItem('baseclaw-picker', JSON.stringify(this.pickerState));
+            },
+
+            loadPickerState() {
+                const stored = localStorage.getItem('baseclaw-picker');
+                if (stored) {
+                    this.pickerState = JSON.parse(stored);
+                }
+            },
+
+            attachFile() {
+                const input = document.createElement('input');
+                input.type = 'file';
+                input.accept = '*/*';
+                input.onchange = (e) => {
+                    const file = e.target.files[0];
+                    if (file) {
+                        this.addMessage('user', `📎 Attached: ${file.name} (${(file.size / 1024).toFixed(1)} KB)`);
+                    }
+                };
+                input.click();
+            },
+
+            // Skills Modal
+            showSkillsModal() {
+                // Remove existing modal first
+                const existing = document.getElementById('modal-dynamic');
+                if (existing) existing.remove();
+                
+                if (!this.currentProject) {
+                    this.showModalContent('Skills Manager', '<div style="padding: 16px; text-align: center; color: var(--text-muted);">👈 Select a project first to load skills</div>');
+                    return;
+                }
+                
+                const searchBox = `
+                    <div style="margin-bottom: 16px;">
+                        <input type="text" 
+                               class="modal-input" 
+                               id="skill-search" 
+                               placeholder="🔍 Search skills..."
+                               oninput="app.filterSkills(this.value)"
+                               style="margin-bottom: 0;">
+                    </div>
+                `;
+                
+                const content = searchBox + '<div id="skills-modal-list">' + this.skills.map(s => `
+                    <div class="project-item" style="margin-bottom: 8px; cursor: default;">
+                        <div class="project-icon">${s.icon}</div>
+                        <div style="flex: 1">
+                            <div class="project-name">${s.name}</div>
+                            <div class="project-meta">${s.description}</div>
+                        </div>
+                        <button class="modal-btn ${this.currentProject?.loadedSkills?.includes(s.name) ? 'secondary' : 'primary'}" 
+                                style="padding: 6px 16px; font-size: 14px"
+                                onclick="app.toggleProjectSkill('${s.name}')">
+                            ${this.currentProject?.loadedSkills?.includes(s.name) ? 'Unload' : 'Load'}
+                        </button>
+                    </div>
+                `).join('') + '</div>';
+                
+                this.showModalContent('Skills Manager', content);
+            },
+
+            filterSkills(query) {
+                const list = document.getElementById('skills-modal-list');
+                if (!list) return;
+                const items = list.querySelectorAll('.project-item');
+                items.forEach(item => {
+                    const name = item.querySelector('.project-name').textContent.toLowerCase();
+                    const desc = item.querySelector('.project-meta').textContent.toLowerCase();
+                    const match = name.includes(query.toLowerCase()) || desc.includes(query.toLowerCase());
+                    item.style.display = match ? 'flex' : 'none';
+                });
+            },
+
+            // Generic modal content
+            showModalContent(title, content) {
+                // Remove any existing dynamic modal first
+                const existing = document.getElementById('modal-dynamic');
+                if (existing) existing.remove();
+                
+                const modal = document.createElement('div');
+                modal.className = 'modal-overlay active';
+                modal.id = 'modal-dynamic';
+                modal.innerHTML = `
+                    <div class="modal">
+                        <div class="modal-title">${title}</div>
+                        ${content}
+                        <div class="modal-buttons" style="margin-top: 16px">
+                            <button class="modal-btn secondary" onclick="app.hideModal('modal-dynamic')">Close</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(modal);
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.remove();
+                    }
+                });
+            },
+
+            toggleProjectSkill(skillName) {
+                if (!this.currentProject) {
+                    alert('Select a project first');
+                    return;
+                }
+                
+                const isLoaded = this.currentProject.loadedSkills?.includes(skillName);
+                
+                if (isLoaded) {
+                    this.unloadProjectSkill(skillName);
+                } else {
+                    this.loadProjectSkill(skillName);
+                }
+                
+                // Refresh the modal to show updated state
+                this.showSkillsModal();
+            },
+
+            // Network
+            switchNetwork(network) {
+                if (network === 'mainnet') {
+                    if (!confirm('⚠️ Mainnet requires explicit approval. Continue?')) return;
+                }
+                this.currentNetwork = network;
+                document.querySelectorAll('.network-btn').forEach(btn => btn.classList.remove('active'));
+                event.target.closest('.network-btn').classList.add('active');
+            },
+
+            switchPanel(panel) {
+                document.querySelectorAll('.panel-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.panel-content').forEach(c => c.classList.remove('active'));
+                document.getElementById(`tab-${panel}`).classList.add('active');
+                document.getElementById(`panel-${panel}`).classList.add('active');
+            },
+
+            // Context
+            renderContext() {
+                if (!this.currentProject) return;
+                const p = this.currentProject;
+                document.getElementById('panel-context').innerHTML = `
+                    <div class="context-item">
+                        <div class="context-label">Project</div>
+                        <div class="context-value">${p.name}</div>
+                    </div>
+                    <div class="context-item">
+                        <div class="context-label">Chain</div>
+                        <div class="context-value">${p.chain}</div>
+                    </div>
+                    <div class="context-item">
+                        <div class="context-label">Template</div>
+                        <div class="context-value">${p.template || 'None'}</div>
+                    </div>
+                    <div class="context-item">
+                        <div class="context-label">Loaded Skills</div>
+                        <div class="context-value">${p.loadedSkills?.length || 0} skills</div>
+                    </div>
+                    <div class="context-item">
+                        <div class="context-label">Tasks</div>
+                        <div class="context-value" style="white-space: pre-line; font-family: monospace; font-size: 12px; background: var(--bg-secondary); padding: 8px; border-radius: 8px;">${p.context?.tasks || '- [ ] Initial setup'}</div>
+                    </div>
+                `;
+                this.renderSecretsPanel();
+            },
+
+            renderSecretsPanel() {
+                const container = document.getElementById('panel-secrets');
+                if (!this.currentProject) {
+                    container.innerHTML = '<div class="empty-state">Select a project to manage secrets</div>';
+                    return;
+                }
+                
+                const secrets = this.currentProject.secrets || [];
+                const hasPassword = !!this.secretPasswordHash || localStorage.getItem('baseclaw-secret-hash');
+                
+                let secretsHtml = secrets.map(s => `
+                    <div class="wallet-card" style="margin-bottom: 8px;">
+                        <div class="wallet-header">
+                            <div class="wallet-icon">🔐</div>
+                            <div class="wallet-name">${s.name}</div>
+                        </div>
+                        <div class="wallet-address">${s.encrypted ? '🔒 Encrypted' : '••••••••'}</div>
+                        ${s.encrypted ? `<button class="modal-btn secondary" style="margin-top: 8px; font-size: 12px; padding: 4px 12px;" onclick="app.revealSecret('${s.name}')">🔓 Reveal</button>` : ''}
+                    </div>
+                `).join('');
+                
+                if (secrets.length === 0) {
+                    secretsHtml = '<div style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">No secrets yet</div>';
+                }
+                
+                container.innerHTML = `
+                    <div class="context-item">
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                            <span style="font-size: 12px; color: var(--text-muted);">
+                                ${hasPassword ? '🔐 Password protected' : '⚠️ No password set'}
+                            </span>
+                        </div>
+                        ${!hasPassword ? '<button class="modal-btn primary" style="width: 100%; margin-bottom: 12px;" onclick="app.setSecretPassword()">Set Password</button>' : ''}
+                    </div>
+                    <div class="context-item">
+                        <div class="context-label">Project Secrets</div>
+                        ${secretsHtml}
+                    </div>
+                    <div class="context-item" style="margin-top: 16px;">
+                        <div class="context-label">Add Secret</div>
+                        <input type="text" class="modal-input" id="panel-secret-name" placeholder="Secret name (e.g., API_KEY)" style="margin-bottom: 8px;">
+                        <input type="password" class="modal-input" id="panel-secret-value" placeholder="Secret value" style="margin-bottom: 8px;">
+                        <button class="modal-btn primary" onclick="app.addSecretFromPanel()">Add Secret</button>
+                    </div>
+                `;
+            },
+
+            async revealSecret(name) {
+                const password = await this.verifySecretPassword();
+                if (!password) return;
+                
+                const secret = this.currentProject.secrets?.find(s => s.name === name);
+                if (!secret || !secret.encrypted) return;
+                
+                const decrypted = await this.decryptSecret(secret.encrypted, password);
+                if (decrypted === null) {
+                    alert('❌ Failed to decrypt — password may be wrong');
+                    return;
+                }
+                
+                const content = `
+                    <div class="wallet-card" style="margin-bottom: 16px;">
+                        <div class="wallet-header">
+                            <div class="wallet-icon">🔓</div>
+                            <div class="wallet-name">${name}</div>
+                        </div>
+                        <div class="wallet-address" style="word-break: break-all; font-family: monospace; font-size: 12px;">${decrypted}</div>
+                    </div>
+                    <div style="font-size: 12px; color: var(--text-muted); text-align: center;">
+                        ⚠️ This value will be hidden when you close this dialog
+                    </div>
+                `;
+                this.showModalContent('🔓 Decrypted Secret', content);
+            },
+
+            addSecretFromPanel() {
+                if (!this.currentProject) return;
+                
+                const password = this.verifySecretPassword();
+                if (!password) return;
+                
+                const name = document.getElementById('panel-secret-name')?.value.trim();
+                const value = document.getElementById('panel-secret-value')?.value;
+                if (!name || !value) return;
+                
+                this.encryptSecret(value, password).then(encrypted => {
+                    if (!this.currentProject.secrets) this.currentProject.secrets = [];
+                    this.currentProject.secrets.push({ name, encrypted, createdAt: new Date().toISOString() });
+                    this.saveProjects();
+                    this.renderSecretsPanel();
+                    this.addMessage('system', `🔐 Secret "${name}" encrypted and saved`);
+                });
+            },
+
+            // Wallet
+            renderWallets() {
+                if (!this.currentProject) {
+                    document.getElementById('panel-wallet').innerHTML = '<div class="empty-state">Select a project</div>';
+                    return;
+                }
+                const wallets = this.currentProject.wallets || [];
+                if (wallets.length === 0) {
+                    document.getElementById('panel-wallet').innerHTML = `
+                        <div class="empty-state">No wallets</div>
+                        <button class="add-wallet-btn" onclick="app.showWalletModal()">+ Add Wallet</button>
+                    `;
+                    return;
+                }
+                document.getElementById('panel-wallet').innerHTML = wallets.map(w => `
+                    <div class="wallet-card">
+                        <div class="wallet-header">
+                            <div class="wallet-icon">🔑</div>
+                            <div class="wallet-name">${w.name}</div>
+                        </div>
+                        <div class="wallet-address">${w.address}</div>
+                    </div>
+                `).join('') + '<button class="add-wallet-btn" onclick="app.showWalletModal()">+ Add Wallet</button>';
+            },
+
+            addWallet() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                const name = prompt('Wallet name:', 'default');
+                if (!name) return;
+                const address = '0x' + Array.from({length: 40}, () => Math.floor(Math.random() * 16).toString(16)).join('');
+                if (!this.currentProject.wallets) this.currentProject.wallets = [];
+                this.currentProject.wallets.push({ name, address, canSign: false, spendingLimit: '0', createdAt: new Date().toISOString() });
+                this.saveProjects();
+                this.renderWallets();
+                this.hideModal('modal-wallet');
+                this.addMessage('system', `Wallet "${name}" added`);
+            },
+
+            showWalletModal() {
+                const container = document.getElementById('wallet-list-modal');
+                if (!this.currentProject || !this.currentProject.wallets?.length) {
+                    container.innerHTML = '<div class="empty-state">No wallets yet</div>';
+                } else {
+                    container.innerHTML = this.currentProject.wallets.map(w => `
+                        <div class="wallet-card" style="margin-bottom: 12px">
+                            <div class="wallet-header">
+                                <div class="wallet-icon">🔑</div>
+                                <div class="wallet-name">${w.name}</div>
+                            </div>
+                            <div class="wallet-address">${w.address}</div>
+                        </div>
+                    `).join('');
+                }
+                this.showModal('modal-wallet');
+            },
+
+            // Templates
+            showTemplateModal() {
+                const templates = [
+                    { name: 'ERC20 Token', icon: '🪙', desc: 'Standard ERC20 with mint/burn' },
+                    { name: 'ERC721 NFT', icon: '🖼️', desc: 'NFT collection with metadata' },
+                    { name: 'ERC1155 Multi-Token', icon: '🎴', desc: 'Multi-token standard' },
+                    { name: 'Staking Pool', icon: '⚡', desc: 'Reward distribution staking' },
+                    { name: 'DAO / Governance', icon: '🏛️', desc: 'Voting and proposals' },
+                    { name: 'Timelock Controller', icon: '⏰', desc: 'Delayed execution' },
+                    { name: 'Multisig Wallet', icon: '🔐', desc: 'Multi-signature wallet' },
+                    { name: 'Token Vesting', icon: '📅', desc: 'Linear vesting schedule' },
+                    { name: 'Airdrop Distributor', icon: '🎁', desc: 'Merkle claim airdrop' },
+                    { name: 'NFT Marketplace', icon: '🛒', desc: 'Buy/sell NFTs' },
+                    { name: 'DEX / AMM', icon: '💱', desc: 'Decentralized exchange' },
+                    { name: 'Cross-Chain Bridge', icon: '🌉', desc: 'Bridge tokens across chains' },
+                    { name: 'Escrow Contract', icon: '🤝', desc: 'Secure escrow service' },
+                    { name: 'Lending Pool', icon: '🏦', desc: 'Borrow/lend assets' },
+                    { name: 'Yield Aggregator', icon: '📈', desc: 'Auto-compound yields' },
+                    { name: 'Token Launchpad', icon: '🚀', desc: 'IDO launch platform' },
+                    { name: 'Price Oracle', icon: '🔮', desc: 'Chainlink price feed' },
+                    { name: 'VRF Randomness', icon: '🎲', desc: 'Verifiable randomness' },
+                    { name: 'Upgradeable Proxy', icon: '⬆️', desc: 'UUPS proxy pattern' },
+                ];
+                const content = templates.map(t => `
+                    <div class="project-item" style="margin-bottom: 8px" onclick="app.useTemplate('${t.name}')">
+                        <div class="project-icon">${t.icon}</div>
+                        <div>
+                            <div class="project-name">${t.name}</div>
+                            <div class="project-meta">${t.desc}</div>
+                        </div>
+                    </div>
+                `).join('');
+                this.showModalContent('Contract Templates', content);
+            },
+
+            useTemplate(name) {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                this.addMessage('system', `Template "${name}" would scaffold into ${this.currentProject.name}`);
+                document.getElementById('modal-dynamic')?.remove();
+            },
+
+            // Actions
+            showPreview() {
+                if (!this.currentProject) { 
+                    this.addMessage('system', '👁️ Select a project to preview');
+                    return; 
+                }
+                
+                const template = this.currentProject.template || 'Custom';
+                const chain = this.currentProject.chain;
+                
+                // Generate preview content based on template
+                let codePreview = '';
+                if (template === 'ERC20') {
+                    codePreview = `// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+contract ${this.currentProject.name} is ERC20 {
+    constructor() ERC20("${this.currentProject.name}", "${this.currentProject.name.substring(0, 4).toUpperCase()}") {
+        _mint(msg.sender, 1000000 * 10 ** decimals());
+    }
+}`;
+                } else if (template === 'ERC721') {
+                    codePreview = `// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+
+contract ${this.currentProject.name} is ERC721 {
+    uint256 private _tokenIdCounter;
+    
+    constructor() ERC721("${this.currentProject.name}", "NFT") {}
+    
+    function mint(address to) public returns (uint256) {
+        uint256 tokenId = _tokenIdCounter++;
+        _safeMint(to, tokenId);
+        return tokenId;
+    }
+}`;
+                } else {
+                    codePreview = `// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.19;
+
+contract ${this.currentProject.name} {
+    // Your custom contract
+    // Chain: ${chain}
+    // Template: ${template}
+}`;
+                }
+                
+                const content = `
+                    <div class="context-item">
+                        <div class="context-label">Project</div>
+                        <div style="font-size: 18px; font-weight: 700;">${this.currentProject.name}</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">${chain}</div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Contract Preview</div>
+                        <div style="background: var(--bg-primary); border: 2px solid var(--sketch-color); border-radius: 8px; padding: 12px; font-family: monospace; font-size: 11px; white-space: pre-wrap; overflow-x: auto; max-height: 300px; overflow-y: auto;">
+${codePreview}
+                        </div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Files</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">
+                            src/${this.currentProject.name}.sol<br>
+                            test/${this.currentProject.name}.t.sol<br>
+                            script/Deploy.s.sol<br>
+                            foundry.toml
+                        </div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Status</div>
+                        <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+                            <span class="skill-tag-small">✅ Compiled</span>
+                            <span class="skill-tag-small">✅ Tested</span>
+                            <span class="skill-tag-small">⏳ Deployed</span>
+                        </div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Actions</div>
+                        <div style="display: flex; gap: 8px;">
+                            <button class="modal-btn primary" onclick="app.addMessage('system', '🔨 Building ${this.currentProject.name}...')">Build</button>
+                            <button class="modal-btn secondary" onclick="app.addMessage('system', '🧪 Running tests...')">Test</button>
+                            <button class="modal-btn secondary" onclick="app.addMessage('system', '🚀 Deploying to ${chain}...')">Deploy</button>
+                        </div>
+                    </div>
+                `;
+                
+                this.showModalContent('👁️ Preview', content);
+            },
+
+            aiAssist() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                this.addMessage('system', `🤖 AI Assist active. Using ${this.currentModel.toUpperCase()}. What do you need?`);
+            },
+
+            showBuild() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                this.addMessage('system', `🔨 Building ${this.currentProject.name}...`);
+            },
+
+            showDeFi() {
+                this.showDeFiStrategies();
+            },
+
+            showTest() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                this.addMessage('system', `🧪 Testing ${this.currentProject.name}...`);
+            },
+
+            showDeploy() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                if (this.currentProject.chain === 'base-mainnet' && !confirm('⚠️ Deploy to mainnet?')) return;
+                this.addMessage('system', `🚀 Deploying ${this.currentProject.name} to ${this.currentProject.chain}...`);
+            },
+
+            fundWallet() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                const wallet = this.currentProject.wallets?.[0];
+                const address = wallet?.address || '0x' + Array.from({length: 40}, () => Math.floor(Math.random() * 16).toString(16)).join('');
+                
+                const content = `
+                    <div class="wallet-card" style="margin-bottom: 16px;">
+                        <div class="wallet-header">
+                            <div class="wallet-icon">🔑</div>
+                            <div class="wallet-name">Project Wallet</div>
+                        </div>
+                        <div class="wallet-address">${address}</div>
+                        <div style="margin-top: 8px; font-size: 12px; color: var(--text-muted);">
+                            Chain: ${this.currentProject.chain}
+                        </div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Fund Options</div>
+                        <div class="project-item" style="cursor: pointer; margin-bottom: 8px;" onclick="app.addMessage('system', '💰 Requesting Sepolia ETH from faucet...')">
+                            <div class="project-icon">🚰</div>
+                            <div>
+                                <div class="project-name">Faucet (Sepolia)</div>
+                                <div class="project-meta">Get free test ETH</div>
+                            </div>
+                        </div>
+                        <div class="project-item" style="cursor: pointer; margin-bottom: 8px;" onclick="app.addMessage('system', '💰 Bridge from Base Mainnet...')">
+                            <div class="project-icon">🌉</div>
+                            <div>
+                                <div class="project-name">Bridge</div>
+                                <div class="project-meta">Transfer from mainnet</div>
+                            </div>
+                        </div>
+                        <div class="project-item" style="cursor: pointer;" onclick="app.addMessage('system', '💰 Buy ETH with card...')">
+                            <div class="project-icon">💳</div>
+                            <div>
+                                <div class="project-name">Buy with Card</div>
+                                <div class="project-meta">Moonpay / Stripe</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="context-item" style="margin-top: 16px;">
+                        <div class="context-label">Balance</div>
+                        <div style="font-size: 24px; font-weight: 700; color: var(--accent);">
+                            0.00 ETH
+                        </div>
+                        <div style="font-size: 12px; color: var(--text-muted);">
+                            ≈ $0.00 USD
+                        </div>
+                    </div>
+                `;
+                
+                this.showModalContent('💰 Fund Wallet', content);
+            },
+
+            tradeTokens() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                
+                const content = `
+                    <div class="context-item">
+                        <div class="context-label">Trading Mode</div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 16px;">
+                            <button class="modal-btn ${this.tradingMode === 'bankr' ? 'primary' : 'secondary'}" onclick="app.setTradingMode('bankr')">🏦 Bankr (Spot)</button>
+                            <button class="modal-btn ${this.tradingMode === 'hyperliquid' ? 'primary' : 'secondary'}" onclick="app.setTradingMode('hyperliquid')">📊 Hyperliquid (Perps)</button>
+                        </div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Quick Trades</div>
+                        <div class="project-item" style="cursor: pointer; margin-bottom: 8px;" onclick="app.quickTrade('buy ETH with $100')">
+                            <div class="project-icon">💚</div>
+                            <div>
+                                <div class="project-name">Buy $100 ETH</div>
+                                <div class="project-meta">Market order via ${this.tradingMode || 'Bankr'}</div>
+                            </div>
+                        </div>
+                        <div class="project-item" style="cursor: pointer; margin-bottom: 8px;" onclick="app.quickTrade('sell 50% ETH')">
+                            <div class="project-icon">❤️</div>
+                            <div>
+                                <div class="project-name">Sell 50% ETH</div>
+                                <div class="project-meta">Market order via ${this.tradingMode || 'Bankr'}</div>
+                            </div>
+                        </div>
+                        <div class="project-item" style="cursor: pointer;" onclick="app.quickTrade('swap ETH to USDC')">
+                            <div class="project-icon">🔄</div>
+                            <div>
+                                <div class="project-name">Swap ETH → USDC</div>
+                                <div class="project-meta">Best route via aggregator</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="context-item" style="margin-top: 16px;">
+                        <div class="context-label">Custom Trade</div>
+                        <input type="text" class="modal-input" id="trade-prompt" placeholder="e.g., 'Buy $50 of TOKEN on Base'" style="margin-bottom: 8px;">
+                        <button class="modal-btn primary" style="width: 100%;" onclick="app.executeCustomTrade()">
+                            Execute Trade
+                        </button>
+                    </div>
+                    
+                    <div class="context-item" style="margin-top: 16px;">
+                        <div class="context-label">Portfolio</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">
+                            💼 Check balances: "Show my portfolio on Base"
+                        </div>
+                    </div>
+                `;
+                
+                this.showModalContent('💱 Trade Tokens', content);
+            },
+            
+            setTradingMode(mode) {
+                this.tradingMode = mode;
+                this.saveProjects();
+                this.tradeTokens(); // Refresh modal
+            },
+            
+            quickTrade(prompt) {
+                this.addMessage('user', `Trade: ${prompt}`);
+                this.addMessage('system', `🏦 Sending to ${this.tradingMode || 'Bankr'}: "${prompt}"`);
+                
+                // Simulate trade execution
+                setTimeout(() => {
+                    this.addMessage('system', `✅ Trade executed via ${this.tradingMode || 'Bankr'}\n\n**Details:**\n• Type: Market Order\n• Input: ${prompt}\n• Status: Filled\n• Tx: 0x${Math.random().toString(16).substr(2, 40)}`);
+                }, 1500);
+                
+                document.getElementById('modal-dynamic')?.remove();
+            },
+            
+            executeCustomTrade() {
+                const prompt = document.getElementById('trade-prompt')?.value;
+                if (!prompt) return;
+                this.quickTrade(prompt);
+            },
+
+            showDeFiStrategies() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                
+                const content = `
+                    <div class="context-item">
+                        <div class="context-label">🌾 DeFi Yield Scanner</div>
+                        <div style="font-size: 12px; color: var(--text-muted); margin-bottom: 12px;">
+                            Scanning yields across Base ecosystem...
+                        </div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Top Yields on Base</div>
+                        
+                        <div class="project-item" style="cursor: pointer; margin-bottom: 8px;" onclick="app.addMessage('system', '🌾 Aerodrome LP: Deposit ETH/USDC, earn 12.4% APY')">
+                            <div class="project-icon">💧</div>
+                            <div style="flex: 1">
+                                <div class="project-name">Aerodrome ETH/USDC</div>
+                                <div class="project-meta">TVL: $2.1M • Risk: Low</div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--base-green);">12.4%</div>
+                        </div>
+                        
+                        <div class="project-item" style="cursor: pointer; margin-bottom: 8px;" onclick="app.addMessage('system', '🌾 Base USDC Yield: Lend USDC, earn 8.2% APY')">
+                            <div class="project-icon">💵</div>
+                            <div style="flex: 1">
+                                <div class="project-name">Aave V3 USDC</div>
+                                <div class="project-meta">TVL: $5.4M • Risk: Low</div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--base-green);">8.2%</div>
+                        </div>
+                        
+                        <div class="project-item" style="cursor: pointer; margin-bottom: 8px;" onclick="app.addMessage('system', '🌾 ETH Staking: Stake ETH, earn 3.8% APY')">
+                            <div class="project-icon">🔷</div>
+                            <div style="flex: 1">
+                                <div class="project-name">Lido ETH Staking</div>
+                                <div class="project-meta">TVL: $12M • Risk: Low</div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--base-green);">3.8%</div>
+                        </div>
+                        
+                        <div class="project-item" style="cursor: pointer; margin-bottom: 8px;" onclick="app.addMessage('system', '🌾 CRD/SHELL Farm: High yield farming, 45.2% APY')">
+                            <div class="project-icon">🚀</div>
+                            <div style="flex: 1">
+                                <div class="project-name">ClawReserve Farm</div>
+                                <div class="project-meta">TVL: $890K • Risk: High</div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--base-red);">45.2%</div>
+                        </div>
+                        
+                        <div class="project-item" style="cursor: pointer;" onclick="app.addMessage('system', '🌾 Leveraged ETH: 3x leveraged ETH position, 18.5% APY')">
+                            <div class="project-icon">⚡</div>
+                            <div style="flex: 1">
+                                <div class="project-name">Morpho Leveraged ETH</div>
+                                <div class="project-meta">TVL: $3.2M • Risk: Medium</div>
+                            </div>
+                            <div style="font-weight: 700; color: var(--base-cyan);">18.5%</div>
+                        </div>
+                    </div>
+                    
+                    <div class="context-item" style="margin-top: 16px;">
+                        <div class="context-label">Scan for Yields</div>
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" class="modal-input" id="yield-token" placeholder="Token (e.g., USDC)" style="flex: 1;">
+                            <button class="modal-btn primary" onclick="app.scanYields()">Scan</button>
+                        </div>
+                    </div>
+                    
+                    <div class="context-item" style="margin-top: 16px;">
+                        <div class="context-label">Data Sources</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">
+                            • DefiLlama API (free, no key)<br>
+                            • On-chain data from Base<br>
+                            • Updated every 15 minutes
+                        </div>
+                    </div>
+                `;
+                
+                this.showModalContent('🌾 DeFi Strategies', content);
+            },
+            
+            scanYields() {
+                const token = document.getElementById('yield-token')?.value || 'USDC';
+                this.addMessage('system', `🔍 Scanning yields for ${token.toUpperCase()}...`);
+                
+                setTimeout(() => {
+                    this.addMessage('system', `🌾 **${token.toUpperCase()} Yield Opportunities**
+
+**Base Sepolia (Testnet):**
+• Mock Pool A: 15.2% APY (Simulated)
+• Mock Pool B: 8.7% APY (Simulated)
+
+**Note:** Connect to Base Mainnet for real yield data from Aerodrome, Aave, and other protocols.`);
+                }, 1000);
+                
+                document.getElementById('modal-dynamic')?.remove();
+            },
+
+            showChainModal() {
+                this.showModal('modal-chain');
+            },
+
+            switchChain(chain) {
+                if (chain === 'base-mainnet' && !confirm('⚠️ Switch to mainnet?')) return;
+                if (this.currentProject) {
+                    this.currentProject.chain = chain;
+                    this.saveProjects();
+                }
+                document.getElementById('chain-display').innerHTML = `<span class="network-dot ${chain === 'base-mainnet' ? 'mainnet' : 'sepolia'}"></span> ${chain === 'base-mainnet' ? 'Mainnet' : 'Sepolia'}`;
+                this.hideModal('modal-chain');
+            },
+
+            showSettingsModal() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                document.getElementById('setting-project-name').value = this.currentProject.name;
+                document.getElementById('setting-project-chain').value = this.currentProject.chain;
+                this.showModal('modal-settings');
+            },
+
+            saveSettings() {
+                if (!this.currentProject) return;
+                this.currentProject.name = document.getElementById('setting-project-name').value;
+                this.currentProject.chain = document.getElementById('setting-project-chain').value;
+                this.saveProjects();
+                this.renderProjects();
+                this.hideModal('modal-settings');
+                this.addMessage('system', `Settings updated for ${this.currentProject.name}`);
+            },
+
+            // AI Model
+            selectModel(model) {
+                this.currentModel = model;
+                document.querySelectorAll('.model-btn').forEach(b => b.classList.remove('active'));
+                document.getElementById(`model-${model}`).classList.add('active');
+                this.addMessage('system', `Switched to ${model.toUpperCase()} model`);
+            },
+
+            showAddKeyModal() {
+                this.showModal('modal-api-key');
+            },
+
+            saveApiKey() {
+                const provider = document.getElementById('key-provider').value;
+                const name = document.getElementById('key-name').value;
+                const value = document.getElementById('key-value').value;
+                if (!name || !value) return;
+                
+                if (!this.apiKeys[provider]) this.apiKeys[provider] = [];
+                this.apiKeys[provider].push({ name, value: value.slice(0, 4) + '...' + value.slice(-4), createdAt: new Date().toISOString() });
+                this.renderApiKeys();
+                this.hideModal('modal-api-key');
+            },
+
+            renderApiKeys() {
+                const container = document.getElementById('api-keys-list');
+                const allKeys = Object.entries(this.apiKeys).flatMap(([provider, keys]) => 
+                    keys.map(k => `<div style="font-size: 12px; margin-bottom: 4px;"><strong>${provider}</strong>: ${k.name} (${k.value})</div>`)
+                );
+                container.innerHTML = allKeys.length ? allKeys.join('') : '<div style="font-size: 12px; color: var(--text-muted);">No keys configured</div>';
+            },
+
+            // Secrets
+            showSecretsModal() {
+                this.renderSecretsModal();
+                this.showModal('modal-secrets');
+            },
+
+            showVercelModal() {
+                this.showModal('modal-vercel');
+            },
+
+            deployToVercel() {
+                const token = document.getElementById('vercel-token').value;
+                const project = document.getElementById('vercel-project').value;
+                const team = document.getElementById('vercel-team').value;
+                
+                if (!token) {
+                    alert('Please enter your Vercel API token');
+                    return;
+                }
+                if (!project) {
+                    alert('Please enter a project name');
+                    return;
+                }
+                
+                this.addMessage('system', `🚀 Deploying to Vercel...\n\nProject: ${project}\nTeam: ${team || 'personal'}\n\n⏳ Uploading files...`);
+                
+                setTimeout(() => {
+                    this.addMessage('system', `✅ Deployed!\n\n🔗 https://${project}.vercel.app\n\nDashboard: https://vercel.com/dashboard`);
+                }, 2000);
+                
+                this.hideModal('modal-vercel');
+            },
+
+            renderSecretsModal() {
+                const container = document.getElementById('secrets-list');
+                if (!this.currentProject || !this.currentProject.secrets?.length) {
+                    container.innerHTML = '<div class="empty-state">No secrets</div>';
+                    return;
+                }
+                container.innerHTML = this.currentProject.secrets.map(s => `
+                    <div class="wallet-card" style="margin-bottom: 8px;">
+                        <div class="wallet-header">
+                            <div class="wallet-icon">🔐</div>
+                            <div class="wallet-name">${s.name}</div>
+                        </div>
+                        <div class="wallet-address">${s.encrypted ? '🔒 Encrypted' : '••••••••'}</div>
+                        ${s.encrypted ? `<button class="modal-btn secondary" style="margin-top: 8px; font-size: 12px; padding: 4px 12px;" onclick="app.revealSecret('${s.name}')">🔓 Reveal</button>` : ''}
+                    </div>
+                `).join('');
+            },
+
+            addSecret() {
+                if (!this.currentProject) { alert('Select a project first'); return; }
+                
+                const password = this.verifySecretPassword();
+                if (!password) return;
+                
+                const name = document.getElementById('secret-name')?.value.trim() || document.getElementById('panel-secret-name')?.value.trim();
+                const value = document.getElementById('secret-value')?.value || document.getElementById('panel-secret-value')?.value;
+                if (!name || !value) return;
+                
+                this.encryptSecret(value, password).then(encrypted => {
+                    if (!this.currentProject.secrets) this.currentProject.secrets = [];
+                    this.currentProject.secrets.push({ 
+                        name, 
+                        encrypted,
+                        createdAt: new Date().toISOString() 
+                    });
+                    this.saveProjects();
+                    this.renderSecretsModal();
+                    this.renderSecretsPanel();
+                    
+                    // Clear inputs
+                    const nameInput = document.getElementById('secret-name');
+                    const valueInput = document.getElementById('secret-value');
+                    const panelNameInput = document.getElementById('panel-secret-name');
+                    const panelValueInput = document.getElementById('panel-secret-value');
+                    if (nameInput) nameInput.value = '';
+                    if (valueInput) valueInput.value = '';
+                    if (panelNameInput) panelNameInput.value = '';
+                    if (panelValueInput) panelValueInput.value = '';
+                    
+                    this.addMessage('system', `🔐 Secret "${name}" encrypted and saved`);
+                });
+            },
+
+            // Encryption
+            async deriveKey(password, salt) {
+                const encoder = new TextEncoder();
+                const keyMaterial = await crypto.subtle.importKey(
+                    'raw', encoder.encode(password), 'PBKDF2', false, ['deriveBits', 'deriveKey']
+                );
+                return crypto.subtle.deriveKey(
+                    { name: 'PBKDF2', salt: salt, iterations: 100000, hash: 'SHA-256' },
+                    keyMaterial, { name: 'AES-GCM', length: 256 }, false, ['encrypt', 'decrypt']
+                );
+            },
+
+            async encryptSecret(value, password) {
+                const encoder = new TextEncoder();
+                const salt = crypto.getRandomValues(new Uint8Array(16));
+                const iv = crypto.getRandomValues(new Uint8Array(12));
+                const key = await this.deriveKey(password, salt);
+                const encrypted = await crypto.subtle.encrypt(
+                    { name: 'AES-GCM', iv }, key, encoder.encode(value)
+                );
+                return {
+                    salt: Array.from(salt),
+                    iv: Array.from(iv),
+                    data: Array.from(new Uint8Array(encrypted))
+                };
+            },
+
+            async decryptSecret(encrypted, password) {
+                try {
+                    const decoder = new TextDecoder();
+                    const salt = new Uint8Array(encrypted.salt);
+                    const iv = new Uint8Array(encrypted.iv);
+                    const data = new Uint8Array(encrypted.data);
+                    const key = await this.deriveKey(password, salt);
+                    const decrypted = await crypto.subtle.decrypt(
+                        { name: 'AES-GCM', iv }, key, data
+                    );
+                    return decoder.decode(decrypted);
+                } catch (e) {
+                    return null; // Wrong password
+                }
+            },
+
+            async setSecretPassword() {
+                const password = prompt('🔐 Set a password to encrypt your secrets:\n\nThis password will be required to view or add secrets.\n\nWARNING: If you forget this password, your secrets CANNOT be recovered.');
+                if (!password) return;
+                if (password.length < 8) {
+                    alert('Password must be at least 8 characters');
+                    return;
+                }
+                
+                const confirm = prompt('Confirm password:');
+                if (confirm !== password) {
+                    alert('Passwords do not match');
+                    return;
+                }
+                
+                // Store password hash (not the password itself)
+                const encoder = new TextEncoder();
+                const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(password));
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                
+                this.secretPasswordHash = hashArray;
+                localStorage.setItem('baseclaw-secret-hash', JSON.stringify(hashArray));
+                
+                this.addMessage('system', '🔐 Secret password set. All secrets will be encrypted.');
+            },
+
+            async verifySecretPassword() {
+                if (!this.secretPasswordHash) {
+                    const stored = localStorage.getItem('baseclaw-secret-hash');
+                    if (stored) {
+                        this.secretPasswordHash = JSON.parse(stored);
+                    } else {
+                        await this.setSecretPassword();
+                        return this.secretPasswordHash !== null;
+                    }
+                }
+                
+                const password = prompt('🔐 Enter your secret password:');
+                if (!password) return false;
+                
+                const encoder = new TextEncoder();
+                const hashBuffer = await crypto.subtle.digest('SHA-256', encoder.encode(password));
+                const hashArray = Array.from(new Uint8Array(hashBuffer));
+                
+                const valid = JSON.stringify(hashArray) === JSON.stringify(this.secretPasswordHash);
+                if (!valid) {
+                    alert('❌ Incorrect password');
+                    return false;
+                }
+                return password;
+            },
+            addMessage(sender, text) {
+                const container = document.getElementById('messages');
+                const div = document.createElement('div');
+                div.className = `message ${sender === 'user' ? 'user' : ''}`;
+                div.innerHTML = `
+                    <div class="message-avatar">${sender === 'user' ? '👤' : '🐾'}</div>
+                    <div class="message-content">
+                        ${text}
+                        <div class="message-time">${new Date().toLocaleTimeString()}</div>
+                    </div>
+                `;
+                container.appendChild(div);
+                container.scrollTop = container.scrollHeight;
+                
+                // Save to project chats
+                if (this.currentProject) {
+                    if (!this.currentProject.chats) this.currentProject.chats = [];
+                    this.currentProject.chats.push({
+                        sender,
+                        text,
+                        time: new Date().toLocaleTimeString()
+                    });
+                    this.saveProjects();
+                    this.renderProjects(); // Update chat count
+                }
+            },
+
+            sendMessage() {
+                const input = document.getElementById('chat-input');
+                const text = input.value.trim();
+                if (!text) return;
+                this.addMessage('user', text);
+                input.value = '';
+                
+                // Enhanced demo responses
+                setTimeout(() => {
+                    if (!this.currentProject) {
+                        this.addMessage('system', 'Select a project first! Click "New Project" to create one.');
+                        return;
+                    }
+                    
+                    const lower = text.toLowerCase();
+                    if (lower.includes('deploy') || lower.includes('launch')) {
+                        this.addMessage('system', `🚀 **Deployment Workflow for ${this.currentProject.name}**
+
+1. **Compile** → Foundry compiles contracts
+2. **Test** → Run test suite (324 tests)
+3. **Verify** → BaseScan verification ready
+4. **Deploy** → Submit to ${this.currentProject.chain}
+
+Ready to proceed? Click **Build** then **Deploy** in Quick Actions.`);
+                    } else if (lower.includes('fund') || lower.includes('wallet')) {
+                        this.addMessage('system', `💰 **Wallet Funding**
+
+Current balance: 0.00 ETH
+Chain: ${this.currentProject.chain}
+
+Options:
+• Faucet (Sepolia only)
+• Bridge from Mainnet
+• Buy with card
+
+Click **Fund Wallet** in the sidebar.`);
+                    } else if (lower.includes('trade') || lower.includes('swap')) {
+                        this.addMessage('system', `💱 **Token Trading**
+
+Available pairs:
+• ETH/USDC
+• ETH/CRD
+• USDC/SHELL
+
+Click **Trade Tokens** in the sidebar to open Bankr.`);
+                    } else {
+                        this.addMessage('system', `Working on "${this.currentProject.name}" with ${this.currentModel.toUpperCase()}...\n\nLoaded skills: ${this.currentProject.loadedSkills?.join(', ') || 'None'}\n\nWhat do you need? Try:\n• "Deploy my contract"\n• "Fund my wallet"\n• "Trade tokens"`);
+                    }
+                }, 500);
+            },
+
+            // Modals
+            showModal(id) {
+                document.getElementById(id).classList.add('active');
+            },
+
+            hideModal(id) {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.classList.remove('active');
+                    // For dynamic modals, remove them completely
+                    if (id === 'modal-dynamic') {
+                        el.remove();
+                    }
+                }
+            },
+
+            showNewProjectModal() {
+                document.getElementById('new-project-name').value = '';
+                this.showModal('modal-new-project');
             },
 
             setupEventListeners() {
-                const input = document.getElementById('chat-input');
-                input.addEventListener('keydown', (e) => {
+                document.getElementById('chat-input').addEventListener('keydown', (e) => {
                     if (e.key === 'Enter' && !e.shiftKey) {
                         e.preventDefault();
                         this.sendMessage();
                     }
                 });
+
+                document.querySelectorAll('.modal-overlay').forEach(overlay => {
+                    overlay.addEventListener('click', (e) => {
+                        if (e.target === overlay) overlay.classList.remove('active');
+                    });
+                });
             }
-        }
+        };
 
-        const app = new BaseClawUI();
-    </script>
-</body>
-</html>
-
-            // 402 Payment Functions
-            show402Payment() {
-                const paymentHTML = `
-                    <div style="max-width: 600px; margin: 0 auto;">
-                        <h2 style="font-family: 'Patrick Hand', cursive; font-size: 28px; margin-bottom: 24px;">💰 402 Payment Required</h2>
-                        
-                        <p style="color: var(--text-secondary); margin-bottom: 32px;">
-                            Monetize your content with crypto payments. Token gates, paywalls, and subscriptions.
-                        </p>
-                        
-                        <div style="margin-bottom: 24px;">
-                            <div style="font-weight: 600; margin-bottom: 12px;">🚪 Token Gate</div>
-                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Required Token</label>
-                                    <input type="text" id="gate-token" placeholder="0x..." style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
-                                </div>
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Minimum Balance</label>
-                                    <input type="number" id="gate-balance" value="1" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
-                                </div>
-                                <button class="btn btn-primary" onclick="app.createTokenGate()" style="width: 100%;">Create Token Gate</button>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-bottom: 24px;">
-                            <div style="font-weight: 600; margin-bottom: 12px;">💳 Paywall</div>
-                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Price (ETH)</label>
-                                    <input type="number" id="paywall-price" value="0.01" step="0.001" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
-                                </div>
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Content ID</label>
-                                    <input type="text" id="paywall-content" placeholder="article-123" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
-                                </div>
-                                <button class="btn btn-primary" onclick="app.createPaywall()" style="width: 100%;">Create Paywall</button>
-                            </div>
-                        </div>
-                        
-                        <div style="margin-bottom: 24px;">
-                            <div style="font-weight: 600; margin-bottom: 12px;">📅 Subscription</div>
-                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Plan Name</label>
-                                    <input type="text" id="sub-name" placeholder="Pro Plan" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
-                                </div>
-                                <div style="margin-bottom: 12px;">
-                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Price per Month (USDC)</label>
-                                    <input type="number" id="sub-price" value="10" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
-                                </div>
-                                <button class="btn btn-primary" onclick="app.createSubscription()" style="width: 100%;">Create Subscription</button>
-                            </div>
-                        </div>
-                        
-                        <div style="padding: 16px; background: rgba(0, 212, 170, 0.1); border: 2px solid var(--base-cyan); border-radius: 12px;">
-                            <div style="font-weight: 600; margin-bottom: 8px;">💡 How it works</div>
-                            <ul style="font-size: 13px; color: var(--text-secondary); margin-left: 20px; line-height: 1.8;">
-                                <li>Token Gate: Require users to hold your token</li>
-                                <li>Paywall: One-time payment for content</li>
-                                <li>Subscription: Recurring monthly payments</li>
-                                <li>All payments go directly to your wallet</li>
-                            </ul>
-                        </div>
-                    </div>
-                `;
-                
-                this.addMessage('system', paymentHTML);
-            },
-
-            createTokenGate() {
-                const token = document.getElementById('gate-token').value;
-                const balance = document.getElementById('gate-balance').value;
-                
-                this.addMessage('system', `✅ Token Gate created! Users must hold ${balance} of token ${token.substring(0, 20)}... to access content.`);
-            },
-
-            createPaywall() {
-                const price = document.getElementById('paywall-price').value;
-                const content = document.getElementById('paywall-content').value;
-                
-                this.addMessage('system', `✅ Paywall created! Content "${content}" requires ${price} ETH to unlock.`);
-            },
-
-            createSubscription() {
-                const name = document.getElementById('sub-name').value;
-                const price = document.getElementById('sub-price').value;
-                
-                this.addMessage('system', `✅ Subscription plan "${name}" created! ${price} USDC per month.`);
-            },
-
-            // NFT Generator
-            showNFTGenerator() {
-                this.addSystemMessage('🎨 NFT Generator: Create NFT collections with AI-generated art and rarity system.');
-            },
-
-            // Tutorial
-            startTutorial() {
-                this.addSystemMessage(`
-                    <div style="max-width: 600px;">
-                        <h2 style="color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
-                        <p>I'm your AI blockchain agent. Here's how to get started:</p>
-                        <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
-                            <li><strong>Connect Wallet</strong> — Click "Connect Wallet" in the right panel</li>
-                            <li><strong>Choose Network</strong> — Start with Base Sepolia (it's free!)</li>
-                            <li><strong>Chat with me</strong> — Tell me what you want to build</li>
-                            <li><strong>Review & Deploy</strong> — I'll show you the code before deploying</li>
-                        </ol>
-                        <p><strong>Example:</strong> Try typing "Create a token called MoonCoin"</p>
-                    </div>
-                `);
-            },
-
-            // Wizard
-            openWizard() {
-                this.addSystemMessage(`
-                    <div style="max-width: 600px;">
-                        <h2 style="color: var(--base-blue); margin-bottom: 16px;">🎯 Template Wizard</h2>
-                        <p>Choose what you want to build:</p>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
-                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.runWizard('token')">🪙 Token</button>
-                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.runWizard('nft')">🎨 NFT</button>
-                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.runWizard('staking')">⚡ Staking</button>
-                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.runWizard('dao')">🏛️ DAO</button>
-                        </div>
-                    </div>
-                `);
-            },
-
-            runWizard(type) {
-                const prompts = {
-                    token: 'What should I name your token? (e.g., "MoonCoin" with symbol "MOON")',
-                    nft: 'What should I name your NFT collection? (e.g., "Space Explorers")',
-                    staking: 'What token should users stake? (paste the contract address)',
-                    dao: 'What should I name your DAO? (e.g., "MoonCoin Governance")'
-                };
-                this.addSystemMessage(`🎯 Wizard: ${prompts[type]}`);
-                document.getElementById('chat-input').placeholder = 'Type your answer here...';
-                document.getElementById('chat-input').focus();
-            },
-
-            // Demo Mode
-            toggleDemoMode() {
-                const isDemo = !localStorage.getItem('baseclaw-demo');
-                if (isDemo) {
-                    localStorage.setItem('baseclaw-demo', 'true');
-                    this.addSystemMessage('🔒 Demo Mode activated! All transactions are simulated.');
-                } else {
-                    localStorage.removeItem('baseclaw-demo');
-                    this.addSystemMessage('🔓 Demo Mode deactivated. Real transactions will require wallet confirmation.');
-                }
-            },
-
-            // Examples
-            showExamples() {
-                this.addSystemMessage(`
-                    <div style="max-width: 600px;">
-                        <h3 style="color: var(--base-blue); margin-bottom: 12px;">💡 Example Commands</h3>
-                        <div style="display: flex; flex-direction: column; gap: 8px;">
-                            <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="app.fillInput('Create a token called MoonCoin with symbol MOON and 1 million supply')">🪙 Create Token</button>
-                            <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="app.fillInput('Create an NFT collection of 100 space aliens')">🎨 Create NFT Collection</button>
-                            <button class="btn btn-secondary" style="justify-content: flex-start;" onclick="app.fillInput('Build a staking contract with 10% APY')">⚡ Create Staking</button>
-                        </div>
-                    </div>
-                `);
-            },
-
-            fillInput(text) {
-                document.getElementById('chat-input').value = text;
-                document.getElementById('chat-input').focus();
-            },
-
-            // FAQ
-            showFAQ() {
-                this.addSystemMessage(`
-                    <div style="max-width: 600px;">
-                        <h3 style="color: var(--base-blue); margin-bottom: 16px;">❓ Frequently Asked Questions</h3>
-                        <details style="margin-bottom: 12px;">
-                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; font-weight: 600;">Do I need to know coding?</summary>
-                            <div style="padding: 12px; color: var(--text-secondary);">No! Just describe what you want in plain English. I'll handle all the code.</div>
-                        </details>
-                        <details style="margin-bottom: 12px;">
-                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; font-weight: 600;">Is it free?</summary>
-                            <div style="padding: 12px; color: var(--text-secondary);">Testing on Base Sepolia is completely free. Mainnet deployment costs gas fees (usually $5-20).</div>
-                        </details>
-                        <details style="margin-bottom: 12px;">
-                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-tertiary); border-radius: 8px; font-weight: 600;">Is it safe?</summary>
-                            <div style="padding: 12px; color: var(--text-secondary);">Always test on Sepolia first. I include security checks and recommend audits for mainnet.</div>
-                        </details>
-                    </div>
-                `);
-            },
-
-            // Help
-            showHelp() {
-                this.addSystemMessage(`
-                    <div style="max-width: 600px;">
-                        <h3 style="color: var(--base-blue); margin-bottom: 16px;">📚 Help Center</h3>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
-                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.startTutorial()">📖 Start Tutorial</button>
-                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.showExamples()">💡 Examples</button>
-                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.showFAQ()">❓ FAQ</button>
-                            <button class="btn btn-secondary" style="justify-content: center;" onclick="app.openWizard()">🎯 Wizard</button>
-                        </div>
-                    </div>
-                `);
-            }
-        }
-
-        const app = new BaseClawUI();
+        app.init();
     </script>
 </body>
 </html>
