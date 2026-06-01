@@ -709,6 +709,18 @@
                 </div>
             </div>
             
+            <!-- Quick Start for Beginners -->
+            <div style="margin-bottom: 16px; padding: 12px; background: var(--bg-secondary); border: 2px solid var(--sketch-color); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+                <div style="font-family: 'Patrick Hand', cursive; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-align: center;">
+                    ✨ Quick Start
+                </div>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
+                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.startTutorial()">📖 Tutorial</button>
+                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.openWizard()">🎯 Wizard</button>
+                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.toggleDemoMode()">🔒 Demo</button>
+                </div>
+            </div>
+            
             <div class="section-title">Projects</div>
             <div id="project-list"></div>
             
@@ -1068,6 +1080,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Help Button -->
+    <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50% 40% 45% 55%; background: var(--base-blue); color: white; border: 2px solid var(--sketch-color); font-family: 'Patrick Hand', cursive; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 3px 3px 0 rgba(0, 82, 255, 0.3); transition: all 0.2s;" onclick="app.showHelp()" onmouseover="this.style.transform='rotate(15deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">?</button>
 
     <!-- Help Button -->
     <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50% 40% 45% 55%; background: var(--base-blue); color: white; border: 2px solid var(--sketch-color); font-family: 'Patrick Hand', cursive; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 3px 3px 0 rgba(0, 82, 255, 0.3); transition: all 0.2s;" onclick="app.showHelp()" onmouseover="this.style.transform='rotate(15deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">?</button>
