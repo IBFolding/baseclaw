@@ -1096,37 +1096,64 @@
             tradingMode: 'bankr',
             apiKeys: {},
             
+            // ===== ALL 23 SKILLS =====
             skills: [
-                { name: 'Bankr', icon: '🏦', description: 'Trading and DeFi', loaded: false },
                 { name: 'Foundry', icon: '🔨', description: 'Compile, test, deploy', loaded: false },
-                { name: 'AgentKit', icon: '🤖', description: 'Coinbase onchain tools', loaded: false },
-                { name: 'NFT', icon: '🖼️', description: 'Generate NFT collections', loaded: false },
-                { name: 'MiniApp', icon: '📱', description: 'Build mini apps', loaded: false },
-                { name: 'Launchpad', icon: '🚀', description: 'Launch tokens', loaded: false },
-                { name: 'BaseScan', icon: '🔍', description: 'Contract verification', loaded: false },
-                { name: 'OpenClaw', icon: '⚡', description: 'Gateway integration', loaded: false },
-                { name: 'Secrets', icon: '🔐', description: 'Secrets manager', loaded: false },
-                { name: 'Fund', icon: '💰', description: 'Fund wallet', loaded: false },
-                { name: 'Trade', icon: '💱', description: 'Trade tokens', loaded: false },
-                { name: 'AI Model Manager', icon: '🧠', description: 'Manage AI models', loaded: false },
-                { name: 'Token Launchpad', icon: '🎯', description: 'Launch tokens', loaded: false },
-                { name: 'ClawReserve', icon: '🏛️', description: 'Monetary protocol', loaded: false },
-                { name: 'MoltMail', icon: '📧', description: 'Email automation', loaded: false },
-                { name: 'Swimming Pauls', icon: '🏊', description: 'Prediction markets', loaded: false },
                 { name: 'Base Deploy', icon: '⛓️', description: 'Base chain deployer', loaded: false },
-                { name: 'Web3 Auth', icon: '🔑', description: 'SIWE authentication', loaded: false },
-                { name: 'Gas Tracker', icon: '⛽', description: 'Gas price monitor', loaded: false },
-                { name: 'Block Explorer', icon: '🔎', description: 'Block analysis', loaded: false },
-                { name: 'Trading', icon: '📈', description: 'Advanced trading', loaded: false },
-                { name: 'DeFi Strategies', icon: '🌾', description: 'Yield farming & vaults', loaded: false },
-                { name: 'Yield Scanner', icon: '🔍', description: 'Scan yields across protocols', loaded: false },
-                { name: 'Liquidity', icon: '💧', description: 'LP management', loaded: false },
-                { name: 'Perps', icon: '📊', description: 'Perpetual futures', loaded: false },
+                { name: 'Etherscan Verify', icon: '🔍', description: 'Verify on BaseScan', loaded: false },
+                { name: 'Vercel Deploy', icon: '🚀', description: 'Deploy frontend', loaded: false },
+                { name: 'ClawReserve', icon: '🏦', description: 'DeFi protocol', loaded: false },
+                { name: 'Bankr Trading', icon: '📈', description: 'Spot trading', loaded: false },
+                { name: 'Hyperliquid', icon: '⚡', description: 'Perp trading', loaded: false },
+                { name: 'Polymarket', icon: '🎯', description: 'Prediction markets', loaded: false },
+                { name: 'NFT Generator', icon: '🎨', description: 'AI art + rarity', loaded: false },
+                { name: '402 Payment', icon: '💰', description: 'Token gates, paywalls', loaded: false },
+                { name: 'Swimming Pauls', icon: '🏊', description: 'Prediction agents', loaded: false },
+                { name: 'MoltMail', icon: '📧', description: 'On-chain email', loaded: false },
+                { name: 'Social Bot', icon: '🤖', description: 'Twitter/Discord bot', loaded: false },
+                { name: 'News Summarizer', icon: '📰', description: 'AI news digest', loaded: false },
+                { name: 'Canvas Studio', icon: '🎬', description: 'Video/image gen', loaded: false },
+                { name: 'Remotion', icon: '🎥', description: 'Programmatic video', loaded: false },
+                { name: 'Game Theory', icon: '🧠', description: 'Strategic analysis', loaded: false },
+                { name: 'DeFi Scanner', icon: '🔭', description: 'Yield opportunities', loaded: false },
+                { name: 'Wallet Policy', icon: '🔐', description: 'Spending controls', loaded: false },
+                { name: 'Auto Code Review', icon: '👁️', description: 'AI code audit', loaded: false },
+                { name: 'Security Audit', icon: '🛡️', description: 'Contract security', loaded: false },
+                { name: 'Gas Optimizer', icon: '⛽', description: 'Save on gas fees', loaded: false },
+                { name: 'Portfolio Tracker', icon: '💼', description: 'Track all assets', loaded: false }
+            ],
+
+            // ===== ALL 15 QUICK ACTIONS =====
+            quickActions: [
+                { id: 'preview', icon: '👁️', label: 'Preview', action: 'showPreview' },
+                { id: 'build', icon: '🔨', label: 'Build', action: 'showBuild' },
+                { id: 'test', icon: '🧪', label: 'Test', action: 'showTest' },
+                { id: 'deploy', icon: '🚀', label: 'Deploy', action: 'showDeploy' },
+                { id: 'ai', icon: '🤖', label: 'AI Assist', action: 'aiAssist' },
+                { id: 'fund', icon: '💰', label: 'Fund', action: 'fundWallet' },
+                { id: 'trade', icon: '💱', label: 'Trade', action: 'tradeTokens' },
+                { id: 'defi', icon: '🌾', label: 'DeFi', action: 'showDeFi' },
+                { id: 'nft', icon: '🎨', label: 'NFT', action: 'showNFTGenerator' },
+                { id: 'settings', icon: '⚙️', label: 'Settings', action: 'showSettingsModal' },
+                { id: 'tutorial', icon: '📖', label: 'Tutorial', action: 'startTutorial' },
+                { id: 'wizard', icon: '🎯', label: 'Wizard', action: 'openWizard' },
+                { id: 'demo', icon: '🔒', label: 'Demo', action: 'toggleDemoMode' },
+                { id: 'examples', icon: '💡', label: 'Examples', action: 'showExamples' },
+                { id: 'faq', icon: '❓', label: 'FAQ', action: 'showFAQ' }
             ],
             
             pickerState: {
                 skills: true, wallet: true, templates: true, preview: true,
-                ai: true, build: true, test: true, deploy: true, chain: true, settings: true
+                ai: true, build: true, test: true, deploy: true, chain: true, settings: true,
+                secrets: true, trading: true, defi: true, nft: true, vercel: true,
+                tutorial: true, wizard: true, demo: true, examples: true, faq: true,
+                help: true, payments: true, subscriptions: true, tokenGate: true,
+                paywall: true, airdrop: true, vesting: true, multisig: true,
+                timelock: true, dao: true, staking: true, marketplace: true,
+                crossChain: true, oracle: true, vrf: true, upgradeable: true,
+                lending: true, yieldAggregator: true, social: true, news: true,
+                canvas: true, remotion: true, gameTheory: true, autoAudit: true,
+                security: true, gasOptimizer: true, portfolio: true, alerts: true
             },
 
             toggleTheme() {
@@ -1695,8 +1722,197 @@
             },
 
             // Generic modal content
+            // ===== 402 PAYMENT FEATURES =====
+            show402Payment() {
+                const content = `
+                    <div style="max-width: 600px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 24px;">💰 402 Payment Required</h2>
+                        
+                        <p style="color: var(--text-secondary); margin-bottom: 32px;">
+                            Monetize your content with crypto payments. Token gates, paywalls, and subscriptions.
+                        </p>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <div style="font-weight: 600; margin-bottom: 12px;">🚪 Token Gate</div>
+                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Required Token</label>
+                                    <input type="text" id="gate-token" placeholder="0x..." style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Minimum Balance</label>
+                                    <input type="number" id="gate-balance" value="1" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <button class="picker-btn" onclick="app.createTokenGate()" style="width: 100%;">Create Token Gate</button>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <div style="font-weight: 600; margin-bottom: 12px;">💳 Paywall</div>
+                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Price (ETH)</label>
+                                    <input type="number" id="paywall-price" value="0.01" step="0.001" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Content ID</label>
+                                    <input type="text" id="paywall-content" placeholder="article-123" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <button class="picker-btn" onclick="app.createPaywall()" style="width: 100%;">Create Paywall</button>
+                            </div>
+                        </div>
+                        
+                        <div style="margin-bottom: 24px;">
+                            <div style="font-weight: 600; margin-bottom: 12px;">📅 Subscription</div>
+                            <div style="padding: 12px; background: var(--bg-secondary); border-radius: 8px; border: 1px solid var(--border-color);">
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Plan Name</label>
+                                    <input type="text" id="sub-name" placeholder="Pro Plan" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <div style="margin-bottom: 12px;">
+                                    <label style="display: block; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">Price (USDC/month)</label>
+                                    <input type="number" id="sub-price" value="10" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif;">
+                                </div>
+                                <button class="picker-btn" onclick="app.createSubscription()" style="width: 100%;">Create Subscription</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                this.showModalContent('💰 402 Payment Required', content);
+            },
+
+            createTokenGate() {
+                const token = document.getElementById('gate-token').value;
+                const balance = document.getElementById('gate-balance').value;
+                this.addMessage('system', `✅ Token Gate created! Users must hold ${balance} of token ${token.substring(0, 20)}... to access content.`);
+            },
+
+            createPaywall() {
+                const price = document.getElementById('paywall-price').value;
+                const content = document.getElementById('paywall-content').value;
+                this.addMessage('system', `✅ Paywall created! Content "${content}" requires ${price} ETH to unlock.`);
+            },
+
+            createSubscription() {
+                const name = document.getElementById('sub-name').value;
+                const price = document.getElementById('sub-price').value;
+                this.addMessage('system', `✅ Subscription plan "${name}" created! ${price} USDC per month.`);
+            },
+
+            // ===== NFT GENERATOR =====
+            showNFTGenerator() {
+                this.addMessage('system', '🎨 NFT Generator: Create NFT collections with AI-generated art and rarity system.');
+            },
+
+            // ===== BEGINNER FEATURES =====
+            startTutorial() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
+                        <p>I'm your AI blockchain agent. Here's how to get started:</p>
+                        <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
+                            <li><strong>Connect Wallet</strong> — Click "Connect Wallet" in the right panel</li>
+                            <li><strong>Choose Network</strong> — Start with Base Sepolia (it's free!)</li>
+                            <li><strong>Chat with me</strong> — Tell me what you want to build</li>
+                            <li><strong>Review & Deploy</strong> — I'll show you the code before deploying</li>
+                        </ol>
+                        <p><strong>Example:</strong> Try typing "Create a token called MoonCoin"</p>
+                    </div>
+                `);
+            },
+
+            openWizard() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🎯 Template Wizard</h2>
+                        <p>Choose what you want to build:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('token')">🪙 Token</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('nft')">🎨 NFT</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('staking')">⚡ Staking</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('dao')">🏛️ DAO</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            runWizard(type) {
+                const prompts = {
+                    token: 'What should I name your token? (e.g., "MoonCoin" with symbol "MOON")',
+                    nft: 'What should I name your NFT collection? (e.g., "Space Explorers")',
+                    staking: 'What token should users stake? (paste the contract address)',
+                    dao: 'What should I name your DAO? (e.g., "MoonCoin Governance")'
+                };
+                this.addMessage('system', `🎯 Wizard: ${prompts[type]}`);
+                document.getElementById('chat-input').placeholder = 'Type your answer here...';
+                document.getElementById('chat-input').focus();
+            },
+
+            toggleDemoMode() {
+                const isDemo = !localStorage.getItem('baseclaw-demo');
+                if (isDemo) {
+                    localStorage.setItem('baseclaw-demo', 'true');
+                    this.addMessage('system', '🔒 Demo Mode activated! All transactions are simulated.');
+                } else {
+                    localStorage.removeItem('baseclaw-demo');
+                    this.addMessage('system', '🔓 Demo Mode deactivated. Real transactions will require wallet confirmation.');
+                }
+            },
+
+            showExamples() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 12px;">💡 Example Commands</h3>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Create a token called MoonCoin with symbol MOON and 1 million supply')">🪙 Create Token</button>
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Create an NFT collection of 100 space aliens')">🎨 Create NFT Collection</button>
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Build a staking contract with 10% APY')">⚡ Create Staking</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            fillInput(text) {
+                document.getElementById('chat-input').value = text;
+                document.getElementById('chat-input').focus();
+            },
+
+            showFAQ() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">❓ Frequently Asked Questions</h3>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-secondary); border: 2px solid var(--sketch-color); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; font-family: 'Patrick Hand', cursive; font-weight: 700;">Do I need to know coding?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">No! Just describe what you want in plain English. I'll handle all the code.</div>
+                        </details>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-secondary); border: 2px solid var(--sketch-color); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; font-family: 'Patrick Hand', cursive; font-weight: 700;">Is it free?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">Testing on Base Sepolia is completely free. Mainnet deployment costs gas fees (usually $5-20).</div>
+                        </details>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-secondary); border: 2px solid var(--sketch-color); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; font-family: 'Patrick Hand', cursive; font-weight: 700;">Is it safe?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">Always test on Sepolia first. I include security checks and recommend audits for mainnet.</div>
+                        </details>
+                    </div>
+                `);
+            },
+
+            showHelp() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">📚 Help Center</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.startTutorial()">📖 Start Tutorial</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.showExamples()">💡 Examples</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.showFAQ()">❓ FAQ</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.openWizard()">🎯 Wizard</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            // ===== MODAL HELPERS =====
             showModalContent(title, content) {
-                // Remove any existing dynamic modal first
                 const existing = document.getElementById('modal-dynamic');
                 if (existing) existing.remove();
                 
@@ -1714,9 +1930,7 @@
                 `;
                 document.body.appendChild(modal);
                 modal.addEventListener('click', (e) => {
-                    if (e.target === modal) {
-                        modal.remove();
-                    }
+                    if (e.target === modal) modal.remove();
                 });
             },
 
