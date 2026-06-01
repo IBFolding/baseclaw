@@ -697,6 +697,18 @@
                 <div class="theme-toggle" onclick="app.toggleTheme()" id="theme-toggle">🌙</div>
             </div>
             
+            <!-- Quick Start for Beginners -->
+            <div style="margin-bottom: 16px; padding: 12px; background: var(--bg-secondary); border: 2px solid var(--sketch-color); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;">
+                <div style="font-family: 'Patrick Hand', cursive; font-size: 14px; font-weight: 700; color: var(--text-muted); margin-bottom: 8px; text-align: center;">
+                    ✨ Quick Start
+                </div>
+                <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
+                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.startTutorial()">📖 Tutorial</button>
+                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.openWizard()">🎯 Wizard</button>
+                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.toggleDemoMode()">🔒 Demo</button>
+                </div>
+            </div>
+            
             <div class="section-title">Projects</div>
             <div id="project-list"></div>
             
@@ -1056,6 +1068,9 @@
             </div>
         </div>
     </div>
+
+    <!-- Help Button -->
+    <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50% 40% 45% 55%; background: var(--base-blue); color: white; border: 2px solid var(--sketch-color); font-family: 'Patrick Hand', cursive; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 3px 3px 0 rgba(0, 82, 255, 0.3); transition: all 0.2s;" onclick="app.showHelp()" onmouseover="this.style.transform='rotate(15deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">?</button>
 
     <script>
         const app = {
@@ -2655,6 +2670,120 @@ Click **Trade Tokens** in the sidebar to open Bankr.`);
                         if (e.target === overlay) overlay.classList.remove('active');
                     });
                 });
+            },
+
+            // ===== BEGINNER FEATURES =====
+            
+            // Tutorial
+            startTutorial() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
+                        <p>I'm your AI blockchain agent. Here's how to get started:</p>
+                        <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
+                            <li><strong>Connect Wallet</strong> — Click "Connect Wallet" in the right panel</li>
+                            <li><strong>Choose Network</strong> — Start with Base Sepolia (it's free!)</li>
+                            <li><strong>Chat with me</strong> — Tell me what you want to build</li>
+                            <li><strong>Review & Deploy</strong> — I'll show you the code before deploying</li>
+                        </ol>
+                        <p><strong>Example:</strong> Try typing "Create a token called MoonCoin"</p>
+                    </div>
+                `);
+            },
+
+            // Wizard
+            openWizard() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🎯 Template Wizard</h2>
+                        <p>Choose what you want to build:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('token')">🪙 Token</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('nft')">🎨 NFT</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('staking')">⚡ Staking</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('dao')">🏛️ DAO</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            runWizard(type) {
+                const prompts = {
+                    token: 'What should I name your token? (e.g., "MoonCoin" with symbol "MOON")',
+                    nft: 'What should I name your NFT collection? (e.g., "Space Explorers")',
+                    staking: 'What token should users stake? (paste the contract address)',
+                    dao: 'What should I name your DAO? (e.g., "MoonCoin Governance")'
+                };
+                this.addMessage('system', `🎯 Wizard: ${prompts[type]}`);
+                document.getElementById('chat-input').placeholder = 'Type your answer here...';
+                document.getElementById('chat-input').focus();
+            },
+
+            // Demo Mode
+            toggleDemoMode() {
+                const isDemo = !localStorage.getItem('baseclaw-demo');
+                if (isDemo) {
+                    localStorage.setItem('baseclaw-demo', 'true');
+                    this.addMessage('system', '🔒 Demo Mode activated! All transactions are simulated.');
+                } else {
+                    localStorage.removeItem('baseclaw-demo');
+                    this.addMessage('system', '🔓 Demo Mode deactivated. Real transactions will require wallet confirmation.');
+                }
+            },
+
+            // Examples
+            showExamples() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 12px;">💡 Example Commands</h3>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Create a token called MoonCoin with symbol MOON and 1 million supply')">🪙 Create Token</button>
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Create an NFT collection of 100 space aliens')">🎨 Create NFT Collection</button>
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Build a staking contract with 10% APY')">⚡ Create Staking</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            fillInput(text) {
+                document.getElementById('chat-input').value = text;
+                document.getElementById('chat-input').focus();
+            },
+
+            // FAQ
+            showFAQ() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">❓ Frequently Asked Questions</h3>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-secondary); border: 2px solid var(--sketch-color); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; font-family: 'Patrick Hand', cursive; font-weight: 700;">Do I need to know coding?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">No! Just describe what you want in plain English. I'll handle all the code.</div>
+                        </details>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-secondary); border: 2px solid var(--sketch-color); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; font-family: 'Patrick Hand', cursive; font-weight: 700;">Is it free?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">Testing on Base Sepolia is completely free. Mainnet deployment costs gas fees (usually $5-20).</div>
+                        </details>
+                        <details style="margin-bottom: 12px;">
+                            <summary style="cursor: pointer; padding: 12px; background: var(--bg-secondary); border: 2px solid var(--sketch-color); border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; font-family: 'Patrick Hand', cursive; font-weight: 700;">Is it safe?</summary>
+                            <div style="padding: 12px; color: var(--text-secondary);">Always test on Sepolia first. I include security checks and recommend audits for mainnet.</div>
+                        </details>
+                    </div>
+                `);
+            },
+
+            // Help
+            showHelp() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">📚 Help Center</h3>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.startTutorial()">📖 Start Tutorial</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.showExamples()">💡 Examples</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.showFAQ()">❓ FAQ</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.openWizard()">🎯 Wizard</button>
+                        </div>
+                    </div>
+                `);
             }
         };
 
