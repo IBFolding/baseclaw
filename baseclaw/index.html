@@ -6,6 +6,7 @@
     <title>BaseClaw — Project-Oriented AI for Base</title>
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
     <script src="engine.js"></script>
+    <script src="deployer-bridge.js"></script>
     <script src="onboarding.js"></script>
     <script src="extensions.js"></script>
     <script src="nft-generator.js"></script>
@@ -1059,6 +1060,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             <div class="panel-tabs">
                 <div class="panel-tab active" onclick="app.switchPanel('context')" id="tab-context">Context</div>
                 <div class="panel-tab" onclick="app.switchPanel('wallet')" id="tab-wallet">Wallet</div>
+                <div class="panel-tab" onclick="app.switchPanel('deploy')" id="tab-deploy">Deploy</div>
                 <div class="panel-tab" onclick="app.switchPanel('model')" id="tab-model">AI Model</div>
                 <div class="panel-tab" onclick="app.switchPanel('secrets')" id="tab-secrets">Secrets</div>
             </div>
@@ -1069,6 +1071,12 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             
             <div class="panel-content" id="panel-wallet">
                 <div class="empty-state">No wallet connected</div>
+            </div>
+            
+            <div class="panel-content" id="panel-deploy">
+                <div id="deploy-panel-content">
+                    <div class="empty-state">Connect wallet to deploy contracts</div>
+                </div>
             </div>
             
             <div class="panel-content" id="panel-model">
@@ -2248,6 +2256,58 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 document.querySelectorAll('.panel-content').forEach(c => c.classList.remove('active'));
                 document.getElementById(`tab-${panel}`).classList.add('active');
                 document.getElementById(`panel-${panel}`).classList.add('active');
+                
+                // Render deploy panel when switching to it
+                if (panel === 'deploy') {
+                    this.renderDeployPanel();
+                }
+            },
+            
+            renderDeployPanel() {
+                const container = document.getElementById('panel-deploy');
+                if (!container) return;
+                
+                if (!this.currentProject) {
+                    container.innerHTML = '<div class="empty-state">Select a project first</div>';
+                    return;
+                }
+                
+                const isConnected = BaseClawEngine.connected;
+                const address = BaseClawEngine.address;
+                
+                container.innerHTML = `
+                    <div class="context-item">
+                        <div class="context-label">Deployment Status</div>
+                        <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 12px;">
+                            <div class="live-dot ${isConnected ? '' : 'red'}"></div>
+                            <span style="font-family: 'Space Mono', monospace; font-size: 12px;">
+                                ${isConnected ? 'Connected: ' + address?.substring(0, 6) + '...' + address?.substring(-4) : 'Wallet not connected'}
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Quick Deploy</div>
+                        <button class="btn-goblin" style="width: 100%; margin-bottom: 8px;" onclick="app.showDeploy()" ${!isConnected ? 'disabled' : ''}>
+                            🚀 Deploy Contract
+                        </button>
+                        ${!isConnected ? '<div style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">Connect wallet to enable deployment</div>' : ''}
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Recent Deployments</div>
+                        <div style="font-size: 12px; color: var(--text-muted);">
+                            No deployments yet
+                        </div>
+                    </div>
+                    
+                    <div class="context-item">
+                        <div class="context-label">Network</div>
+                        <div style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--text-secondary);">
+                            ${this.currentProject.chain}
+                        </div>
+                    </div>
+                `;
             },
 
             // Context
@@ -2588,8 +2648,223 @@ ${codePreview}
 
             showDeploy() {
                 if (!this.currentProject) { alert('Select a project first'); return; }
-                if (this.currentProject.chain === 'base-mainnet' && !confirm('⚠️ Deploy to mainnet?')) return;
-                this.addMessage('system', `🚀 Deploying ${this.currentProject.name} to ${this.currentProject.chain}...`);
+                
+                // Check if wallet is connected
+                if (!BaseClawEngine.connected) {
+                    this.addMessage('system', '🔌 Please connect your wallet first. Click "Connect Wallet" in the Wallet panel.');
+                    return;
+                }
+                
+                // Show deployment UI in chat
+                const deployUI = `
+                    <div class="panel-sharp" style="padding: 20px; margin: 16px 0;">
+                        <div class="panel-head" style="padding: 0 0 12px 0; margin-bottom: 12px;">
+                            <div class="t">
+                                <div class="live-dot"></div>
+                                <h2>Contract Deployment</h2>
+                            </div>
+                            <span class="tag-sm">${this.currentProject.chain}</span>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Contract Type</label>
+                            <select id="deploy-type" class="modal-input" style="margin-bottom: 0;">
+                                <option value="erc20">ERC20 Token</option>
+                                <option value="erc721">ERC721 NFT</option>
+                            </select>
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Token Name</label>
+                            <input type="text" id="deploy-name" class="modal-input" value="${this.currentProject.name}Token" style="margin-bottom: 0;">
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Symbol</label>
+                            <input type="text" id="deploy-symbol" class="modal-input" value="BCT" style="margin-bottom: 0; text-transform: uppercase;">
+                        </div>
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Total Supply</label>
+                            <input type="number" id="deploy-supply" class="modal-input" value="1000000" style="margin-bottom: 0;">
+                        </div>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                            <div>
+                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Decimals</label>
+                                <input type="number" id="deploy-decimals" class="modal-input" value="18" style="margin-bottom: 0;">
+                            </div>
+                            <div>
+                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Marketing Tax %</label>
+                                <input type="number" id="deploy-tax" class="modal-input" value="0" min="0" max="10" style="margin-bottom: 0;">
+                            </div>
+                        </div>
+                        
+                        <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+                                <input type="checkbox" id="deploy-burnable"> Burnable
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+                                <input type="checkbox" id="deploy-mintable"> Mintable
+                            </label>
+                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+                                <input type="checkbox" id="deploy-pausable"> Pausable
+                            </label>
+                        </div>
+                        
+                        <div id="deploy-preview" style="background: var(--bg-primary); padding: 12px; border-radius: 8px; border: 2px solid var(--border-color); margin-bottom: 16px; font-family: 'Space Mono', monospace; font-size: 11px; max-height: 200px; overflow-y: auto;">
+                            Click "Preview Contract" to see generated code
+                        </div>
+                        
+                        <div style="display: flex; gap: 12px;">
+                            <button class="btn-goblin" onclick="app.previewContract()">
+                                👁️ Preview
+                            </button>
+                            <button class="btn-goblin dark" onclick="app.runDeployment()">
+                                🚀 Deploy
+                            </button>
+                        </div>
+                        
+                        <div id="deploy-status" style="margin-top: 16px; display: none;">
+                            <div style="background: var(--bg-secondary); padding: 12px; border-radius: 8px; border: 2px solid var(--border-color);">
+                                <div id="deploy-status-text" style="font-family: 'Space Mono', monospace; font-size: 12px;">Initializing...</div>
+                                <div style="width: 100%; height: 4px; background: var(--bg-tertiary); border-radius: 2px; margin-top: 8px; overflow: hidden;">
+                                    <div id="deploy-progress" style="width: 0%; height: 100%; background: var(--base-blue); transition: width 0.3s ease;"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                this.addMessage('system', deployUI);
+                
+                // Auto-preview on load
+                setTimeout(() => this.previewContract(), 100);
+            },
+            
+            previewContract() {
+                const type = document.getElementById('deploy-type')?.value || 'erc20';
+                const name = document.getElementById('deploy-name')?.value || 'MyToken';
+                const symbol = document.getElementById('deploy-symbol')?.value || 'MTK';
+                const supply = document.getElementById('deploy-supply')?.value || '1000000';
+                const decimals = document.getElementById('deploy-decimals')?.value || '18';
+                const marketingTax = parseFloat(document.getElementById('deploy-tax')?.value || '0');
+                const burnable = document.getElementById('deploy-burnable')?.checked || false;
+                const mintable = document.getElementById('deploy-mintable')?.checked || false;
+                const pausable = document.getElementById('deploy-pausable')?.checked || false;
+                
+                const config = {
+                    name,
+                    symbol: symbol.toUpperCase(),
+                    totalSupply: supply + '0'.repeat(decimals),
+                    decimals: parseInt(decimals),
+                    marketingTax,
+                    lpTax: 0,
+                    burnTax: 0,
+                    burnable,
+                    mintable,
+                    pausable,
+                    renounceOwnership: false,
+                };
+                
+                // Security scan
+                const security = BaseClawDeployer.securityScan(config);
+                
+                let sourceCode;
+                if (type === 'erc20') {
+                    sourceCode = BaseClawDeployer.generateERC20(config);
+                } else {
+                    sourceCode = BaseClawDeployer.generateNFT(config);
+                }
+                
+                const preview = document.getElementById('deploy-preview');
+                if (preview) {
+                    preview.innerHTML = `
+                        <div style="margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                            <span style="color: var(--base-blue); font-weight: 700;">${type.toUpperCase()} Contract</span>
+                            <span style="color: ${security.passed ? 'var(--base-green)' : 'var(--base-red)'};">
+                                ${security.passed ? '✅ Secure' : '⚠️ Issues'}
+                            </span>
+                        </div>
+                        <div style="white-space: pre-wrap; overflow-x: auto;">${sourceCode.substring(0, 2000)}...</div>
+                        ${security.warnings.length > 0 ? `<div style="margin-top: 8px; color: var(--base-red); font-size: 10px;">⚠️ ${security.warnings.join(', ')}</div>` : ''}
+                    `;
+                }
+                
+                return { config, sourceCode, security };
+            },
+            
+            async runDeployment() {
+                const preview = this.previewContract();
+                if (!preview.security.passed) {
+                    if (!confirm('Security scan found issues. Deploy anyway?')) return;
+                }
+                
+                const statusDiv = document.getElementById('deploy-status');
+                const statusText = document.getElementById('deploy-status-text');
+                const progressBar = document.getElementById('deploy-progress');
+                
+                if (statusDiv) statusDiv.style.display = 'block';
+                
+                try {
+                    // Update status
+                    const updateStatus = (text, progress) => {
+                        if (statusText) statusText.textContent = text;
+                        if (progressBar) progressBar.style.width = progress + '%';
+                    };
+                    
+                    updateStatus('🔧 Generating contract...', 20);
+                    await new Promise(r => setTimeout(r, 500));
+                    
+                    updateStatus('🔍 Running security scan...', 40);
+                    await new Promise(r => setTimeout(r, 500));
+                    
+                    updateStatus('💰 Estimating gas costs...', 60);
+                    const costEstimate = await BaseClawDeployer.estimateDeploymentCost('erc20', BaseClawEngine.provider);
+                    await new Promise(r => setTimeout(r, 500));
+                    
+                    updateStatus(`⛽ Gas: ${costEstimate.gasCostEth} ETH (~$${costEstimate.gasCostUsd})`, 70);
+                    await new Promise(r => setTimeout(r, 1000));
+                    
+                    // Check if user wants to proceed
+                    if (!confirm(`Deploy cost: ~${costEstimate.gasCostEth} ETH. Proceed?`)) {
+                        updateStatus('❌ Deployment cancelled', 0);
+                        return;
+                    }
+                    
+                    updateStatus('🚀 Deploying to blockchain...', 80);
+                    
+                    // Real deployment would happen here
+                    // For now, simulate the flow
+                    const result = await BaseClawDeployer.deployContract(
+                        preview.config,
+                        BaseClawEngine.signer,
+                        document.getElementById('deploy-type')?.value || 'erc20'
+                    );
+                    
+                    updateStatus('✅ Deployment complete!', 100);
+                    
+                    // Show success message
+                    this.addMessage('system', `
+                        <div class="panel-sharp" style="padding: 16px; margin-top: 12px; border-color: var(--base-green);">
+                            <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 8px; color: var(--base-green);">
+                                ✅ Contract Deployed!
+                            </div>
+                            <div style="font-family: 'Space Mono', monospace; font-size: 12px; margin-bottom: 8px;">
+                                <div>Address: ${result.contractAddress}</div>
+                                <div>Tx: ${result.transactionHash}</div>
+                                <div>Gas: ${result.gasUsed}</div>
+                            </div>
+                            <a href="${result.explorerUrl}" target="_blank" class="btn-goblin" style="font-size: 11px; padding: 8px 12px;">
+                                🔍 View on BaseScan
+                            </a>
+                        </div>
+                    `);
+                    
+                } catch (error) {
+                    updateStatus(`❌ Error: ${error.message}`, 0);
+                    this.addMessage('system', `❌ Deployment failed: ${error.message}`);
+                }
             },
 
             fundWallet() {
