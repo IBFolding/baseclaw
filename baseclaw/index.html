@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BaseClaw — Project-Oriented AI for Base</title>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
+    <script src="engine.js"></script>
+    <script src="onboarding.js"></script>
+    <script src="extensions.js"></script>
+    <script src="nft-generator.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --base-blue: #0052FF;
@@ -22,6 +27,12 @@
             --border-color: #C8C0B8;
             --accent: var(--base-blue);
             --sketch-color: #4A4540;
+            
+            /* Goblin-inspired additions */
+            --shadow-hard: 5px 5px 0 var(--sketch-color);
+            --shadow-hard-sm: 3px 3px 0 var(--sketch-color);
+            --radius-sharp: 16px;
+            --radius-wobble: 255px 15px 225px 15px / 15px 225px 15px 255px;
         }
 
         [data-theme="dark"] {
@@ -46,7 +57,159 @@
             overflow: hidden;
         }
 
+        /* Paper grain texture overlay */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+        }
+
+        /* Hard shadow utilities (Goblin-inspired) */
+        .hard-shadow {
+            box-shadow: var(--shadow-hard);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+        .hard-shadow:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 6px 6px 0 var(--sketch-color);
+        }
+        .hard-shadow:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0 var(--sketch-color);
+        }
+
+        .hard-shadow-sm {
+            box-shadow: var(--shadow-hard-sm);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+        .hard-shadow-sm:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--sketch-color);
+        }
+        .hard-shadow-sm:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 var(--sketch-color);
+        }
+
+        /* Font utilities */
+        .font-display {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+        }
+        .font-mono {
+            font-family: 'Space Mono', monospace;
+        }
+        .font-hand {
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        /* Live dot pulse */
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.55); }
+            70% { box-shadow: 0 0 0 9px rgba(16, 185, 129, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+        }
+        .live-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--base-green);
+            animation: pulse 1.8s infinite;
+        }
+
+        /* Panel header style (Goblin-inspired) */
+        .panel-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 13px 16px;
+            border-bottom: 3px solid var(--sketch-color);
+            background: var(--bg-paper);
+            flex: 0 0 auto;
+        }
+        .panel-head h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 13px;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+        }
+        .panel-head .tag-sm {
+            font-size: 9.5px;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--base-blue);
+            border: 2px solid var(--sketch-color);
+            border-radius: 6px;
+            padding: 3px 7px;
+            background: var(--bg-primary);
+        }
+
+        /* Sharp panel (Goblin style) vs Wobble panel (Hand-drawn style) */
+        .panel-sharp {
+            border-radius: var(--radius-sharp);
+            border: 3px solid var(--sketch-color);
+            box-shadow: var(--shadow-hard);
+            background: var(--bg-paper);
+        }
+        .panel-wobble {
+            border-radius: var(--radius-wobble);
+            border: 2px solid var(--sketch-color);
+            background: var(--bg-paper);
+        }
+
+        /* Button styles blended */
+        .btn-goblin {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            border: 3px solid var(--sketch-color);
+            border-radius: 12px;
+            background: var(--bg-paper);
+            color: var(--text-primary);
+            padding: 11px 18px;
+            font-size: 13px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            box-shadow: var(--shadow-hard-sm);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+        .btn-goblin:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--sketch-color);
+        }
+        .btn-goblin:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--sketch-color);
+        }
+        .btn-goblin.dark {
+            background: var(--sketch-color);
+            color: var(--bg-paper);
+        }
+
         .app { display: grid; grid-template-columns: 280px 1fr 340px; height: 100vh; gap: 16px; padding: 16px; }
+
+        /* Right panel / Wallet panel */
+        .app > div:last-child {
+            background: var(--bg-paper);
+            display: flex; flex-direction: column;
+            padding: 20px;
+            overflow-y: auto;
+            border: 3px solid var(--sketch-color);
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-hard);
+        }
 
         [data-theme="dark"] body {
             background: var(--bg-primary);
@@ -59,43 +222,37 @@
             padding: 20px;
             position: relative;
             overflow-y: auto;
-            border: 2px solid var(--sketch-color);
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 3px solid var(--sketch-color);
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-hard);
         }
 
         .logo { 
-            display: flex; align-items: center; gap: 12px; 
+            display: flex; align-items: center; gap: 14px; 
             font-family: 'Patrick Hand', cursive;
-            font-size: 28px; font-weight: 700; color: var(--accent);
+            font-size: 32px; font-weight: 700; color: var(--base-blue);
             margin-bottom: 20px;
             cursor: pointer;
-        }
-        
-        .theme-toggle {
-            margin-left: auto;
-            width: 36px; height: 36px;
-            border-radius: 50% 40% 45% 55%;
-            background: var(--bg-tertiary);
-            border: 2px solid var(--sketch-color);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer;
-            font-size: 18px;
-            transition: all 0.2s;
-        }
-        
-        .theme-toggle:hover {
-            transform: rotate(15deg);
-            background: var(--accent);
-            color: white;
+            letter-spacing: -0.5px;
         }
         
         .logo-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, var(--base-blue), var(--base-cyan));
-            border-radius: 50% 40% 45% 55%;
+            width: 48px; height: 48px;
+            background: white;
+            border-radius: 14px;
             display: flex; align-items: center; justify-content: center;
-            border: 2px solid var(--sketch-color);
-            box-shadow: 3px 3px 0 rgba(0,82,255,0.2);
+            border: 3px solid #333;
+            position: relative;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+            display: block;
         }
 
         .section-title {
@@ -266,8 +423,9 @@
             position: relative;
             padding: 20px;
             overflow-y: auto;
-            border: 2px solid var(--sketch-color);
-            border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+            border: 3px solid var(--sketch-color);
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-hard);
         }
 
         .chat-header {
@@ -292,28 +450,34 @@
             display: flex; align-items: center; gap: 8px;
             background: var(--bg-secondary);
             padding: 6px;
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-            border: 2px solid var(--sketch-color);
+            border-radius: 12px;
+            border: 3px solid var(--sketch-color);
+            box-shadow: var(--shadow-hard-sm);
         }
         
         .network-btn {
             padding: 8px 16px;
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border-radius: 8px;
             border: 2px solid transparent;
             background: transparent;
             color: var(--text-secondary);
-            font-family: 'Patrick Hand', cursive;
-            font-size: 14px; font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
-            display: flex; align-items: center; gap: 6px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
         
         .network-btn.active {
             background: var(--accent);
             color: white;
             border-color: var(--base-blue);
-            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            box-shadow: 2px 2px 0 var(--sketch-color);
         }
         
         .network-btn:hover:not(.active) {
@@ -362,11 +526,12 @@
         
         .message-avatar {
             width: 44px; height: 44px;
-            border-radius: 50% 40% 45% 55%;
+            border-radius: 10px;
             background: var(--bg-tertiary);
             display: flex; align-items: center; justify-content: center;
             font-size: 20px;
-            border: 2px solid var(--sketch-color);
+            border: 3px solid var(--sketch-color);
+            box-shadow: 2px 2px 0 var(--sketch-color);
             flex-shrink: 0;
         }
         
@@ -378,21 +543,24 @@
         .message-content {
             background: var(--bg-secondary);
             padding: 16px 20px;
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-            border: 2px solid var(--sketch-color);
+            border-radius: 12px;
+            border: 3px solid var(--sketch-color);
             font-size: 14px; line-height: 1.7;
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+            box-shadow: 3px 3px 0 var(--sketch-color);
         }
         
         .message.user .message-content {
             background: linear-gradient(135deg, var(--base-blue), var(--base-blue-light));
             color: white;
             border-color: var(--base-blue);
+            box-shadow: 3px 3px 0 var(--base-blue);
         }
         
         .message-time {
-            font-size: 12px; color: var(--text-muted);
-            margin-top: 6px; font-family: 'Patrick Hand', cursive;
+            font-size: 11px; color: var(--text-muted);
+            margin-top: 6px; font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
 
         .input-area {
@@ -404,56 +572,73 @@
         .input-wrapper {
             display: flex; gap: 12px;
             background: var(--bg-secondary);
-            border: 2px solid var(--sketch-color);
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 3px solid var(--sketch-color);
+            border-radius: 12px;
             padding: 8px;
-            box-shadow: 3px 3px 0 rgba(0,0,0,0.08);
+            box-shadow: var(--shadow-hard-sm);
+            transition: box-shadow 0.2s ease;
         }
         
         .input-wrapper:focus-within {
             border-color: var(--accent);
-            box-shadow: 4px 4px 0 rgba(0,82,255,0.15);
+            box-shadow: 4px 4px 0 var(--base-blue);
         }
         
         .chat-input {
             flex: 1; background: transparent; border: none;
             padding: 12px 16px; color: var(--text-primary);
             font-size: 15px; outline: none; resize: none;
-            max-height: 120px; font-family: inherit;
+            max-height: 120px; font-family: 'Inter', sans-serif;
         }
         
-        .chat-input::placeholder { color: var(--text-muted); }
+        .chat-input::placeholder { 
+            color: var(--text-muted); 
+            font-family: 'Patrick Hand', cursive;
+            font-size: 16px;
+        }
         
         .send-btn {
             width: 44px; height: 44px;
-            border-radius: 50% 40% 45% 55%;
+            border-radius: 10px;
             background: var(--accent);
-            color: white; border: 2px solid var(--base-blue);
+            color: white; border: 3px solid var(--base-blue);
             cursor: pointer; display: flex;
             align-items: center; justify-content: center;
             font-size: 18px;
-            transition: all 0.2s;
-            box-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+            box-shadow: 2px 2px 0 var(--sketch-color);
+        }
+        
+        .send-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 var(--sketch-color);
+        }
+        
+        .send-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--sketch-color);
         }
         
         .attach-btn {
             width: 44px; height: 44px;
-            border-radius: 50% 40% 45% 55%;
+            border-radius: 10px;
             background: var(--bg-tertiary);
             color: var(--text-secondary);
-            border: 2px solid var(--sketch-color);
+            border: 3px solid var(--sketch-color);
             cursor: pointer; display: flex;
             align-items: center; justify-content: center;
             font-size: 18px;
-            transition: all 0.2s;
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
             flex-shrink: 0;
+            box-shadow: 2px 2px 0 var(--sketch-color);
         }
         
         .attach-btn:hover {
             background: var(--accent);
             color: white;
             border-color: var(--base-blue);
-            transform: rotate(-10deg) scale(1.1);
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 var(--sketch-color);
         }
 
         /* Right Panel */
@@ -463,8 +648,9 @@
             padding: 20px;
             position: relative;
             overflow-y: auto;
-            border: 2px solid var(--sketch-color);
-            border-radius: 15px 225px 15px 255px / 225px 15px 255px 15px;
+            border: 3px solid var(--sketch-color);
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-hard);
         }
 
         .panel-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
@@ -472,21 +658,29 @@
         .panel-tab {
             flex: 1; padding: 10px;
             text-align: center;
-            font-family: 'Patrick Hand', cursive;
-            font-size: 16px; font-weight: 700;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 13px; font-weight: 700;
             color: var(--text-muted);
             cursor: pointer;
-            border: 2px solid transparent;
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 3px solid transparent;
+            border-radius: 10px;
             transition: all 0.2s;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            box-shadow: 2px 2px 0 transparent;
         }
         
-        .panel-tab:hover { color: var(--text-primary); border-color: var(--border-color); }
+        .panel-tab:hover { 
+            color: var(--text-primary); 
+            border-color: var(--border-color);
+            box-shadow: 2px 2px 0 var(--sketch-color);
+        }
         
         .panel-tab.active {
             color: var(--accent);
             border-color: var(--accent);
             background: rgba(0,82,255,0.05);
+            box-shadow: 2px 2px 0 var(--base-blue);
         }
 
         .panel-content { display: none; }
@@ -510,9 +704,10 @@
 
         .wallet-card {
             background: var(--bg-secondary);
-            border: 2px solid var(--sketch-color);
-            border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+            border: 3px solid var(--sketch-color);
+            border-radius: 12px;
             padding: 16px; margin-bottom: 16px;
+            box-shadow: var(--shadow-hard-sm);
         }
         
         .wallet-header {
@@ -523,10 +718,11 @@
             width: 32px; height: 32px;
             background: var(--accent);
             color: white;
-            border-radius: 50% 40% 45% 55%;
+            border-radius: 8px;
             display: flex; align-items: center; justify-content: center;
             font-size: 16px;
-            border: 2px solid var(--sketch-color);
+            border: 3px solid var(--sketch-color);
+            box-shadow: 2px 2px 0 var(--sketch-color);
         }
         
         .wallet-name { font-weight: 700; font-size: 14px; }
@@ -544,20 +740,25 @@
         .add-wallet-btn {
             width: 100%; padding: 12px;
             background: transparent;
-            border: 2px dashed var(--sketch-color);
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 3px dashed var(--sketch-color);
+            border-radius: 12px;
             color: var(--text-secondary);
-            font-family: 'Patrick Hand', cursive;
-            font-size: 16px; font-weight: 700;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 14px; font-weight: 700;
             cursor: pointer;
             transition: all 0.2s;
             margin-top: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            box-shadow: 2px 2px 0 var(--sketch-color);
         }
         
         .add-wallet-btn:hover {
             border-color: var(--accent);
             color: var(--accent);
             background: rgba(0,82,255,0.05);
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 var(--sketch-color);
         }
 
         /* Modal */
@@ -573,36 +774,40 @@
         
         .modal {
             background: var(--bg-paper);
-            border: 2px solid var(--sketch-color);
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 3px solid var(--sketch-color);
+            border-radius: var(--radius-sharp);
             padding: 32px;
             width: 480px;
             max-width: 90vw;
             max-height: 80vh;
             overflow-y: auto;
-            box-shadow: 8px 8px 0 rgba(0,0,0,0.15);
+            box-shadow: var(--shadow-hard);
         }
         
         .modal-title {
-            font-family: 'Patrick Hand', cursive;
-            font-size: 24px; font-weight: 700;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-size: 22px; font-weight: 700;
             margin-bottom: 20px;
             color: var(--text-primary);
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
         }
         
         .modal-input {
             width: 100%; padding: 12px 16px;
             background: var(--bg-secondary);
-            border: 2px solid var(--sketch-color);
-            border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+            border: 3px solid var(--sketch-color);
+            border-radius: 10px;
             color: var(--text-primary);
             font-size: 15px; margin-bottom: 16px;
-            font-family: inherit;
+            font-family: 'Inter', sans-serif;
+            box-shadow: 2px 2px 0 var(--sketch-color);
         }
         
         .modal-input:focus {
             outline: none;
             border-color: var(--accent);
+            box-shadow: 3px 3px 0 var(--base-blue);
         }
         
         .modal-buttons {
@@ -681,17 +886,7 @@
         <div class="sidebar">
             <div class="logo" onclick="app.goHome()">
                 <div class="logo-icon">
-                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M14 2C7.373 2 2 7.373 2 14s5.373 12 12 12 12-5.373 12-12S20.627 2 14 2z" fill="url(#logo-gradient)" stroke="white" stroke-width="1.5"/>
-                        <path d="M8 14c0-3.314 2.686-6 6-6s6 2.686 6 6-2.686 6-6 6" stroke="white" stroke-width="2" stroke-linecap="round"/>
-                        <circle cx="14" cy="14" r="2" fill="white"/>
-                        <defs>
-                            <linearGradient id="logo-gradient" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
-                                <stop stop-color="#0052FF"/>
-                                <stop offset="1" stop-color="#00D4AA"/>
-                            </linearGradient>
-                        </defs>
-                    </svg>
+                    <img src="logo.png" alt="BaseClaw Logo">
                 </div>
                 BaseClaw
                 <div class="theme-toggle" onclick="app.toggleTheme()" id="theme-toggle">🌙</div>
@@ -703,7 +898,7 @@
                     ✨ Quick Start
                 </div>
                 <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
-                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.startTutorial()">📖 Tutorial</button>
+                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.showTutorial()">📖 Tutorial</button>
                     <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.openWizard()">🎯 Wizard</button>
                     <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.toggleDemoMode()">🔒 Demo</button>
                 </div>
@@ -787,6 +982,12 @@
                     <button class="chain-display" onclick="app.showPreview()" id="preview-btn" title="Preview project">
                         👁️ Preview
                     </button>
+                    <button class="chain-display" onclick="app.togglePlanningMode()" id="planning-toggle" title="Planning Mode">
+                        📝 Plan
+                    </button>
+                    <button class="chain-display" onclick="app.toggleThinkingMode()" id="thinking-toggle" title="Toggle Thinking/Instant">
+                        🧠 Think
+                    </button>
                     <button class="chain-display" onclick="app.showChainModal()" id="chain-display">
                         <span class="network-dot sepolia"></span> Sepolia
                     </button>
@@ -798,6 +999,27 @@
                             <span class="network-dot mainnet"></span> Mainnet
                         </button>
                     </div>
+                </div>
+            </div>
+            
+            <div class="planning-area" id="planning-area" style="display: none;">
+                <div style="padding: 16px; background: var(--bg-secondary); border-bottom: 2px solid var(--sketch-color);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                        <span style="font-family: 'Patrick Hand', cursive; font-weight: 700;">📝 Project Plan</span>
+                        <button onclick="app.togglePlanningMode()" style="background: none; border: none; cursor: pointer; font-size: 18px;">✕</button>
+                    </div>
+                    <textarea id="plan-input" placeholder="Describe your project plan here...
+
+Example:
+Phase 1: Create ERC20 token called MoonCoin
+Phase 2: Build staking pool for token holders
+Phase 3: Create NFT collection for governance
+Phase 4: Deploy DAO for community voting
+
+The AI will follow this plan step by step." style="width: 100%; min-height: 120px; padding: 12px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; font-size: 14px; resize: vertical;"></textarea>
+                    <button onclick="app.executePlan()" class="picker-btn" style="margin-top: 8px; background: var(--base-blue); color: white;">
+                        🚀 Execute Plan
+                    </button>
                 </div>
             </div>
             
@@ -1079,6 +1301,8 @@
     <!-- Help Button -->
     <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50% 40% 45% 55%; background: var(--base-blue); color: white; border: 2px solid var(--sketch-color); font-family: 'Patrick Hand', cursive; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 3px 3px 0 rgba(0, 82, 255, 0.3); transition: all 0.2s;" onclick="app.showHelp()" onmouseover="this.style.transform='rotate(15deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">?</button>
 
+        <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50% 40% 45% 55%; background: var(--base-blue); color: white; border: 2px solid var(--sketch-color); font-family: 'Patrick Hand', cursive; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 3px 3px 0 rgba(0, 82, 255, 0.3); transition: all 0.2s;" onclick="app.showHelp()" onmouseover="this.style.transform='rotate(15deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">?</button>
+
     <script>
         const app = {
             projects: [],
@@ -1098,7 +1322,7 @@
                 { name: 'Bankr Trading', icon: '📈', description: 'Spot trading', loaded: false },
                 { name: 'Hyperliquid', icon: '⚡', description: 'Perp trading', loaded: false },
                 { name: 'Polymarket', icon: '🎯', description: 'Prediction markets', loaded: false },
-                { name: 'NFT Generator', icon: '🎨', description: 'AI art + rarity', loaded: false },
+                { name: 'NFT Collection Maker', icon: '🎨', description: 'AI generative art with layers, metadata, and deploy', loaded: false },
                 { name: '402 Payment', icon: '💰', description: 'Token gates, paywalls', loaded: false },
                 { name: 'Swimming Pauls', icon: '🏊', description: 'Prediction agents', loaded: false },
                 { name: 'MoltMail', icon: '📧', description: 'On-chain email', loaded: false },
@@ -1121,13 +1345,19 @@
                 { id: 'build', icon: '🔨', label: 'Build', action: 'showBuild' },
                 { id: 'test', icon: '🧪', label: 'Test', action: 'showTest' },
                 { id: 'deploy', icon: '🚀', label: 'Deploy', action: 'showDeploy' },
+                { id: 'nft', icon: '🎨', label: 'NFT', action: 'showNFTCollectionGenerator' },
+                { id: 'tutorial', icon: '📖', label: 'Tutorial', action: 'showTutorial' },
+                { id: 'wizard', icon: '🎯', label: 'Wizard', action: 'openWizard' },
+                { id: 'examples', icon: '💡', label: 'Examples', action: 'showExamples' },
+                { id: 'faq', icon: '❓', label: 'FAQ', action: 'showFAQ' },
+                { id: 'demo', icon: '🔒', label: 'Demo', action: 'toggleDemoMode' },
                 { id: 'ai', icon: '🤖', label: 'AI Assist', action: 'aiAssist' },
                 { id: 'fund', icon: '💰', label: 'Fund', action: 'fundWallet' },
                 { id: 'trade', icon: '💱', label: 'Trade', action: 'tradeTokens' },
                 { id: 'defi', icon: '🌾', label: 'DeFi', action: 'showDeFi' },
-                { id: 'nft', icon: '🎨', label: 'NFT', action: 'showNFTGenerator' },
+                { id: 'nft', icon: '🎨', label: 'NFT', action: 'showNFTCollectionGenerator' },
                 { id: 'settings', icon: '⚙️', label: 'Settings', action: 'showSettingsModal' },
-                { id: 'tutorial', icon: '📖', label: 'Tutorial', action: 'startTutorial' },
+                { id: 'tutorial', icon: '📖', label: 'Tutorial', action: 'showTutorial' },
                 { id: 'wizard', icon: '🎯', label: 'Wizard', action: 'openWizard' },
                 { id: 'demo', icon: '🔒', label: 'Demo', action: 'toggleDemoMode' },
                 { id: 'examples', icon: '💡', label: 'Examples', action: 'showExamples' },
@@ -1812,7 +2042,7 @@
             },
 
             // ===== BEGINNER FEATURES =====
-            startTutorial() {
+            showTutorial() {
                 this.addMessage('system', `
                     <div style="max-width: 600px;">
                         <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
@@ -1909,7 +2139,7 @@
                     <div style="max-width: 600px;">
                         <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">📚 Help Center</h3>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
-                            <button class="picker-btn" style="justify-content: center;" onclick="app.startTutorial()">📖 Start Tutorial</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.showTutorial()">📖 Start Tutorial</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showExamples()">💡 Examples</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showFAQ()">❓ FAQ</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.openWizard()">🎯 Wizard</button>
@@ -1919,6 +2149,50 @@
             },
 
             // ===== MODAL HELPERS =====
+            show402Payment() {
+                const content = `
+                    <div style="padding: 24px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 24px;">💰 402 Payment Required</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 24px;">Monetize your content with crypto payments. Token gates, paywalls, and subscriptions.</p>
+                        <div style="display: grid; gap: 16px;">
+                            <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                                <h3 style="font-family: 'Patrick Hand', cursive; margin-bottom: 12px;">🔐 Token Gate</h3>
+                                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">Require users to hold a specific token to access content.</p>
+                                <button class="picker-btn" onclick="app.createTokenGate()" style="width: 100%;">Create Token Gate</button>
+                            </div>
+                            <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                                <h3 style="font-family: 'Patrick Hand', cursive; margin-bottom: 12px;">💳 Paywall</h3>
+                                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">Charge a one-time fee to access content.</p>
+                                <input type="number" id="paywall-price" value="0.01" step="0.001" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                                <input type="text" id="paywall-content" placeholder="article-123" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                                <button class="picker-btn" onclick="app.createPaywall()" style="width: 100%;">Create Paywall</button>
+                            </div>
+                            <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                                <h3 style="font-family: 'Patrick Hand', cursive; margin-bottom: 12px;">📅 Subscription</h3>
+                                <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">Recurring payments for ongoing access.</p>
+                                <button class="picker-btn" onclick="app.createSubscription()" style="width: 100%;">Create Subscription</button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                this.showModalContent('💰 402 Payment Required', content);
+            },
+
+            createTokenGate() {
+                this.startChat('Create a token gate contract that requires users to hold a specific ERC20 token to access content');
+            },
+
+            createPaywall() {
+                const price = document.getElementById('paywall-price').value;
+                const content = document.getElementById('paywall-content').value;
+                this.closeModal();
+                this.startChat(`Create a paywall contract that charges ${price} ETH to access content ID: ${content}`);
+            },
+
+            createSubscription() {
+                this.startChat('Create a subscription contract with monthly recurring payments in ETH');
+            },
+
             showModalContent(title, content) {
                 const existing = document.getElementById('modal-dynamic');
                 if (existing) existing.remove();
@@ -2319,6 +2593,7 @@ ${codePreview}
             },
 
             fundWallet() {
+                console.log('fundWallet called');
                 if (!this.currentProject) { alert('Select a project first'); return; }
                 const wallet = this.currentProject.wallets?.[0];
                 const address = wallet?.address || '0x' + Array.from({length: 40}, () => Math.floor(Math.random() * 16).toString(16)).join('');
@@ -2375,6 +2650,7 @@ ${codePreview}
             },
 
             tradeTokens() {
+                console.log('tradeTokens called');
                 if (!this.currentProject) { alert('Select a project first'); return; }
                 
                 const content = `
@@ -2622,6 +2898,7 @@ ${codePreview}
             },
 
             showVercelModal() {
+                console.log('showVercelModal called');
                 this.showModal('modal-vercel');
             },
 
@@ -2821,55 +3098,164 @@ ${codePreview}
                 }
             },
 
-            sendMessage() {
-                const input = document.getElementById('chat-input');
-                const text = input.value.trim();
-                if (!text) return;
-                this.addMessage('user', text);
-                input.value = '';
-                
-                // Enhanced demo responses
-                setTimeout(() => {
-                    if (!this.currentProject) {
-                        this.addMessage('system', 'Select a project first! Click "New Project" to create one.');
-                        return;
-                    }
-                    
-                    const lower = text.toLowerCase();
-                    if (lower.includes('deploy') || lower.includes('launch')) {
-                        this.addMessage('system', `🚀 **Deployment Workflow for ${this.currentProject.name}**
+            showTutorial() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
+                        <p>I'm your AI blockchain agent. Here's how to get started:</p>
+                        <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
+                            <li><strong>Connect Wallet</strong> — Click "Connect Wallet" in the right panel</li>
+                            <li><strong>Choose Network</strong> — Start with Base Sepolia (it's free!)</li>
+                            <li><strong>Chat with me</strong> — Tell me what you want to build</li>
+                            <li><strong>Review & Deploy</strong> — I'll show you the code before deploying</li>
+                        </ol>
+                        <p><strong>Example:</strong> Try typing "Create a token called MoonCoin"</p>
+                    </div>
+                `);
+            },
 
-1. **Compile** → Foundry compiles contracts
-2. **Test** → Run test suite (324 tests)
-3. **Verify** → BaseScan verification ready
-4. **Deploy** → Submit to ${this.currentProject.chain}
+            openWizard() {
+                const content = `
+                    <div style="padding: 24px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 24px;">🎯 Project Wizard</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 24px;">What do you want to build?</p>
+                        <div style="display: grid; gap: 12px;">
+                            <button class="picker-btn" onclick="app.startChat('Create an ERC20 token')" style="text-align: left; padding: 16px;">🪙 Token (ERC20)</button>
+                            <button class="picker-btn" onclick="app.startChat('Create an NFT collection')" style="text-align: left; padding: 16px;">🎨 NFT Collection (ERC721)</button>
+                            <button class="picker-btn" onclick="app.startChat('Create a staking pool')" style="text-align: left; padding: 16px;">⚡ Staking Pool</button>
+                            <button class="picker-btn" onclick="app.startChat('Create a DAO')" style="text-align: left; padding: 16px;">🏛️ DAO Governance</button>
+                            <button class="picker-btn" onclick="app.startChat('Create a token sale')" style="text-align: left; padding: 16px;">🚀 Token Sale / Launchpad</button>
+                            <button class="picker-btn" onclick="app.startChat('Create a DEX')" style="text-align: left; padding: 16px;">💱 DEX / AMM</button>
+                        </div>
+                    </div>
+                `;
+                this.showModalContent('Project Wizard', content);
+            },
 
-Ready to proceed? Click **Build** then **Deploy** in Quick Actions.`);
-                    } else if (lower.includes('fund') || lower.includes('wallet')) {
-                        this.addMessage('system', `💰 **Wallet Funding**
+            toggleDemoMode() {
+                this.demoMode = !this.demoMode;
+                this.addMessage('system', this.demoMode ? '🔒 Demo Mode ON — No real transactions will be made' : '🔓 Demo Mode OFF — Real transactions enabled');
+            },
 
-Current balance: 0.00 ETH
-Chain: ${this.currentProject.chain}
+            showExamples() {
+                const examples = [
+                    { icon: '🪙', title: 'ERC20 Token', prompt: 'Create an ERC20 token called MoonCoin with symbol MOON and 1 million supply' },
+                    { icon: '🎨', title: 'NFT Collection', prompt: 'Create an NFT collection called CryptoArt with max supply of 10000' },
+                    { icon: '⚡', title: 'Staking Pool', prompt: 'Create a staking pool where users stake ETH and earn REWARD tokens at 10% APY' },
+                    { icon: '🏛️', title: 'DAO', prompt: 'Create a DAO governance contract with voting and proposals' },
+                    { icon: '🎁', title: 'Airdrop', prompt: 'Create a merkle tree airdrop contract for token distribution' },
+                    { icon: '💱', title: 'DEX', prompt: 'Create a simple DEX with constant product AMM formula' },
+                    { icon: '🏪', title: 'NFT Marketplace', prompt: 'Create an NFT marketplace with fixed price and auction support' },
+                    { icon: '💰', title: 'Token Sale', prompt: 'Create a token sale contract with hard cap and whitelist' }
+                ];
+                const content = `
+                    <div style="padding: 24px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 24px;">💡 Example Prompts</h2>
+                        <p style="color: var(--text-secondary); margin-bottom: 24px;">Click any example to use it in the chat:</p>
+                        <div style="display: grid; gap: 12px;">
+                            ${examples.map(e => `
+                                <button class="picker-btn" onclick="app.startChat('${e.prompt}')" style="text-align: left; padding: 16px; display: flex; align-items: center; gap: 12px;">
+                                    <span style="font-size: 24px;">${e.icon}</span>
+                                    <div>
+                                        <div style="font-weight: 600;">${e.title}</div>
+                                        <div style="font-size: 13px; color: var(--text-muted); margin-top: 4px;">${e.prompt}</div>
+                                    </div>
+                                </button>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                this.showModalContent('Examples', content);
+            },
 
-Options:
-• Faucet (Sepolia only)
-• Bridge from Mainnet
-• Buy with card
+            showFAQ() {
+                const faqs = [
+                    { q: 'What is BaseClaw?', a: 'BaseClaw is an AI-powered blockchain development agent. It helps you write, test, and deploy smart contracts on Base chain.' },
+                    { q: 'Do I need to know Solidity?', a: 'No! Just describe what you want in plain English. The AI generates the Solidity code for you.' },
+                    { q: 'Is it free?', a: 'Yes! BaseClaw is free to use. You only pay for blockchain gas fees when deploying (Base Sepolia is free).' },
+                    { q: 'What chains are supported?', a: 'Base Sepolia (testnet) and Base Mainnet. We recommend starting with Sepolia for testing.' },
+                    { q: 'How do I get test ETH?', a: 'Visit the Base Sepolia faucet at https://www.base.org/faucets to get free test ETH.' },
+                    { q: 'Can I use my own API key?', a: 'Yes! Go to Settings → API Keys to add your Kimi, OpenAI, or Anthropic API key.' }
+                ];
+                const content = `
+                    <div style="padding: 24px; max-height: 60vh; overflow-y: auto;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 24px;">❓ FAQ</h2>
+                        <div style="display: grid; gap: 16px;">
+                            ${faqs.map(f => `
+                                <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                                    <div style="font-weight: 600; margin-bottom: 8px; color: var(--base-blue);">${f.q}</div>
+                                    <div style="color: var(--text-secondary); font-size: 14px; line-height: 1.5;">${f.a}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
+                this.showModalContent('FAQ', content);
+            },
 
-Click **Fund Wallet** in the sidebar.`);
-                    } else if (lower.includes('trade') || lower.includes('swap')) {
-                        this.addMessage('system', `💱 **Token Trading**
+            showHelp() {
+                const content = `
+                    <div style="padding: 24px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 24px;">🆘 Help</h2>
+                        <div style="display: grid; gap: 12px;">
+                            <button class="picker-btn" onclick="app.showTutorial()" style="text-align: left; padding: 16px;">📖 Start Tutorial</button>
+                            <button class="picker-btn" onclick="app.openWizard()" style="text-align: left; padding: 16px;">🎯 Project Wizard</button>
+                            <button class="picker-btn" onclick="app.showExamples()" style="text-align: left; padding: 16px;">💡 Example Prompts</button>
+                            <button class="picker-btn" onclick="app.showFAQ()" style="text-align: left; padding: 16px;">❓ FAQ</button>
+                            <button class="picker-btn" onclick="app.toggleDemoMode()" style="text-align: left; padding: 16px;">🔒 Toggle Demo Mode</button>
+                            <div style="border-top: 2px solid var(--sketch-color); margin-top: 12px; padding-top: 12px;">
+                                <p style="color: var(--text-muted); font-size: 14px;">Need more help? Contact us on Discord or GitHub.</p>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                this.showModalContent('Help', content);
+            },
 
-Available pairs:
-• ETH/USDC
-• ETH/CRD
-• USDC/SHELL
+            showNFTGenerator() {
+                const content = `
+                    <div style="padding: 24px;">
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 24px;">🎨 NFT Collection Generator</h2>
+                        <div style="display: grid; gap: 16px;">
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Collection Name</label>
+                                <input type="text" id="nft-name" placeholder="CryptoPunks" style="width: 100%; padding: 12px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper);">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Symbol</label>
+                                <input type="text" id="nft-symbol" placeholder="PUNK" style="width: 100%; padding: 12px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper);">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Max Supply</label>
+                                <input type="number" id="nft-supply" placeholder="10000" style="width: 100%; padding: 12px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper);">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 8px; font-weight: 600;">Mint Price (ETH)</label>
+                                <input type="number" id="nft-price" placeholder="0.01" step="0.001" style="width: 100%; padding: 12px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper);">
+                            </div>
+                            <button class="picker-btn" onclick="app.generateNFT()" style="background: var(--base-blue); color: white; padding: 16px;">Generate NFT Contract</button>
+                        </div>
+                    </div>
+                `;
+                this.showModalContent('NFT Generator', content);
+            },
 
-Click **Trade Tokens** in the sidebar to open Bankr.`);
-                    } else {
-                        this.addMessage('system', `Working on "${this.currentProject.name}" with ${this.currentModel.toUpperCase()}...\n\nLoaded skills: ${this.currentProject.loadedSkills?.join(', ') || 'None'}\n\nWhat do you need? Try:\n• "Deploy my contract"\n• "Fund my wallet"\n• "Trade tokens"`);
-                    }
-                }, 500);
+            generateNFT() {
+                const name = document.getElementById('nft-name').value || 'MyCollection';
+                const symbol = document.getElementById('nft-symbol').value || 'NFT';
+                const supply = document.getElementById('nft-supply').value || '10000';
+                const price = document.getElementById('nft-price').value || '0.01';
+                this.closeModal();
+                this.startChat(`Create an NFT collection called ${name} with symbol ${symbol}, max supply of ${supply}, and mint price of ${price} ETH`);
+            },
+
+            startChat(prompt) {
+                this.addMessage('user', prompt);
+                BaseClawEngine.chat(prompt).then(response => {
+                    this.addMessage('system', response);
+                }).catch(err => {
+                    this.addMessage('system', '❌ Error: ' + err.message);
+                });
             },
 
             // Modals
@@ -2889,6 +3275,7 @@ Click **Trade Tokens** in the sidebar to open Bankr.`);
             },
 
             showNewProjectModal() {
+                console.log('showNewProjectModal called');
                 document.getElementById('new-project-name').value = '';
                 this.showModal('modal-new-project');
             },
@@ -2911,7 +3298,7 @@ Click **Trade Tokens** in the sidebar to open Bankr.`);
             // ===== BEGINNER FEATURES =====
             
             // Tutorial
-            startTutorial() {
+            showTutorial() {
                 this.addMessage('system', `
                     <div style="max-width: 600px;">
                         <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
@@ -3013,7 +3400,7 @@ Click **Trade Tokens** in the sidebar to open Bankr.`);
                     <div style="max-width: 600px;">
                         <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">📚 Help Center</h3>
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
-                            <button class="picker-btn" style="justify-content: center;" onclick="app.startTutorial()">📖 Start Tutorial</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.showTutorial()">📖 Start Tutorial</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showExamples()">💡 Examples</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showFAQ()">❓ FAQ</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.openWizard()">🎯 Wizard</button>
@@ -3024,6 +3411,52 @@ Click **Trade Tokens** in the sidebar to open Bankr.`);
         };
 
         app.init();
+
+// ===== BASECLAW REAL ENGINE INTEGRATION =====
+app.connectWallet = async function() {
+    try {
+        const result = await BaseClawEngine.connectWallet();
+        this.walletAddress = result.address;
+        this.walletConnected = true;
+        this.addMessage('system', '✅ Wallet connected: ' + result.address + ' on ' + result.chain);
+        this.renderWallet();
+        return result;
+    } catch (err) {
+        this.addMessage('system', '❌ Wallet connection failed: ' + err.message);
+        throw err;
+    }
+};
+
+app.generateToken = async function(name, symbol, supply) {
+    try {
+        if (!BaseClawEngine.connected) {
+            this.addMessage('system', '⚠️ Connect wallet first!');
+            return;
+        }
+        this.addMessage('system', '🤖 Generating token contract via LLM...');
+        const code = await BaseClawEngine.generateTokenContract(name, symbol, supply);
+        this.addMessage('system', '✅ Contract generated!\n\nSave this code to a .sol file and compile with Foundry to deploy.');
+        return code;
+    } catch (err) {
+        this.addMessage('system', '❌ Error: ' + err.message);
+    }
+};
+
+app.getWalletBalance = async function() {
+    try {
+        if (!BaseClawEngine.connected) {
+            this.addMessage('system', '⚠️ Connect wallet first!');
+            return;
+        }
+        const balance = await BaseClawEngine.getBalance();
+        this.addMessage('system', '💰 Balance: ' + balance + ' ETH');
+        return balance;
+    } catch (err) {
+        this.addMessage('system', '❌ Error: ' + err.message);
+    }
+};
+
+console.log('🔧 BaseClaw Real Engine loaded');
     </script>
 </body>
 </html>
