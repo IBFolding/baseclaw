@@ -1313,8 +1313,6 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
     <!-- Help Button -->
     <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50% 40% 45% 55%; background: var(--base-blue); color: white; border: 2px solid var(--sketch-color); font-family: 'Patrick Hand', cursive; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 3px 3px 0 rgba(0, 82, 255, 0.3); transition: all 0.2s;" onclick="app.showHelp()" onmouseover="this.style.transform='rotate(15deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">?</button>
 
-        <button style="position: fixed; bottom: 24px; right: 24px; width: 48px; height: 48px; border-radius: 50% 40% 45% 55%; background: var(--base-blue); color: white; border: 2px solid var(--sketch-color); font-family: 'Patrick Hand', cursive; font-size: 20px; cursor: pointer; z-index: 100; box-shadow: 3px 3px 0 rgba(0, 82, 255, 0.3); transition: all 0.2s;" onclick="app.showHelp()" onmouseover="this.style.transform='rotate(15deg) scale(1.1)'" onmouseout="this.style.transform='rotate(0) scale(1)'">?</button>
-
     <script>
         const app = {
             projects: [],
@@ -3593,7 +3591,7 @@ ${codePreview}
                 const symbol = document.getElementById('nft-symbol').value || 'NFT';
                 const supply = document.getElementById('nft-supply').value || '10000';
                 const price = document.getElementById('nft-price').value || '0.01';
-                this.closeModal();
+                this.hideModal('modal-dynamic');
                 this.startChat(`Create an NFT collection called ${name} with symbol ${symbol}, max supply of ${supply}, and mint price of ${price} ETH`);
             },
 
@@ -3641,6 +3639,21 @@ ${codePreview}
                         if (e.target === overlay) overlay.classList.remove('active');
                     });
                 });
+            },
+
+            sendMessage() {
+                const input = document.getElementById('chat-input');
+                const text = input.value.trim();
+                if (!text) return;
+                
+                this.addMessage('user', text);
+                input.value = '';
+                input.style.height = 'auto';
+                
+                // Simulate AI response
+                setTimeout(() => {
+                    this.addMessage('system', `🤖 I received: "${text}"\n\nI'm processing your request...`);
+                }, 500);
             },
 
             // ===== BEGINNER FEATURES =====
@@ -3777,12 +3790,12 @@ app.connectWallet = async function() {
 
 app.generateToken = async function(name, symbol, supply) {
     try {
-        if (!Agent BLUEEngine.connected) {
+        if (!AgentBlueEngine.connected) {
             this.addMessage('system', '⚠️ Connect wallet first!');
             return;
         }
         this.addMessage('system', '🤖 Generating token contract via LLM...');
-        const code = await Agent BLUEEngine.generateTokenContract(name, symbol, supply);
+        const code = await AgentBlueEngine.generateTokenContract(name, symbol, supply);
         this.addMessage('system', '✅ Contract generated!\n\nSave this code to a .sol file and compile with Foundry to deploy.');
         return code;
     } catch (err) {
@@ -3792,11 +3805,11 @@ app.generateToken = async function(name, symbol, supply) {
 
 app.getWalletBalance = async function() {
     try {
-        if (!Agent BLUEEngine.connected) {
+        if (!AgentBlueEngine.connected) {
             this.addMessage('system', '⚠️ Connect wallet first!');
             return;
         }
-        const balance = await Agent BLUEEngine.getBalance();
+        const balance = await AgentBlueEngine.getBalance();
         this.addMessage('system', '💰 Balance: ' + balance + ' ETH');
         return balance;
     } catch (err) {
