@@ -439,39 +439,9 @@
 
         .chat-header {
             display: flex; align-items: center; justify-content: space-between;
-            padding: 12px 16px;
-            background: var(--bg-paper);
-            border: 3px solid var(--sketch-color);
-            border-radius: var(--radius-sharp);
-            box-shadow: var(--shadow-hard-sm);
+            padding-bottom: 16px;
+            border-bottom: 2px dashed var(--border-color);
             margin-bottom: 16px;
-            flex-shrink: 0;
-        }
-
-        .new-chat-btn {
-            padding: 8px 16px;
-            background: var(--base-blue);
-            color: white;
-            border: 3px solid var(--sketch-color);
-            border-radius: 10px;
-            font-family: 'Space Mono', monospace;
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.06em;
-            cursor: pointer;
-            box-shadow: var(--shadow-hard-sm);
-            transition: transform 0.08s ease, box-shadow 0.08s ease;
-        }
-
-        .new-chat-btn:hover {
-            transform: translate(-1px, -1px);
-            box-shadow: 4px 4px 0 var(--sketch-color);
-            background: var(--base-cyan);
-        }
-        .new-chat-btn:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0 var(--sketch-color);
         }
         
         .chat-title {
@@ -609,13 +579,41 @@
         }
         
         .input-wrapper {
-            display: flex; gap: 12px;
+            display: flex; gap: 8px;
             background: var(--bg-secondary);
             border: 3px solid var(--sketch-color);
             border-radius: 12px;
             padding: 8px;
             box-shadow: var(--shadow-hard-sm);
             transition: box-shadow 0.2s ease;
+            align-items: center;
+        }
+        
+        .new-chat-btn {
+            padding: 8px 12px;
+            background: var(--base-blue);
+            color: white;
+            border: 3px solid var(--sketch-color);
+            border-radius: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px; font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.04em;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 var(--sketch-color);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+            flex-shrink: 0;
+            white-space: nowrap;
+        }
+        
+        .new-chat-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0 var(--sketch-color);
+            background: var(--base-cyan);
+        }
+        .new-chat-btn:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0 var(--sketch-color);
         }
         
         .input-wrapper:focus-within {
@@ -1025,9 +1023,6 @@
                     </div>
                 </div>
                 <div style="display: flex; gap: 8px; align-items: center;">
-                    <button class="new-chat-btn" onclick="app.startNewChat()" id="new-chat-btn" title="Start new chat in current project">
-                        + New Chat
-                    </button>
                     <button class="chain-display" onclick="app.showPreview()" id="preview-btn" title="Preview project">
                         👁️ Preview
                     </button>
@@ -1096,6 +1091,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             
             <div class="input-area">
                 <div class="input-wrapper">
+                    <button class="new-chat-btn" onclick="app.startNewChat()" title="Start new chat in current project">+ New</button>
                     <button class="attach-btn" onclick="app.attachFile()" title="Attach file">📎</button>
                     <textarea class="chat-input" id="chat-input" placeholder="Ask Agent BLUE anything..." rows="1"></textarea>
                     <button class="send-btn" onclick="app.sendMessage()">➤</button>
