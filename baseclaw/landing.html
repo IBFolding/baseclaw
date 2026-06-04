@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent BLUE — AI Blockchain Agent</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --paper: #F5F0EB;
+            --ink: #2C2C2C;
+            --ink-light: #5C5C5C;
+            --base-blue: #0052FF;
+            --base-cyan: #00D4AA;
+            --highlight: #FFE4B5;
+            --shadow-hard: 5px 5px 0 var(--ink);
+            --shadow-hard-sm: 3px 3px 0 var(--ink);
+            --radius-sharp: 16px;
+            --radius-wobble: 255px 15px 225px 15px / 15px 225px 15px 255px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--paper);
+            color: var(--ink);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Paper grain texture */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+        }
+
+        /* Font utilities */
+        .font-display { font-family: 'Bricolage Grotesque', sans-serif; }
+        .font-mono { font-family: 'Space Mono', monospace; }
+        .font-hand { font-family: 'Patrick Hand', cursive; }
+
+        /* Header/Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            background: rgba(245, 240, 235, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--ink);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--base-blue);
+            text-decoration: none;
+        }
+
+        .header-logo img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: 3px solid var(--ink);
+            box-shadow: var(--shadow-hard-sm);
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--ink);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: color 0.2s;
+        }
+
+        .header-nav a:hover {
+            color: var(--base-blue);
+        }
+
+        .header-btn {
+            padding: 10px 24px;
+            background: var(--base-blue);
+            color: white;
+            border: 3px solid var(--ink);
+            border-radius: 12px;
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--shadow-hard-sm);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        .header-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--ink);
+            background: var(--base-cyan);
+        }
+        .header-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--ink);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 20px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Space Mono', monospace;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--base-blue);
+            border: 3px solid var(--ink);
+            border-radius: 999px;
+            background: white;
+            padding: 8px 16px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-hard-sm);
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .logo {
+            width: 240px;
+            height: 240px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: float 3s ease-in-out infinite;
+            background: white;
+            border-radius: 48px;
+            border: 5px solid var(--ink);
+            overflow: hidden;
+            padding: 0;
+            box-shadow: var(--shadow-hard);
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 44px;
+            display: block;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            font-size: clamp(48px, 6vw, 80px);
+            line-height: 0.9;
+            letter-spacing: -0.028em;
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+        .hero h1 .blue {
+            color: var(--base-blue);
+        }
+
+        .hero .subtitle {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--base-blue);
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 12px;
+        }
+
+        .hero .tagline {
+            font-size: 18px;
+            color: var(--ink-light);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn {
+            padding: 16px 32px;
+            border: 3px solid var(--ink);
+            border-radius: 12px;
+            font-family: 'Space Mono', monospace;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: var(--shadow-hard-sm);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        .btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+        .btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--ink);
+        }
+
+        .btn-primary {
+            background: var(--base-blue);
+            color: white;
+        }
+        .btn-primary:hover {
+            background: var(--base-cyan);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--ink);
+        }
+        .btn-secondary:hover {
+            background: var(--highlight);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 80px 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .features h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--ink);
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+        }
+
+        .feature-card {
+            padding: 32px;
+            background: white;
+            border: 3px solid var(--ink);
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-hard-sm);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        .feature-card:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--ink);
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 16px;
+        }
+
+        .feature-card h3 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: var(--ink);
+        }
+
+        .feature-card p {
+            color: var(--ink-light);
+            font-size: 16px;
+        }
+
+        /* Templates Section */
+        .templates {
+            padding: 80px 40px;
+            background: white;
+            border-top: 3px solid var(--ink);
+            border-bottom: 3px solid var(--ink);
+        }
+
+        .templates h2 {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 16px;
+            color: var(--ink);
+        }
+
+        .templates-subtitle {
+            text-align: center;
+            color: var(--ink-light);
+            font-size: 18px;
+            margin-bottom: 40px;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .template-item {
+            padding: 20px;
+            text-align: center;
+            border: 3px solid var(--ink);
+            border-radius: 12px;
+            box-shadow: var(--shadow-hard-sm);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+            cursor: pointer;
+            text-decoration: none;
+            color: var(--ink);
+            background: white;
+        }
+
+        .template-item:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--ink);
+            background: var(--base-blue);
+            color: white;
+        }
+
+        .template-item .icon {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .template-item .name {
+            font-family: 'Space Mono', monospace;
+            font-weight: 700;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 60px 40px;
+            text-align: center;
+            border-top: 3px solid var(--ink);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .footer-links a {
+            color: var(--ink);
+            text-decoration: none;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: color 0.2s;
+        }
+
+        .footer-links a:hover {
+            color: var(--base-blue);
+        }
+
+        .footer p {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 16px;
+            color: var(--ink-light);
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: 12px 20px;
+            }
+            
+            .header-nav {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 40px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .template-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <a href="index.html" class="header-logo">
+            <img src="logo.png" alt="Agent BLUE">
+            Agent BLUE
+        </a>
+        <nav class="header-nav">
+            <a href="templates.html">Contract Templates</a>
+            <a href="web-templates.html">Web Templates</a>
+            <a href="docs.html">Docs</a>
+            <a href="index.html" class="header-btn">Launch App →</a>
+        </nav>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <video class="hero-video" autoplay muted loop playsinline>
+            <source src="baseclawhero.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="live-dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--base-green); display: inline-block;"></span>
+                AI-Powered Blockchain Agent
+            </div>
+            <div class="logo-container">
+                <div class="logo">
+                    <img src="logo.png" alt="Agent BLUE Logo">
+                </div>
+            </div>
+            <h1>Agent <span class="blue">BLUE</span></h1>
+            <p class="subtitle">Tell it. Fund it. Ship the kingdom.</p>
+            <p class="tagline">The AI launch OS for building, deploying, and growing Base projects.</p>
+            <div class="cta-buttons">
+                <a href="index.html" class="btn btn-primary">
+                    🚀 Launch App
+                </a>
+                <a href="templates.html" class="btn btn-secondary">
+                    📄 Contract Templates
+                </a>
+                <a href="web-templates.html" class="btn btn-secondary">
+                    🌐 Web Templates
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <h2>What You Can Build</h2>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🪙</div>
+                <h3>ERC20 Tokens</h3>
+                <p>Create custom tokens with mint, burn, and permit functionality</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <h3>NFT Collections</h3>
+                <p>Launch generative art collections with metadata and rarity</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3>Staking Pools</h3>
+                <p>Build reward staking with configurable APY and lock periods</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏛️</div>
+                <h3>DAO Governance</h3>
+                <p>Deploy voting systems with proposals and timelocks</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💰</div>
+                <h3>Token Sales</h3>
+                <p>Create presales with hard caps, whitelists, and vesting</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">💱</div>
+                <h3>DEX / AMM</h3>
+                <p>Build decentralized exchanges with constant product formula</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Templates -->
+    <section class="templates">
+        <h2>20 Contract Templates</h2>
+        <p class="templates-subtitle">Ready to customize and deploy</p>
+        <div class="template-grid">
+            <a href="templates.html" class="template-item">
+                <div class="icon">🪙</div>
+                <div class="name">ERC20</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">🎨</div>
+                <div class="name">ERC721</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">🎭</div>
+                <div class="name">ERC1155</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">⚡</div>
+                <div class="name">Staking</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">🏛️</div>
+                <div class="name">DAO</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">⏰</div>
+                <div class="name">Timelock</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">🔐</div>
+                <div class="name">Multisig</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">📅</div>
+                <div class="name">Vesting</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">🎁</div>
+                <div class="name">Airdrop</div>
+            </a>
+            <a href="templates.html" class="template-item">
+                <div class="icon">🏪</div>
+                <div class="name">Marketplace</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="https://github.com/IBFolding/baseclaw" target="_blank">GitHub</a>
+            <a href="index.html">Launch App</a>
+            <a href="templates.html">Templates</a>
+            <a href="docs.html">Docs</a>
+        </div>
+        <p>Built with 🦞 by the Agent BLUE community</p>
+    </footer>
+</body>
+</html>

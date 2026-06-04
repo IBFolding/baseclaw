@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent BLUE — Contract Templates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --base-blue: #0052FF;
+            --base-cyan: #00D4AA;
+            --bg-primary: #F5F0EB;
+            --bg-secondary: #EDE8E1;
+            --bg-tertiary: #E5DFD6;
+            --bg-paper: #FAF8F5;
+            --text-primary: #2D2926;
+            --text-secondary: #6B6560;
+            --text-muted: #9B9590;
+            --border-color: #C8C0B8;
+            --sketch-color: #4A4540;
+            --code-bg: #1E1C1A;
+            --code-text: #E8E4E0;
+            --shadow-hard: 5px 5px 0 var(--sketch-color);
+            --shadow-hard-sm: 3px 3px 0 var(--sketch-color);
+            --radius-sharp: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Paper grain texture */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+        }
+
+        .header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 40px;
+            background: var(--bg-paper);
+            border-bottom: 3px solid var(--sketch-color);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex; align-items: center; gap: 12px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 28px; font-weight: 700; color: var(--base-blue);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 44px; height: 44px;
+            background: linear-gradient(135deg, var(--base-blue), var(--base-cyan));
+            border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            border: 3px solid var(--sketch-color);
+            font-size: 24px;
+            box-shadow: var(--shadow-hard-sm);
+        }
+
+        .back-link {
+            padding: 10px 20px;
+            border: 3px solid var(--sketch-color);
+            border-radius: 12px;
+            background: transparent;
+            color: var(--text-secondary);
+            font-family: 'Space Mono', monospace;
+            font-size: 13px; font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            text-decoration: none;
+            box-shadow: var(--shadow-hard-sm);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        .back-link:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--sketch-color);
+            border-color: var(--base-blue);
+            color: var(--base-blue);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .page-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 800;
+            font-size: 48px; font-weight: 700;
+            margin-bottom: 8px;
+            color: var(--text-primary);
+        }
+
+        .page-subtitle {
+            font-size: 16px; color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .template-card {
+            background: var(--bg-paper);
+            border: 3px solid var(--sketch-color);
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-hard-sm);
+            padding: 24px;
+            cursor: pointer;
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        .template-card:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--sketch-color);
+            border-color: var(--base-blue);
+        }
+
+        .template-card.active {
+            border-color: var(--base-blue);
+            background: linear-gradient(135deg, rgba(0,82,255,0.05), rgba(0,212,170,0.05));
+        }
+
+        .template-icon {
+            font-size: 32px; margin-bottom: 12px;
+        }
+
+        .template-name {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 20px; font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .template-desc {
+            font-size: 13px; color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .template-tags {
+            display: flex; gap: 6px; flex-wrap: wrap;
+            margin-top: 12px;
+        }
+
+        .tag {
+            padding: 4px 10px;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--sketch-color);
+            border-radius: 6px;
+            font-size: 11px; font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+        }
+
+        .code-viewer {
+            background: var(--code-bg);
+            border: 3px solid var(--sketch-color);
+            border-radius: var(--radius-sharp);
+            box-shadow: var(--shadow-hard);
+            overflow: hidden;
+            display: none;
+        }
+
+        .code-viewer.active {
+            display: block;
+        }
+
+        .code-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 24px;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 3px solid var(--sketch-color);
+        }
+
+        .code-title {
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
+            font-size: 18px; color: var(--code-text);
+        }
+
+        .code-actions {
+            display: flex; gap: 8px;
+        }
+
+        .code-btn {
+            padding: 8px 16px;
+            border: 3px solid rgba(255,255,255,0.2);
+            border-radius: 8px;
+            background: transparent;
+            color: var(--code-text);
+            font-family: 'Space Mono', monospace;
+            font-size: 12px; font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            box-shadow: 2px 2px 0 transparent;
+            transition: all 0.2s;
+        }
+
+        .code-btn:hover {
+            border-color: var(--base-blue);
+            color: var(--base-blue);
+            box-shadow: 2px 2px 0 var(--base-blue);
+            transform: translate(-1px, -1px);
+        }
+
+        .code-content {
+            padding: 24px;
+            overflow-x: auto;
+        }
+
+        .code-content pre {
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--code-text);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .code-content .comment { color: #6A9955; }
+        .code-content .keyword { color: #569CD6; }
+        .code-content .string { color: #CE9178; }
+        .code-content .function { color: #DCDCAA; }
+        .code-content .number { color: #B5CEA8; }
+        .code-content .type { color: #4EC9B0; }
+
+        .no-selection {
+            text-align: center;
+            padding: 80px 40px;
+            color: var(--text-muted);
+        }
+
+        .no-selection-icon {
+            font-size: 64px; margin-bottom: 16px;
+        }
+
+        .no-selection-text {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 24px; font-weight: 700;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <a href="index.html" class="logo">
+            <div class="logo-icon">🦞</div>
+            Agent BLUE
+        </a>
+        <a href="index.html" class="back-link">← Back to App</a>
+    </div>
+
+    <div class="container">
+        <h1 class="page-title">Contract Templates</h1>
+        <p class="page-subtitle">20 production-ready Solidity templates. Click any to view, copy, and customize.</p>
+
+        <div class="template-grid" id="template-grid">
+            <!-- Templates will be loaded here -->
+        </div>
+
+        <div class="code-viewer" id="code-viewer">
+            <div class="code-header">
+                <span class="code-title" id="code-title">Select a template</span>
+                <div class="code-actions">
+                    <button class="code-btn" onclick="copyCode()">📋 Copy</button>
+                    <button class="code-btn" onclick="downloadCode()">⬇️ Download</button>
+                    <button class="code-btn" onclick="useInApp()">🚀 Use in App</button>
+                </div>
+            </div>
+            <div class="code-content">
+                <pre id="code-content"><code>Select a template from above to view the code.</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const templates = [
+            { name: 'ERC20', icon: '🪙', desc: 'Standard token with mint, burn, and permit', tags: ['Token', 'ERC20', 'OpenZeppelin'], file: 'ERC20.sol' },
+            { name: 'ERC721', icon: '🎨', desc: 'NFT collection with enumerable and URI storage', tags: ['NFT', 'ERC721', 'OpenZeppelin'], file: 'ERC721.sol' },
+            { name: 'ERC1155', icon: '🎭', desc: 'Multi-token standard for gaming and collectibles', tags: ['Multi-Token', 'ERC1155', 'OpenZeppelin'], file: 'ERC1155.sol' },
+            { name: 'Staking', icon: '⚡', desc: 'Reward staking pool with time-weighted distribution', tags: ['DeFi', 'Staking', 'Rewards'], file: 'Staking.sol' },
+            { name: 'DAO', icon: '🏛️', desc: 'Governance with voting, proposals, and timelock', tags: ['Governance', 'DAO', 'Voting'], file: 'DAO.sol' },
+            { name: 'Timelock', icon: '⏰', desc: 'Delay execution of admin functions', tags: ['Security', 'Timelock', 'OpenZeppelin'], file: 'Timelock.sol' },
+            { name: 'Multisig', icon: '🔐', desc: 'M-of-N wallet requiring multiple signatures', tags: ['Wallet', 'Multisig', 'Security'], file: 'Multisig.sol' },
+            { name: 'Vesting', icon: '📅', desc: 'Token vesting with cliff and linear release', tags: ['Token', 'Vesting', 'Cliff'], file: 'Vesting.sol' },
+            { name: 'Airdrop', icon: '🎁', desc: 'Merkle tree airdrop for token distribution', tags: ['Distribution', 'Airdrop', 'Merkle'], file: 'Airdrop.sol' },
+            { name: 'Marketplace', icon: '🏪', desc: 'NFT marketplace with fixed price and auctions', tags: ['NFT', 'Marketplace', 'Auction'], file: 'Marketplace.sol' },
+            { name: 'DEX', icon: '💱', desc: 'Constant product AMM decentralized exchange', tags: ['DeFi', 'DEX', 'AMM'], file: 'DEX.sol' },
+            { name: 'Bridge', icon: '🌉', desc: 'Token bridge with relayer validation', tags: ['Bridge', 'Cross-Chain', 'Relayer'], file: 'Bridge.sol' },
+            { name: 'Escrow', icon: '🤝', desc: 'P2P escrow with arbitrator dispute resolution', tags: ['Escrow', 'P2P', 'Dispute'], file: 'Escrow.sol' },
+            { name: 'Lending', icon: '💰', desc: 'Collateralized lending pool with liquidation', tags: ['DeFi', 'Lending', 'Collateral'], file: 'Lending.sol' },
+            { name: 'Yield', icon: '🌾', desc: 'Yield farming vault with auto-compounding', tags: ['DeFi', 'Yield', 'Farming'], file: 'Yield.sol' },
+            { name: 'Launchpad', icon: '🚀', desc: 'Token launchpad with tiered allocations', tags: ['Launchpad', 'IDO', 'Tiered'], file: 'Launchpad.sol' },
+            { name: 'Oracle', icon: '🔮', desc: 'Price oracle with multiple feeder sources', tags: ['Oracle', 'Price', 'Data'], file: 'Oracle.sol' },
+            { name: 'Random', icon: '🎲', desc: 'Random number generator (testing only)', tags: ['Random', 'VRF', 'Testing'], file: 'Random.sol' },
+            { name: 'Upgradeable', icon: '⬆️', desc: 'ERC1967 upgradeable proxy pattern', tags: ['Proxy', 'Upgradeable', 'ERC1967'], file: 'Upgradeable.sol' },
+            { name: 'NFTMint', icon: '🎨', desc: 'NFT minting contract with max supply and per-wallet limits', tags: ['NFT', 'Mint', 'ERC721'], file: 'NFTMint.sol' },
+            { name: 'NFTMarketplace', icon: '🏪', desc: 'NFT marketplace with fixed price and auction support', tags: ['NFT', 'Marketplace', 'Auction'], file: 'NFTMarketplace.sol' },
+            { name: 'ReferralProgram', icon: '👥', desc: 'Referral program with tiered rewards (Bronze/Silver/Gold)', tags: ['Referral', 'Rewards', 'Growth'], file: 'ReferralProgram.sol' },
+            { name: 'TokenLocker', icon: '🔒', desc: 'Token locking contract with time-based unlock', tags: ['Lock', 'Vesting', 'Time'], file: 'TokenLocker.sol' },
+        ];
+
+        let currentTemplate = null;
+        let currentCode = '';
+
+        function renderTemplates() {
+            const grid = document.getElementById('template-grid');
+            grid.innerHTML = templates.map(t => `
+                <div class="template-card" onclick="loadTemplate('${t.file}', '${t.name}')" data-file="${t.file}">
+                    <div class="template-icon">${t.icon}</div>
+                    <div class="template-name">${t.name}</div>
+                    <div class="template-desc">${t.desc}</div>
+                    <div class="template-tags">
+                        ${t.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function loadTemplate(file, name) {
+            currentTemplate = file;
+            
+            // Update active state
+            document.querySelectorAll('.template-card').forEach(card => {
+                card.classList.toggle('active', card.dataset.file === file);
+            });
+
+            // Show viewer
+            document.getElementById('code-viewer').classList.add('active');
+            document.getElementById('code-title').textContent = name + '.sol';
+            document.getElementById('code-content').innerHTML = '<code>Loading...</code>';
+
+            try {
+                const response = await fetch('templates/' + file);
+                if (!response.ok) throw new Error('Failed to load: ' + response.status + ' ' + response.statusText);
+                currentCode = await response.text();
+                document.getElementById('code-content').innerHTML = '<code>' + escapeHtml(currentCode) + '</code>';
+            } catch (err) {
+                console.error('Template load error:', err);
+                document.getElementById('code-content').innerHTML = '<code>Error loading template: ' + err.message + '<br><br>Make sure you are running this from a web server (not file://)</code>';
+            }
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function copyCode() {
+            if (!currentCode) return;
+            navigator.clipboard.writeText(currentCode).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+
+        function downloadCode() {
+            if (!currentCode || !currentTemplate) return;
+            const blob = new Blob([currentCode], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = currentTemplate;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function useInApp() {
+            if (!currentTemplate) return;
+            // Store selected template in localStorage for the main app
+            localStorage.setItem('baseclaw-selected-template', currentTemplate);
+            localStorage.setItem('baseclaw-selected-template-code', currentCode);
+            window.location.href = 'index.html?template=' + encodeURIComponent(currentTemplate);
+        }
+
+        renderTemplates();
+    </script>
+</body>
+</html>

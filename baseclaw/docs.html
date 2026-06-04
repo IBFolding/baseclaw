@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BaseClaw Docs — Documentation</title>
-    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Agent BLUE Docs — Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --base-blue: #0052FF;
@@ -59,38 +59,49 @@
         .logo-icon {
             width: 44px; height: 44px;
             background: linear-gradient(135deg, var(--base-blue), var(--base-cyan));
-            border-radius: 50% 40% 45% 55%;
+            border-radius: 12px;
             display: flex; align-items: center; justify-content: center;
-            border: 2px solid var(--sketch-color);
-            box-shadow: 3px 3px 0 rgba(0,82,255,0.2);
+            border: 3px solid var(--sketch-color);
+            box-shadow: 3px 3px 0 var(--sketch-color);
+            font-size: 24px;
         }
 
         .subtitle {
-            font-family: 'Patrick Hand', cursive;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
             font-size: 18px;
             color: var(--text-muted);
             margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
         }
 
         h1, h2, h3 {
-            font-family: 'Patrick Hand', cursive;
+            font-family: 'Bricolage Grotesque', sans-serif;
+            font-weight: 700;
             color: var(--base-blue);
             margin: 32px 0 16px;
         }
 
         h1 { font-size: 36px; }
-        h2 { font-size: 28px; border-bottom: 2px dashed var(--border-color); padding-bottom: 8px; }
+        h2 { font-size: 28px; border-bottom: 3px dashed var(--border-color); padding-bottom: 8px; }
         h3 { font-size: 22px; }
 
         p { margin-bottom: 16px; color: var(--text-secondary); }
 
         .card {
             background: var(--bg-paper);
-            border: 2px solid var(--sketch-color);
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            border: 3px solid var(--sketch-color);
+            border-radius: 16px;
+            box-shadow: 3px 3px 0 var(--sketch-color);
             padding: 24px;
             margin: 20px 0;
-            box-shadow: 4px 4px 0 rgba(0,0,0,0.08);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        .card:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--sketch-color);
         }
 
         .card h3 {
@@ -312,7 +323,7 @@
     <div class="container">
         <div class="logo">
             <div class="logo-icon">🦞</div>
-            BaseClaw Docs
+            Agent BLUE Docs
         </div>
         <div class="subtitle">Documentation for the AI Blockchain Agent</div>
 
@@ -335,7 +346,7 @@
         <div class="card">
             <h3>🎯 For Beginners</h3>
             <ol>
-                <li><strong>Open the app</strong> — Go to <a href="index.html">BaseClaw App</a></li>
+                <li><strong>Open the app</strong> — Go to <a href="index.html">Agent BLUE App</a></li>
                 <li><strong>Click Tutorial</strong> — The "📖 Tutorial" button in the sidebar walks you through everything</li>
                 <li><strong>Try Demo Mode</strong> — Toggle "🔒 Demo" to practice without spending real money</li>
                 <li><strong>Use the Wizard</strong> — Click "🎯 Wizard" and pick Token, NFT, Staking, or DAO</li>
@@ -482,7 +493,7 @@ contract MyNFT is ERC721 {
 
         <div class="card">
             <h3>❓ Do I need to know coding?</h3>
-            <p><strong>No!</strong> Just describe what you want in plain English. BaseClaw handles all the Solidity code, testing, and deployment.</p>
+            <p><strong>No!</strong> Just describe what you want in plain English. Agent BLUE handles all the Solidity code, testing, and deployment.</p>
         </div>
 
         <div class="card">
@@ -497,7 +508,7 @@ contract MyNFT is ERC721 {
 
         <div class="card">
             <h3>❓ Is my wallet safe?</h3>
-            <p>BaseClaw never stores private keys. We use read-only wallet connections and require explicit approval for every transaction. Set spending limits in Wallet Policy skill.</p>
+            <p>Agent BLUE never stores private keys. We use read-only wallet connections and require explicit approval for every transaction. Set spending limits in Wallet Policy skill.</p>
         </div>
 
         <footer>
@@ -507,14 +518,14 @@ contract MyNFT is ERC721 {
                 <a href="index.html">🦞 App</a> • 
                 <a href="landing.html">🚀 Landing</a>
             </p>
-            <p style="margin-top: 8px; font-size: 12px;">© 2026 BaseClaw. All systems operational.</p>
+            <p style="margin-top: 8px; font-size: 12px;">© 2026 Agent BLUE. All systems operational.</p>
         </footer>
     </div>
 
     <script>
         // Search functionality
         const searchIndex = [
-            { title: 'Quick Start', section: 'quickstart', content: 'Get started with BaseClaw. Connect wallet, choose Base Sepolia, chat with AI, deploy contracts.' },
+            { title: 'Quick Start', section: 'quickstart', content: 'Get started with Agent BLUE. Connect wallet, choose Base Sepolia, chat with AI, deploy contracts.' },
             { title: 'For Beginners', section: 'quickstart', content: 'Tutorial, Demo Mode, Wizard, Example Commands. No coding required.' },
             { title: 'Wallet Setup', section: 'quickstart', content: 'Connect MetaMask or Coinbase Wallet. Fund with test ETH from faucet.' },
             { title: 'Is it free?', section: 'quickstart', content: 'Base Sepolia testnet is free. Mainnet costs $5-20 in gas fees.' },
