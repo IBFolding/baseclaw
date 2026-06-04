@@ -5,7 +5,7 @@ const Onboarding = {
     steps: [
         {
             target: '.nav-logo',
-            title: 'Welcome to Agent BLUE! 🦞',
+            title: 'Welcome to Agent BLUE! 🎯',
             content: 'Your AI-powered blockchain development agent. Let\'s take a quick tour.',
             position: 'bottom'
         },

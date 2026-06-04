@@ -1,4 +1,4 @@
-# Agent BLUE 🦞
+# Agent BLUE 🎯
 
 **AI-Powered Blockchain Development Agent for Base Chain**
 
@@ -194,4 +194,4 @@ MIT — See [LICENSE](LICENSE)
 
 ---
 
-**Built with 🦞 by Howard and the Agent BLUE community**
+**Built with 🎯 by Howard and the Agent BLUE community**
