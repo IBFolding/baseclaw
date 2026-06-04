@@ -39,10 +39,96 @@
             line-height: 1.6;
         }
 
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            background: rgba(245, 240, 235, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--sketch-color);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--base-blue);
+            text-decoration: none;
+        }
+
+        .header-logo img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--sketch-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: color 0.2s;
+        }
+
+        .header-nav a:hover {
+            color: var(--base-blue);
+        }
+
+        .header-btn {
+            padding: 10px 24px;
+            background: var(--base-blue);
+            color: white;
+            border: 3px solid var(--sketch-color);
+            border-radius: 12px;
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 3px 3px 0 var(--sketch-color);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        .header-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--sketch-color);
+            background: var(--base-cyan);
+        }
+        .header-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--sketch-color);
+        }
+
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 100px 20px 40px;
         }
 
         .logo {
@@ -320,11 +406,19 @@
     </style>
 </head>
 <body>
+    <header class="header">
+        <a href="index.html" class="header-logo">
+            <img src="logo.png?v=3" alt="Agent BLUE">
+            Agent BLUE
+        </a>
+        <nav class="header-nav">
+            <a href="templates.html">Contract Templates</a>
+            <a href="web-templates.html">Web Templates</a>
+            <a href="docs.html">Docs</a>
+            <a href="index.html" class="header-btn">Launch App →</a>
+        </nav>
+    </header>
     <div class="container">
-        <div class="logo">
-            <div class="logo-icon">🎯</div>
-            Agent BLUE Docs
-        </div>
         <div class="subtitle">Documentation for the AI Blockchain Agent</div>
 
         <div class="search-box">

@@ -47,51 +47,89 @@
         }
 
         .header {
-            display: flex; align-items: center; justify-content: space-between;
-            padding: 20px 40px;
-            background: var(--bg-paper);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            background: rgba(245, 240, 235, 0.95);
+            backdrop-filter: blur(10px);
             border-bottom: 3px solid var(--sketch-color);
             box-shadow: 0 4px 0 rgba(0,0,0,0.1);
         }
 
-        .logo {
-            display: flex; align-items: center; gap: 12px;
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-family: 'Patrick Hand', cursive;
-            font-size: 28px; font-weight: 700; color: var(--base-blue);
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--base-blue);
             text-decoration: none;
         }
 
-        .logo-icon {
-            width: 44px; height: 44px;
-            background: linear-gradient(135deg, var(--base-blue), var(--base-cyan));
+        .header-logo img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
             border-radius: 12px;
-            display: flex; align-items: center; justify-content: center;
-            border: 3px solid var(--sketch-color);
-            font-size: 24px;
-            box-shadow: var(--shadow-hard-sm);
+            border: none;
+            box-shadow: none;
+            background: transparent;
         }
 
-        .back-link {
-            padding: 10px 20px;
+        .header-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--sketch-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: color 0.2s;
+        }
+
+        .header-nav a:hover {
+            color: var(--base-blue);
+        }
+
+        .header-btn {
+            padding: 10px 24px;
+            background: var(--base-blue);
+            color: white;
             border: 3px solid var(--sketch-color);
             border-radius: 12px;
-            background: transparent;
-            color: var(--text-secondary);
             font-family: 'Space Mono', monospace;
-            font-size: 13px; font-weight: 700;
+            font-size: 13px;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.06em;
             cursor: pointer;
             text-decoration: none;
+            display: inline-block;
             box-shadow: var(--shadow-hard-sm);
             transition: transform 0.08s ease, box-shadow 0.08s ease;
         }
 
-        .back-link:hover {
+        .header-btn:hover {
             transform: translate(-1px, -1px);
             box-shadow: 4px 4px 0 var(--sketch-color);
-            border-color: var(--base-blue);
-            color: var(--base-blue);
+            background: var(--base-cyan);
+        }
+        .header-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--sketch-color);
         }
 
         .container {
@@ -264,11 +302,16 @@
 </head>
 <body>
     <div class="header">
-        <a href="index.html" class="logo">
-            <div class="logo-icon">🎯</div>
+        <a href="index.html" class="header-logo">
+            <img src="logo.png?v=3" alt="Agent BLUE">
             Agent BLUE
         </a>
-        <a href="index.html" class="back-link">← Back to App</a>
+        <nav class="header-nav">
+            <a href="templates.html">Contract Templates</a>
+            <a href="web-templates.html">Web Templates</a>
+            <a href="docs.html">Docs</a>
+            <a href="index.html" class="header-btn">Launch App →</a>
+        </nav>
     </div>
 
     <div class="container">
