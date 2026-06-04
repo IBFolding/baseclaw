@@ -199,7 +199,7 @@
             color: var(--bg-paper);
         }
 
-        .app { display: grid; grid-template-columns: 280px 1fr 340px; height: 100vh; gap: 16px; padding: 16px; }
+        .app { display: grid; grid-template-columns: 260px 1fr 300px; height: 100vh; gap: 12px; padding: 12px; overflow: hidden; }
 
         /* Right panel / Wallet panel */
         .app > div:last-child {
@@ -220,12 +220,14 @@
         .sidebar {
             background: var(--bg-paper);
             display: flex; flex-direction: column;
-            padding: 20px;
+            padding: 16px;
             position: relative;
             overflow-y: auto;
+            overflow-x: hidden;
             border: 3px solid var(--sketch-color);
             border-radius: var(--radius-sharp);
             box-shadow: var(--shadow-hard);
+            min-width: 0;
         }
 
         .logo { 
@@ -426,11 +428,13 @@
             display: flex; flex-direction: column;
             background: var(--bg-paper);
             position: relative;
-            padding: 20px;
+            padding: 16px;
             overflow-y: auto;
+            overflow-x: hidden;
             border: 3px solid var(--sketch-color);
             border-radius: var(--radius-sharp);
             box-shadow: var(--shadow-hard);
+            min-width: 0;
         }
 
         .chat-header {
@@ -646,33 +650,39 @@
             box-shadow: 3px 3px 0 var(--sketch-color);
         }
 
-        /* Right Panel */
+        /* Right panel / Context panel */
         .context-panel {
             background: var(--bg-paper);
             display: flex; flex-direction: column;
-            padding: 20px;
+            padding: 16px;
             position: relative;
             overflow-y: auto;
+            overflow-x: hidden;
             border: 3px solid var(--sketch-color);
             border-radius: var(--radius-sharp);
             box-shadow: var(--shadow-hard);
+            min-width: 0;
         }
 
-        .panel-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+        .panel-tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: wrap; }
         
         .panel-tab {
-            flex: 1; padding: 10px;
+            flex: 1; padding: 8px;
             text-align: center;
             font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 13px; font-weight: 700;
+            font-size: 11px; font-weight: 700;
             color: var(--text-muted);
             cursor: pointer;
-            border: 3px solid transparent;
-            border-radius: 10px;
+            border: 2px solid transparent;
+            border-radius: 8px;
             transition: all 0.2s;
             text-transform: uppercase;
-            letter-spacing: 0.06em;
+            letter-spacing: 0.04em;
             box-shadow: 2px 2px 0 transparent;
+            min-width: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         
         .panel-tab:hover { 
@@ -711,8 +721,9 @@
             background: var(--bg-secondary);
             border: 3px solid var(--sketch-color);
             border-radius: 12px;
-            padding: 16px; margin-bottom: 16px;
+            padding: 12px; margin-bottom: 12px;
             box-shadow: var(--shadow-hard-sm);
+            overflow: hidden;
         }
         
         .wallet-header {
