@@ -3844,52 +3844,6 @@ ${codePreview}
         };
 
         app.init();
-
-// ===== BASECLAW REAL ENGINE INTEGRATION =====
-app.connectWallet = async function() {
-    try {
-        const result = await AgentBlueEngine.connectWallet();
-        this.walletAddress = result.address;
-        this.walletConnected = true;
-        this.addMessage('system', '✅ Wallet connected: ' + result.address + ' on ' + result.chain);
-        this.renderWallet();
-        return result;
-    } catch (err) {
-        this.addMessage('system', '❌ Wallet connection failed: ' + err.message);
-        throw err;
-    }
-};
-
-app.generateToken = async function(name, symbol, supply) {
-    try {
-        if (!AgentBlueEngine.connected) {
-            this.addMessage('system', '⚠️ Connect wallet first!');
-            return;
-        }
-        this.addMessage('system', '🤖 Generating token contract via LLM...');
-        const code = await AgentBlueEngine.generateTokenContract(name, symbol, supply);
-        this.addMessage('system', '✅ Contract generated!\n\nSave this code to a .sol file and compile with Foundry to deploy.');
-        return code;
-    } catch (err) {
-        this.addMessage('system', '❌ Error: ' + err.message);
-    }
-};
-
-app.getWalletBalance = async function() {
-    try {
-        if (!AgentBlueEngine.connected) {
-            this.addMessage('system', '⚠️ Connect wallet first!');
-            return;
-        }
-        const balance = await AgentBlueEngine.getBalance();
-        this.addMessage('system', '💰 Balance: ' + balance + ' ETH');
-        return balance;
-    } catch (err) {
-        this.addMessage('system', '❌ Error: ' + err.message);
-    }
-};
-
-console.log('🔧 Agent BLUE Real Engine loaded');
     </script>
 </body>
 </html>
