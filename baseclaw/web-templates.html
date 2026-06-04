@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agent BLUE — Web Templates</title>
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --base-blue: #0052FF;
+            --base-cyan: #00D4AA;
+            --bg-primary: #F5F0EB;
+            --bg-secondary: #EDE8E1;
+            --bg-tertiary: #E5DFD6;
+            --bg-paper: #FAF8F5;
+            --text-primary: #2D2926;
+            --text-secondary: #6B6560;
+            --text-muted: #9B9590;
+            --border-color: #C8C0B8;
+            --sketch-color: #4A4540;
+            --code-bg: #1E1C1A;
+            --code-text: #E8E4E0;
+            --shadow-hard: 5px 5px 0 var(--sketch-color);
+            --shadow-hard-sm: 3px 3px 0 var(--sketch-color);
+            --radius-sharp: 16px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+        }
+
+        /* Paper grain texture */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 9999;
+            opacity: 0.35;
+            mix-blend-mode: multiply;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 40px;
+            background: rgba(245, 240, 235, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 3px solid var(--sketch-color);
+            box-shadow: 0 4px 0 rgba(0,0,0,0.1);
+        }
+
+        .header-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--base-blue);
+            text-decoration: none;
+        }
+
+        .header-logo img {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            border-radius: 12px;
+            border: none;
+            box-shadow: none;
+            background: transparent;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+        }
+
+        .header-nav a {
+            color: var(--sketch-color);
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 700;
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            transition: color 0.2s;
+        }
+
+        .header-nav a:hover {
+            color: var(--base-blue);
+        }
+
+        .header-btn {
+            padding: 10px 24px;
+            background: var(--base-blue);
+            color: white;
+            border: 3px solid var(--sketch-color);
+            border-radius: 12px;
+            font-family: 'Space Mono', monospace;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: var(--shadow-hard-sm);
+            transition: transform 0.08s ease, box-shadow 0.08s ease;
+        }
+
+        .header-btn:hover {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0 var(--sketch-color);
+            background: var(--base-cyan);
+        }
+        .header-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0 var(--sketch-color);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .page-title {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 48px; font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .page-subtitle {
+            font-size: 16px; color: var(--text-muted);
+            margin-bottom: 40px;
+        }
+
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 24px;
+            margin-bottom: 40px;
+            align-items: start;
+        }
+
+        .template-card {
+            background: var(--bg-paper);
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .template-card:hover {
+            border-color: var(--base-blue);
+            transform: translateY(-4px);
+            box-shadow: 4px 4px 0 rgba(0,82,255,0.15);
+        }
+
+        .template-preview {
+            height: 200px;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 64px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-preview::after {
+            content: attr(data-type);
+            position: absolute;
+            bottom: 12px;
+            right: 12px;
+            padding: 4px 12px;
+            background: rgba(0,82,255,0.8);
+            color: white;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .template-info {
+            padding: 24px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .template-name {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 22px; font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .template-desc {
+            font-size: 14px; color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 16px;
+            flex: 1;
+        }
+
+        .template-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: auto;
+        }
+
+        .feature-tag {
+            padding: 4px 12px;
+            background: var(--bg-tertiary);
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            font-size: 12px;
+            font-family: 'Patrick Hand', cursive;
+        }
+
+        .code-viewer {
+            background: var(--code-bg);
+            border: 2px solid var(--sketch-color);
+            border-radius: 15px 255px 15px 225px / 255px 15px 225px 15px;
+            overflow: hidden;
+            display: none;
+        }
+
+        .code-viewer.active {
+            display: block;
+        }
+
+        .code-header {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 16px 24px;
+            background: rgba(255,255,255,0.05);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .code-title {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 18px; color: var(--code-text);
+        }
+
+        .code-actions {
+            display: flex; gap: 8px;
+        }
+
+        .code-btn {
+            padding: 8px 16px;
+            border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            background: transparent;
+            color: var(--code-text);
+            font-family: 'Patrick Hand', cursive;
+            font-size: 14px; font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .code-btn:hover {
+            border-color: var(--base-blue);
+            color: var(--base-blue);
+        }
+
+        .code-content {
+            padding: 24px;
+            overflow-x: auto;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .code-content pre {
+            font-family: 'Fira Code', monospace;
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--code-text);
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        @media (max-width: 768px) {
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <a href="index.html" class="header-logo">
+            <img src="logo.png?v=3" alt="Agent BLUE">
+            Agent BLUE
+        </a>
+        <nav class="header-nav">
+            <a href="templates.html">Contract Templates</a>
+            <a href="web-templates.html">Web Templates</a>
+            <a href="docs.html">Docs</a>
+            <a href="index.html" class="header-btn">Launch App →</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Web Page Templates</h1>
+        <p class="page-subtitle">5 customizable HTML templates for your Agent BLUE project. Click any to preview and download.</p>
+
+        <div class="template-grid" id="template-grid">
+            <!-- Templates loaded by JS -->
+        </div>
+
+        <div class="code-viewer" id="code-viewer">
+            <div class="code-header">
+                <span class="code-title" id="code-title">Select a template</span>
+                <div class="code-actions">
+                    <button class="code-btn" onclick="copyCode()">📋 Copy</button>
+                    <button class="code-btn" onclick="downloadCode()">⬇️ Download</button>
+                    <button class="code-btn" onclick="previewCode()">👁️ Preview</button>
+                </div>
+            </div>
+            <div class="code-content">
+                <pre id="code-content"><code>Select a template to view the code</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const templates = [
+            {
+                name: 'Landing Page',
+                icon: '🚀',
+                type: 'Marketing',
+                desc: 'Hero section, features, tokenomics, roadmap, and footer. Perfect for project launches.',
+                features: ['Responsive', 'Dark Mode', 'Hero Section', 'Roadmap', 'Tokenomics'],
+                file: 'landing-page.html'
+            },
+            {
+                name: 'DApp Dashboard',
+                icon: '📊',
+                type: 'Dashboard',
+                desc: 'Full dashboard with sidebar, stats cards, asset table, and transaction history.',
+                features: ['Sidebar Nav', 'Stats Cards', 'Asset Table', 'Transactions', 'Wallet Connect'],
+                file: 'dapp-dashboard.html'
+            },
+            {
+                name: 'ERC20 Token',
+                icon: '🪙',
+                type: 'Token',
+                desc: 'Token management page with transfer, mint, burn, and balance display.',
+                features: ['Transfer', 'Mint', 'Burn', 'Balance', 'Wallet Connect'],
+                file: 'erc20-token.html'
+            },
+            {
+                name: 'ERC1155 Multi-Token',
+                icon: '🎭',
+                type: 'Multi-Token',
+                desc: 'Multi-token collection page with ID-based balance tracking.',
+                features: ['Multi-Token', 'Token IDs', 'Balance', 'Mint', 'Wallet Connect'],
+                file: 'erc1155-multi-token.html'
+            },
+            {
+                name: 'NFT Collection',
+                icon: '🎨',
+                type: 'NFT',
+                desc: 'Gallery grid with mint button, stats, and wallet connection. For NFT projects.',
+                features: ['Gallery Grid', 'Mint Button', 'Stats Bar', 'Wallet Connect', 'Responsive'],
+                file: 'nft-collection.html'
+            },
+            {
+                name: 'NFT Minting',
+                icon: '🎨',
+                type: 'NFT',
+                desc: 'Dedicated NFT minting page with quantity selector and preview.',
+                features: ['Mint Preview', 'Quantity Selector', 'Price Display', 'Wallet Connect', 'Responsive'],
+                file: 'nft-minting.html'
+            },
+            {
+                name: 'NFT Marketplace',
+                icon: '🏪',
+                type: 'NFT',
+                desc: 'Full NFT marketplace with search, filters, and featured listings.',
+                features: ['Search', 'Filters', 'Featured', 'Buy Button', 'Responsive'],
+                file: 'nft-marketplace.html'
+            },
+            {
+                name: 'DEX / AMM',
+                icon: '💱',
+                type: 'DeFi',
+                desc: 'Token swap interface with pool info and exchange rates.',
+                features: ['Swap', 'Pool Info', 'Exchange Rate', 'Slippage', 'Wallet Connect'],
+                file: 'dex-amm.html'
+            },
+            {
+                name: 'Token Sale',
+                icon: '💰',
+                type: 'Sale',
+                desc: 'Token sale page with progress bar, amount calculator, and purchase form.',
+                features: ['Progress Bar', 'Amount Calculator', 'Purchase Form', 'Token Info', 'Countdown'],
+                file: 'token-sale.html'
+            },
+            {
+                name: 'Staking Page',
+                icon: '⚡',
+                type: 'DeFi',
+                desc: 'Staking interface with APY display, stake/unstake forms, and lock info.',
+                features: ['APY Display', 'Stake Form', 'Unstake Form', 'Lock Info', 'Rewards'],
+                file: 'staking-page.html'
+            },
+            {
+                name: 'Yield Farming',
+                icon: '🌾',
+                type: 'DeFi',
+                desc: 'Yield farming vaults with APR display and stake/unstake.',
+                features: ['APR Display', 'Stake', 'Unstake', 'Pending Rewards', 'Pool Stats'],
+                file: 'yield-farming.html'
+            },
+            {
+                name: 'Lending Pool',
+                icon: '💰',
+                type: 'DeFi',
+                desc: 'Lending interface with supply/borrow and APR rates.',
+                features: ['Supply', 'Borrow', 'APR Rates', 'Liquidity', 'Wallet Connect'],
+                file: 'lending-pool.html'
+            },
+            {
+                name: 'Governance',
+                icon: '🏛️',
+                type: 'DAO',
+                desc: 'Voting interface with proposal cards, vote buttons, and progress bars.',
+                features: ['Proposal Cards', 'Vote Buttons', 'Progress Bars', 'Stats', 'Create Proposal'],
+                file: 'governance.html'
+            },
+            {
+                name: 'Airdrop Claim',
+                icon: '🎁',
+                type: 'Distribution',
+                desc: 'Simple airdrop claim page with amount display and eligibility check.',
+                features: ['Amount Display', 'Eligibility Check', 'Claim Button', 'Deadline', 'Simple UI'],
+                file: 'airdrop-claim.html'
+            },
+            {
+                name: 'Bridge',
+                icon: '🌉',
+                type: 'Cross-Chain',
+                desc: 'Cross-chain bridge interface with chain selector and history.',
+                features: ['Chain Select', 'Bridge History', 'Amount Input', 'Status', 'Wallet Connect'],
+                file: 'bridge.html'
+            },
+            {
+                name: 'Escrow',
+                icon: '🤝',
+                type: 'P2P',
+                desc: 'Escrow interface with buyer/seller display and action buttons.',
+                features: ['Buyer/Seller', 'Deposit', 'Release', 'Dispute', 'Status'],
+                file: 'escrow.html'
+            },
+            {
+                name: 'Base Mini App',
+                icon: '📱',
+                type: 'Mobile',
+                desc: 'Mobile-first mini app with balance, actions, and leaderboard.',
+                features: ['Mobile UI', 'Balance Card', 'Quick Actions', 'Leaderboard', 'Bottom Nav'],
+                file: 'base-mini-app.html'
+            },
+            {
+                name: 'Referral Program',
+                icon: '👥',
+                type: 'Growth',
+                desc: 'Referral page with tiers, leaderboard, and copyable link.',
+                features: ['Referral Link', 'Reward Tiers', 'Leaderboard', 'Copy Button', 'Stats'],
+                file: 'referral-program.html'
+            },
+            {
+                name: 'Token Locker',
+                icon: '🔒',
+                type: 'DeFi',
+                desc: 'Token locking interface with duration selector and lock list.',
+                features: ['Lock Form', 'Duration Selector', 'Lock List', 'Status Badges', 'Stats'],
+                file: 'token-locker.html'
+            }
+        ];
+
+        let currentTemplate = null;
+        let currentCode = '';
+
+        function renderTemplates() {
+            const grid = document.getElementById('template-grid');
+            grid.innerHTML = templates.map(t => `
+                <div class="template-card" onclick="loadTemplate('${t.file}', '${t.name}')">
+                    <div class="template-preview" data-type="${t.type}">
+                        ${t.icon}
+                    </div>
+                    <div class="template-info">
+                        <div class="template-name">${t.name}</div>
+                        <div class="template-desc">${t.desc}</div>
+                        <div class="template-features">
+                            ${t.features.map(f => `<span class="feature-tag">${f}</span>`).join('')}
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        async function loadTemplate(file, name) {
+            currentTemplate = file;
+            document.getElementById('code-viewer').classList.add('active');
+            document.getElementById('code-title').textContent = name;
+            document.getElementById('code-content').innerHTML = '<code>Loading...</code>';
+
+            try {
+                console.log('Fetching:', 'web-templates/' + file);
+                const response = await fetch('web-templates/' + file);
+                console.log('Response status:', response.status);
+                if (!response.ok) throw new Error('Failed to load: ' + response.status + ' ' + response.statusText);
+                currentCode = await response.text();
+                console.log('Loaded content length:', currentCode.length);
+                document.getElementById('code-content').innerHTML = '<code>' + escapeHtml(currentCode) + '</code>';
+            } catch (err) {
+                console.error('Template load error:', err);
+                document.getElementById('code-content').innerHTML = '<code>Error: ' + err.message + '<br><br>Make sure you are running this from a web server (not file://)<br><br>URL tried: web-templates/' + file + '</code>';
+            }
+        }
+
+        function escapeHtml(text) {
+            return text
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#039;');
+        }
+
+        function copyCode() {
+            if (!currentCode) return;
+            navigator.clipboard.writeText(currentCode).then(() => {
+                alert('Copied to clipboard!');
+            });
+        }
+
+        function downloadCode() {
+            if (!currentCode || !currentTemplate) return;
+            const blob = new Blob([currentCode], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = currentTemplate;
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+
+        function previewCode() {
+            if (!currentCode) return;
+            const blob = new Blob([currentCode], { type: 'text/html' });
+            const url = URL.createObjectURL(blob);
+            window.open(url, '_blank');
+        }
+
+        renderTemplates();
+    </script>
+</body>
+</html>
