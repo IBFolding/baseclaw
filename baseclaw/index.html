@@ -504,7 +504,7 @@
         .network-dot.mainnet { background: var(--base-green); }
 
         .chain-display {
-            padding: 6px 12px;
+            padding: 6px 10px;
             border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
             border: 2px solid var(--sketch-color);
             background: var(--bg-secondary);
@@ -516,6 +516,8 @@
             display: flex;
             align-items: center;
             gap: 6px;
+            min-width: 36px;
+            justify-content: center;
         }
         
         .chain-display:hover {
@@ -1024,13 +1026,13 @@
                 </div>
                 <div style="display: flex; gap: 8px; align-items: center;">
                     <button class="chain-display" onclick="app.showPreview()" id="preview-btn" title="Preview project">
-                        👁️ Preview
+                        👁️
                     </button>
                     <button class="chain-display" onclick="app.togglePlanningMode()" id="planning-toggle" title="Planning Mode">
-                        📝 Plan
+                        📝
                     </button>
                     <button class="chain-display" onclick="app.toggleThinkingMode()" id="thinking-toggle" title="Toggle Thinking/Instant">
-                        🧠 Think
+                        🧠
                     </button>
                     <button class="chain-display" onclick="app.showChainModal()" id="chain-display" style="display: none;">
                         <span class="network-dot sepolia"></span> Sepolia
