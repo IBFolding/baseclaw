@@ -2668,48 +2668,72 @@ ${codePreview}
                         
                         <div style="margin-bottom: 16px;">
                             <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Contract Type</label>
-                            <select id="deploy-type" class="modal-input" style="margin-bottom: 0;">
+                            <select id="deploy-type" class="modal-input" style="margin-bottom: 0;" onchange="app.updateDeployForm()">
                                 <option value="erc20">ERC20 Token</option>
                                 <option value="erc721">ERC721 NFT</option>
+                                <option value="staking">Staking Pool</option>
+                                <option value="dao">DAO Governance</option>
+                                <option value="multisig">Multisig Wallet</option>
+                                <option value="timelock">Timelock</option>
                             </select>
                         </div>
                         
-                        <div style="margin-bottom: 16px;">
-                            <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Token Name</label>
-                            <input type="text" id="deploy-name" class="modal-input" value="${this.currentProject.name}Token" style="margin-bottom: 0;">
-                        </div>
-                        
-                        <div style="margin-bottom: 16px;">
-                            <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Symbol</label>
-                            <input type="text" id="deploy-symbol" class="modal-input" value="BCT" style="margin-bottom: 0; text-transform: uppercase;">
-                        </div>
-                        
-                        <div style="margin-bottom: 16px;">
-                            <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Total Supply</label>
-                            <input type="number" id="deploy-supply" class="modal-input" value="1000000" style="margin-bottom: 0;">
-                        </div>
-                        
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
-                            <div>
-                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Decimals</label>
-                                <input type="number" id="deploy-decimals" class="modal-input" value="18" style="margin-bottom: 0;">
+                        <div id="deploy-token-config">
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Token Name</label>
+                                <input type="text" id="deploy-name" class="modal-input" value="${this.currentProject.name}Token" style="margin-bottom: 0;">
                             </div>
-                            <div>
-                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Marketing Tax %</label>
-                                <input type="number" id="deploy-tax" class="modal-input" value="0" min="0" max="10" style="margin-bottom: 0;">
+                            
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Symbol</label>
+                                <input type="text" id="deploy-symbol" class="modal-input" value="BCT" style="margin-bottom: 0; text-transform: uppercase;">
+                            </div>
+                            
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Total Supply</label>
+                                <input type="number" id="deploy-supply" class="modal-input" value="1000000" style="margin-bottom: 0;">
+                            </div>
+                            
+                            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+                                <div>
+                                    <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Decimals</label>
+                                    <input type="number" id="deploy-decimals" class="modal-input" value="18" style="margin-bottom: 0;">
+                                </div>
+                                <div>
+                                    <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Marketing Tax %</label>
+                                    <input type="number" id="deploy-tax" class="modal-input" value="0" min="0" max="10" style="margin-bottom: 0;">
+                                </div>
+                            </div>
+                            
+                            <div style="display: flex; gap: 12px; margin-bottom: 16px;">
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+                                    <input type="checkbox" id="deploy-burnable"> Burnable
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+                                    <input type="checkbox" id="deploy-mintable"> Mintable
+                                </label>
+                                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
+                                    <input type="checkbox" id="deploy-pausable"> Pausable
+                                </label>
                             </div>
                         </div>
                         
-                        <div style="display: flex; gap: 12px; margin-bottom: 16px;">
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
-                                <input type="checkbox" id="deploy-burnable"> Burnable
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
-                                <input type="checkbox" id="deploy-mintable"> Mintable
-                            </label>
-                            <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; font-size: 13px;">
-                                <input type="checkbox" id="deploy-pausable"> Pausable
-                            </label>
+                        <div id="deploy-multisig-config" style="display: none;">
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Owners (comma-separated)</label>
+                                <input type="text" id="deploy-owners" class="modal-input" placeholder="0x123...,0x456..." style="margin-bottom: 0;">
+                            </div>
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Required Confirmations</label>
+                                <input type="number" id="deploy-required" class="modal-input" value="2" min="1" style="margin-bottom: 0;">
+                            </div>
+                        </div>
+                        
+                        <div id="deploy-timelock-config" style="display: none;">
+                            <div style="margin-bottom: 16px;">
+                                <label style="display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 6px;">Min Delay (seconds)</label>
+                                <input type="number" id="deploy-delay" class="modal-input" value="86400" style="margin-bottom: 0;">
+                            </div>
                         </div>
                         
                         <div id="deploy-preview" style="background: var(--bg-primary); padding: 12px; border-radius: 8px; border: 2px solid var(--border-color); margin-bottom: 16px; font-family: 'Space Mono', monospace; font-size: 11px; max-height: 200px; overflow-y: auto;">
@@ -2742,6 +2766,20 @@ ${codePreview}
                 setTimeout(() => this.previewContract(), 100);
             },
             
+            updateDeployForm() {
+                const type = document.getElementById('deploy-type')?.value || 'erc20';
+                const tokenConfig = document.getElementById('deploy-token-config');
+                const multisigConfig = document.getElementById('deploy-multisig-config');
+                const timelockConfig = document.getElementById('deploy-timelock-config');
+                
+                if (tokenConfig) tokenConfig.style.display = (type === 'erc20' || type === 'erc721') ? 'block' : 'none';
+                if (multisigConfig) multisigConfig.style.display = type === 'multisig' ? 'block' : 'none';
+                if (timelockConfig) timelockConfig.style.display = type === 'timelock' ? 'block' : 'none';
+                
+                // Auto-preview when type changes
+                setTimeout(() => this.previewContract(), 100);
+            },
+            
             previewContract() {
                 const type = document.getElementById('deploy-type')?.value || 'erc20';
                 const name = document.getElementById('deploy-name')?.value || 'MyToken';
@@ -2771,10 +2809,30 @@ ${codePreview}
                 const security = AgentBlueDeployer.securityScan(config);
                 
                 let sourceCode;
-                if (type === 'erc20') {
-                    sourceCode = AgentBlueDeployer.generateERC20(config);
-                } else {
-                    sourceCode = AgentBlueDeployer.generateNFT(config);
+                switch(type) {
+                    case 'erc20':
+                        sourceCode = AgentBlueDeployer.generateERC20(config);
+                        break;
+                    case 'erc721':
+                        sourceCode = AgentBlueDeployer.generateNFT(config);
+                        break;
+                    case 'staking':
+                        sourceCode = AgentBlueDeployer.generateStaking(config);
+                        break;
+                    case 'dao':
+                        sourceCode = AgentBlueDeployer.generateDAO(config);
+                        break;
+                    case 'multisig':
+                        const owners = document.getElementById('deploy-owners')?.value?.split(',') || [AgentBlueEngine.address];
+                        const required = parseInt(document.getElementById('deploy-required')?.value || '2');
+                        sourceCode = AgentBlueDeployer.generateMultisig({...config, owners, required});
+                        break;
+                    case 'timelock':
+                        const delay = parseInt(document.getElementById('deploy-delay')?.value || '86400');
+                        sourceCode = AgentBlueDeployer.generateTimelock({...config, delay});
+                        break;
+                    default:
+                        sourceCode = AgentBlueDeployer.generateERC20(config);
                 }
                 
                 const preview = document.getElementById('deploy-preview');
@@ -2834,12 +2892,12 @@ ${codePreview}
                     
                     updateStatus('🚀 Deploying to blockchain...', 80);
                     
-                    // Real deployment would happen here
-                    // For now, simulate the flow
+                    // Real deployment
+                    const type = document.getElementById('deploy-type')?.value || 'erc20';
                     const result = await AgentBlueDeployer.deployContract(
                         preview.config,
                         AgentBlueEngine.signer,
-                        document.getElementById('deploy-type')?.value || 'erc20'
+                        type
                     );
                     
                     updateStatus('✅ Deployment complete!', 100);
@@ -2854,12 +2912,24 @@ ${codePreview}
                                 <div>Address: ${result.contractAddress}</div>
                                 <div>Tx: ${result.transactionHash}</div>
                                 <div>Gas: ${result.gasUsed}</div>
+                                ${result.compiled ? '<div>✅ Compiled with solc</div>' : '<div>⚠️ Factory deployment (no solc)</div>'}
                             </div>
                             <a href="${result.explorerUrl}" target="_blank" class="btn-goblin" style="font-size: 11px; padding: 8px 12px;">
                                 🔍 View on BaseScan
                             </a>
                         </div>
                     `);
+                    
+                    // Store deployment in project history
+                    if (!this.currentProject.deployments) this.currentProject.deployments = [];
+                    this.currentProject.deployments.push({
+                        type,
+                        address: result.contractAddress,
+                        txHash: result.transactionHash,
+                        timestamp: new Date().toISOString(),
+                        network: this.currentProject.chain,
+                    });
+                    this.saveProjects();
                     
                 } catch (error) {
                     updateStatus(`❌ Error: ${error.message}`, 0);
