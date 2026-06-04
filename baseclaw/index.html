@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BaseClaw — Project-Oriented AI for Base</title>
+    <title>Agent BLUE — Project-Oriented AI for Base</title>
     <script src="https://cdn.jsdelivr.net/npm/ethers@6.9.0/dist/ethers.umd.min.js"></script>
     <script src="engine.js"></script>
     <script src="deployer-bridge.js"></script>
@@ -887,9 +887,9 @@
         <div class="sidebar">
             <div class="logo" onclick="app.goHome()">
                 <div class="logo-icon">
-                    <img src="logo.png" alt="BaseClaw Logo">
+                    <img src="logo.png" alt="Agent BLUE">
                 </div>
-                BaseClaw
+                Agent BLUE
                 <div class="theme-toggle" onclick="app.toggleTheme()" id="theme-toggle">🌙</div>
             </div>
             
@@ -970,7 +970,7 @@
         <div class="main">
             <div class="chat-header">
                 <div>
-                    <div class="chat-title" id="chat-title">Welcome to BaseClaw</div>
+                    <div class="chat-title" id="chat-title">Welcome to Agent BLUE</div>
                     <div class="chat-subtitle" id="chat-subtitle">
                         <span class="network-dot sepolia"></span>
                         Base Sepolia
@@ -1040,7 +1040,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                         </svg>
                     </div>
                     <div class="message-content">
-                        Welcome to BaseClaw! Select a project to get started.
+                        Welcome to Agent BLUE! Select a project to get started.
                         <div class="message-time">Just now</div>
                     </div>
                 </div>
@@ -1049,7 +1049,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             <div class="input-area">
                 <div class="input-wrapper">
                     <button class="attach-btn" onclick="app.attachFile()" title="Attach file">📎</button>
-                    <textarea class="chat-input" id="chat-input" placeholder="Ask BaseClaw anything..." rows="1"></textarea>
+                    <textarea class="chat-input" id="chat-input" placeholder="Ask Agent BLUE anything..." rows="1"></textarea>
                     <button class="send-btn" onclick="app.sendMessage()">➤</button>
                 </div>
             </div>
@@ -1291,7 +1291,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             </div>
             <div class="context-item">
                 <div class="context-label">Project Name</div>
-                <input type="text" class="modal-input" id="vercel-project" placeholder="my-baseclaw-project">
+                <input type="text" class="modal-input" id="vercel-project" placeholder="my-agentblue-project">
             </div>
             <div class="context-item">
                 <div class="context-label">Team (optional)</div>
@@ -1407,11 +1407,11 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 const next = current === 'dark' ? 'light' : 'dark';
                 html.setAttribute('data-theme', next);
                 document.getElementById('theme-toggle').textContent = next === 'dark' ? '☀️' : '🌙';
-                localStorage.setItem('baseclaw-theme', next);
+                localStorage.setItem('agentblue-theme', next);
             },
 
             init() {
-                const saved = localStorage.getItem('baseclaw-theme');
+                const saved = localStorage.getItem('agentblue-theme');
                 if (saved) {
                     document.documentElement.setAttribute('data-theme', saved);
                     document.getElementById('theme-toggle').textContent = saved === 'dark' ? '☀️' : '🌙';
@@ -1424,13 +1424,13 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             },
 
             loadProjects() {
-                const stored = localStorage.getItem('baseclaw-projects');
+                const stored = localStorage.getItem('agentblue-projects');
                 this.projects = stored ? JSON.parse(stored) : [];
                 this.renderProjects();
             },
 
             saveProjects() {
-                localStorage.setItem('baseclaw-projects', JSON.stringify(this.projects));
+                localStorage.setItem('agentblue-projects', JSON.stringify(this.projects));
             },
 
             renderProjects() {
@@ -1536,13 +1536,13 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 
                 if (this.currentProject?.slug === slug) {
                     this.currentProject = null;
-                    document.getElementById('chat-title').textContent = 'BaseClaw';
+                    document.getElementById('chat-title').textContent = 'Agent BLUE';
                     document.getElementById('chat-subtitle').innerHTML = 'Select a project to start';
                     document.getElementById('messages').innerHTML = `
                         <div class="message">
                             <div class="message-avatar">🐾</div>
                             <div class="message-content">
-                                Welcome to BaseClaw! 👋
+                                Welcome to Agent BLUE! 👋
                                 <br><br>
                                 Create a project to start building on Base.
                                 <div class="message-time">Just now</div>
@@ -1577,7 +1577,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 const newChatBtn = document.getElementById('new-chat-btn');
                 if (newChatBtn) newChatBtn.style.display = 'none';
                 
-                document.getElementById('chat-title').textContent = 'Welcome to BaseClaw';
+                document.getElementById('chat-title').textContent = 'Welcome to Agent BLUE';
                 document.getElementById('chat-subtitle').innerHTML = '<span class="network-dot sepolia"></span> Base Sepolia';
                 document.getElementById('panel-context').innerHTML = '<div class="empty-state">Select a project to see context</div>';
                 document.getElementById('panel-wallet').innerHTML = '<div class="empty-state">No wallet connected</div>';
@@ -1891,11 +1891,11 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             },
 
             savePickerState() {
-                localStorage.setItem('baseclaw-picker', JSON.stringify(this.pickerState));
+                localStorage.setItem('agentblue-picker', JSON.stringify(this.pickerState));
             },
 
             loadPickerState() {
-                const stored = localStorage.getItem('baseclaw-picker');
+                const stored = localStorage.getItem('agentblue-picker');
                 if (stored) {
                     this.pickerState = JSON.parse(stored);
                 }
@@ -2053,7 +2053,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             showTutorial() {
                 this.addMessage('system', `
                     <div style="max-width: 600px;">
-                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to Agent BLUE!</h2>
                         <p>I'm your AI blockchain agent. Here's how to get started:</p>
                         <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
                             <li><strong>Connect Wallet</strong> — Click "Connect Wallet" in the right panel</li>
@@ -2094,12 +2094,12 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             },
 
             toggleDemoMode() {
-                const isDemo = !localStorage.getItem('baseclaw-demo');
+                const isDemo = !localStorage.getItem('agentblue-demo');
                 if (isDemo) {
-                    localStorage.setItem('baseclaw-demo', 'true');
+                    localStorage.setItem('agentblue-demo', 'true');
                     this.addMessage('system', '🔒 Demo Mode activated! All transactions are simulated.');
                 } else {
-                    localStorage.removeItem('baseclaw-demo');
+                    localStorage.removeItem('agentblue-demo');
                     this.addMessage('system', '🔓 Demo Mode deactivated. Real transactions will require wallet confirmation.');
                 }
             },
@@ -2272,8 +2272,8 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                     return;
                 }
                 
-                const isConnected = BaseClawEngine.connected;
-                const address = BaseClawEngine.address;
+                const isConnected = Agent BLUEEngine.connected;
+                const address = Agent BLUEEngine.address;
                 
                 container.innerHTML = `
                     <div class="context-item">
@@ -2347,7 +2347,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 }
                 
                 const secrets = this.currentProject.secrets || [];
-                const hasPassword = !!this.secretPasswordHash || localStorage.getItem('baseclaw-secret-hash');
+                const hasPassword = !!this.secretPasswordHash || localStorage.getItem('agentblue-secret-hash');
                 
                 let secretsHtml = secrets.map(s => `
                     <div class="wallet-card" style="margin-bottom: 8px;">
@@ -2650,7 +2650,7 @@ ${codePreview}
                 if (!this.currentProject) { alert('Select a project first'); return; }
                 
                 // Check if wallet is connected
-                if (!BaseClawEngine.connected) {
+                if (!Agent BLUEEngine.connected) {
                     this.addMessage('system', '🔌 Please connect your wallet first. Click "Connect Wallet" in the Wallet panel.');
                     return;
                 }
@@ -2768,13 +2768,13 @@ ${codePreview}
                 };
                 
                 // Security scan
-                const security = BaseClawDeployer.securityScan(config);
+                const security = Agent BLUEDeployer.securityScan(config);
                 
                 let sourceCode;
                 if (type === 'erc20') {
-                    sourceCode = BaseClawDeployer.generateERC20(config);
+                    sourceCode = Agent BLUEDeployer.generateERC20(config);
                 } else {
-                    sourceCode = BaseClawDeployer.generateNFT(config);
+                    sourceCode = Agent BLUEDeployer.generateNFT(config);
                 }
                 
                 const preview = document.getElementById('deploy-preview');
@@ -2820,7 +2820,7 @@ ${codePreview}
                     await new Promise(r => setTimeout(r, 500));
                     
                     updateStatus('💰 Estimating gas costs...', 60);
-                    const costEstimate = await BaseClawDeployer.estimateDeploymentCost('erc20', BaseClawEngine.provider);
+                    const costEstimate = await Agent BLUEDeployer.estimateDeploymentCost('erc20', Agent BLUEEngine.provider);
                     await new Promise(r => setTimeout(r, 500));
                     
                     updateStatus(`⛽ Gas: ${costEstimate.gasCostEth} ETH (~$${costEstimate.gasCostUsd})`, 70);
@@ -2836,9 +2836,9 @@ ${codePreview}
                     
                     // Real deployment would happen here
                     // For now, simulate the flow
-                    const result = await BaseClawDeployer.deployContract(
+                    const result = await Agent BLUEDeployer.deployContract(
                         preview.config,
-                        BaseClawEngine.signer,
+                        Agent BLUEEngine.signer,
                         document.getElementById('deploy-type')?.value || 'erc20'
                     );
                     
@@ -3316,14 +3316,14 @@ ${codePreview}
                 const hashArray = Array.from(new Uint8Array(hashBuffer));
                 
                 this.secretPasswordHash = hashArray;
-                localStorage.setItem('baseclaw-secret-hash', JSON.stringify(hashArray));
+                localStorage.setItem('agentblue-secret-hash', JSON.stringify(hashArray));
                 
                 this.addMessage('system', '🔐 Secret password set. All secrets will be encrypted.');
             },
 
             async verifySecretPassword() {
                 if (!this.secretPasswordHash) {
-                    const stored = localStorage.getItem('baseclaw-secret-hash');
+                    const stored = localStorage.getItem('agentblue-secret-hash');
                     if (stored) {
                         this.secretPasswordHash = JSON.parse(stored);
                     } else {
@@ -3376,7 +3376,7 @@ ${codePreview}
             showTutorial() {
                 this.addMessage('system', `
                     <div style="max-width: 600px;">
-                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to Agent BLUE!</h2>
                         <p>I'm your AI blockchain agent. Here's how to get started:</p>
                         <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
                             <li><strong>Connect Wallet</strong> — Click "Connect Wallet" in the right panel</li>
@@ -3445,9 +3445,9 @@ ${codePreview}
 
             showFAQ() {
                 const faqs = [
-                    { q: 'What is BaseClaw?', a: 'BaseClaw is an AI-powered blockchain development agent. It helps you write, test, and deploy smart contracts on Base chain.' },
+                    { q: 'What is Agent BLUE?', a: 'Agent BLUE is an AI-powered blockchain development agent. It helps you write, test, and deploy smart contracts on Base chain.' },
                     { q: 'Do I need to know Solidity?', a: 'No! Just describe what you want in plain English. The AI generates the Solidity code for you.' },
-                    { q: 'Is it free?', a: 'Yes! BaseClaw is free to use. You only pay for blockchain gas fees when deploying (Base Sepolia is free).' },
+                    { q: 'Is it free?', a: 'Yes! Agent BLUE is free to use. You only pay for blockchain gas fees when deploying (Base Sepolia is free).' },
                     { q: 'What chains are supported?', a: 'Base Sepolia (testnet) and Base Mainnet. We recommend starting with Sepolia for testing.' },
                     { q: 'How do I get test ETH?', a: 'Visit the Base Sepolia faucet at https://www.base.org/faucets to get free test ETH.' },
                     { q: 'Can I use my own API key?', a: 'Yes! Go to Settings → API Keys to add your Kimi, OpenAI, or Anthropic API key.' }
@@ -3526,7 +3526,7 @@ ${codePreview}
 
             startChat(prompt) {
                 this.addMessage('user', prompt);
-                BaseClawEngine.chat(prompt).then(response => {
+                Agent BLUEEngine.chat(prompt).then(response => {
                     this.addMessage('system', response);
                 }).catch(err => {
                     this.addMessage('system', '❌ Error: ' + err.message);
@@ -3576,7 +3576,7 @@ ${codePreview}
             showTutorial() {
                 this.addMessage('system', `
                     <div style="max-width: 600px;">
-                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to BaseClaw!</h2>
+                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👋 Welcome to Agent BLUE!</h2>
                         <p>I'm your AI blockchain agent. Here's how to get started:</p>
                         <ol style="margin: 16px 0; padding-left: 20px; line-height: 1.8;">
                             <li><strong>Connect Wallet</strong> — Click "Connect Wallet" in the right panel</li>
@@ -3619,12 +3619,12 @@ ${codePreview}
 
             // Demo Mode
             toggleDemoMode() {
-                const isDemo = !localStorage.getItem('baseclaw-demo');
+                const isDemo = !localStorage.getItem('agentblue-demo');
                 if (isDemo) {
-                    localStorage.setItem('baseclaw-demo', 'true');
+                    localStorage.setItem('agentblue-demo', 'true');
                     this.addMessage('system', '🔒 Demo Mode activated! All transactions are simulated.');
                 } else {
-                    localStorage.removeItem('baseclaw-demo');
+                    localStorage.removeItem('agentblue-demo');
                     this.addMessage('system', '🔓 Demo Mode deactivated. Real transactions will require wallet confirmation.');
                 }
             },
@@ -3690,7 +3690,7 @@ ${codePreview}
 // ===== BASECLAW REAL ENGINE INTEGRATION =====
 app.connectWallet = async function() {
     try {
-        const result = await BaseClawEngine.connectWallet();
+        const result = await Agent BLUEEngine.connectWallet();
         this.walletAddress = result.address;
         this.walletConnected = true;
         this.addMessage('system', '✅ Wallet connected: ' + result.address + ' on ' + result.chain);
@@ -3704,12 +3704,12 @@ app.connectWallet = async function() {
 
 app.generateToken = async function(name, symbol, supply) {
     try {
-        if (!BaseClawEngine.connected) {
+        if (!Agent BLUEEngine.connected) {
             this.addMessage('system', '⚠️ Connect wallet first!');
             return;
         }
         this.addMessage('system', '🤖 Generating token contract via LLM...');
-        const code = await BaseClawEngine.generateTokenContract(name, symbol, supply);
+        const code = await Agent BLUEEngine.generateTokenContract(name, symbol, supply);
         this.addMessage('system', '✅ Contract generated!\n\nSave this code to a .sol file and compile with Foundry to deploy.');
         return code;
     } catch (err) {
@@ -3719,11 +3719,11 @@ app.generateToken = async function(name, symbol, supply) {
 
 app.getWalletBalance = async function() {
     try {
-        if (!BaseClawEngine.connected) {
+        if (!Agent BLUEEngine.connected) {
             this.addMessage('system', '⚠️ Connect wallet first!');
             return;
         }
-        const balance = await BaseClawEngine.getBalance();
+        const balance = await Agent BLUEEngine.getBalance();
         this.addMessage('system', '💰 Balance: ' + balance + ' ETH');
         return balance;
     } catch (err) {
@@ -3731,7 +3731,7 @@ app.getWalletBalance = async function() {
     }
 };
 
-console.log('🔧 BaseClaw Real Engine loaded');
+console.log('🔧 Agent BLUE Real Engine loaded');
     </script>
 </body>
 </html>
