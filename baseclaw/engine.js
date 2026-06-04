@@ -3,7 +3,7 @@
 // Real wallet (EIP-1193), real LLM API, real contract deployment
 // ============================================
 
-const Agent BLUEEngine = {
+const AgentBlueEngine = {
   // State
   provider: null,
   signer: null,
@@ -455,4 +455,4 @@ Return ONLY the complete Solidity code.`;
 };
 
 // Make available globally
-window.Agent BLUEEngine = Agent BLUEEngine;
+window.AgentBlueEngine = AgentBlueEngine;

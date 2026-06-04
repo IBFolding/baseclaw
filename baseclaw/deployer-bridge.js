@@ -2,7 +2,7 @@
 // Bridges the base-launchpad TypeScript code into the web UI
 // This file is loaded by index.html and provides real contract deployment
 
-const Agent BLUEDeployer = {
+const AgentBlueDeployer = {
   // State
   isCompiling: false,
   deploymentStatus: null,
@@ -327,7 +327,7 @@ contract ${config.symbol} is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable
   // Deploy using a factory pattern (simplified for now)
   async deployWithFactory(sourceCode, signer, config) {
     // This is a simplified deployment - in production you'd compile with solc
-    // For now, we create a minimal contract that stores metadata
+    // For now, create a minimal contract that stores metadata
     
     const factoryBytecode = '0x608060405234801561001057600080fd5b5060405161010e38038061010e83398101604081905261002f9161007c565b60018190556000819055600280546001600160a01b031916331790556040519081527f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09060200160405180910390a1506100a9565b60006020828403121561008d57600080fd5b5051919050565b603f806100b76000396000f3fe6080604052600080fdfea2646970667358221220a1b2c3d4e5f6789012345678901234567890abcdef1234567890abcdef1234567890abc6174736f6c63430008140033';
     
@@ -381,6 +381,6 @@ contract ${config.symbol} is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable
 };
 
 // Make available globally
-window.Agent BLUEDeployer = Agent BLUEDeployer;
+window.AgentBlueDeployer = AgentBlueDeployer;
 
 console.log('🔧 Agent BLUE Deployer Bridge loaded');

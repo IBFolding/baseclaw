@@ -2272,8 +2272,8 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                     return;
                 }
                 
-                const isConnected = Agent BLUEEngine.connected;
-                const address = Agent BLUEEngine.address;
+                const isConnected = AgentBlueEngine.connected;
+                const address = AgentBlueEngine.address;
                 
                 container.innerHTML = `
                     <div class="context-item">
@@ -2650,7 +2650,7 @@ ${codePreview}
                 if (!this.currentProject) { alert('Select a project first'); return; }
                 
                 // Check if wallet is connected
-                if (!Agent BLUEEngine.connected) {
+                if (!AgentBlueEngine.connected) {
                     this.addMessage('system', '🔌 Please connect your wallet first. Click "Connect Wallet" in the Wallet panel.');
                     return;
                 }
@@ -2768,13 +2768,13 @@ ${codePreview}
                 };
                 
                 // Security scan
-                const security = Agent BLUEDeployer.securityScan(config);
+                const security = AgentBlueDeployer.securityScan(config);
                 
                 let sourceCode;
                 if (type === 'erc20') {
-                    sourceCode = Agent BLUEDeployer.generateERC20(config);
+                    sourceCode = AgentBlueDeployer.generateERC20(config);
                 } else {
-                    sourceCode = Agent BLUEDeployer.generateNFT(config);
+                    sourceCode = AgentBlueDeployer.generateNFT(config);
                 }
                 
                 const preview = document.getElementById('deploy-preview');
@@ -2820,7 +2820,7 @@ ${codePreview}
                     await new Promise(r => setTimeout(r, 500));
                     
                     updateStatus('💰 Estimating gas costs...', 60);
-                    const costEstimate = await Agent BLUEDeployer.estimateDeploymentCost('erc20', Agent BLUEEngine.provider);
+                    const costEstimate = await AgentBlueDeployer.estimateDeploymentCost('erc20', AgentBlueEngine.provider);
                     await new Promise(r => setTimeout(r, 500));
                     
                     updateStatus(`⛽ Gas: ${costEstimate.gasCostEth} ETH (~$${costEstimate.gasCostUsd})`, 70);
@@ -2836,9 +2836,9 @@ ${codePreview}
                     
                     // Real deployment would happen here
                     // For now, simulate the flow
-                    const result = await Agent BLUEDeployer.deployContract(
+                    const result = await AgentBlueDeployer.deployContract(
                         preview.config,
-                        Agent BLUEEngine.signer,
+                        AgentBlueEngine.signer,
                         document.getElementById('deploy-type')?.value || 'erc20'
                     );
                     
@@ -3526,7 +3526,7 @@ ${codePreview}
 
             startChat(prompt) {
                 this.addMessage('user', prompt);
-                Agent BLUEEngine.chat(prompt).then(response => {
+                AgentBlueEngine.chat(prompt).then(response => {
                     this.addMessage('system', response);
                 }).catch(err => {
                     this.addMessage('system', '❌ Error: ' + err.message);
@@ -3690,7 +3690,7 @@ ${codePreview}
 // ===== BASECLAW REAL ENGINE INTEGRATION =====
 app.connectWallet = async function() {
     try {
-        const result = await Agent BLUEEngine.connectWallet();
+        const result = await AgentBlueEngine.connectWallet();
         this.walletAddress = result.address;
         this.walletConnected = true;
         this.addMessage('system', '✅ Wallet connected: ' + result.address + ' on ' + result.chain);
