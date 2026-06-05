@@ -1965,21 +1965,6 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 
                 this.showModalContent('Quick Actions Picker', modalContent);
             },
-                
-                const modalContent = actions.map(a => `
-                    <div class="project-item" style="margin-bottom: 8px; cursor: pointer;" onclick="app.togglePickerFromModal('${a.name}')">
-                        <div class="project-icon">${a.icon}</div>
-                        <div style="flex: 1">
-                            <div class="project-name">${a.label}</div>
-                        </div>
-                        <div style="font-size: 18px; color: ${this.pickerState[a.name] ? 'var(--base-green)' : 'var(--text-muted)'};">
-                            ${this.pickerState[a.name] ? '✓' : '○'}
-                        </div>
-                    </div>
-                `).join('');
-                
-                this.showModalContent('Quick Actions Picker', modalContent);
-            },
 
             togglePickerFromModal(name) {
                 this.pickerState[name] = !this.pickerState[name];
