@@ -1407,6 +1407,34 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 { id: 'trade', icon: '💱', label: 'Trade', action: 'tradeTokens' },
                 { id: 'defi', icon: '🌾', label: 'DeFi', action: 'showDeFi' },
                 { id: 'settings', icon: '⚙️', label: 'Settings', action: 'showSettingsModal' },
+                { id: 'help', icon: '📚', label: 'Help', action: 'showHelp' },
+                { id: 'payments', icon: '💳', label: 'Payments', action: 'show402Payment' },
+                { id: 'subscriptions', icon: '📅', label: 'Subscriptions', action: 'showSubscriptions' },
+                { id: 'tokenGate', icon: '🚪', label: 'Token Gate', action: 'showTokenGate' },
+                { id: 'paywall', icon: '🔒', label: 'Paywall', action: 'showPaywall' },
+                { id: 'airdrop', icon: '🎁', label: 'Airdrop', action: 'showAirdrop' },
+                { id: 'vesting', icon: '⏳', label: 'Vesting', action: 'showVesting' },
+                { id: 'multisig', icon: '🔐', label: 'Multisig', action: 'showMultisig' },
+                { id: 'timelock', icon: '⏰', label: 'Timelock', action: 'showTimelock' },
+                { id: 'dao', icon: '🏛️', label: 'DAO', action: 'showDAO' },
+                { id: 'staking', icon: '⚡', label: 'Staking', action: 'showStaking' },
+                { id: 'marketplace', icon: '🛒', label: 'Marketplace', action: 'showMarketplace' },
+                { id: 'crossChain', icon: '🌉', label: 'Cross-Chain', action: 'showCrossChain' },
+                { id: 'oracle', icon: '🔮', label: 'Oracle', action: 'showOracle' },
+                { id: 'vrf', icon: '🎲', label: 'VRF', action: 'showVRF' },
+                { id: 'upgradeable', icon: '⬆️', label: 'Upgradeable', action: 'showUpgradeable' },
+                { id: 'lending', icon: '🏦', label: 'Lending', action: 'showLending' },
+                { id: 'yieldAggregator', icon: '📈', label: 'Yield Aggregator', action: 'showYieldAggregator' },
+                { id: 'social', icon: '👥', label: 'Social', action: 'showSocial' },
+                { id: 'news', icon: '📰', label: 'News', action: 'showNews' },
+                { id: 'canvas', icon: '🎬', label: 'Canvas', action: 'showCanvas' },
+                { id: 'remotion', icon: '🎥', label: 'Remotion', action: 'showRemotion' },
+                { id: 'gameTheory', icon: '🧠', label: 'Game Theory', action: 'showGameTheory' },
+                { id: 'autoAudit', icon: '👁️', label: 'Auto Audit', action: 'showAutoAudit' },
+                { id: 'security', icon: '🛡️', label: 'Security', action: 'showSecurity' },
+                { id: 'gasOptimizer', icon: '⛽', label: 'Gas Optimizer', action: 'showGasOptimizer' },
+                { id: 'portfolio', icon: '💼', label: 'Portfolio', action: 'showPortfolio' },
+                { id: 'alerts', icon: '🔔', label: 'Alerts', action: 'showAlerts' },
             ],
             
             pickerState: {
@@ -2226,6 +2254,580 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showExamples()">💡 Examples</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showFAQ()">❓ FAQ</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.openApiKeyWizard()">🔑 API Keys</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            // ===== MISSING QUICK ACTION UI METHODS =====
+            showPreview() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👁️ Preview</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Preview your contract before deployment:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Preview my ERC20 token contract')">🪙 Token Preview</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Preview my NFT contract')">🎨 NFT Preview</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Preview my staking contract')">⚡ Staking Preview</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Preview my DAO contract')">🏛️ DAO Preview</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showBuild() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🔨 Build</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">What do you want to build?</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Build an ERC20 token')">🪙 ERC20 Token</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Build an NFT collection')">🎨 NFT Collection</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Build a staking pool')">⚡ Staking Pool</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Build a DAO governance contract')">🏛️ DAO</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Build a multisig wallet')">🔐 Multisig</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Build a timelock contract')">⏰ Timelock</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Build a token vesting contract')">📅 Vesting</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Build an airdrop contract')">🎁 Airdrop</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showTest() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🧪 Test</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Run tests on your contract:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Run security tests on my contract')">🛡️ Security Tests</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Run gas optimization tests')">⛽ Gas Tests</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Run unit tests on my contract')">🧪 Unit Tests</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Run integration tests')">🔗 Integration Tests</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showDeploy() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🚀 Deploy</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Deploy your contract to blockchain:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Deploy my token to Base Sepolia')">🧪 Sepolia Test</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Deploy my token to Base Mainnet')">🚀 Mainnet Deploy</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Verify my contract on BaseScan')">🔍 Verify Contract</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Estimate gas for deployment')">⛽ Gas Estimate</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showTutorial() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">📖 Tutorial</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Learn how to use Agent BLUE:</p>
+                        <div style="display: flex; flex-direction: column; gap: 8px;">
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Show me how to create a token')">🪙 1. Create a Token</button>
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Show me how to create an NFT')">🎨 2. Create an NFT</button>
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Show me how to deploy a contract')">🚀 3. Deploy a Contract</button>
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Show me how to verify on BaseScan')">🔍 4. Verify on BaseScan</button>
+                            <button class="picker-btn" style="justify-content: flex-start;" onclick="app.fillInput('Show me advanced features')">⚡ 5. Advanced Features</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showNFTCollectionGenerator() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🎨 NFT Collection Generator</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Create generative NFT collections with AI:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Generate a 1000 piece NFT collection of space aliens')">👽 Space Aliens</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Generate a 500 piece NFT collection of cute cats')">🐱 Cute Cats</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Generate a 10000 piece NFT collection of pixel punks')">👾 Pixel Punks</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Generate a 5000 piece NFT collection of abstract art')">🎨 Abstract Art</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            aiAssist() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🤖 AI Assist</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Get AI help with your project:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Help me design my tokenomics')">📊 Tokenomics</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Help me write a whitepaper')">📄 Whitepaper</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Help me create a marketing plan')">📢 Marketing</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Help me with legal compliance')">⚖️ Legal</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            fundWallet() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">💰 Fund Wallet</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Get test ETH for Base Sepolia:</p>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="window.open('https://www.alchemy.com/faucets/base-sepolia', '_blank')">🚰 Alchemy Faucet</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="window.open('https://faucet.quicknode.com/base/sepolia', '_blank')">🚰 QuickNode Faucet</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="window.open('https://basefaucet.com/', '_blank')">🚰 Base Faucet</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            tradeTokens() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">💱 Trade Tokens</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Trade on Base DEXs:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="window.open('https://app.uniswap.org/#/swap?chain=base', '_blank')">🦄 Uniswap</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="window.open('https://aerodrome.finance/', '_blank')">🛩️ Aerodrome</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="window.open('https://baseSwap.xyz/', '_blank')">🔄 BaseSwap</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="window.open('https://app.1inch.io/#/1/simple/swap/ETH/USDC', '_blank')">🥢 1inch</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showDeFi() {
+                this.addMessage('system', `
+                    <div style="max-width: 600px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🌾 DeFi</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">DeFi protocols on Base:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Show me yield farming opportunities on Base')">🌾 Yield Farming</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Show me liquidity pools on Base')">💧 Liquidity Pools</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Show me lending protocols on Base')">🏦 Lending</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Show me staking options on Base')">⚡ Staking</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showSettingsModal() {
+                this.showModalContent('⚙️ Settings', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">⚙️ Settings</h3>
+                        <div style="display: flex; flex-direction: column; gap: 16px;">
+                            <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                                <h4 style="margin-bottom: 8px;">🎨 Theme</h4>
+                                <button class="picker-btn" onclick="app.toggleTheme()" style="width: 100%;">Toggle Dark/Light Mode</button>
+                            </div>
+                            <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                                <h4 style="margin-bottom: 8px;">🗑️ Data</h4>
+                                <button class="picker-btn" onclick="app.clearAllData()" style="width: 100%;">Clear All Data</button>
+                            </div>
+                            <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                                <h4 style="margin-bottom: 8px;">📋 Export</h4>
+                                <button class="picker-btn" onclick="app.exportProjects()" style="width: 100%;">Export Projects</button>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            },
+
+            clearAllData() {
+                if (!confirm('⚠️ WARNING: This will delete ALL projects, chats, and settings. This cannot be undone. Continue?')) return;
+                localStorage.removeItem('agentblue-projects');
+                localStorage.removeItem('agentblue-picker');
+                localStorage.removeItem('agentblue-theme');
+                localStorage.removeItem('agentblue-api-keys');
+                this.projects = [];
+                this.currentProject = null;
+                this.renderProjects();
+                this.addMessage('system', '🗑️ All data cleared. Refresh the page to start fresh.');
+            },
+
+            exportProjects() {
+                const data = {
+                    projects: this.projects,
+                    exportedAt: new Date().toISOString()
+                };
+                const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = `agentblue-backup-${new Date().toISOString().split('T')[0]}.json`;
+                a.click();
+                URL.revokeObjectURL(url);
+                this.addMessage('system', '📤 Projects exported!');
+            },
+
+            // ===== ADDITIONAL QUICK ACTION UI METHODS =====
+            showSubscriptions() {
+                this.showModalContent('📅 Subscriptions', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">📅 Subscription Manager</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Create recurring payment subscriptions:</p>
+                        <div style="display: flex; flex-direction: column; gap: 12px;">
+                            <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                                <h4 style="margin-bottom: 8px;">📅 Monthly Plan</h4>
+                                <input type="text" id="sub-name" placeholder="Pro Plan" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                                <input type="number" id="sub-price" value="10" placeholder="Price in USDC" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                                <button class="picker-btn" onclick="app.createSubscription()" style="width: 100%;">Create Subscription</button>
+                            </div>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showTokenGate() {
+                this.showModalContent('🚪 Token Gate', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🚪 Token Gate</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Require token ownership to access content:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="text" id="gate-token" placeholder="Token Contract Address (0x...)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="number" id="gate-balance" value="1" placeholder="Minimum balance required" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.createTokenGate()" style="width: 100%;">Create Token Gate</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showPaywall() {
+                this.showModalContent('🔒 Paywall', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🔒 Paywall</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Charge for access to content:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="number" id="paywall-price" value="0.01" step="0.001" placeholder="Price in ETH" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="text" id="paywall-content" placeholder="Content ID (e.g., article-123)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.createPaywall()" style="width: 100%;">Create Paywall</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showAirdrop() {
+                this.showModalContent('🎁 Airdrop', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🎁 Airdrop</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Distribute tokens to multiple addresses:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <textarea id="airdrop-addresses" placeholder="Enter addresses (one per line)..." rows="5" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;"></textarea>
+                            <input type="number" id="airdrop-amount" value="100" placeholder="Amount per address" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create an airdrop contract for the addresses I provided')" style="width: 100%;">Create Airdrop Contract</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showVesting() {
+                this.showModalContent('⏳ Vesting', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">⏳ Token Vesting</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Lock tokens with time-based release:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="text" id="vesting-beneficiary" placeholder="Beneficiary Address (0x...)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="number" id="vesting-amount" value="1000000" placeholder="Total Amount" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="number" id="vesting-duration" value="365" placeholder="Duration (days)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a token vesting contract with the parameters I provided')" style="width: 100%;">Create Vesting Contract</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showMultisig() {
+                this.showModalContent('🔐 Multisig', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🔐 Multisig Wallet</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Require multiple signatures for transactions:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="text" id="multisig-owners" placeholder="Owner addresses (comma separated)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="number" id="multisig-required" value="2" placeholder="Required signatures" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a multisig wallet with the owners and threshold I specified')" style="width: 100%;">Create Multisig</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showTimelock() {
+                this.showModalContent('⏰ Timelock', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">⏰ Timelock</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Delay execution of admin functions:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="number" id="timelock-delay" value="172800" placeholder="Delay in seconds (default: 48 hours)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a timelock contract with the delay I specified')" style="width: 100%;">Create Timelock</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showDAO() {
+                this.showModalContent('🏛️ DAO', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🏛️ DAO Governance</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Create a decentralized organization:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="text" id="dao-name" placeholder="DAO Name" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="text" id="dao-token" placeholder="Governance Token Address (0x...)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a DAO governance contract with the name and token I specified')" style="width: 100%;">Create DAO</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showStaking() {
+                this.showModalContent('⚡ Staking', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">⚡ Staking Pool</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Create a staking rewards pool:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="text" id="staking-token" placeholder="Staking Token Address (0x...)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="text" id="reward-token" placeholder="Reward Token Address (0x...)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="number" id="reward-rate" value="100" placeholder="Reward rate per day" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a staking pool with the tokens and rate I specified')" style="width: 100%;">Create Staking Pool</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showMarketplace() {
+                this.showModalContent('🛒 Marketplace', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🛒 NFT Marketplace</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Create an NFT marketplace:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="number" id="marketplace-fee" value="2.5" step="0.1" placeholder="Platform fee %" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="text" id="marketplace-fee-recipient" placeholder="Fee Recipient Address (0x...)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create an NFT marketplace with the fee and recipient I specified')" style="width: 100%;">Create Marketplace</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showCrossChain() {
+                this.showModalContent('🌉 Cross-Chain', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🌉 Cross-Chain Bridge</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Bridge assets between chains:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <p style="color: var(--text-secondary); font-size: 14px; margin-bottom: 12px;">Cross-chain functionality requires LayerZero or Wormhole integration.</p>
+                            <button class="picker-btn" onclick="app.fillInput('Create a cross-chain bridge contract using LayerZero')" style="width: 100%;">LayerZero Bridge</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showOracle() {
+                this.showModalContent('🔮 Oracle', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🔮 Price Oracle</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Get price data on-chain:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a Chainlink price feed integration')" style="width: 100%; margin-bottom: 8px;">Chainlink Price Feed</button>
+                            <button class="picker-btn" onclick="app.fillInput('Create a custom oracle contract')" style="width: 100%;">Custom Oracle</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showVRF() {
+                this.showModalContent('🎲 VRF', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🎲 Verifiable Randomness</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Generate verifiable random numbers:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a Chainlink VRF integration for randomness')" style="width: 100%; margin-bottom: 8px;">Chainlink VRF</button>
+                            <button class="picker-btn" onclick="app.fillInput('Create a random NFT minting contract with VRF')" style="width: 100%;">Random NFT Mint</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showUpgradeable() {
+                this.showModalContent('⬆️ Upgradeable', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">⬆️ Upgradeable Contracts</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Use proxy patterns for upgrades:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create an upgradeable ERC20 token using UUPS proxy')" style="width: 100%; margin-bottom: 8px;">UUPS Proxy</button>
+                            <button class="picker-btn" onclick="app.fillInput('Create an upgradeable contract using Transparent Proxy')" style="width: 100%;">Transparent Proxy</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showLending() {
+                this.showModalContent('🏦 Lending', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🏦 Lending Protocol</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Create a lending/borrowing platform:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="text" id="lending-token" placeholder="Lending Token Address (0x...)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="number" id="lending-interest" value="5" placeholder="Interest rate %" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a lending protocol with the token and rate I specified')" style="width: 100%;">Create Lending Protocol</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showYieldAggregator() {
+                this.showModalContent('📈 Yield Aggregator', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">📈 Yield Aggregator</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Optimize yield across protocols:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a yield aggregator that finds the best returns across DeFi protocols')" style="width: 100%;">Create Yield Aggregator</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showSocial() {
+                this.showModalContent('👥 Social', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👥 Social Integration</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Connect with social platforms:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Create a Twitter bot for my project')">🐦 Twitter Bot</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Create a Discord webhook integration')">💬 Discord</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Create a Telegram bot for my project')">📱 Telegram</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Create a social media content scheduler')">📅 Scheduler</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showNews() {
+                this.showModalContent('📰 News', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">📰 News Summarizer</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Get AI-summarized crypto news:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Show me the latest crypto news summary')" style="width: 100%; margin-bottom: 8px;">Latest News</button>
+                            <button class="picker-btn" onclick="app.fillInput('Show me Base ecosystem news')" style="width: 100%; margin-bottom: 8px;">Base Ecosystem</button>
+                            <button class="picker-btn" onclick="app.fillInput('Show me DeFi yield farming opportunities')" style="width: 100%;">DeFi Opportunities</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showCanvas() {
+                this.showModalContent('🎬 Canvas', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🎬 Canvas Studio</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Generate images and videos with AI:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Generate an image of a futuristic city on Base')">🏙️ Image Gen</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Generate a video intro for my NFT project')">🎥 Video Gen</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Create a logo for my crypto project')">🎨 Logo Design</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Generate social media banners')">📱 Banners</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showRemotion() {
+                this.showModalContent('🎥 Remotion', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🎥 Remotion Video</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Create programmatic videos:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Create a Remotion video template for my NFT collection')" style="width: 100%; margin-bottom: 8px;">NFT Promo Video</button>
+                            <button class="picker-btn" onclick="app.fillInput('Create a Remotion video for my token launch')" style="width: 100%; margin-bottom: 8px;">Token Launch Video</button>
+                            <button class="picker-btn" onclick="app.fillInput('Create a Remotion explainer video for my DeFi protocol')" style="width: 100%;">DeFi Explainer</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showGameTheory() {
+                this.showModalContent('🧠 Game Theory', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🧠 Game Theory</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Analyze strategic interactions:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Analyze the game theory of my tokenomics design')" style="width: 100%; margin-bottom: 8px;">Tokenomics Analysis</button>
+                            <button class="picker-btn" onclick="app.fillInput('Analyze the incentive structure of my DeFi protocol')" style="width: 100%; margin-bottom: 8px;">Incentive Analysis</button>
+                            <button class="picker-btn" onclick="app.fillInput('Model the Nash equilibrium for my staking mechanism')" style="width: 100%;">Nash Equilibrium</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showAutoAudit() {
+                this.showModalContent('👁️ Auto Audit', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">👁️ Auto Code Audit</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">AI-powered code review:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Audit my smart contract for security vulnerabilities')" style="width: 100%; margin-bottom: 8px;">Security Audit</button>
+                            <button class="picker-btn" onclick="app.fillInput('Audit my contract for gas optimization')" style="width: 100%; margin-bottom: 8px;">Gas Optimization</button>
+                            <button class="picker-btn" onclick="app.fillInput('Audit my contract for best practices')" style="width: 100%;">Best Practices</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showSecurity() {
+                this.showModalContent('🛡️ Security', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🛡️ Security Tools</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Security analysis and monitoring:</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Run a security scan on my contract')">🔍 Security Scan</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Check my contract for reentrancy vulnerabilities')">🔄 Reentrancy Check</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Check my contract for access control issues')">🔐 Access Control</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.fillInput('Generate a security report for my contract')">📄 Security Report</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showGasOptimizer() {
+                this.showModalContent('⛽ Gas Optimizer', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">⛽ Gas Optimizer</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Optimize gas usage:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <button class="picker-btn" onclick="app.fillInput('Optimize my contract for gas efficiency')" style="width: 100%; margin-bottom: 8px;">Gas Optimization</button>
+                            <button class="picker-btn" onclick="app.fillInput('Show me gas optimization techniques for my contract')" style="width: 100%; margin-bottom: 8px;">Optimization Tips</button>
+                            <button class="picker-btn" onclick="app.fillInput('Estimate gas costs for my contract deployment')" style="width: 100%;">Gas Estimation</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showPortfolio() {
+                this.showModalContent('💼 Portfolio', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">💼 Portfolio Tracker</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Track your crypto assets:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="text" id="portfolio-address" placeholder="Wallet Address (0x...)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <button class="picker-btn" onclick="app.fillInput('Show me the portfolio for the address I provided')" style="width: 100%; margin-bottom: 8px;">View Portfolio</button>
+                            <button class="picker-btn" onclick="app.fillInput('Track my NFT portfolio')" style="width: 100%;">NFT Portfolio</button>
+                        </div>
+                    </div>
+                `);
+            },
+
+            showAlerts() {
+                this.showModalContent('🔔 Alerts', `
+                    <div style="padding: 24px;">
+                        <h3 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🔔 Price Alerts</h3>
+                        <p style="color: var(--text-secondary); margin-bottom: 16px;">Set up notifications:</p>
+                        <div style="border: 2px solid var(--sketch-color); border-radius: 12px; padding: 16px;">
+                            <input type="text" id="alert-token" placeholder="Token Symbol (e.g., ETH)" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <input type="number" id="alert-price" placeholder="Target Price" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                            <select id="alert-condition" style="width: 100%; padding: 10px; border: 2px solid var(--sketch-color); border-radius: 8px; background: var(--bg-paper); font-family: 'Inter', sans-serif; margin-bottom: 8px;">
+                                <option value="above">Above</option>
+                                <option value="below">Below</option>
+                            </select>
+                            <button class="picker-btn" onclick="app.fillInput('Create a price alert for the token and price I specified')" style="width: 100%;">Create Alert</button>
                         </div>
                     </div>
                 `);
