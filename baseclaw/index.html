@@ -1438,10 +1438,10 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             ],
             
             pickerState: {
-                skills: true, wallet: true, templates: true, preview: true,
-                ai: true, build: true, test: true, deploy: true, chain: true, settings: true,
-                secrets: true, trading: true, defi: true, nft: true, vercel: true,
-                tutorial: true, wizard: true, demo: true, examples: true, faq: true,
+                preview: true, build: true, test: true, deploy: true,
+                nft: true, tutorial: true, keys: true, wizard: true,
+                examples: true, faq: true, demo: true, ai: true,
+                fund: true, trade: true, defi: true, settings: true,
                 help: true, payments: true, subscriptions: true, tokenGate: true,
                 paywall: true, airdrop: true, vesting: true, multisig: true,
                 timelock: true, dao: true, staking: true, marketplace: true,
@@ -1928,22 +1928,15 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             // Quick Actions
             renderQuickActions() {
                 const container = document.getElementById('quick-actions-list');
-                const actions = [
-                    { name: 'wallet', icon: '💼', label: 'Wallet', handler: 'showWalletModal' },
-                    { name: 'templates', icon: '📄', label: 'Templates', handler: 'showTemplateModal' },
-                    { name: 'ai', icon: '🤖', label: 'AI Assist', handler: 'aiAssist' },
-                    { name: 'build', icon: '🔨', label: 'Build', handler: 'showBuild' },
-                    { name: 'test', icon: '🧪', label: 'Test', handler: 'showTest' },
-                    { name: 'deploy', icon: '🚀', label: 'Deploy', handler: 'showDeploy' },
-                    { name: 'chain', icon: '⛓️', label: 'Switch Chain', handler: 'showChainModal' },
-                    { name: 'settings', icon: '⚙️', label: 'Settings', handler: 'showSettingsModal' },
-                    { name: 'defi', icon: '🌾', label: 'DeFi', handler: 'showDeFi' },
-                ];
+                if (!container) return;
                 
-                container.innerHTML = actions.filter(a => this.pickerState[a.name]).map(a => `
-                    <div class="project-item" onclick="app.${a.handler}()">
+                // Use the quickActions array defined in the app object
+                const actions = this.quickActions || [];
+                
+                container.innerHTML = actions.filter(a => this.pickerState[a.id]).map(a => `
+                    <div class="project-item" onclick="app.${a.action}()" style="cursor: pointer; margin-bottom: 6px;">
                         <div class="project-icon">${a.icon}</div>
-                        <div>
+                        <div style="flex: 1; min-width: 0;">
                             <div class="project-name">${a.label}</div>
                         </div>
                     </div>
@@ -1955,19 +1948,25 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 const existing = document.getElementById('modal-dynamic');
                 if (existing) existing.remove();
                 
-                const actions = [
-                    { name: 'wallet', icon: '💼', label: 'Wallet' },
-                    { name: 'templates', icon: '📄', label: 'Templates' },
-                    { name: 'ai', icon: '🤖', label: 'AI Assist' },
-                    { name: 'build', icon: '🔨', label: 'Build' },
-                    { name: 'test', icon: '🧪', label: 'Test' },
-                    { name: 'deploy', icon: '🚀', label: 'Deploy' },
-                    { name: 'chain', icon: '⛓️', label: 'Switch Chain' },
-                    { name: 'settings', icon: '⚙️', label: 'Settings' },
-                    { name: 'defi', icon: '🌾', label: 'DeFi' },
-                ];
+                // Use the quickActions array
+                const actions = this.quickActions || [];
                 
-                const content = actions.map(a => `
+                const modalContent = actions.map(a => `
+                    <div class="project-item" style="margin-bottom: 8px; cursor: pointer;" onclick="app.togglePickerFromModal('${a.id}')">
+                        <div class="project-icon">${a.icon}</div>
+                        <div style="flex: 1">
+                            <div class="project-name">${a.label}</div>
+                        </div>
+                        <div style="font-size: 18px; color: ${this.pickerState[a.id] ? 'var(--base-green)' : 'var(--text-muted)'};">
+                            ${this.pickerState[a.id] ? '✓' : '○'}
+                        </div>
+                    </div>
+                `).join('');
+                
+                this.showModalContent('Quick Actions Picker', modalContent);
+            },
+                
+                const modalContent = actions.map(a => `
                     <div class="project-item" style="margin-bottom: 8px; cursor: pointer;" onclick="app.togglePickerFromModal('${a.name}')">
                         <div class="project-icon">${a.icon}</div>
                         <div style="flex: 1">
@@ -1979,7 +1978,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                     </div>
                 `).join('');
                 
-                this.showModalContent('Quick Actions Picker', content);
+                this.showModalContent('Quick Actions Picker', modalContent);
             },
 
             togglePickerFromModal(name) {
