@@ -8,7 +8,7 @@
     <script src="engine.js"></script>
     <script src="deployer-bridge.js"></script>
     <script src="onboarding.js"></script>
-    <script src="extensions.js"></script>
+    <script src="api-key-wizard.js"></script>
     <script src="nft-generator.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&family=Inter:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
@@ -199,7 +199,7 @@
             color: var(--bg-paper);
         }
 
-        .app { display: grid; grid-template-columns: 260px 1fr 300px; height: 100vh; gap: 12px; padding: 12px; overflow: hidden; }
+        .app { display: grid; grid-template-columns: 280px 1fr 340px; height: 100vh; gap: 16px; padding: 16px; }
 
         /* Right panel / Wallet panel */
         .app > div:last-child {
@@ -220,14 +220,12 @@
         .sidebar {
             background: var(--bg-paper);
             display: flex; flex-direction: column;
-            padding: 16px;
+            padding: 20px;
             position: relative;
             overflow-y: auto;
-            overflow-x: hidden;
             border: 3px solid var(--sketch-color);
             border-radius: var(--radius-sharp);
             box-shadow: var(--shadow-hard);
-            min-width: 0;
         }
 
         .logo { 
@@ -428,13 +426,11 @@
             display: flex; flex-direction: column;
             background: var(--bg-paper);
             position: relative;
-            padding: 16px;
+            padding: 20px;
             overflow-y: auto;
-            overflow-x: hidden;
             border: 3px solid var(--sketch-color);
             border-radius: var(--radius-sharp);
             box-shadow: var(--shadow-hard);
-            min-width: 0;
         }
 
         .chat-header {
@@ -504,7 +500,7 @@
         .network-dot.mainnet { background: var(--base-green); }
 
         .chain-display {
-            padding: 2px 6px;
+            padding: 6px 12px;
             border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
             border: 2px solid var(--sketch-color);
             background: var(--bg-secondary);
@@ -515,8 +511,7 @@
             transition: all 0.2s;
             display: flex;
             align-items: center;
-            justify-content: center;
-            min-width: 28px;
+            gap: 6px;
         }
         
         .chain-display:hover {
@@ -580,41 +575,13 @@
         }
         
         .input-wrapper {
-            display: flex; gap: 8px;
+            display: flex; gap: 12px;
             background: var(--bg-secondary);
             border: 3px solid var(--sketch-color);
             border-radius: 12px;
             padding: 8px;
             box-shadow: var(--shadow-hard-sm);
             transition: box-shadow 0.2s ease;
-            align-items: center;
-        }
-        
-        .new-chat-btn {
-            padding: 8px 12px;
-            background: var(--base-blue);
-            color: white;
-            border: 3px solid var(--sketch-color);
-            border-radius: 8px;
-            font-family: 'Space Mono', monospace;
-            font-size: 11px; font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            cursor: pointer;
-            box-shadow: 2px 2px 0 var(--sketch-color);
-            transition: transform 0.08s ease, box-shadow 0.08s ease;
-            flex-shrink: 0;
-            white-space: nowrap;
-        }
-        
-        .new-chat-btn:hover {
-            transform: translate(-1px, -1px);
-            box-shadow: 3px 3px 0 var(--sketch-color);
-            background: var(--base-cyan);
-        }
-        .new-chat-btn:active {
-            transform: translate(1px, 1px);
-            box-shadow: 1px 1px 0 var(--sketch-color);
         }
         
         .input-wrapper:focus-within {
@@ -679,37 +646,33 @@
             box-shadow: 3px 3px 0 var(--sketch-color);
         }
 
-        /* Right panel / Context panel */
+        /* Right Panel */
         .context-panel {
             background: var(--bg-paper);
             display: flex; flex-direction: column;
-            padding: 16px;
+            padding: 20px;
             position: relative;
             overflow-y: auto;
-            overflow-x: hidden;
             border: 3px solid var(--sketch-color);
             border-radius: var(--radius-sharp);
             box-shadow: var(--shadow-hard);
-            min-width: 0;
         }
 
-        .panel-tabs { display: flex; gap: 4px; margin-bottom: 12px; flex-wrap: nowrap; overflow-x: auto; }
+        .panel-tabs { display: flex; gap: 8px; margin-bottom: 20px; }
         
         .panel-tab {
-            flex: 1 0 auto; padding: 8px 6px;
+            flex: 1; padding: 10px;
             text-align: center;
             font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 11px; font-weight: 700;
+            font-size: 13px; font-weight: 700;
             color: var(--text-muted);
             cursor: pointer;
-            border: 2px solid transparent;
-            border-radius: 8px;
+            border: 3px solid transparent;
+            border-radius: 10px;
             transition: all 0.2s;
             text-transform: uppercase;
-            letter-spacing: 0.02em;
+            letter-spacing: 0.06em;
             box-shadow: 2px 2px 0 transparent;
-            min-width: 0;
-            white-space: nowrap;
         }
         
         .panel-tab:hover { 
@@ -734,12 +697,10 @@
         }
         
         .context-label {
-            font-family: 'Bricolage Grotesque', sans-serif;
-            font-size: 12px; font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 14px; font-weight: 700;
             color: var(--text-muted);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         
         .context-value {
@@ -750,9 +711,8 @@
             background: var(--bg-secondary);
             border: 3px solid var(--sketch-color);
             border-radius: 12px;
-            padding: 12px; margin-bottom: 12px;
+            padding: 16px; margin-bottom: 16px;
             box-shadow: var(--shadow-hard-sm);
-            overflow: hidden;
         }
         
         .wallet-header {
@@ -773,16 +733,13 @@
         .wallet-name { font-weight: 700; font-size: 14px; }
         
         .wallet-address {
-            font-family: 'Space Mono', monospace; font-size: 13px;
-            font-weight: 700;
-            color: var(--text-primary);
+            font-family: monospace; font-size: 11px;
+            color: var(--text-muted);
             word-break: break-all;
             background: var(--bg-primary);
-            padding: 8px 12px;
+            padding: 6px 10px;
             border-radius: 8px;
-            border: 2px solid var(--sketch-color);
-            box-shadow: 2px 2px 0 var(--sketch-color);
-            letter-spacing: 0.02em;
+            border: 1px solid var(--border-color);
         }
 
         .add-wallet-btn {
@@ -947,9 +904,8 @@
                 </div>
                 <div style="display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;">
                     <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.showTutorial()">📖 Tutorial</button>
-                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.openWizard()">🎯 Wizard</button>
-                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="app.toggleDemoMode()">🔒 Demo</button>
-                </div>
+                    <button class="picker-btn" style="font-size: 12px; padding: 6px 10px;" onclick="ApiKeyWizard.open()">🔑 Keys</button>
+                                    </div>
             </div>
             
             <!-- Landing Page Link -->
@@ -1024,16 +980,19 @@
                     </div>
                 </div>
                 <div style="display: flex; gap: 8px; align-items: center;">
+                    <button class="chain-display" onclick="app.newChat()" id="new-chat-btn" title="Start new chat" style="display: none;">
+                        + Chat
+                    </button>
                     <button class="chain-display" onclick="app.showPreview()" id="preview-btn" title="Preview project">
-                        👁️
+                        👁️ Preview
                     </button>
                     <button class="chain-display" onclick="app.togglePlanningMode()" id="planning-toggle" title="Planning Mode">
-                        📝
+                        📝 Plan
                     </button>
                     <button class="chain-display" onclick="app.toggleThinkingMode()" id="thinking-toggle" title="Toggle Thinking/Instant">
-                        🧠
+                        🧠 Think
                     </button>
-                    <button class="chain-display" onclick="app.showChainModal()" id="chain-display" style="display: none;">
+                    <button class="chain-display" onclick="app.showChainModal()" id="chain-display">
                         <span class="network-dot sepolia"></span> Sepolia
                     </button>
                     <div class="network-switcher">
@@ -1092,7 +1051,6 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
             
             <div class="input-area">
                 <div class="input-wrapper">
-                    <button class="new-chat-btn" onclick="app.startNewChat()" title="Start new chat in current project">+ New</button>
                     <button class="attach-btn" onclick="app.attachFile()" title="Attach file">📎</button>
                     <textarea class="chat-input" id="chat-input" placeholder="Ask Agent BLUE anything..." rows="1"></textarea>
                     <button class="send-btn" onclick="app.sendMessage()">➤</button>
@@ -1397,28 +1355,21 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 { id: 'deploy', icon: '🚀', label: 'Deploy', action: 'showDeploy' },
                 { id: 'nft', icon: '🎨', label: 'NFT', action: 'showNFTCollectionGenerator' },
                 { id: 'tutorial', icon: '📖', label: 'Tutorial', action: 'showTutorial' },
-                { id: 'wizard', icon: '🎯', label: 'Wizard', action: 'openWizard' },
+                { id: 'keys', icon: '🔑', label: 'API Keys', action: 'openApiKeyWizard' },
                 { id: 'examples', icon: '💡', label: 'Examples', action: 'showExamples' },
                 { id: 'faq', icon: '❓', label: 'FAQ', action: 'showFAQ' },
-                { id: 'demo', icon: '🔒', label: 'Demo', action: 'toggleDemoMode' },
                 { id: 'ai', icon: '🤖', label: 'AI Assist', action: 'aiAssist' },
                 { id: 'fund', icon: '💰', label: 'Fund', action: 'fundWallet' },
                 { id: 'trade', icon: '💱', label: 'Trade', action: 'tradeTokens' },
                 { id: 'defi', icon: '🌾', label: 'DeFi', action: 'showDeFi' },
-                { id: 'nft', icon: '🎨', label: 'NFT', action: 'showNFTCollectionGenerator' },
                 { id: 'settings', icon: '⚙️', label: 'Settings', action: 'showSettingsModal' },
-                { id: 'tutorial', icon: '📖', label: 'Tutorial', action: 'showTutorial' },
-                { id: 'wizard', icon: '🎯', label: 'Wizard', action: 'openWizard' },
-                { id: 'demo', icon: '🔒', label: 'Demo', action: 'toggleDemoMode' },
-                { id: 'examples', icon: '💡', label: 'Examples', action: 'showExamples' },
-                { id: 'faq', icon: '❓', label: 'FAQ', action: 'showFAQ' }
             ],
             
             pickerState: {
                 skills: true, wallet: true, templates: true, preview: true,
                 ai: true, build: true, test: true, deploy: true, chain: true, settings: true,
                 secrets: true, trading: true, defi: true, nft: true, vercel: true,
-                tutorial: true, wizard: true, demo: true, examples: true, faq: true,
+                tutorial: true, wizard: true, examples: true, faq: true,
                 help: true, payments: true, subscriptions: true, tokenGate: true,
                 paywall: true, airdrop: true, vesting: true, multisig: true,
                 timelock: true, dao: true, staking: true, marketplace: true,
@@ -1433,7 +1384,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 skills: true, wallet: true, templates: true, preview: true,
                 ai: true, build: true, test: true, deploy: true, chain: true, settings: true,
                 secrets: true, trading: true, defi: true, nft: true, vercel: true,
-                tutorial: true, wizard: true, demo: true, examples: true, faq: true,
+                tutorial: true, wizard: true, examples: true, faq: true,
                 help: true, payments: true, subscriptions: true, tokenGate: true,
                 paywall: true, airdrop: true, vesting: true, multisig: true,
                 timelock: true, dao: true, staking: true, marketplace: true,
@@ -1625,39 +1576,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 document.getElementById('panel-wallet').innerHTML = '<div class="empty-state">No wallet connected</div>';
             },
 
-            startNewChat() {
-                if (!this.currentProject) {
-                    alert('Select a project first');
-                    return;
-                }
-                
-                // Clear current chat messages
-                this.chatHistory = [];
-                const chatContainer = document.getElementById('chat-messages');
-                if (chatContainer) {
-                    chatContainer.innerHTML = '';
-                }
-                
-                // Add welcome message
-                this.addMessage('system', `
-                    <div style="padding: 16px; background: var(--bg-secondary); border-radius: 12px; border: 2px solid var(--border-color);">
-                        <div style="font-family: 'Bricolage Grotesque', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 8px; color: var(--base-blue);">
-                            🚀 New Chat Started
-                        </div>
-                        <div style="font-size: 14px; color: var(--text-secondary);">
-                            Project: <strong>${this.currentProject.name}</strong><br>
-                            Chain: <strong>${this.currentProject.chain}</strong><br>
-                            Type your message to begin...
-                        </div>
-                    </div>
-                `);
-                
-                // Update title
-                document.getElementById('chat-title').textContent = this.currentProject.name;
-                
-                // Save to localStorage
-                this.saveProjects();
-            },
+            newChat() {
                 if (!this.currentProject) return;
                 
                 // Clear messages and show welcome for new chat
@@ -2140,6 +2059,10 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 `);
             },
 
+            openApiKeyWizard() {
+                ApiKeyWizard.open();
+            },
+
             openWizard() {
                 this.addMessage('system', `
                     <div style="max-width: 600px;">
@@ -2166,8 +2089,6 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                 document.getElementById('chat-input').placeholder = 'Type your answer here...';
                 document.getElementById('chat-input').focus();
             },
-
-            toggleDemoMode() {
                 const isDemo = !localStorage.getItem('agentblue-demo');
                 if (isDemo) {
                     localStorage.setItem('agentblue-demo', 'true');
@@ -2224,7 +2145,7 @@ The AI will follow this plan step by step." style="width: 100%; min-height: 120p
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showTutorial()">📖 Start Tutorial</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showExamples()">💡 Examples</button>
                             <button class="picker-btn" style="justify-content: center;" onclick="app.showFAQ()">❓ FAQ</button>
-                            <button class="picker-btn" style="justify-content: center;" onclick="app.openWizard()">🎯 Wizard</button>
+                            <button class="picker-btn" style="justify-content: center;" onclick="app.openApiKeyWizard()">🔑 API Keys</button>
                         </div>
                     </div>
                 `);
@@ -3551,10 +3472,6 @@ ${codePreview}
                 this.showModalContent('Project Wizard', content);
             },
 
-            toggleDemoMode() {
-                this.demoMode = !this.demoMode;
-                this.addMessage('system', this.demoMode ? '🔒 Demo Mode ON — No real transactions will be made' : '🔓 Demo Mode OFF — Real transactions enabled');
-            },
 
             showExamples() {
                 const examples = [
@@ -3621,8 +3538,7 @@ ${codePreview}
                             <button class="picker-btn" onclick="app.openWizard()" style="text-align: left; padding: 16px;">🎯 Project Wizard</button>
                             <button class="picker-btn" onclick="app.showExamples()" style="text-align: left; padding: 16px;">💡 Example Prompts</button>
                             <button class="picker-btn" onclick="app.showFAQ()" style="text-align: left; padding: 16px;">❓ FAQ</button>
-                            <button class="picker-btn" onclick="app.toggleDemoMode()" style="text-align: left; padding: 16px;">🔒 Toggle Demo Mode</button>
-                            <div style="border-top: 2px solid var(--sketch-color); margin-top: 12px; padding-top: 12px;">
+                                                        <div style="border-top: 2px solid var(--sketch-color); margin-top: 12px; padding-top: 12px;">
                                 <p style="color: var(--text-muted); font-size: 14px;">Need more help? Contact us on Discord or GitHub.</p>
                             </div>
                         </div>
@@ -3748,46 +3664,6 @@ ${codePreview}
                 `);
             },
 
-            // Wizard
-            openWizard() {
-                this.addMessage('system', `
-                    <div style="max-width: 600px;">
-                        <h2 style="font-family: 'Patrick Hand', cursive; color: var(--base-blue); margin-bottom: 16px;">🎯 Template Wizard</h2>
-                        <p>Choose what you want to build:</p>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0;">
-                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('token')">🪙 Token</button>
-                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('nft')">🎨 NFT</button>
-                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('staking')">⚡ Staking</button>
-                            <button class="picker-btn" style="justify-content: center;" onclick="app.runWizard('dao')">🏛️ DAO</button>
-                        </div>
-                    </div>
-                `);
-            },
-
-            runWizard(type) {
-                const prompts = {
-                    token: 'What should I name your token? (e.g., "MoonCoin" with symbol "MOON")',
-                    nft: 'What should I name your NFT collection? (e.g., "Space Explorers")',
-                    staking: 'What token should users stake? (paste the contract address)',
-                    dao: 'What should I name your DAO? (e.g., "MoonCoin Governance")'
-                };
-                this.addMessage('system', `🎯 Wizard: ${prompts[type]}`);
-                document.getElementById('chat-input').placeholder = 'Type your answer here...';
-                document.getElementById('chat-input').focus();
-            },
-
-            // Demo Mode
-            toggleDemoMode() {
-                const isDemo = !localStorage.getItem('agentblue-demo');
-                if (isDemo) {
-                    localStorage.setItem('agentblue-demo', 'true');
-                    this.addMessage('system', '🔒 Demo Mode activated! All transactions are simulated.');
-                } else {
-                    localStorage.removeItem('agentblue-demo');
-                    this.addMessage('system', '🔓 Demo Mode deactivated. Real transactions will require wallet confirmation.');
-                }
-            },
-
             // Examples
             showExamples() {
                 this.addMessage('system', `
@@ -3845,6 +3721,52 @@ ${codePreview}
         };
 
         app.init();
+
+// ===== BASECLAW REAL ENGINE INTEGRATION =====
+app.connectWallet = async function() {
+    try {
+        const result = await AgentBlueEngine.connectWallet();
+        this.walletAddress = result.address;
+        this.walletConnected = true;
+        this.addMessage('system', '✅ Wallet connected: ' + result.address + ' on ' + result.chain);
+        this.renderWallet();
+        return result;
+    } catch (err) {
+        this.addMessage('system', '❌ Wallet connection failed: ' + err.message);
+        throw err;
+    }
+};
+
+app.generateToken = async function(name, symbol, supply) {
+    try {
+        if (!AgentBlueEngine.connected) {
+            this.addMessage('system', '⚠️ Connect wallet first!');
+            return;
+        }
+        this.addMessage('system', '🤖 Generating token contract via LLM...');
+        const code = await AgentBlueEngine.generateTokenContract(name, symbol, supply);
+        this.addMessage('system', '✅ Contract generated!\n\nSave this code to a .sol file and compile with Foundry to deploy.');
+        return code;
+    } catch (err) {
+        this.addMessage('system', '❌ Error: ' + err.message);
+    }
+};
+
+app.getWalletBalance = async function() {
+    try {
+        if (!AgentBlueEngine.connected) {
+            this.addMessage('system', '⚠️ Connect wallet first!');
+            return;
+        }
+        const balance = await AgentBlueEngine.getBalance();
+        this.addMessage('system', '💰 Balance: ' + balance + ' ETH');
+        return balance;
+    } catch (err) {
+        this.addMessage('system', '❌ Error: ' + err.message);
+    }
+};
+
+console.log('🔧 Agent BLUE Real Engine loaded');
     </script>
 </body>
 </html>
