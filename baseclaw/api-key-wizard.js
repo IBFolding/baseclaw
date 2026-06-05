@@ -6,10 +6,16 @@
 const ApiKeyWizard = {
   // Skill definitions with metadata
   skillKeys: [
-    // AI Models
-    { id: 'kimi', name: 'Kimi (Moonshot)', category: 'AI Models', icon: '🌙', description: 'Primary LLM for contract generation and chat', url: 'https://platform.moonshot.cn', required: true },
-    { id: 'openai', name: 'OpenAI', category: 'AI Models', icon: '🤖', description: 'GPT-4o for advanced reasoning', url: 'https://platform.openai.com', required: false },
-    { id: 'anthropic', name: 'Anthropic Claude', category: 'AI Models', icon: '🧠', description: 'Claude 3 Opus for complex analysis', url: 'https://console.anthropic.com', required: false },
+    // AI Models - Generic (user can enter any model name)
+    { id: 'kimi', name: 'Kimi K2.6 (Moonshot)', category: 'AI Models', icon: '🌙', description: 'Kimi K2.6 by Moonshot AI - Primary LLM for contract generation', url: 'https://platform.moonshot.cn', required: false },
+    { id: 'openai', name: 'OpenAI GPT-4o', category: 'AI Models', icon: '🤖', description: 'GPT-4o for advanced reasoning and code generation', url: 'https://platform.openai.com', required: false },
+    { id: 'anthropic', name: 'Anthropic Claude 3.5', category: 'AI Models', icon: '🧠', description: 'Claude 3.5 Sonnet for complex analysis', url: 'https://console.anthropic.com', required: false },
+    { id: 'custom_model', name: 'Custom Model', category: 'AI Models', icon: '⚙️', description: 'Any other OpenAI-compatible API (Groq, Together, Ollama, etc.)', url: 'https://example.com', required: false },
+    
+    // Trading
+    { id: 'bankr', name: 'Bankr Trading', category: 'Trading', icon: '🏦', description: 'Bankr API for automated trading and portfolio management', url: 'https://bankr.io', required: false },
+    { id: 'hyperliquid', name: 'Hyperliquid', category: 'Trading', icon: '⚡', description: 'Hyperliquid API for perpetual futures trading', url: 'https://app.hyperliquid.xyz', required: false },
+    { id: 'bybit', name: 'Bybit', category: 'Trading', icon: '📈', description: 'Bybit API for spot and derivatives trading', url: 'https://www.bybit.com', required: false },
     
     // Blockchain
     { id: 'alchemy', name: 'Alchemy', category: 'Blockchain', icon: '⛓️', description: 'RPC node access and WebSocket APIs', url: 'https://dashboard.alchemy.com', required: false },
@@ -707,17 +713,23 @@ const ApiKeyWizard = {
   // INTEGRATION HELPERS
   // ============================================
 
-  // Get API key for engine.js
+  // Get API key for engine.js - supports any configured model
   getEngineApiKey() {
-    // Priority: Kimi > OpenAI > Anthropic
-    return this.getKey('kimi') || this.getKey('openai') || this.getKey('anthropic') || '';
+    // Priority: Kimi > OpenAI > Anthropic > Custom > any other AI model
+    return this.getKey('kimi') || this.getKey('openai') || this.getKey('anthropic') || this.getKey('custom_model') || '';
   },
 
   getEngineProvider() {
     if (this.hasKey('kimi')) return 'kimi';
     if (this.hasKey('openai')) return 'openai';
     if (this.hasKey('anthropic')) return 'anthropic';
+    if (this.hasKey('custom_model')) return 'custom';
     return 'kimi';
+  },
+
+  // Get custom model name if configured
+  getCustomModelName() {
+    return this.keys['custom_model']?.modelName || 'Custom Model';
   },
 
   // Get BaseScan API key for verification
